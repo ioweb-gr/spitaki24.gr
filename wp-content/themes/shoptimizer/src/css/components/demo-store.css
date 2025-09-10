@@ -1,0 +1,38 @@
+/*
+Demo Store
+========
+*/
+.demo_store {
+    position: fixed;
+    z-index: 9999;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    margin: 0;
+    padding: 1em 1.41575em;
+    color: #fff;
+    background-color: #3d9cd2;
+    font-size: 15px;
+}
+.demo_store a {
+    color: #fff;
+    font-weight: bold;
+}
+.demo_store a:hover {
+    color: #fff;
+}
+.demo_store a.woocommerce-store-notice__dismiss-link {
+    display: block;
+}
+@media (min-width:993px) {
+    .demo_store {
+        bottom: 0;
+    }
+    .demo_store a.woocommerce-store-notice__dismiss-link {
+        display: inline-block;
+        float: right;
+        margin: -1em -1.41575em -1em 0;
+        padding: 1em 1.41575em;
+        background: rgba(0,0,0,.1)
+    }
+}

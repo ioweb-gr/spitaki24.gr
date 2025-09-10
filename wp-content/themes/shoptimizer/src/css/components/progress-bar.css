@@ -1,0 +1,125 @@
+/*
+Progress Bar
+========
+*/
+.checkout-wrap {
+    margin-top: 40px;
+    margin-bottom: 75px;
+}
+.woocommerce-cart .checkout-wrap {
+	margin-top: 20px;
+}
+ul.checkout-bar {
+    position: relative;
+    display: flex;
+    width: 80%;
+    height: 2px;
+    margin: 0 auto 20px 10%;
+}
+ul.checkout-bar li {
+    display: inline-block;
+    position: relative;
+    width: 33.333%;
+    margin: 22px 0 0;
+    padding: 0;
+    font-size: 14px;
+    text-align: center;
+}
+ul.checkout-bar li:before {
+    position: absolute;
+    z-index: 3;
+    top: -40px;
+    left: 50%;
+    margin-left: -19px;
+    width: 26px;
+    height: 26px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    background: #ddd;
+    box-sizing: content-box;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+}
+.checkout-bar li.active:after,
+.woocommerce-checkout .checkout-bar li.next:after {
+    position: absolute;
+    z-index: 0;
+    top: -22px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    background-size: 35px 35px;
+    content: "";
+}
+ul.checkout-bar {
+    background-color: #ececec;
+}
+ul.checkout-bar:before {
+    position: absolute;
+    left: 0;
+    width: 17%;
+    height: 2px;
+    border-radius: 6px;
+    background-color: #dc9814;
+    background-size: 35px 35px;
+    content: "";
+}
+ul.checkout-bar li.active {
+    z-index: 3;
+    color: #444;
+    background: 0 0;
+}
+ul.checkout-bar li:nth-child(1):before {
+    content: "1";
+}
+ul.checkout-bar li:nth-child(2):before {
+    content: "2";
+}
+ul.checkout-bar li:nth-child(3):before {
+    content: "3";
+}
+ul.checkout-bar a {
+	color: #111;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.woocommerce-cart ul.checkout-bar li.active:before,
+.woocommerce-checkout ul.checkout-bar li.active:before,
+.woocommerce-checkout ul.checkout-bar li.next:before {
+    background: #444;
+}
+@media (max-width: 992px) {
+	.woocommerce-checkout .checkout-wrap {
+        margin-bottom: 60px;
+    }
+    .woocommerce-cart .checkout-wrap {
+		margin-top: 0px;
+	}
+}
+@media (max-width: 768px) {
+	.site ul.checkout-bar {
+		width: 100%;
+		margin-left: 0;
+	}
+	.site ul.checkout-bar li::before {
+		left: 50%;
+		margin-left: -19px;
+	}
+	.site ul.checkout-bar li,
+	.site ul.checkout-bar li a {
+		font-size: 11px;
+	}
+}
+@media (max-width: 500px) {
+	.site ul.checkout-bar li span {
+		visibility: hidden;
+	}
+	.checkout-wrap {
+        margin-bottom: 40px;
+    }
+}

@@ -1,0 +1,24 @@
+/* Judge.me Styling */
+
+.single-product .jdgm-widget.jdgm-widget {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+.single-product .jdgm-rev-widg {
+	margin-top: 0px;
+}
+
+.product .jdgm-widget.jdgm-widget {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.jdgm-rev-widg.jdgm-rev-widg {
+	margin-top: 0;
+}
+
+.jdgm-prev-badge__text {
+	margin-left: 5px;
+	font-size: 13px;
+}

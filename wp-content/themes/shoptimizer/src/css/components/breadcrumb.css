@@ -1,0 +1,99 @@
+/*
+Breadcrumb
+========
+*/
+.woocommerce-breadcrumb {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: clamp(0.75rem, 0.6547rem + 0.3049vw, 0.84375rem); /* 12-13.5 */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #666;
+}
+@media (min-width: 993px) {
+    .woocommerce-breadcrumb {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+.woocommerce-breadcrumb p {
+    margin: 0;
+}
+.woocommerce-breadcrumb a,
+.woocommerce-breadcrumb a:hover {
+    color: #111;
+}
+.woocommerce-breadcrumb a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: .5px;
+    text-decoration-color: #111;
+    text-underline-offset: 0.18em;
+}
+.woocommerce-breadcrumb a:first-of-type:before {
+    display: none;
+}
+.woocommerce-breadcrumb .breadcrumb-separator {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    padding: 0 0.8em;
+    opacity: 0.4;
+    font-size: 0.8em;
+}
+.woocommerce-breadcrumb.yoast .breadcrumb-separator {
+    margin: 0 -1px;
+}
+/* -- PDP Breadcrumb -- */
+.single-product .woocommerce-breadcrumb {
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 2.617924em;
+    padding-left: 2.617924em;
+}
+@media (min-width: 993px) and (max-width: 1480px) {
+    .single-product .woocommerce-breadcrumb {
+        padding-left: calc(2.617924em + 5px);
+    }
+}
+@media (max-width: 992px) {
+    .single-product .woocommerce-breadcrumb {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+/* -- Breadcrumb off -- */
+body:has(:not(.woocommerce-breadcrumb)) .site-content,
+body.single-product:has(:not(.woocommerce-breadcrumb)) .site-main {
+    padding-top: 2rem;
+}
+body:has(.woocommerce-breadcrumb) .site-content,
+body.page-template-template-fullwidth-no-heading .site-content,
+body.page-template-elementor_header_footer .site-content {
+    padding-top: 0;
+}
+body.page-template-template-canvas:has(:not(.woocommerce-breadcrumb)) .site-content,
+body.woocommerce-cart:has(:not(.woocommerce-breadcrumb)) .site-content,
+body.woocommerce-checkout.min-ck:has(:not(.woocommerce-breadcrumb)) .site-content,
+body.single-product:has(:not(.woocommerce-breadcrumb)) .site-content {
+    padding-top: 0;
+}
+body.single-product:has(.woocommerce-breadcrumb) .site-main {
+    padding-top: 0;
+}
+@media (max-width: 992px) {
+    .archive:has(.mobile-filter):has(.shoptimizer-category-banner) .archive-header:has(:not(.woocommerce-breadcrumb)) {
+        padding-top: 0;
+    }
+    .single-product:has(:not(.woocommerce-breadcrumb)) .site-main {
+        padding-top: 1em;
+    }
+}
+/* -- Hide breadcrumb on certain templates -- */
+.woocommerce-cart .woocommerce-breadcrumb,
+.woocommerce-checkout .woocommerce-breadcrumb,
+.single-ckit_size_guide .woocommerce-breadcrumb,
+.single-post.post-l2 .woocommerce-breadcrumb {
+    display: none;
+}

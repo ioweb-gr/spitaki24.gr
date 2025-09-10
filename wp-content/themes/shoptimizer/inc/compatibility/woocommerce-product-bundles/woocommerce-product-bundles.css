@@ -1,0 +1,74 @@
+/* Shoptimizer WooCommerce Product Bundles Styling: https://woocommerce.com/products/product-bundles/ */
+
+div.bundled_product_summary,
+.woocommerce div.product.bundled_product_summary {
+    padding-bottom: 0.6em;
+}
+
+h4.bundled_product_title {
+    margin-bottom: 5px;
+}
+
+.product-type-bundle .variations tr {
+    margin-bottom: 0;
+}
+
+.bundled_product_excerpt p {
+    margin-bottom: 0.6em;
+}
+
+.content-area .product-type-bundle p.stock {
+    border: none;
+    padding-top: 0;
+}
+
+.bundle_unavailable.woocommerce-info {
+    margin-bottom: 0;
+}
+
+.summary ul.products.bundled_products,
+.summary-add-to-cart-form-bundle ul.products.bundled_products {
+    margin-bottom: 30px;
+}
+
+ul.products li.product.bundled_product_summary {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+.product-type-bundle .shoptimizer-product-prevnext {
+    display: none;
+}
+
+.bundled_product .details {
+    position: relative;
+    font-size: 14px;
+}
+
+.bundled_product h4.bundled_product_title {
+    font-size: 18px;
+}
+
+.summary-add-to-cart-form-bundle {
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -50px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.summary-add-to-cart-form-bundle .cart .bundle_button .single_add_to_cart_button {
+    margin-left: 20px;
+    width: auto;
+}
+
+table.bundled_products td.bundled_item_images_col {
+    padding-left: 0;
+}
+
+form.bundle_form table.bundled_products th.bundled_item_col {
+    padding-top: 0;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e2e2e2;
+}

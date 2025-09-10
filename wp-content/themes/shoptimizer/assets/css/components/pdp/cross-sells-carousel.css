@@ -1,0 +1,125 @@
+/*
+Cross-sells Carousel, uses tiny-slider.js
+========
+*/
+/* -- Cross-sells -- */
+.pdp-complementary-carousel {
+    margin-top: 2rem;
+}
+.pdp-complementary--header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.pdp-complementary--header button {
+    margin-left: 0.75rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+}
+.pdp-complementary--header svg {
+    width: 16px;
+}
+.pdp-complementary--heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+.pdp-complementary--nav {
+    display: flex;
+    flex-shrink: 0;
+}
+.tns-carousel {
+    overflow: hidden;
+}
+.tns-liveregion {
+    display: none;
+}
+/* Hide navigation if only one cross-sell item present */
+.pdp-complementary-carousel:has(.pdp-complementary-item:only-child) .pdp-complementary--nav {
+    display: none;
+}
+.pdp-complementary--container {
+    display: flex;
+}
+.pdp-complementary--container {
+    opacity: 0;
+}
+.pdp-complementary--container.tns-slider {
+    opacity: 1;
+}
+.pdp-complementary-item img {
+    max-width: 95px;
+    height: auto;
+    margin-right: 1.25rem;
+    margin-left: 1px;
+}
+.pdp-complementary--single {
+    display: flex;  
+    align-items: center;
+}
+.pdp-complementary--content {
+    display: flex;
+    flex-direction: column;
+}
+.pdp-complementary--title {
+    font-size: 14px;
+    font-weight: 600;
+}
+.pdp-complementary--title a,
+.pdp-complementary--title a:hover {
+    color: #111;
+}
+.pdp-complementary--content .price {
+    font-size: 13px;
+}
+.pdp-complementary--content .price ins {
+    font-weight: bold;
+}
+/* Button */
+.pdp-complementary--add-to-cart {
+    display: inline-flex;
+    margin-top: 0.35rem;
+}
+.pdp-complementary--add-to-cart a {
+    padding: 5px 14px;
+    font-size: 12px;
+    color: #111;
+    border: 1px solid #e2e2e2;
+    background: linear-gradient(180deg, white, #eee 130%) no-repeat;
+    border-radius: 4px;
+    transition: 0.2s all;
+}
+.pdp-complementary--add-to-cart a:hover {
+    color: #111;
+    border-color: #ccc;
+}
+.pdp-complementary--add-to-cart:has(.added_to_cart) .added {
+    display: none;
+}
+.pdp-complementary--add-to-cart .ajax_add_to_cart.add_to_cart_button:after {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-left-color: #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+}
+/* RTL */
+.rtl .pdp-complementary-carousel {
+    direction: ltr;
+}
+.rtl .pdp-complementary--header,
+.rtl .pdp-complementary--single {
+    flex-flow: row-reverse;
+}
+.rtl .pdp-complementary-item img {
+    margin-left: 1.25rem;
+    margin-right: 1px;
+}
+.rtl .pdp-complementary--header button {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+.rtl .pdp-complementary--add-to-cart {
+    justify-content: flex-end;
+}

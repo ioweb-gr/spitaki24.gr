@@ -1,0 +1,3428 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-02-10 20:47+0530\n"
+"PO-Revision-Date: 2020-09-17 20:19+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;"
+"commercekit_ajs_esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: .\n"
+
+#: commercegurus-commercekit.php:47
+msgid "Change plugin settings"
+msgstr ""
+
+#: commercegurus-commercekit.php:47 includes/admin-ajax-search.php:61
+#: includes/admin-modules-settings.php:40 includes/admin-modules-settings.php:121
+#: includes/admin-settings.php:541 includes/admin-waitlist.php:80
+#: includes/admin-waitlist.php:184 includes/admin-waitlist.php:299
+#: includes/admin-waitlist.php:339 includes/admin-waitlist.php:499
+#: includes/admin-wishlist.php:47
+msgid "Settings"
+msgstr ""
+
+#: commercegurus-commercekit.php:74
+msgid ""
+"CommerceKit Error: You are running a version of MySQL which does not support FULLTEXT "
+"indexes."
+msgstr ""
+
+#: includes/admin-ajax-search.php:55
+msgid "Ajax Search Reports"
+msgstr ""
+
+#: includes/admin-ajax-search.php:58
+msgid "Ajax Search Settings"
+msgstr ""
+
+#: includes/admin-ajax-search.php:62 includes/admin-wishlist.php:48
+msgid "Reports"
+msgstr ""
+
+#: includes/admin-ajax-search.php:67 includes/admin-ajax-search.php:99
+#: includes/admin-attribute-swatches-settings.php:16
+#: includes/admin-attribute-swatches-settings.php:26
+#: includes/admin-attribute-swatches-settings.php:39 includes/admin-badge.php:17
+#: includes/admin-countdown-timer.php:17 includes/admin-countdown-timer.php:33
+#: includes/admin-countdown-timer.php:160 includes/admin-countdown-timer.php:312
+#: includes/admin-countdown-timer.php:348 includes/admin-countdown-timer.php:371
+#: includes/admin-free-shipping-notification.php:79 includes/admin-inventory-bar.php:104
+#: includes/admin-order-bump.php:40 includes/admin-order-bump.php:112
+#: includes/admin-order-bump.php:242 includes/admin-order-bump.php:314
+#: includes/admin-order-bump.php:448 includes/admin-pdp-attributes-gallery.php:29
+#: includes/admin-pdp-gallery.php:18 includes/admin-pdp-gallery.php:127
+#: includes/admin-pdp-gallery.php:143 includes/admin-pdp-triggers.php:16
+#: includes/admin-size-guide.php:17 includes/admin-size-guide.php:67
+#: includes/admin-waitlist.php:305 includes/admin-waitlist.php:393
+#: includes/admin-waitlist.php:441 includes/admin-waitlist.php:465
+#: includes/admin-waitlist.php:510 includes/admin-wishlist.php:54
+#: includes/admin-wishlist.php:87 includes/templates/admin-esp-klaviyo.php:11
+msgid "Enable"
+msgstr ""
+
+#: includes/admin-ajax-search.php:67
+msgid "Enable Ajax Search in the main search bar"
+msgstr ""
+
+#: includes/admin-ajax-search.php:68
+msgid "Placeholder"
+msgstr ""
+
+#: includes/admin-ajax-search.php:69 includes/admin-waitlist.php:79
+#: includes/admin-waitlist.php:180 includes/admin-waitlist.php:183
+#: includes/admin-waitlist.php:298 includes/admin-waitlist.php:338
+#: includes/admin-waitlist.php:498 includes/module-size-guide.php:53
+#: includes/templates/search.php:22 includes/templates/search.php:241
+msgid "Products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:70 includes/admin-wishlist.php:55
+msgid "Display"
+msgstr ""
+
+#: includes/admin-ajax-search.php:70
+msgid "All contents"
+msgstr ""
+
+#: includes/admin-ajax-search.php:70
+msgid "Just products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:71
+msgid "Tabbed search results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:71
+msgid "Enable search results tabs"
+msgstr ""
+
+#: includes/admin-ajax-search.php:72
+msgid "Preserve selected tab"
+msgstr ""
+
+#: includes/admin-ajax-search.php:72
+msgid "Enable preserve selected tab on next visit"
+msgstr ""
+
+#: includes/admin-ajax-search.php:73
+msgid "&ldquo;No results&rdquo; text"
+msgstr ""
+
+#: includes/admin-ajax-search.php:74
+msgid "&ldquo;View all&rdquo; text"
+msgstr ""
+
+#: includes/admin-ajax-search.php:75
+msgid "Out of stock products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:75
+msgid "Include"
+msgstr ""
+
+#: includes/admin-ajax-search.php:75 includes/admin-ajax-search.php:77
+msgid "Exclude"
+msgstr ""
+
+#: includes/admin-ajax-search.php:76
+msgid "Out of stock results order"
+msgstr ""
+
+#: includes/admin-ajax-search.php:76
+msgid "Display out of stock items at the end of the search results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:77
+msgid "Enter product IDs to be excluded, separated by commas."
+msgstr ""
+
+#: includes/admin-ajax-search.php:78
+msgid "Hide variations"
+msgstr ""
+
+#: includes/admin-ajax-search.php:78
+msgid "Hide variations from search suggestions"
+msgstr ""
+
+#: includes/admin-ajax-search.php:79
+msgid "Products displayed"
+msgstr ""
+
+#: includes/admin-ajax-search.php:80
+msgid "Other Results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:81
+msgid "Enable other results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:81
+msgid "Display other results such as posts and pages"
+msgstr ""
+
+#: includes/admin-ajax-search.php:82
+msgid "&ldquo;Other results&rdquo; text"
+msgstr ""
+
+#: includes/admin-ajax-search.php:83
+msgid "&ldquo;No other results&rdquo; text"
+msgstr ""
+
+#: includes/admin-ajax-search.php:84
+msgid "&ldquo;View all other results&rdquo; text"
+msgstr ""
+
+#: includes/admin-ajax-search.php:85
+msgid "Exclude other results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:85
+msgid "Enter post / page IDs to be excluded, separated by commas."
+msgstr ""
+
+#: includes/admin-ajax-search.php:86
+msgid "Other results displayed"
+msgstr ""
+
+#: includes/admin-ajax-search.php:94
+msgid "Lightning Fast Results (Beta)"
+msgstr ""
+
+#: includes/admin-ajax-search.php:95
+msgid ""
+"Note: This option is not suitable for all stores as some servers do not support direct PHP "
+"script access. Search result suggestions will load extremely fast but will not display "
+"prices."
+msgstr ""
+
+#: includes/admin-ajax-search.php:100
+msgid "Enable Lightning Fast Results (excludes prices)"
+msgstr ""
+
+#: includes/admin-ajax-search.php:106
+msgid "Clear Ajax Search Index"
+msgstr ""
+
+#: includes/admin-ajax-search.php:107
+msgid "Total products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108
+msgid "Indexed products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108
+msgid "Total indexed products"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108
+msgid "Are you sure you want to clear and rebuild the ajax search index?"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108
+msgid "Clear and rebuild Ajax Search index"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108 includes/admin-modules-settings.php:53
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin-ajax-search.php:108
+msgid "Are you sure you want to cancel indexing process?"
+msgstr ""
+
+#: includes/admin-ajax-search.php:109 includes/admin-modules-settings.php:54
+msgid "Enable logger"
+msgstr ""
+
+#: includes/admin-ajax-search.php:109
+msgid "Enable Product Ajax Search index rebuilding logger"
+msgstr ""
+
+#: includes/admin-ajax-search.php:115
+msgid "Indexing event being created..."
+msgstr ""
+
+#: includes/admin-ajax-search.php:126
+msgid "Processing indexing event."
+msgstr ""
+
+#: includes/admin-ajax-search.php:126 includes/admin-modules-settings.php:79
+msgid "completed..."
+msgstr ""
+
+#: includes/admin-ajax-search.php:141
+msgid "Index rebuild complete"
+msgstr ""
+
+#: includes/admin-ajax-search.php:144 includes/admin-modules-settings.php:98
+msgid "Last log message"
+msgstr ""
+
+#: includes/admin-ajax-search.php:145
+msgid "The index process apparently succeeded and is now complete"
+msgstr ""
+
+#: includes/admin-ajax-search.php:150
+msgid ""
+"The indexing process interrupted due to disabled Ajax Search module. Enable Ajax Search "
+"module and click on \"Clear and rebuild ajax search index\" button to rebuild all products "
+"ajax search index."
+msgstr ""
+
+#: includes/admin-ajax-search.php:155
+msgid ""
+"The indexing process has been cancelled. Click on the \"Clear and rebuild Ajax Search "
+"index\" button to restart it."
+msgstr ""
+
+#: includes/admin-ajax-search.php:169
+msgid "Total searches"
+msgstr ""
+
+#: includes/admin-ajax-search.php:171
+msgid "How many searches have been performed."
+msgstr ""
+
+#: includes/admin-ajax-search.php:174
+msgid "Clickthrough rate"
+msgstr ""
+
+#: includes/admin-ajax-search.php:176
+#, no-php-format
+msgid "The % of searches that resulted in a click."
+msgstr ""
+
+#: includes/admin-ajax-search.php:179
+msgid "No result rate"
+msgstr ""
+
+#: includes/admin-ajax-search.php:181
+#, no-php-format
+msgid "The % of searches that returned no results."
+msgstr ""
+
+#: includes/admin-ajax-search.php:185
+msgid "Most frequent searches"
+msgstr ""
+
+#: includes/admin-ajax-search.php:186
+msgid "Discover what your users are searching for most."
+msgstr ""
+
+#: includes/admin-ajax-search.php:188 includes/admin-ajax-search.php:202
+#: includes/admin-settings.php:1837
+msgid "Term"
+msgstr ""
+
+#: includes/admin-ajax-search.php:188 includes/admin-ajax-search.php:202
+#: includes/admin-settings.php:1837 includes/admin-wishlist.php:126
+msgid "Count"
+msgstr ""
+
+#: includes/admin-ajax-search.php:194 includes/admin-ajax-search.php:208
+#: includes/admin-settings.php:1837
+msgid "No terms"
+msgstr ""
+
+#: includes/admin-ajax-search.php:198
+msgid "Most frequent searches returning 0 results"
+msgstr ""
+
+#: includes/admin-ajax-search.php:199
+msgid "Users are searching for these queries and encounter no results."
+msgstr ""
+
+#: includes/admin-ajax-search.php:200
+msgid "Are you sure you want to reset no result counts only?"
+msgstr ""
+
+#: includes/admin-ajax-search.php:200
+msgid "Reset no result counts"
+msgstr ""
+
+#: includes/admin-ajax-search.php:211 includes/admin-wishlist.php:149
+msgid "NOTE: Report data is updated every 24 hours."
+msgstr ""
+
+#: includes/admin-ajax-search.php:216 includes/admin-dashboard.php:60
+#: includes/admin-settings.php:527
+msgid "Ajax Search"
+msgstr ""
+
+#: includes/admin-ajax-search.php:217
+msgid ""
+"Research has shown that instant search results are an important feature on eCommerce "
+"sites. It helps users save time and find products faster."
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:12
+#: includes/admin-attribute-swatches-settings.php:16
+#: includes/admin-attribute-swatches-settings.php:58 includes/admin-dashboard.php:134
+#: includes/admin-settings.php:529 includes/module-attribute-swatches.php:17
+msgid "Attribute Swatches"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:17
+msgid "Display tooltips"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:17
+msgid "Display tooltips on color and image swatches"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:18
+msgid "Button style"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:18
+msgid "Square"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:18
+msgid "Fluid"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:24
+#: includes/admin-attribute-swatches-settings.php:26
+msgid "Attribute Swatches on Product Details Pages"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:27
+msgid "Disable for related products"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:27
+msgid "Switch off swatches for related products and within the menu on PDPs"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:30
+msgid "Attribute Swatches on Product Listings Pages"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:32
+msgid ""
+"Enabling swatches on product listing pages (i.e. the shop, category screens) is an "
+"opinionated feature. This means that it does things in a certain way, based upon research "
+"from top eCommerce DTC brands. This should only be activated if your catalog contains "
+"primarily"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:32
+msgid "variable products"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:32
+msgid ""
+"- i.e. you sell items which all have colors and sizes, and you wish to display these on "
+"the catalog."
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:34
+msgid ""
+"A maximum of two attributes will appear on product listings pages. Quick add to cart will "
+"only work with two or fewer attributes."
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:36
+msgid ""
+"Enabling this will change how your product listing pages will look and behave on desktop "
+"and mobile. If this is not suitable for your store leave this option"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:36
+msgid "switched off"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:36
+msgid "or look at an"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:36
+msgid "alternative swatches plugin"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:36
+msgid "more suitable to your catalog."
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:39
+msgid "Attribute Swatches on Listing Pages"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:41
+msgid "Quick add to cart"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:41
+msgid "Activate Quick add to cart"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:43
+msgid "Quick add to cart label"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:45
+msgid "More options label"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:47
+msgid "Swatch link"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:47
+msgid "Specific variation on product page"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:47
+msgid "Product page"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:48
+msgid "Disable loading facade"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:48
+msgid "Disable loading facade on Product Listings Pages"
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:59
+msgid ""
+"A replacement for the core WooCommerce product variation dropdowns with color / image / "
+"button display options that will significantly improve user experience on product and "
+"listing pages."
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:61
+#: includes/admin-free-shipping-notification.php:99
+#: includes/admin-pdp-attributes-gallery.php:41 includes/admin-pdp-gallery.php:175
+#: includes/admin-size-guide.php:96
+msgid "See the "
+msgstr ""
+
+#: includes/admin-attribute-swatches-settings.php:61
+#: includes/admin-free-shipping-notification.php:99
+#: includes/admin-pdp-attributes-gallery.php:41 includes/admin-pdp-gallery.php:175
+#: includes/admin-size-guide.php:96
+msgid "area for more details on setting up this module."
+msgstr ""
+
+#: includes/admin-attribute-swatches.php:142
+msgid "Select "
+msgstr ""
+
+#: includes/admin-attribute-swatches.php:250 includes/admin-waitlist.php:260
+#: includes/templates/product-attribute-swatches.php:18
+msgid "Out of stock"
+msgstr ""
+
+#: includes/admin-attribute-swatches.php:251 includes/admin-attribute-swatches.php:339
+msgid "No selection"
+msgstr ""
+
+#: includes/admin-attribute-swatches.php:939 includes/admin-modules-settings.php:106
+msgid "The caching process has been cancelled."
+msgstr ""
+
+#: includes/admin-attribute-swatches.php:1094
+#, php-format
+msgid "Choose %s"
+msgstr ""
+
+#: includes/admin-badge.php:14 includes/admin-badge.php:229 includes/admin-dashboard.php:297
+#: includes/admin-settings.php:533
+msgid "Product Badges"
+msgstr ""
+
+#: includes/admin-badge.php:17
+msgid "Enable Product Badges"
+msgstr ""
+
+#: includes/admin-badge.php:23
+msgid "Product Badge"
+msgstr ""
+
+#: includes/admin-badge.php:29 includes/admin-badge.php:87
+msgid "Label"
+msgstr ""
+
+#: includes/admin-badge.php:33 includes/admin-badge.php:93 includes/admin-badge.php:199
+msgid "Badge text"
+msgstr ""
+
+#: includes/admin-badge.php:37 includes/admin-badge.php:97 includes/admin-badge.php:203
+msgid "Background color"
+msgstr ""
+
+#: includes/admin-badge.php:41 includes/admin-badge.php:101 includes/admin-badge.php:207
+msgid "Text color"
+msgstr ""
+
+#: includes/admin-badge.php:45 includes/admin-badge.php:105
+#: includes/admin-countdown-timer.php:111 includes/admin-countdown-timer.php:215
+#: includes/admin-inventory-bar.php:40 includes/admin-order-bump.php:56
+#: includes/admin-order-bump.php:135 includes/admin-order-bump.php:258
+#: includes/admin-order-bump.php:337
+msgid "Conditions"
+msgstr ""
+
+#: includes/admin-badge.php:48 includes/admin-badge.php:120
+#: includes/admin-countdown-timer.php:114 includes/admin-countdown-timer.php:230
+#: includes/admin-inventory-bar.php:52 includes/admin-order-bump.php:59
+#: includes/admin-order-bump.php:150 includes/admin-order-bump.php:261
+#: includes/admin-order-bump.php:352
+msgid "All products"
+msgstr ""
+
+#: includes/admin-badge.php:49 includes/admin-badge.php:60 includes/admin-badge.php:121
+#: includes/admin-countdown-timer.php:115 includes/admin-countdown-timer.php:126
+#: includes/admin-countdown-timer.php:231 includes/admin-inventory-bar.php:53
+#: includes/admin-order-bump.php:60 includes/admin-order-bump.php:151
+#: includes/admin-order-bump.php:262 includes/admin-order-bump.php:353
+msgid "Specific products"
+msgstr ""
+
+#: includes/admin-badge.php:50 includes/admin-badge.php:122
+#: includes/admin-countdown-timer.php:116 includes/admin-countdown-timer.php:232
+#: includes/admin-inventory-bar.php:54 includes/admin-order-bump.php:61
+#: includes/admin-order-bump.php:152 includes/admin-order-bump.php:263
+#: includes/admin-order-bump.php:354
+msgid "All products apart from"
+msgstr ""
+
+#: includes/admin-badge.php:51 includes/admin-badge.php:123
+#: includes/admin-countdown-timer.php:117 includes/admin-countdown-timer.php:233
+#: includes/admin-inventory-bar.php:55 includes/admin-order-bump.php:62
+#: includes/admin-order-bump.php:153 includes/admin-order-bump.php:264
+#: includes/admin-order-bump.php:355
+msgid "Specific categories"
+msgstr ""
+
+#: includes/admin-badge.php:52 includes/admin-badge.php:124
+#: includes/admin-countdown-timer.php:118 includes/admin-countdown-timer.php:234
+#: includes/admin-inventory-bar.php:56 includes/admin-order-bump.php:63
+#: includes/admin-order-bump.php:154 includes/admin-order-bump.php:265
+#: includes/admin-order-bump.php:356
+msgid "All categories apart from"
+msgstr ""
+
+#: includes/admin-badge.php:53 includes/admin-badge.php:125
+#: includes/admin-countdown-timer.php:119 includes/admin-countdown-timer.php:235
+#: includes/admin-order-bump.php:64 includes/admin-order-bump.php:155
+#: includes/admin-order-bump.php:266 includes/admin-order-bump.php:357
+msgid "Specific tags"
+msgstr ""
+
+#: includes/admin-badge.php:54 includes/admin-badge.php:126
+#: includes/admin-countdown-timer.php:120 includes/admin-countdown-timer.php:236
+#: includes/admin-order-bump.php:65 includes/admin-order-bump.php:156
+#: includes/admin-order-bump.php:267 includes/admin-order-bump.php:358
+msgid "All tags apart from"
+msgstr ""
+
+#: includes/admin-badge.php:65 includes/admin-badge.php:167 includes/admin-badge.php:215
+msgid "Show on catalog"
+msgstr ""
+
+#: includes/admin-badge.php:69 includes/admin-badge.php:171 includes/admin-badge.php:219
+msgid "Show on product pages"
+msgstr ""
+
+#: includes/admin-badge.php:134 includes/admin-countdown-timer.php:244
+#: includes/admin-inventory-bar.php:64 includes/admin-order-bump.php:164
+#: includes/admin-order-bump.php:366
+msgid "Specific categories:"
+msgstr ""
+
+#: includes/admin-badge.php:135 includes/admin-countdown-timer.php:245
+#: includes/admin-order-bump.php:165 includes/admin-order-bump.php:367
+msgid "Specific tags:"
+msgstr ""
+
+#: includes/admin-badge.php:174
+msgid "Delete Product Badge"
+msgstr ""
+
+#: includes/admin-badge.php:185
+msgid "Delete product badge"
+msgstr ""
+
+#: includes/admin-badge.php:186
+msgid "Are you sure you want to delete this product badge?"
+msgstr ""
+
+#: includes/admin-badge.php:187 includes/admin-countdown-timer.php:300
+#: includes/admin-order-bump.php:432
+msgid "This field is required"
+msgstr ""
+
+#: includes/admin-badge.php:190
+msgid "Add New Product Badge"
+msgstr ""
+
+#: includes/admin-badge.php:194
+msgid "New Product Badge"
+msgstr ""
+
+#: includes/admin-badge.php:200 includes/modules.php:172
+msgid "New!"
+msgstr ""
+
+#: includes/admin-badge.php:211
+msgid "Days displayed"
+msgstr ""
+
+#: includes/admin-badge.php:212
+msgid "Number of days to display the badge from the date the product was added."
+msgstr ""
+
+#: includes/admin-badge.php:230
+msgid ""
+"Product badges can enhance customer understanding of key product features, highlight "
+"promotions and products with limited-time offers, improve the click-through rate and many "
+"more conversion-boosting benefits."
+msgstr ""
+
+#: includes/admin-countdown-timer.php:14
+msgid "Countdown Timers"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:17
+msgid "Enable countdowns on single product and checkout pages"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:23
+msgid "Product Countdown"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:23
+msgid ""
+"The order of the countdowns is important. Drag a countdown to the top to take precedence."
+msgstr ""
+
+#: includes/admin-countdown-timer.php:29 includes/admin-countdown-timer.php:37
+#: includes/admin-countdown-timer.php:154 includes/admin-countdown-timer.php:164
+#: includes/admin-countdown-timer.php:316 includes/admin-order-bump.php:36
+#: includes/admin-order-bump.php:105 includes/admin-order-bump.php:238
+#: includes/admin-order-bump.php:250 includes/admin-order-bump.php:307
+#: includes/admin-order-bump.php:329
+msgid "Title"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:34 includes/admin-countdown-timer.php:161
+msgid "Enable countdown timer on product page"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:38 includes/admin-countdown-timer.php:165
+msgid "e.g. Hurry! This sale ends in"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:41 includes/admin-countdown-timer.php:168
+#: includes/admin-countdown-timer.php:324
+msgid "Ends"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:43 includes/admin-countdown-timer.php:52
+#: includes/admin-countdown-timer.php:170 includes/admin-countdown-timer.php:179
+msgid "Days"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:44 includes/admin-countdown-timer.php:53
+#: includes/admin-countdown-timer.php:171 includes/admin-countdown-timer.php:180
+msgid "Hours"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:45 includes/admin-countdown-timer.php:54
+#: includes/admin-countdown-timer.php:172 includes/admin-countdown-timer.php:181
+#: includes/admin-countdown-timer.php:326
+msgid "Minutes"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:46 includes/admin-countdown-timer.php:55
+#: includes/admin-countdown-timer.php:173 includes/admin-countdown-timer.php:182
+#: includes/admin-countdown-timer.php:327
+msgid "Seconds"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:50 includes/admin-countdown-timer.php:177
+msgid "Labels"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:54 includes/admin-countdown-timer.php:181
+msgid "Mins"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:55 includes/admin-countdown-timer.php:182
+msgid "Secs"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:59 includes/admin-countdown-timer.php:186
+msgid "Hide when finished"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:60 includes/admin-countdown-timer.php:187
+msgid "Hide the countdown when it reaches zero"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:63 includes/admin-countdown-timer.php:190
+msgid "Custom message"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:64 includes/admin-countdown-timer.php:191
+msgid "A custom message can be displayed instead when the countdown has finished."
+msgstr ""
+
+#: includes/admin-countdown-timer.php:70 includes/admin-countdown-timer.php:196
+msgid "Type"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:75 includes/admin-countdown-timer.php:201
+msgid "Evergreen sets a dynamic countdown timer for each visitor."
+msgstr ""
+
+#: includes/admin-countdown-timer.php:80 includes/admin-countdown-timer.php:205
+msgid "One-time"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:80 includes/admin-countdown-timer.php:205
+msgid "Evergreen"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:80 includes/admin-countdown-timer.php:205
+msgid "Single campaign"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:133 includes/admin-countdown-timer.php:279
+#: includes/admin-countdown-timer.php:363 includes/admin-countdown-timer.php:373
+#: includes/admin-dashboard.php:123 includes/admin-dashboard.php:198
+#: includes/admin-dashboard.php:243 includes/admin-dashboard.php:286
+#: includes/admin-dashboard.php:363 includes/admin-dashboard.php:406
+#: includes/admin-dashboard.php:487 includes/admin-dashboard.php:565
+#: includes/admin-free-shipping-notification.php:83 includes/admin-inventory-bar.php:118
+#: includes/admin-order-bump.php:457 includes/admin-pdp-gallery.php:157
+#: includes/admin-size-guide.php:81 includes/admin-wishlist.php:100
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:281 includes/admin-countdown-timer.php:298
+msgid "Delete Countdown"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:299
+msgid "Are you sure you want to delete this product countdown?"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:303
+msgid "Add new Product Countdown"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:307
+msgid "Checkout Countdown"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:313
+msgid "Enable countdown timer on checkout page"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:317
+msgid "e.g. Your order is reserved for:"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:320
+msgid "Expiry Message"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:321
+msgid "e.g. Times up! But good news! We&rsquo;ve extended your checkout time :)"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:339
+msgid "Use shortcodes"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:343
+msgid ""
+"Some page builders (such as Elementor Pro) allow you to completely customize the standard "
+"WooCommerce product page template. By enabling the shortcode option, you can still add "
+"this module to your template, in a position of your choosing. These will only work on"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:343
+msgid "product and checkout templates"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:347
+msgid "Product Countdown shortcode"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:358
+msgid ""
+"This will prevent the module from appearing unless the shortcode is present on the page. "
+"Only enable this if you are using a page builder such as Elementor Pro and a custom "
+"product page template."
+msgstr ""
+
+#: includes/admin-countdown-timer.php:369
+msgid "Checkout Countdown shortcode"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:384
+msgid "Countdown Timer"
+msgstr ""
+
+#: includes/admin-countdown-timer.php:385
+msgid ""
+"This feature allows you to run time-limited promotions to create urgency and drive more "
+"clicks from your single product pages to create more sales. You can also add one to the "
+"checkout page to encourage faster completion."
+msgstr ""
+
+#: includes/admin-dashboard.php:13
+msgid "Order Bump Statistics"
+msgstr ""
+
+#: includes/admin-dashboard.php:13
+msgid "Are you sure you want to reset these statistics?"
+msgstr ""
+
+#: includes/admin-dashboard.php:13
+msgid "Reset Statistics"
+msgstr ""
+
+#: includes/admin-dashboard.php:25
+msgid "Impressions"
+msgstr ""
+
+#: includes/admin-dashboard.php:29
+msgid "Revenue"
+msgstr ""
+
+#: includes/admin-dashboard.php:33
+msgid "Additional Sales"
+msgstr ""
+
+#: includes/admin-dashboard.php:37
+msgid "Click Rate"
+msgstr ""
+
+#: includes/admin-dashboard.php:42
+msgid "Conversion Rate"
+msgstr ""
+
+#: includes/admin-dashboard.php:51
+msgid "CommerceKit Features"
+msgstr ""
+
+#: includes/admin-dashboard.php:61 includes/admin-dashboard.php:93
+#: includes/admin-dashboard.php:135 includes/admin-dashboard.php:172
+#: includes/admin-dashboard.php:215 includes/admin-dashboard.php:256
+#: includes/admin-dashboard.php:298 includes/admin-dashboard.php:333
+#: includes/admin-dashboard.php:378 includes/admin-dashboard.php:423
+#: includes/admin-dashboard.php:459 includes/admin-dashboard.php:500
+#: includes/admin-dashboard.php:535
+msgid "Configure"
+msgstr ""
+
+#: includes/admin-dashboard.php:64
+msgid "Instant search suggestions helps customers save time and find products faster."
+msgstr ""
+
+#: includes/admin-dashboard.php:70 includes/admin-dashboard.php:547
+msgid "9Kb of HTML"
+msgstr ""
+
+#: includes/admin-dashboard.php:70
+msgid "Loads on all pages"
+msgstr ""
+
+#: includes/admin-dashboard.php:79 includes/admin-dashboard.php:116
+#: includes/admin-dashboard.php:158 includes/admin-dashboard.php:191
+#: includes/admin-dashboard.php:236 includes/admin-dashboard.php:279
+#: includes/admin-dashboard.php:319 includes/admin-dashboard.php:356
+#: includes/admin-dashboard.php:399 includes/admin-dashboard.php:444
+#: includes/admin-dashboard.php:480 includes/admin-dashboard.php:521
+#: includes/admin-dashboard.php:558
+msgid "Active"
+msgstr ""
+
+#: includes/admin-dashboard.php:82 includes/admin-dashboard.php:119
+#: includes/admin-dashboard.php:161 includes/admin-dashboard.php:194
+#: includes/admin-dashboard.php:239 includes/admin-dashboard.php:282
+#: includes/admin-dashboard.php:322 includes/admin-dashboard.php:359
+#: includes/admin-dashboard.php:402 includes/admin-dashboard.php:447
+#: includes/admin-dashboard.php:483 includes/admin-dashboard.php:524
+#: includes/admin-dashboard.php:561
+msgid "Inactive"
+msgstr ""
+
+#: includes/admin-dashboard.php:92 includes/admin-pdp-attributes-gallery.php:12
+#: includes/admin-pdp-attributes-gallery.php:29 includes/admin-pdp-attributes-gallery.php:38
+#: includes/admin-settings.php:528 includes/commercegurus-attributes-gallery-actions.php:17
+msgid "Attributes Gallery"
+msgstr ""
+
+#: includes/admin-dashboard.php:98
+msgid "Further improve your gallery with the ability to assign images on an attribute basis."
+msgstr ""
+
+#: includes/admin-dashboard.php:105
+msgid "Improves gallery usability"
+msgstr ""
+
+#: includes/admin-dashboard.php:105 includes/admin-dashboard.php:389
+#: includes/admin-dashboard.php:434 includes/admin-dashboard.php:470
+#: includes/admin-dashboard.php:512
+msgid "Loads on product pages"
+msgstr ""
+
+#: includes/admin-dashboard.php:140
+msgid "Replace standard variation dropdowns with color, image, and button swatches."
+msgstr ""
+
+#: includes/admin-dashboard.php:147
+msgid "Improved usability"
+msgstr ""
+
+#: includes/admin-dashboard.php:147 includes/admin-dashboard.php:309
+msgid "Loads on product and catalog pages"
+msgstr ""
+
+#: includes/admin-dashboard.php:171 includes/admin-settings.php:530
+msgid "Countdowns"
+msgstr ""
+
+#: includes/admin-dashboard.php:175
+msgid "Allows you to run time-limited promotions to create urgency and drive more clicks."
+msgstr ""
+
+#: includes/admin-dashboard.php:182
+msgid "7Kb of HTML"
+msgstr ""
+
+#: includes/admin-dashboard.php:182
+msgid "Loads on product and checkout pages"
+msgstr ""
+
+#: includes/admin-dashboard.php:214 includes/admin-free-shipping-notification.php:24
+#: includes/admin-free-shipping-notification.php:96 includes/admin-settings.php:531
+msgid "Free Shipping Notification"
+msgstr ""
+
+#: includes/admin-dashboard.php:219
+msgid ""
+"Increase order revenue by showing your customers just how close they are to your free "
+"shipping threshold."
+msgstr ""
+
+#: includes/admin-dashboard.php:226 includes/admin-dashboard.php:309
+#: includes/admin-dashboard.php:434
+msgid "Improves conversions"
+msgstr ""
+
+#: includes/admin-dashboard.php:226
+msgid "Loads on cart page and mini cart"
+msgstr ""
+
+#: includes/admin-dashboard.php:255 includes/admin-order-bump.php:15
+#: includes/admin-order-bump.php:470 includes/admin-settings.php:532
+msgid "Order Bump"
+msgstr ""
+
+#: includes/admin-dashboard.php:261
+msgid ""
+"Enables a customer to add an additional item to the cart, before they complete an order."
+msgstr ""
+
+#: includes/admin-dashboard.php:268 includes/admin-dashboard.php:512
+msgid "3Kb of HTML"
+msgstr ""
+
+#: includes/admin-dashboard.php:268
+msgid "Loads on the checkout"
+msgstr ""
+
+#: includes/admin-dashboard.php:302
+msgid ""
+"Enhance key product features, and highlight promotions and products with limited-time "
+"offers."
+msgstr ""
+
+#: includes/admin-dashboard.php:332 includes/admin-pdp-attributes-gallery.php:26
+#: includes/admin-pdp-gallery.php:13 includes/admin-pdp-gallery.php:18
+#: includes/admin-pdp-gallery.php:170 includes/admin-settings.php:534
+msgid "Product Gallery"
+msgstr ""
+
+#: includes/admin-dashboard.php:338
+msgid ""
+"An improved product gallery with multiple layout options and video support. Built for "
+"performance."
+msgstr ""
+
+#: includes/admin-dashboard.php:345
+msgid "80%+ lighter than the core gallery"
+msgstr ""
+
+#: includes/admin-dashboard.php:345
+msgid "Read more"
+msgstr ""
+
+#: includes/admin-dashboard.php:377 includes/admin-settings.php:535
+#: includes/admin-size-guide.php:13 includes/admin-size-guide.php:94
+#: includes/module-size-guide.php:18
+msgid "Size Guides"
+msgstr ""
+
+#: includes/admin-dashboard.php:382 includes/admin-size-guide.php:95
+msgid ""
+"If your products require sizing, this feature is crucial. It helps reduce costly returns, "
+"and improves the consumer experience."
+msgstr ""
+
+#: includes/admin-dashboard.php:389
+msgid "Reduces returns"
+msgstr ""
+
+#: includes/admin-dashboard.php:422 includes/admin-settings.php:536
+#: includes/admin-sticky-atc-bar.php:12 includes/admin-sticky-atc-bar.php:32
+msgid "Sticky Add to Cart"
+msgstr ""
+
+#: includes/admin-dashboard.php:427
+msgid ""
+"Adds a conversion-friendly sticky add to cart bar on mobile and desktop. Can also expand "
+"the default WooCommerce tabs."
+msgstr ""
+
+#: includes/admin-dashboard.php:458 includes/admin-inventory-bar.php:14
+#: includes/admin-inventory-bar.php:131 includes/admin-settings.php:537
+msgid "Stock Meter"
+msgstr ""
+
+#: includes/admin-dashboard.php:463
+msgid "A visually effective way to alert customers when the stock is low on product pages."
+msgstr ""
+
+#: includes/admin-dashboard.php:470
+msgid "2Kb of HTML"
+msgstr ""
+
+#: includes/admin-dashboard.php:499 includes/admin-settings.php:539
+#: includes/admin-waitlist.php:567
+msgid "Waitlist"
+msgstr ""
+
+#: includes/admin-dashboard.php:505
+msgid ""
+"Collect emails of interested buyers when your items are sold out. Automatically notify "
+"buyers when back in stock."
+msgstr ""
+
+#: includes/admin-dashboard.php:534 includes/admin-settings.php:540
+#: includes/admin-wishlist.php:160 includes/module-wishlist.php:86
+#: includes/module-wishlist.php:88 includes/module-wishlist.php:179
+#: includes/module-wishlist.php:233 includes/module-wishlist.php:236
+#: includes/module-wishlist.php:297 includes/module-wishlist.php:299
+#: includes/module-wishlist.php:302 includes/module-wishlist.php:606
+#: includes/module-wishlist.php:607
+msgid "Wishlist"
+msgstr ""
+
+#: includes/admin-dashboard.php:540
+msgid "Shoppers can create personalized collections of products they want to buy."
+msgstr ""
+
+#: includes/admin-dashboard.php:547
+msgid "Loads on WooCommerce pages"
+msgstr ""
+
+#: includes/admin-dashboard.php:584
+msgid ""
+"Optimize your WooCommerce store for speed and conversions with Shoptimizer. Shoptimizer is "
+"a FAST WooCommerce theme that comes with a ton of features all designed to help you "
+"convert more users to customers."
+msgstr ""
+
+#: includes/admin-dashboard.php:587 includes/admin-settings.php:517
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin-dashboard.php:588
+msgid ""
+"Visit the documentation area for a more detailed overview on each of these features. If "
+"you still have questions, you can send us a private ticket by clicking the Support link."
+msgstr ""
+
+#: includes/admin-dashboard.php:589
+msgid "View Documentation"
+msgstr ""
+
+#: includes/admin-dashboard.php:592
+msgid "Connection status"
+msgstr ""
+
+#: includes/admin-dashboard.php:601
+msgid ""
+"Your website is connected! One click updates for Shoptimizer will appear in Appearance "
+"&rarr; Themes."
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid ""
+"You have not enabled one-click updates for Shoptimizer and CommerceKit. To do so, please"
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid "connect your website"
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid "to your Shoptimizer subscription."
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid "View the"
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid "update guide"
+msgstr ""
+
+#: includes/admin-dashboard.php:610
+msgid "to find out more."
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:28
+msgid "Display on the cart page"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:29
+msgid "Display on the mini cart"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:30
+msgid "Display notification"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:30
+msgid "Display notification before entering the shipping address"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:31
+msgid "Initial message"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:31
+msgid "Available shortcode: {free_shipping_amount}"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:32
+msgid "Progress message"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:32
+msgid "Available shortcode: {remaining}"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:33 includes/admin-waitlist.php:310
+msgid "Success message"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:34
+msgid "Progress bar color"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:35
+msgid "Exclude shipping classes"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:35
+msgid "Select shipping class"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:49
+msgid "&ldquo;Continue Shopping&rdquo; link"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:64
+msgid ""
+"Note: If you adjust these settings you may need to add or remove an item from your cart to "
+"see the changes."
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:71 includes/admin-inventory-bar.php:97
+#: includes/admin-order-bump.php:443 includes/admin-pdp-gallery.php:136
+#: includes/admin-size-guide.php:60 includes/admin-wishlist.php:79
+msgid "Use shortcode"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:75
+msgid ""
+"Some page builders (such as Elementor Pro) allow you to completely customize the standard "
+"WooCommerce page template. By enabling the shortcode option, you can still add this module "
+"to your template, in a position of your choosing."
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:79
+msgid "Free Shipping Notification shortcode"
+msgstr ""
+
+#: includes/admin-free-shipping-notification.php:97
+msgid ""
+"Shipping costs are one of the major reasons shoppers abandon their cart. If you offer free "
+"shipping above a certain threshold, you can make this more prominent by enabling this "
+"module."
+msgstr ""
+
+#: includes/admin-import-export.php:30
+msgid "Please upload a CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:35
+msgid "Failed to download exported file."
+msgstr ""
+
+#: includes/admin-import-export.php:39 includes/admin-import-export.php:168
+#: includes/admin-settings.php:542
+msgid "Import / Export"
+msgstr ""
+
+#: includes/admin-import-export.php:49
+msgid "Enable logs"
+msgstr ""
+
+#: includes/admin-import-export.php:49
+msgid "Display additional details within:"
+msgstr ""
+
+#: includes/admin-import-export.php:50
+msgid "WooCommerce > Status > Logs"
+msgstr ""
+
+#: includes/admin-import-export.php:55
+msgid "CommerceKit Exporter"
+msgstr ""
+
+#: includes/admin-import-export.php:57
+msgid ""
+"Export CommerceKit&#39;s Attribute Galleries and Attribute Swatches from your store into a "
+"CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:70
+msgid "Export into CSV file"
+msgstr ""
+
+#: includes/admin-import-export.php:76
+msgid "Preparing to generate the CSV file..."
+msgstr ""
+
+#: includes/admin-import-export.php:87
+msgid "Generating the CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:87 includes/admin-import-export.php:133
+msgid " products completed..."
+msgstr ""
+
+#: includes/admin-import-export.php:102
+msgid "CSV file generation complete."
+msgstr ""
+
+#: includes/admin-import-export.php:102
+msgid "Download CSV file"
+msgstr ""
+
+#: includes/admin-import-export.php:109
+msgid "CommerceKit Importer"
+msgstr ""
+
+#: includes/admin-import-export.php:111
+msgid ""
+"Import CommerceKit&#39;s Attribute Galleries and Attribute Swatches into your store from a "
+"CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:116
+msgid "Browse CSV file"
+msgstr ""
+
+#: includes/admin-import-export.php:116
+msgid "Import"
+msgstr ""
+
+#: includes/admin-import-export.php:122
+msgid "Preparing to import the CSV file..."
+msgstr ""
+
+#: includes/admin-import-export.php:133
+msgid "Importing the CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:149
+msgid "CSV import complete. You will need to also"
+msgstr ""
+
+#: includes/admin-import-export.php:149
+msgid " clear the CommerceKit cache"
+msgstr ""
+
+#: includes/admin-import-export.php:149
+msgid "."
+msgstr ""
+
+#: includes/admin-import-export.php:156
+msgid "Importing has failed due to an invalid CSV file."
+msgstr ""
+
+#: includes/admin-import-export.php:169
+msgid "Not all CommerceKit data is included in an export."
+msgstr ""
+
+#: includes/admin-import-export.php:170
+msgid ""
+"This allows you to export CommerceKit&#39;s Attribute Galleries and Attribute Swatches "
+"data into a CSV file in order to import them into another site."
+msgstr ""
+
+#: includes/admin-import-export.php:172
+msgid "You should first use the native WooCommerce"
+msgstr ""
+
+#: includes/admin-import-export.php:174
+msgid "Product CSV Importer and Exporter"
+msgstr ""
+
+#: includes/admin-import-export.php:176
+msgid "to move your products before performing this."
+msgstr ""
+
+#: includes/admin-import-export.php:178
+msgid "Ensure that \"Yes, export all custom meta\" is ticked."
+msgstr ""
+
+#: includes/admin-import-export.php:221
+msgid "Please select only a CSV filetype."
+msgstr ""
+
+#: includes/admin-import-export.php:226
+msgid "Please wait. The CommerceKit importer is running in the background."
+msgstr ""
+
+#: includes/admin-inventory-bar.php:18
+msgid "Enable Stock Meter"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:18
+msgid "Show Stock Meter on the single product page"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:20
+msgid "Low stock text"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:22 includes/admin-inventory-bar.php:31
+#, php-format
+msgid "Add &ldquo;%s&rdquo; to replace the stock number, "
+msgstr ""
+
+#: includes/admin-inventory-bar.php:24
+#, php-format
+msgid "e.g. Only %s items left in stock!"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:26
+msgid "Low stock threshold"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:27
+msgid "Low stock bar color"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:29
+msgid "Regular stock text"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:33
+#, php-format
+msgid "e.g. Less than %s items left!"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:34
+msgid "Regular stock threshold"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:35
+msgid "Regular stock bar color"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:36
+msgid "High stock text"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:37
+msgid "High stock threshold"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:38
+msgid "High stock bar color"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:100 includes/admin-pdp-gallery.php:139
+#: includes/admin-size-guide.php:63 includes/admin-wishlist.php:83
+msgid ""
+"Some page builders (such as Elementor Pro) allow you to completely customize the standard "
+"WooCommerce product page template. By enabling the shortcode option, you can still add "
+"this module to your template, in a position of your choosing. This will only work on"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:100 includes/admin-pdp-gallery.php:139
+#: includes/admin-size-guide.php:63 includes/admin-wishlist.php:83
+msgid "product page templates"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:104
+msgid "Stock Meter shortcode"
+msgstr ""
+
+#: includes/admin-inventory-bar.php:113 includes/admin-pdp-gallery.php:152
+#: includes/admin-size-guide.php:76 includes/admin-wishlist.php:96
+msgid ""
+"This will prevent the module from appearing unless the shortcode is present on the page. "
+"Only enable this if you are using a page  builder such as Elementor Pro and a custom "
+"product page template."
+msgstr ""
+
+#: includes/admin-inventory-bar.php:132
+msgid ""
+"This feature allows you to show a stock meter counter on the single product page. It&lsquo;"
+"s a more visually effective way to alert customers when the stock level is low."
+msgstr ""
+
+#: includes/admin-modules-settings.php:44
+msgid "CommerceKit cache"
+msgstr ""
+
+#: includes/admin-modules-settings.php:47
+msgid ""
+"On larger catalogs this cache can take some time to build when you first activate this "
+"feature. We use the WooCommerce Action Scheduler to ensure long running cache building "
+"tasks can be run in the background over time."
+msgstr ""
+
+#: includes/admin-modules-settings.php:47
+msgid "Learn more"
+msgstr ""
+
+#: includes/admin-modules-settings.php:52
+msgid "Total variable products"
+msgstr ""
+
+#: includes/admin-modules-settings.php:53
+msgid "Cached variable products"
+msgstr ""
+
+#: includes/admin-modules-settings.php:53
+msgid "Total cached variable products"
+msgstr ""
+
+#: includes/admin-modules-settings.php:53
+msgid "Clear and rebuild CommerceKit cache"
+msgstr ""
+
+#: includes/admin-modules-settings.php:53
+msgid "Are you sure you want to clear and rebuild the CommerceKit cache?"
+msgstr ""
+
+#: includes/admin-modules-settings.php:53
+msgid "Are you sure you want to cancel all pending CommerceKit cache events?"
+msgstr ""
+
+#: includes/admin-modules-settings.php:54
+msgid "Enable CommerceKit cache rebuilding logger"
+msgstr ""
+
+#: includes/admin-modules-settings.php:60
+msgid "Starting cache rebuild shortly..."
+msgstr ""
+
+#: includes/admin-modules-settings.php:67
+msgid "Cache event being created..."
+msgstr ""
+
+#: includes/admin-modules-settings.php:69
+msgid "There is a problem creating the CommerceKit Cache. You may need to cancel all pending"
+msgstr ""
+
+#: includes/admin-modules-settings.php:69
+msgid "Scheduled Actions"
+msgstr ""
+
+#: includes/admin-modules-settings.php:69
+msgid "(WooCommerce > Status > Scheduled Actions) and then try again with"
+msgstr ""
+
+#: includes/admin-modules-settings.php:69
+msgid "Cancel and Restart"
+msgstr ""
+
+#: includes/admin-modules-settings.php:79
+msgid "Processing cache event."
+msgstr ""
+
+#: includes/admin-modules-settings.php:94
+msgid "Cache rebuild complete"
+msgstr ""
+
+#: includes/admin-modules-settings.php:100
+msgid "The caching process apparently succeeded and is now complete"
+msgstr ""
+
+#: includes/admin-modules-settings.php:103
+msgid "We couldn't create the cache event. For assistance, copy and paste the"
+msgstr ""
+
+#: includes/admin-modules-settings.php:103
+msgid "WooCommerce System Report"
+msgstr ""
+
+#: includes/admin-modules-settings.php:103
+msgid "and include it in a"
+msgstr ""
+
+#: includes/admin-modules-settings.php:103
+msgid "support ticket"
+msgstr ""
+
+#: includes/admin-modules-settings.php:109
+msgid ""
+"There are some products has not been cached. Please click on above &ldquo;Clear and "
+"rebuild CommerceKit cache&rdquo; button to rebuild all products or please wait for 15 to "
+"20 minutes to rebuild automatically only missing products."
+msgstr ""
+
+#: includes/admin-modules-settings.php:122
+msgid ""
+"For large product catalogs, displaying swatches on your archive/product listing pages can "
+"cause performance and speed issues especially when if you manage inventory at the "
+"variation/SKU level."
+msgstr ""
+
+#: includes/admin-modules-settings.php:123
+msgid ""
+"To solve this we create a dedicated swatches cache which means your pages load lightning "
+"fast even for items with lots of variations."
+msgstr ""
+
+#: includes/admin-order-bump.php:18 includes/admin-order-bump.php:30
+msgid "Mini Cart"
+msgstr ""
+
+#: includes/admin-order-bump.php:18
+msgid "Enable order bumps within the mini cart."
+msgstr ""
+
+#: includes/admin-order-bump.php:19 includes/admin-order-bump.php:23
+msgid "Allow multiple"
+msgstr ""
+
+#: includes/admin-order-bump.php:19
+msgid "Allow multiple order bumps within the mini cart."
+msgstr ""
+
+#: includes/admin-order-bump.php:20 includes/admin-order-bump.php:24
+msgid "Heading"
+msgstr ""
+
+#: includes/admin-order-bump.php:22 includes/admin-order-bump.php:232
+msgid "Checkout"
+msgstr ""
+
+#: includes/admin-order-bump.php:22
+msgid "Enable order bumps on checkout page."
+msgstr ""
+
+#: includes/admin-order-bump.php:23
+msgid "Allow multiple order bumps on checkout page."
+msgstr ""
+
+#: includes/admin-order-bump.php:41 includes/admin-order-bump.php:113
+msgid "Enable order bump within the mini cart"
+msgstr ""
+
+#: includes/admin-order-bump.php:44 includes/admin-order-bump.php:116
+#: includes/admin-order-bump.php:246 includes/admin-order-bump.php:318
+msgid "Select"
+msgstr ""
+
+#: includes/admin-order-bump.php:45 includes/admin-order-bump.php:124
+msgid ""
+"This is the order bump product which will appear within the mini cart. Simple and variable "
+"products only."
+msgstr ""
+
+#: includes/admin-order-bump.php:48 includes/admin-order-bump.php:127
+msgid "Title (optional)"
+msgstr ""
+
+#: includes/admin-order-bump.php:52 includes/admin-order-bump.php:131
+#: includes/admin-order-bump.php:254 includes/admin-order-bump.php:333
+msgid "Button text"
+msgstr ""
+
+#: includes/admin-order-bump.php:53 includes/admin-order-bump.php:255
+#: includes/module-order-bump.php:132 includes/module-order-bump.php:161
+msgid "Click to add"
+msgstr ""
+
+#: includes/admin-order-bump.php:71 includes/admin-order-bump.php:273
+msgid "Specific products:"
+msgstr ""
+
+#: includes/admin-order-bump.php:76 includes/admin-order-bump.php:197
+#: includes/admin-order-bump.php:278 includes/admin-order-bump.php:399
+msgid "Cart total between"
+msgstr ""
+
+#: includes/admin-order-bump.php:79 includes/admin-order-bump.php:200
+#: includes/admin-order-bump.php:281 includes/admin-order-bump.php:402
+msgid "and"
+msgstr ""
+
+#: includes/admin-order-bump.php:82 includes/admin-order-bump.php:203
+#: includes/admin-order-bump.php:284 includes/admin-order-bump.php:405
+msgid "If both values are zero, this condition will be ignored."
+msgstr ""
+
+#: includes/admin-order-bump.php:210 includes/admin-order-bump.php:412
+#: includes/admin-order-bump.php:433
+msgid "Duplicate Order Bump"
+msgstr ""
+
+#: includes/admin-order-bump.php:215 includes/admin-order-bump.php:417
+#: includes/admin-order-bump.php:430
+msgid "Delete Order Bump"
+msgstr ""
+
+#: includes/admin-order-bump.php:228 includes/admin-order-bump.php:436
+msgid "Add new Order Bump"
+msgstr ""
+
+#: includes/admin-order-bump.php:243 includes/admin-order-bump.php:315
+msgid "Enable order bump on checkout"
+msgstr ""
+
+#: includes/admin-order-bump.php:247 includes/admin-order-bump.php:326
+msgid ""
+"This is the order bump product which will appear on the checkout page. Simple and variable "
+"products only."
+msgstr ""
+
+#: includes/admin-order-bump.php:431
+msgid "Are you sure you want to delete this product order bump?"
+msgstr ""
+
+#: includes/admin-order-bump.php:445
+msgid ""
+"Some page builders (such as Elementor Pro) allow you to completely customize the standard "
+"WooCommerce checkout page template. By enabling the shortcode option, you can still add "
+"this module to your template, in a position of your choosing. This will only work on"
+msgstr ""
+
+#: includes/admin-order-bump.php:445
+msgid "checkout page templates"
+msgstr ""
+
+#: includes/admin-order-bump.php:448
+msgid "Checkout shortcode"
+msgstr ""
+
+#: includes/admin-order-bump.php:454
+msgid ""
+"This will prevent the module from appearing unless the shortcode is present on the "
+"checkout page. Only enable this if you are using a page builder such as Elementor Pro and "
+"a custom checkout page template."
+msgstr ""
+
+#: includes/admin-order-bump.php:471
+msgid ""
+"Maximising opportunities in the mini cart and checkout are a great way to increase "
+"revenues and can significantly improve conversion rates and average order values."
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:17
+msgid "What is the CommerceKit Attributes Gallery?"
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:18
+msgid ""
+"On a WooCommerce product page, if you have a product with two attributes, say \"Size\" and "
+"\"Color\", you ordinarily need to make a selection from both attributes before the gallery "
+"image updates."
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:20
+msgid ""
+"Our new attributes gallery allows you to assign images to a single attribute. So when a "
+"user selects \"Blue\", the Blue gallery immediately appears. No need to select a size. The "
+"attributes gallery works with the Product Gallery module in CommerceKit."
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:22
+msgid ""
+"This is far more usable and powerful than the standard WooCommerce implementation and is "
+"inline with how best-in-class DTC eCommerce stores display variations."
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:26
+msgid "Note: The"
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:26
+msgid "module needs to be active in order to utilize the Attributes Gallery."
+msgstr ""
+
+#: includes/admin-pdp-attributes-gallery.php:39
+msgid ""
+"Optimize your product page gallery by assigning images on an attribute basis. Once "
+"configured, visitors will see an updated gallery image when a single attribute has been "
+"selected."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:19
+msgid "Visible thumbnails"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:19
+msgid "Number of gallery thumbnails to display at a time. Minimum 3 and maximum 8."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:19
+msgid "Please enter number between 3 and 8."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:20
+msgid "Enable lightbox?"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:20
+msgid "Display images in a lightbox when clicked on"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:21
+msgid "Enable lightbox captions?"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:21
+msgid "Display captions within the image lightbox"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:22
+msgid "Enable video auto play?"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:22
+msgid "Enable video auto play"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:23
+msgid "Enable thumbnail arrows?"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:23
+msgid "Enable thumbnail previous / next arrows"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:31
+msgid "Desktop gallery layout"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:45 includes/admin-settings.php:1469
+msgid "Horizontal"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:46 includes/admin-settings.php:1470
+msgid "Vertical left"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:47 includes/admin-settings.php:1471
+msgid "Vertical right"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:48 includes/admin-settings.php:1472
+msgid "Grid: 2 cols x 4 rows"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:49 includes/admin-settings.php:1473
+msgid "Grid: 3 cols, 1 col, 2 cols"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:50 includes/admin-settings.php:1474
+msgid "Grid: 1 col, 2 cols, 2 cols"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:51 includes/admin-settings.php:1475
+msgid "Vertical scroll"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:52 includes/admin-settings.php:1476
+msgid "Simple scroll"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:56
+msgid "Desktop visible thumbnails"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:71
+msgid "Mobile gallery layout"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:95 includes/admin-size-guide.php:45
+msgid "Default"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:96
+msgid "Minimal"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:97
+msgid "Show edge of next slide"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:100
+msgid "Next slide percent"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:108
+msgid "Mobile visible thumbnails"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:121
+msgid "Featured Review"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:124
+msgid ""
+"Display a highlighted review on product pages, which is excellent for conversions. New "
+"meta fields will appear within the product page editor, allowing you to include a featured "
+"review with thumbnail for any item. This appears below the gallery on desktop and at the "
+"end of the summary area on mobile."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:127
+msgid "Display featured review"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:143
+msgid "Product Gallery shortcode"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:171
+msgid ""
+"CommerceKit Product Gallery is a lightning fast replacement for the core WooCommerce "
+"product gallery that will significantly improve your Google PageSpeed Insights scores on "
+"product pages."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:173
+msgid ""
+"It is the first WooCommerce Product Gallery extension built specifically for web "
+"performance optimization which is now a key Google ranking signal."
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:176
+msgid "Read our"
+msgstr ""
+
+#: includes/admin-pdp-gallery.php:176
+msgid "to learn more about the CommerceKit Product Gallery."
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:12 includes/admin-pdp-triggers.php:16
+msgid "Product Details Page Sales Triggers"
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:17
+msgid "Minimum number of reviews"
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:17
+#, no-php-format
+msgid ""
+"Minimum number of reviews required before it is displayed. The average rating needs to be "
+"70% or greater."
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:19
+msgid "Trigger text"
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:19 includes/module-pdp-triggers.php:36
+#, php-format
+msgid "Good choice! %s of buyers were satisfied with this."
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:21
+#, php-format
+msgid "Add &ldquo;%s&rdquo; to replace the percentage, "
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:23
+#, php-format
+msgid "e.g. Good choice! %s of buyers were satisfied with this."
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:32
+msgid "PDP Sales Triggers"
+msgstr ""
+
+#: includes/admin-pdp-triggers.php:33
+msgid ""
+"This feature allows you to show conversion triggers on the single product page. It "
+"displays a percentage satisfaction rating based on the number of reviews and the average "
+"rating."
+msgstr ""
+
+#: includes/admin-settings.php:436
+msgid "Your email has been sent to our support team."
+msgstr ""
+
+#: includes/admin-settings.php:438
+msgid "Error on sending email to support team."
+msgstr ""
+
+#: includes/admin-settings.php:491 includes/admin-settings.php:763
+msgid "Settings have been saved."
+msgstr ""
+
+#: includes/admin-settings.php:515
+msgid "Version"
+msgstr ""
+
+#: includes/admin-settings.php:516
+msgid "Changelog"
+msgstr ""
+
+#: includes/admin-settings.php:518
+msgid "Clear CommerceKit cache"
+msgstr ""
+
+#: includes/admin-settings.php:522
+msgid ""
+"Conversion-boosting, performance-focused eCommerce features which work together "
+"seamlessly. From"
+msgstr ""
+
+#: includes/admin-settings.php:522
+msgid "CommerceGurus"
+msgstr ""
+
+#: includes/admin-settings.php:526
+msgid "Dashboard"
+msgstr ""
+
+#: includes/admin-settings.php:538
+msgid "PDP Triggers"
+msgstr ""
+
+#: includes/admin-settings.php:543 includes/admin-support.php:12
+msgid "Support"
+msgstr ""
+
+#: includes/admin-settings.php:753
+msgid "Error on saving settings."
+msgstr ""
+
+#: includes/admin-settings.php:790
+msgid "There are no waitlists to export."
+msgstr ""
+
+#: includes/admin-settings.php:798
+msgid "Selected waitlist has been deleted."
+msgstr ""
+
+#: includes/admin-settings.php:800
+msgid "Please select at least one waitlist to delete."
+msgstr ""
+
+#: includes/admin-settings.php:808
+msgid "Selected product waitlist has been deleted."
+msgstr ""
+
+#: includes/admin-settings.php:810
+msgid "Please select at least one product waitlist to delete."
+msgstr ""
+
+#: includes/admin-settings.php:839 includes/admin-support.php:65
+#: includes/admin-waitlist.php:96 includes/admin-waitlist.php:158
+#: includes/admin-waitlist.php:199
+msgid "Yes"
+msgstr ""
+
+#: includes/admin-settings.php:840 includes/admin-support.php:65
+#: includes/admin-waitlist.php:97 includes/admin-waitlist.php:158
+#: includes/admin-waitlist.php:200
+msgid "No"
+msgstr ""
+
+#: includes/admin-settings.php:1271
+msgid ""
+"Attribute swatches cache is building in the background. You can clear or start rebuilding "
+"when this background process has completed."
+msgstr ""
+
+#: includes/admin-settings.php:1316
+msgid "Attribute swatches cache has been cleared."
+msgstr ""
+
+#: includes/admin-settings.php:1441
+msgid "CommerceKit options"
+msgstr ""
+
+#: includes/admin-settings.php:1466
+msgid "Product gallery layout"
+msgstr ""
+
+#: includes/admin-settings.php:1468
+msgid "Global default"
+msgstr ""
+
+#: includes/admin-settings.php:1477
+msgid "Core WooCommerce Gallery"
+msgstr ""
+
+#: includes/admin-settings.php:1489
+msgid "Disable sections"
+msgstr ""
+
+#: includes/admin-settings.php:1493
+msgid "Disable product countdown"
+msgstr ""
+
+#: includes/admin-settings.php:1496
+msgid "Disable inventory bar"
+msgstr ""
+
+#: includes/admin-settings.php:1499
+msgid "Disable sticky add to cart bar"
+msgstr ""
+
+#: includes/admin-settings.php:1502
+msgid "Disable waitlist"
+msgstr ""
+
+#: includes/admin-settings.php:1789
+msgid "The indexing process has been cancelled."
+msgstr ""
+
+#: includes/admin-size-guide.php:17
+msgid "Enable size guides"
+msgstr ""
+
+#: includes/admin-size-guide.php:18
+msgid "Display in search results"
+msgstr ""
+
+#: includes/admin-size-guide.php:18
+msgid "Make size guide pages findable within search results."
+msgstr ""
+
+#: includes/admin-size-guide.php:19
+msgid "Size guide label"
+msgstr ""
+
+#: includes/admin-size-guide.php:20
+msgid "Default size guide"
+msgstr ""
+
+#: includes/admin-size-guide.php:20
+msgid "No default size guide set"
+msgstr ""
+
+#: includes/admin-size-guide.php:44
+msgid "Add your first size guide"
+msgstr ""
+
+#: includes/admin-size-guide.php:45
+msgid "Size guide icon"
+msgstr ""
+
+#: includes/admin-size-guide.php:45
+msgid "Custom"
+msgstr ""
+
+#: includes/admin-size-guide.php:46
+msgid ""
+"Paste in the SVG code for the icon you would like to use. You can find example icons at "
+msgstr ""
+
+#: includes/admin-size-guide.php:46
+msgid " and  "
+msgstr ""
+
+#: includes/admin-size-guide.php:47
+msgid "Display mode"
+msgstr ""
+
+#: includes/admin-size-guide.php:47
+msgid "Modal"
+msgstr ""
+
+#: includes/admin-size-guide.php:47
+msgid "WooCommerce tab"
+msgstr ""
+
+#: includes/admin-size-guide.php:67
+msgid "Size Guide shortcode"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:16
+msgid "Enable on desktop"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:17
+msgid "Enable on mobile"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:18
+msgid "Expand tabs"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:18
+msgid "Removes the tabs and shows the contents one after another"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:19
+msgid "Gallery tab title"
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:26
+msgid ""
+"We have included an \"Expand tabs\" option. Important information hidden within the "
+"default WooCommerce tabs can be missed by customers. Collapsing the contents of the tabs "
+"underneath each other makes the content more discoverable, particularly when scrolling on "
+"mobile. The \"Gallery tab title\" displays an additional anchor tab which scrolls back to "
+"the main summary area of the PDP."
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:33
+msgid ""
+"This feature adds a sticky add to cart button which is fixed to the bottom of the viewport "
+"on mobile. Mobile conversions are crucial and displaying a call to action at all times on "
+"PDPs will boost sales."
+msgstr ""
+
+#: includes/admin-sticky-atc-bar.php:34
+msgid "On desktop, the add to cart button attaches to the sticky tabs bar upon scrolling."
+msgstr ""
+
+#: includes/admin-support.php:19
+msgid "First name"
+msgstr ""
+
+#: includes/admin-support.php:20
+msgid "Enter your first name"
+msgstr ""
+
+#: includes/admin-support.php:24
+msgid "Your email"
+msgstr ""
+
+#: includes/admin-support.php:25
+msgid "Replies will be sent to this address"
+msgstr ""
+
+#: includes/admin-support.php:29
+msgid "URL"
+msgstr ""
+
+#: includes/admin-support.php:30
+msgid "A link where we can see the issue"
+msgstr ""
+
+#: includes/admin-support.php:34
+msgid "Question title"
+msgstr ""
+
+#: includes/admin-support.php:35
+msgid "Summarize your question in a few words"
+msgstr ""
+
+#: includes/admin-support.php:39
+msgid "Question"
+msgstr ""
+
+#: includes/admin-support.php:40
+msgid "Ensure that you have carefully looked through the "
+msgstr ""
+
+#: includes/admin-support.php:40
+msgid "CommerceKit documentation area"
+msgstr ""
+
+#: includes/admin-support.php:40
+msgid "first."
+msgstr ""
+
+#: includes/admin-support.php:42
+msgid "If you are including screenshots, try using: "
+msgstr ""
+
+#: includes/admin-support.php:42
+msgid "If you are including code, please use: "
+msgstr ""
+
+#: includes/admin-support.php:45
+msgid "Submit Ticket"
+msgstr ""
+
+#: includes/admin-support.php:61
+msgid "Diagnostics"
+msgstr ""
+
+#: includes/admin-support.php:62
+msgid "Active theme"
+msgstr ""
+
+#: includes/admin-support.php:62
+msgid "Version: "
+msgstr ""
+
+#: includes/admin-support.php:63
+msgid "WordPress version"
+msgstr ""
+
+#: includes/admin-support.php:64
+msgid "WooCommerce version"
+msgstr ""
+
+#: includes/admin-support.php:65
+msgid "Using a child theme?"
+msgstr ""
+
+#: includes/admin-support.php:65
+msgid "If you make customizations it&rsquo;s a good idea to use a child theme."
+msgstr ""
+
+#: includes/admin-waitlist.php:76 includes/admin-waitlist.php:78
+#: includes/admin-waitlist.php:182 includes/admin-waitlist.php:297
+#: includes/admin-waitlist.php:337 includes/admin-waitlist.php:497
+msgid "List"
+msgstr ""
+
+#: includes/admin-waitlist.php:81 includes/admin-waitlist.php:185
+#: includes/admin-waitlist.php:300 includes/admin-waitlist.php:340
+#: includes/admin-waitlist.php:500
+msgid "Emails"
+msgstr ""
+
+#: includes/admin-waitlist.php:82 includes/admin-waitlist.php:186
+#: includes/admin-waitlist.php:301 includes/admin-waitlist.php:341
+#: includes/admin-waitlist.php:501
+msgid "Integrations"
+msgstr ""
+
+#: includes/admin-waitlist.php:88 includes/admin-waitlist.php:192
+msgid "Bulk Actions"
+msgstr ""
+
+#: includes/admin-waitlist.php:89 includes/admin-waitlist.php:193
+#: includes/templates/admin-product-attributes-gallery.php:115
+#: includes/templates/admin-product-attributes-gallery.php:145
+#: includes/templates/admin-product-attributes-gallery.php:163
+#: includes/templates/admin-product-video-gallery.php:25
+msgid "Delete"
+msgstr ""
+
+#: includes/admin-waitlist.php:90
+msgid "Export"
+msgstr ""
+
+#: includes/admin-waitlist.php:93 includes/admin-waitlist.php:196
+msgid "Filter by Mail sent:"
+msgstr ""
+
+#: includes/admin-waitlist.php:95 includes/admin-waitlist.php:198
+msgid "All"
+msgstr ""
+
+#: includes/admin-waitlist.php:99
+msgid "by Product ID:"
+msgstr ""
+
+#: includes/admin-waitlist.php:104 includes/admin-waitlist.php:205
+#: includes/module-wishlist.php:416
+msgid "items"
+msgstr ""
+
+#: includes/admin-waitlist.php:120 includes/admin-waitlist.php:221
+#: includes/module-wishlist.php:434
+msgid "of"
+msgstr ""
+
+#: includes/admin-waitlist.php:142
+msgid "Email"
+msgstr ""
+
+#: includes/admin-waitlist.php:143 includes/admin-wishlist.php:126
+msgid "Product"
+msgstr ""
+
+#: includes/admin-waitlist.php:144
+msgid "Date added"
+msgstr ""
+
+#: includes/admin-waitlist.php:145
+msgid "Mail sent"
+msgstr ""
+
+#: includes/admin-waitlist.php:156
+msgid "ID"
+msgstr ""
+
+#: includes/admin-waitlist.php:165
+msgid "No Items"
+msgstr ""
+
+#: includes/admin-waitlist.php:243
+msgid "Product name"
+msgstr ""
+
+#: includes/admin-waitlist.php:244
+msgid "Variations"
+msgstr ""
+
+#: includes/admin-waitlist.php:245
+msgid "Stock status"
+msgstr ""
+
+#: includes/admin-waitlist.php:246
+msgid "Customers"
+msgstr ""
+
+#: includes/admin-waitlist.php:260
+msgid "In stock"
+msgstr ""
+
+#: includes/admin-waitlist.php:281
+msgid "No Products"
+msgstr ""
+
+#: includes/admin-waitlist.php:295
+msgid "Waitlist Settings"
+msgstr ""
+
+#: includes/admin-waitlist.php:305
+msgid "Enable waitlist for out of stock products"
+msgstr ""
+
+#: includes/admin-waitlist.php:306
+msgid "Introduction"
+msgstr ""
+
+#: includes/admin-waitlist.php:307
+msgid "Email placeholder"
+msgstr ""
+
+#: includes/admin-waitlist.php:308
+msgid "Button label"
+msgstr ""
+
+#: includes/admin-waitlist.php:309
+msgid "Consent label"
+msgstr ""
+
+#: includes/admin-waitlist.php:311
+msgid "Read more label"
+msgstr ""
+
+#: includes/admin-waitlist.php:312
+msgid "Hidden out of stock variations"
+msgstr ""
+
+#: includes/admin-waitlist.php:312
+msgid "Display hidden out of stock variations on Single Product page"
+msgstr ""
+
+#: includes/admin-waitlist.php:323
+msgid ""
+"Available placeholders: {site_name}, {site_url}, {product_title}, {product_sku}, "
+"{product_link}, {customer_email}"
+msgstr ""
+
+#: includes/admin-waitlist.php:335
+msgid "Waitlist Emails"
+msgstr ""
+
+#: includes/admin-waitlist.php:348
+msgid "From email"
+msgstr ""
+
+#: includes/admin-waitlist.php:353
+msgid "Please add a valid from email that ends with your domain to prevent spam emails."
+msgstr ""
+
+#: includes/admin-waitlist.php:361
+msgid "From name"
+msgstr ""
+
+#: includes/admin-waitlist.php:366
+msgid "Please add a valid from name to prevent spam emails."
+msgstr ""
+
+#: includes/admin-waitlist.php:371
+msgid "To improve the deliverability of these emails"
+msgstr ""
+
+#: includes/admin-waitlist.php:371
+msgid "we recommend you install the"
+msgstr ""
+
+#: includes/admin-waitlist.php:371
+msgid "WP Mail SMTP"
+msgstr ""
+
+#: includes/admin-waitlist.php:371
+msgid "plugin."
+msgstr ""
+
+#: includes/admin-waitlist.php:372
+msgid "Force"
+msgstr ""
+
+#: includes/admin-waitlist.php:372
+msgid "Force from email and from name"
+msgstr ""
+
+#: includes/admin-waitlist.php:379
+msgid "Notification recipient"
+msgstr ""
+
+#: includes/admin-waitlist.php:384
+msgid "Please add a valid recipient email for admin notification."
+msgstr ""
+
+#: includes/admin-waitlist.php:389
+msgid ""
+"Enter a recipient who will receive the notification. The site administration email is the "
+"default."
+msgstr ""
+
+#: includes/admin-waitlist.php:390
+msgid "Notification Reply-To:"
+msgstr ""
+
+#: includes/admin-waitlist.php:390
+msgid "Customer email"
+msgstr ""
+
+#: includes/admin-waitlist.php:390
+msgid "Admin email"
+msgstr ""
+
+#: includes/admin-waitlist.php:393
+msgid "Enable automatic emails when the item is back in stock"
+msgstr ""
+
+#: includes/admin-waitlist.php:397 includes/admin-waitlist.php:442
+#: includes/admin-waitlist.php:466
+msgid "Email subject"
+msgstr ""
+
+#: includes/admin-waitlist.php:404 includes/admin-waitlist.php:444
+#: includes/admin-waitlist.php:468
+msgid "Email content"
+msgstr ""
+
+#: includes/admin-waitlist.php:421
+msgid "Email footer"
+msgstr ""
+
+#: includes/admin-waitlist.php:438
+msgid "Send Waitlist emails"
+msgstr ""
+
+#: includes/admin-waitlist.php:438
+msgid "Send Waitlist emails even if the number of recipients exceeds the stock amount."
+msgstr ""
+
+#: includes/admin-waitlist.php:441
+msgid "Enable emails to the store owner when a customer signs up to the waitlist"
+msgstr ""
+
+#: includes/admin-waitlist.php:465
+msgid "Enable email to the customer when they sign up to a waitlist"
+msgstr ""
+
+#: includes/admin-waitlist.php:495
+msgid "Waitlist Integrations"
+msgstr ""
+
+#: includes/admin-waitlist.php:505
+msgid "Email service provider"
+msgstr ""
+
+#: includes/admin-waitlist.php:505
+msgid "Self hosted"
+msgstr ""
+
+#: includes/admin-waitlist.php:505
+msgid "Klaviyo - Basic"
+msgstr ""
+
+#: includes/admin-waitlist.php:510
+msgid "Enqueue Klaviyo JS"
+msgstr ""
+
+#: includes/admin-waitlist.php:511
+msgid "Klaviyo company ID"
+msgstr ""
+
+#: includes/admin-waitlist.php:515 includes/admin-waitlist.php:521
+#: includes/templates/admin-esp-klaviyo.php:14 includes/templates/admin-esp-klaviyo.php:18
+msgid "Override"
+msgstr ""
+
+#: includes/admin-waitlist.php:515 includes/templates/admin-esp-klaviyo.php:14
+msgid "Override main call to action text?"
+msgstr ""
+
+#: includes/admin-waitlist.php:515 includes/templates/admin-esp-klaviyo.php:14
+msgid "Override the regular oos/restock call to action text: \"Can't find your size?\""
+msgstr ""
+
+#: includes/admin-waitlist.php:516 includes/templates/admin-esp-klaviyo.php:15
+msgid "New call to action text"
+msgstr ""
+
+#: includes/admin-waitlist.php:516 includes/templates/admin-esp-klaviyo.php:15
+msgid "Enter a short text label"
+msgstr ""
+
+#: includes/admin-waitlist.php:521 includes/templates/admin-esp-klaviyo.php:18
+msgid "Override regular out of stock message?"
+msgstr ""
+
+#: includes/admin-waitlist.php:521 includes/templates/admin-esp-klaviyo.php:18
+msgid ""
+"Override the regular oos message: \"This product is currently out of stock and "
+"unavailable\""
+msgstr ""
+
+#: includes/admin-waitlist.php:522 includes/templates/admin-esp-klaviyo.php:19
+msgid "New out of stock message"
+msgstr ""
+
+#: includes/admin-waitlist.php:522 includes/templates/admin-esp-klaviyo.php:19
+msgid "Enter a short out of stock message"
+msgstr ""
+
+#: includes/admin-waitlist.php:527 includes/templates/admin-esp-klaviyo.php:22
+msgid "Stock message"
+msgstr ""
+
+#: includes/admin-waitlist.php:527 includes/templates/admin-esp-klaviyo.php:22
+msgid "Add stock message textarea?"
+msgstr ""
+
+#: includes/admin-waitlist.php:528 includes/templates/admin-esp-klaviyo.php:23
+msgid "Stock message textarea"
+msgstr ""
+
+#: includes/admin-waitlist.php:543 includes/templates/admin-esp-klaviyo.php:38
+msgid ""
+"Additional text area for more info and links. e.g. Short text explaining when you expect "
+"this item to be back in stock (or links to other products if it's a discontinued product)"
+msgstr ""
+
+#: includes/admin-waitlist.php:548
+msgid "Klaviyo form ID"
+msgstr ""
+
+#: includes/admin-waitlist.php:548 includes/templates/admin-esp-klaviyo.php:41
+msgid ""
+"Enter the Klaviyo Form ID - e.g. if Klaviyo provide \"klaviyo-form-T9sLTc\" you would "
+"enter just: T9sLTc"
+msgstr ""
+
+#: includes/admin-waitlist.php:551 includes/templates/admin-esp-klaviyo.php:44
+msgid "Force display"
+msgstr ""
+
+#: includes/admin-waitlist.php:551 includes/templates/admin-esp-klaviyo.php:44
+msgid "Force display of Klaviyo and stock message textarea?"
+msgstr ""
+
+#: includes/admin-waitlist.php:551
+msgid ""
+"Force the display of the stock message textarea and Klaviyo form even if the item is not "
+"yet out of stock. Can be useful to display the waitlist form and messaging when stock is "
+"low."
+msgstr ""
+
+#: includes/admin-waitlist.php:568
+msgid ""
+"Product waitlists are used to notify interested shoppers when sold-out products are back "
+"in stock. This module collects data on customers who sign up."
+msgstr ""
+
+#: includes/admin-wishlist.php:41
+msgid "Wishlist Reports"
+msgstr ""
+
+#: includes/admin-wishlist.php:44
+msgid "Wishlist Settings"
+msgstr ""
+
+#: includes/admin-wishlist.php:52
+msgid ""
+"Note: You will need to create a wishlist page and include this shortcode on it: "
+"[commercegurus_wishlist]"
+msgstr ""
+
+#: includes/admin-wishlist.php:54
+msgid "Enable wishlist functionality"
+msgstr ""
+
+#: includes/admin-wishlist.php:55
+msgid "On the catalog and product pages"
+msgstr ""
+
+#: includes/admin-wishlist.php:55
+msgid "On catalog only"
+msgstr ""
+
+#: includes/admin-wishlist.php:55
+msgid "On product pages only"
+msgstr ""
+
+#: includes/admin-wishlist.php:56
+msgid "&ldquo;Add to wishlist&rdquo; text"
+msgstr ""
+
+#: includes/admin-wishlist.php:57
+msgid "&ldquo;Product added&rdquo; text"
+msgstr ""
+
+#: includes/admin-wishlist.php:58
+msgid "&ldquo;Browse wishlist&rdquo; text"
+msgstr ""
+
+#: includes/admin-wishlist.php:59
+msgid "Wishlist page"
+msgstr ""
+
+#: includes/admin-wishlist.php:69
+msgid ""
+"Choose your wishlist page and set it to be full width. Ensure that it is excluded from any "
+"caching solutions."
+msgstr ""
+
+#: includes/admin-wishlist.php:87
+msgid "Wishlist shortcode"
+msgstr ""
+
+#: includes/admin-wishlist.php:117
+msgid "Total wishlists"
+msgstr ""
+
+#: includes/admin-wishlist.php:119
+msgid "How many wishlists have been created."
+msgstr ""
+
+#: includes/admin-wishlist.php:123
+msgid "Most popular products"
+msgstr ""
+
+#: includes/admin-wishlist.php:124
+msgid "Discover which products are most wished for in your catalog."
+msgstr ""
+
+#: includes/admin-wishlist.php:145
+msgid "No products"
+msgstr ""
+
+#: includes/admin-wishlist.php:161
+msgid ""
+"A wishlist allows shoppers to create personalized collections of products they want to buy "
+"and save them for future reference."
+msgstr ""
+
+#: includes/class-commercegurus-commercekit.php:97
+msgid "CommerceGurus CommerceKit requires WooCommerce 4.0+ to be activated to work."
+msgstr ""
+
+#: includes/class-commercegurus-commercekit.php:102
+#, php-format
+msgid ""
+"CommerceGurus CommerceKit - The minimum WooCommerce version required for this plugin is "
+"%1$s. You are running %2$s."
+msgstr ""
+
+#: includes/class-commercegurus-commercekit.php:141
+msgid "The domain name to check."
+msgstr ""
+
+#: includes/class-commercekit-clear-cache-command.php:32
+msgid "Error on commercekit-clear-cache CLI command."
+msgstr ""
+
+#: includes/class-commercekit-cli-command.php:32
+msgid "Error on cg-commercekit CLI command."
+msgstr ""
+
+#: includes/commercegurus-attributes-gallery-functions.php:55
+#: includes/commercegurus-attributes-gallery-functions.php:91
+#: includes/commercegurus-attributes-gallery-functions.php:337
+#: includes/commercegurus-gallery-functions.php:55
+#: includes/commercegurus-gallery-functions.php:91
+msgid "click to zoom-in"
+msgstr ""
+
+#: includes/commercegurus-video-gallery-functions.php:160
+msgid "CommerceKit Gallery Featured Review"
+msgstr ""
+
+#: includes/elementor/class-commercekit-countdown-elementor.php:44
+msgid "CommerceKit Product Countdown"
+msgstr ""
+
+#: includes/elementor/class-commercekit-countdown2-elementor.php:44
+msgid "CommerceKit Checkout Countdown"
+msgstr ""
+
+#: includes/elementor/class-commercekit-fsn-elementor.php:44
+msgid "CommerceKit Free Shipping Notification"
+msgstr ""
+
+#: includes/elementor/class-commercekit-orderbump-elementor.php:44
+#: includes/module-order-bump.php:818 includes/module-order-bump.php:1007
+msgid "CommerceKit Order Bump"
+msgstr ""
+
+#: includes/elementor/class-commercekit-product-gallery-elementor.php:44
+msgid "CommerceKit Product Gallery"
+msgstr ""
+
+#: includes/elementor/class-commercekit-sizeguide-elementor.php:44
+msgid "CommerceKit Size Guide"
+msgstr ""
+
+#: includes/elementor/class-commercekit-stockmeter-elementor.php:44
+msgid "CommerceKit Stock Meter"
+msgstr ""
+
+#: includes/elementor/class-commercekit-wishlist-elementor.php:44
+msgid "CommerceKit Wishlist"
+msgstr ""
+
+#: includes/module-countdown-timer.php:26
+msgid "DAYS"
+msgstr ""
+
+#: includes/module-countdown-timer.php:27
+msgid "HRS"
+msgstr ""
+
+#: includes/module-countdown-timer.php:28
+msgid "MINS"
+msgstr ""
+
+#: includes/module-countdown-timer.php:29
+msgid "SECS"
+msgstr ""
+
+#: includes/module-countdown-timer.php:32
+msgid "days"
+msgstr ""
+
+#: includes/module-countdown-timer.php:33
+msgid "hours"
+msgstr ""
+
+#: includes/module-countdown-timer.php:34
+msgid "minutes"
+msgstr ""
+
+#: includes/module-countdown-timer.php:35
+msgid "seconds"
+msgstr ""
+
+#: includes/module-fast-ajax-search.php:127
+msgid "Product Category"
+msgstr ""
+
+#: includes/module-fast-ajax-search.php:129
+msgid "Product Tag"
+msgstr ""
+
+#: includes/module-fast-ajax-search.php:180 includes/module-fast-ajax-search.php:219
+msgid "Post"
+msgstr ""
+
+#: includes/module-fast-ajax-search.php:182 includes/module-fast-ajax-search.php:221
+#: includes/module-wishlist.php:433
+msgid "Page"
+msgstr ""
+
+#: includes/module-free-shipping-notification.php:163
+msgid "Continue Shopping"
+msgstr ""
+
+#: includes/module-order-bump.php:633 includes/module-wishlist.php:486
+#: includes/templates/frontend-attribute-swatches.php:133
+msgid "Error on adding to cart."
+msgstr ""
+
+#: includes/module-order-bump.php:658 includes/module-wishlist.php:504
+#: includes/templates/frontend-attribute-swatches.php:146
+msgid "Sucessfully added to cart."
+msgstr ""
+
+#: includes/module-order-bump.php:687
+msgid "Error on updating order bump views."
+msgstr ""
+
+#: includes/module-order-bump.php:862
+msgid "Clicked products:"
+msgstr ""
+
+#: includes/module-order-bump.php:866
+msgid "Purchased products:"
+msgstr ""
+
+#: includes/module-order-bump.php:899 includes/module-order-bump.php:982
+msgid "Order bumps"
+msgstr ""
+
+#: includes/module-order-bump.php:1006
+msgid "Filter"
+msgstr ""
+
+#: includes/module-size-guide.php:19
+msgid "Size Guide"
+msgstr ""
+
+#: includes/module-size-guide.php:54
+msgid "Product categories"
+msgstr ""
+
+#: includes/module-size-guide.php:55
+msgid "Product tags"
+msgstr ""
+
+#: includes/module-size-guide.php:56
+msgid "Product attributes"
+msgstr ""
+
+#: includes/module-size-guide.php:79
+msgid "Product categories:"
+msgstr ""
+
+#: includes/module-size-guide.php:79
+msgid "Select category"
+msgstr ""
+
+#: includes/module-size-guide.php:99
+msgid "Products:"
+msgstr ""
+
+#: includes/module-size-guide.php:99
+msgid "Select product"
+msgstr ""
+
+#: includes/module-size-guide.php:121
+msgid "Product tags:"
+msgstr ""
+
+#: includes/module-size-guide.php:121
+msgid "Select tag"
+msgstr ""
+
+#: includes/module-size-guide.php:147
+msgid "Product attributes:"
+msgstr ""
+
+#: includes/module-size-guide.php:147
+msgid "Select attribute"
+msgstr ""
+
+#: includes/module-sticky-atc-bar.php:62 includes/module-sticky-atc-bar.php:267
+#: includes/templates/commercekit-tabs.php:62 includes/templates/commercekit-tabs.php:99
+msgid "Sign up"
+msgstr ""
+
+#: includes/module-sticky-atc-bar.php:64 includes/module-sticky-atc-bar.php:269
+#: includes/templates/commercekit-tabs.php:64 includes/templates/commercekit-tabs.php:101
+#: includes/templates/frontend-attribute-swatches.php:217
+msgid "Add to cart"
+msgstr ""
+
+#: includes/module-sticky-atc-bar.php:116
+msgid "Add to Cart"
+msgstr ""
+
+#: includes/module-waitlist.php:19
+msgid "Error on submitting for waiting list."
+msgstr ""
+
+#: includes/module-waitlist.php:207 includes/module-waitlist.php:337
+#: includes/module-waitlist.php:1027
+msgid "Can't find your size?"
+msgstr ""
+
+#: includes/module-waitlist.php:546
+msgid ""
+"Select your desired options and click on the \"Get notified\" button to be alerted when "
+"new stock arrives."
+msgstr ""
+
+#: includes/module-waitlist.php:555
+msgid "sold out?"
+msgstr ""
+
+#: includes/module-waitlist.php:849
+msgid "CommerceKit Waitlist: Klaviyo - Basic"
+msgstr ""
+
+#: includes/module-waitlist.php:1001
+msgid "This product is currently out of stock and unavailable"
+msgstr ""
+
+#: includes/module-waitlist.php:1070
+msgid "Stock information"
+msgstr ""
+
+#: includes/module-wishlist.php:19
+msgid "Cannot add this item to the wishlist"
+msgstr ""
+
+#: includes/module-wishlist.php:24
+msgid "Cannot add this item to the wishlist due to nonce error"
+msgstr ""
+
+#: includes/module-wishlist.php:143
+msgid "Cannot remove this item from the wishlist"
+msgstr ""
+
+#: includes/module-wishlist.php:181
+msgid "Product removed"
+msgstr ""
+
+#: includes/module-wishlist.php:406
+msgid "This wishlist is empty"
+msgstr ""
+
+#: includes/module-wishlist.php:407
+msgid ""
+"Your wishlist is currently empty. Discover a variety of exciting products on our Shop page!"
+msgstr ""
+
+#: includes/module-wishlist.php:408
+msgid "Return to Shop"
+msgstr ""
+
+#: includes/module-wishlist.php:545 includes/module-wishlist.php:562
+msgid "My wishlist"
+msgstr ""
+
+#: includes/modules.php:97
+msgid "Search products..."
+msgstr ""
+
+#: includes/modules.php:101
+msgid "Other results"
+msgstr ""
+
+#: includes/modules.php:102
+msgid "No product results"
+msgstr ""
+
+#: includes/modules.php:103
+msgid "View all product results"
+msgstr ""
+
+#: includes/modules.php:110
+msgid "No other results"
+msgstr ""
+
+#: includes/modules.php:111
+msgid "View all other results"
+msgstr ""
+
+#: includes/modules.php:122
+msgid "Before you go"
+msgstr ""
+
+#: includes/modules.php:142
+msgid "Quick add"
+msgstr ""
+
+#: includes/modules.php:143
+msgid "More options"
+msgstr ""
+
+#: includes/modules.php:154 includes/templates/admin-product-attributes-gallery.php:95
+#: includes/templates/admin-product-attributes-gallery.php:166
+msgid "Gallery"
+msgstr ""
+
+#: includes/modules.php:159
+msgid "Get <strong>free shipping</strong> for orders over {free_shipping_amount}"
+msgstr ""
+
+#: includes/modules.php:160
+msgid "You are {remaining} away from free shipping."
+msgstr ""
+
+#: includes/modules.php:161
+msgid "Your order qualifies for free shipping!"
+msgstr ""
+
+#: includes/modules.php:166
+msgid "Size guide"
+msgstr ""
+
+#: includes/modules.php:178
+#, php-format
+msgid "Only %s items left in stock!"
+msgstr ""
+
+#: includes/modules.php:181
+#, php-format
+msgid "Less than %s items left!"
+msgstr ""
+
+#: includes/modules.php:184
+msgid "This item is selling fast!"
+msgstr ""
+
+#: includes/modules.php:189
+msgid "Notify me when the item is back in stock."
+msgstr ""
+
+#: includes/modules.php:190
+msgid "Enter your email address..."
+msgstr ""
+
+#: includes/modules.php:191
+msgid "Join waiting list"
+msgstr ""
+
+#: includes/modules.php:192
+msgid "I consent to being contacted by the store owner"
+msgstr ""
+
+#: includes/modules.php:193
+msgid "You have been added to the waiting list for this product!"
+msgstr ""
+
+#: includes/modules.php:194
+msgid "Get notified"
+msgstr ""
+
+#: includes/modules.php:202
+msgid "A product you are waiting for is back in stock!"
+msgstr ""
+
+#: includes/modules.php:203
+msgid ""
+"Hi,\r\n"
+"{product_title} is now back in stock on {site_name}.\r\n"
+"You have been sent this email because your email address was registered in a waiting list "
+"for this product.\r\n"
+"If you would like to purchase {product_title}, please visit the following link:\r\n"
+"{product_link}"
+msgstr ""
+
+#: includes/modules.php:204
+msgid ""
+"This email does not guarantee the availability of stock. If the item is out of stock "
+"again, you will need to re-add yourself to the waitlist."
+msgstr ""
+
+#: includes/modules.php:207
+msgid "You have a new waiting list request on {site_name}"
+msgstr ""
+
+#: includes/modules.php:208
+msgid ""
+"Hi,\r\n"
+"You got a waiting list request from {site_name} ({site_url}) for the following:\r\n"
+"Customer email: {customer_email}\r\n"
+"Product Name: {product_title}, SKU: {product_sku}\r\n"
+"Product link: {product_link}"
+msgstr ""
+
+#: includes/modules.php:210
+msgid "We have received your waiting list request"
+msgstr ""
+
+#: includes/modules.php:211
+msgid ""
+"Hi,\r\n"
+"We have received your waiting list request from {site_name} for the following:\r\n"
+"Product Name: {product_title}, SKU: {product_sku}\r\n"
+"Product link: {product_link}\r\n"
+"\r\n"
+"We will send you an email once this item is back in stock."
+msgstr ""
+
+#: includes/modules.php:215
+msgid "Add to wishlist"
+msgstr ""
+
+#: includes/modules.php:216
+msgid "Product added"
+msgstr ""
+
+#: includes/modules.php:217
+msgid "Browse wishlist"
+msgstr ""
+
+#: includes/modules.php:348
+msgid "CommerceKit"
+msgstr ""
+
+#: includes/modules.php:629
+msgid ""
+"You will need to first disable the YITH Wishlist plugin in order to use the CommerceKit "
+"Wishlist feature."
+msgstr ""
+
+#: includes/pdp-attributes-gallery-grid.php:118
+#: includes/pdp-attributes-gallery-scroll.php:107
+#: includes/pdp-attributes-gallery-swiper.php:109 includes/pdp-gallery-grid.php:108
+#: includes/pdp-gallery-scroll.php:98 includes/pdp-gallery-swiper.php:99
+msgid "Awaiting product image"
+msgstr ""
+
+#: includes/pdp-attributes-gallery-grid.php:839 includes/pdp-attributes-gallery-grid.php:935
+#: includes/pdp-gallery-grid.php:725
+msgid "Load more images"
+msgstr ""
+
+#: includes/pdp-attributes-gallery-grid.php:839 includes/pdp-attributes-gallery-grid.php:935
+#: includes/pdp-gallery-grid.php:725
+msgid "Show less images"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:21
+msgid "Button"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:21
+msgid "Color"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:21
+msgid "Image"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:39
+msgid "Add Image to Attribute Swatches"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:39
+msgid "Add to Attribute Swatches"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:50
+#: includes/templates/admin-pdp-featured-review.php:23
+msgid "Add image"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:56
+msgid "Single color"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:56
+msgid "Two colors"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:67
+msgid "Hide this attribute in the product loop"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:77
+msgid "Show on product loop"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:81
+msgid "Enable attribute swatches"
+msgstr ""
+
+#: includes/templates/admin-attribute-swatches.php:84
+#: includes/templates/admin-product-attributes-gallery.php:156
+msgid "Save changes"
+msgstr ""
+
+#: includes/templates/admin-esp-klaviyo.php:11
+msgid "Enqueue the Klaviyo JS"
+msgstr ""
+
+#: includes/templates/admin-esp-klaviyo.php:41
+msgid "Klaviyo Form ID"
+msgstr ""
+
+#: includes/templates/admin-esp-klaviyo.php:44
+msgid ""
+"Force the display of the stock message textarea and Klaviyo form even if the item is not "
+"yet out of stock. (Can be useful to display the wait list form and messaging when stock is "
+"low)"
+msgstr ""
+
+#: includes/templates/admin-pdp-featured-review.php:11
+msgid "Review Image:"
+msgstr ""
+
+#: includes/templates/admin-pdp-featured-review.php:12
+msgid "Add review image"
+msgstr ""
+
+#: includes/templates/admin-pdp-featured-review.php:26
+msgid "Tip: A square image works best."
+msgstr ""
+
+#: includes/templates/admin-pdp-featured-review.php:27
+msgid "Review Text:"
+msgstr ""
+
+#: includes/templates/admin-pdp-featured-review.php:42
+msgid "Tip: To highlight part of a review, wrap it within <mark></mark> HTML."
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:18
+msgid "Global Gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:30
+msgid "Add a gallery to:"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:35
+msgid "Global gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:60
+msgid "Add gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:66
+msgid "Attribute Galleries"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:112
+#: includes/templates/admin-product-attributes-gallery.php:164
+#: includes/templates/admin-product-attributes-gallery.php:170
+#: includes/templates/admin-product-video-gallery.php:34
+msgid "Remove"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:115
+#: includes/templates/admin-product-attributes-gallery.php:163
+msgid "Add Images to Product Gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:115
+#: includes/templates/admin-product-attributes-gallery.php:145
+#: includes/templates/admin-product-attributes-gallery.php:163
+#: includes/templates/admin-product-video-gallery.php:25
+msgid "Add to gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:115
+#: includes/templates/admin-product-attributes-gallery.php:163
+msgid "Delete image"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:115
+#: includes/templates/admin-product-attributes-gallery.php:163
+msgid "Add images"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:141
+#: includes/templates/admin-product-video-gallery.php:21
+msgid "Video"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:142
+#: includes/templates/admin-product-video-gallery.php:22
+msgid "YouTube, Vimeo, Wistia, or video url (.mp4 or .webm)"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:142
+#: includes/templates/admin-product-video-gallery.php:22
+msgid "YouTube, Vimeo, Wistia, or video url (.mp4 or .webm) allowed."
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:144
+#: includes/templates/admin-product-video-gallery.php:24
+msgid "Autoplay video?"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:145
+#: includes/templates/admin-product-video-gallery.php:25
+msgid "Browse from Media Library"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:145
+msgid "Add video to Attributes Gallery"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:145
+#: includes/templates/admin-product-video-gallery.php:25
+msgid "Delete video"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:146
+#: includes/templates/admin-product-video-gallery.php:26
+msgid "Insert or replace the current video URL."
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:167
+msgid "Are you sure, you want to delete this Gallery?"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:168
+#: includes/templates/admin-product-video-gallery.php:32
+msgid "CommerceKit Product Gallery Video"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:169
+#: includes/templates/admin-product-video-gallery.php:33
+msgid "Close"
+msgstr ""
+
+#: includes/templates/admin-product-attributes-gallery.php:171
+#: includes/templates/admin-product-video-gallery.php:35
+msgid "Save Video"
+msgstr ""
+
+#: includes/templates/admin-product-video-gallery.php:25
+msgid "Add video to Product Gallery"
+msgstr ""
+
+#: includes/templates/product-attribute-swatches.php:42
+msgid "Clear"
+msgstr ""
+
+#: includes/templates/search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: includes/templates/search.php:23
+msgid "Contents"
+msgstr ""

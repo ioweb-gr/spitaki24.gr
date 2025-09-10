@@ -1,0 +1,11 @@
+<wpml-config>
+    <admin-texts>
+        <key name="theme_mods_shoptimizer">
+            <key name="shoptimizer_layout_floating_button_text" />
+            <key name="shoptimizer_cross_sells_carousel_heading" />
+            <key name="shoptimizer_cart_title" />
+            <key name="shoptimizer_upsells_title_text" />
+            <key name="shoptimizer_mobile_menu_text" />
+        </key>
+    </admin-texts> 
+</wpml-config>

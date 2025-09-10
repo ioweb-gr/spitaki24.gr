@@ -1,0 +1,27 @@
+/*
+Below Header
+========
+*/
+.header-widget-region {
+    position: relative;
+    color: #fff;
+    background-color: #dc9814;
+    text-align: center;
+}
+.header-widget-region .widget {
+    margin: 0;
+    padding: 1em 0;
+}
+.header-widget-region .widget p {
+    margin: 0;
+    font-size: clamp(0.75rem, 0.5938rem + 0.5vw, 0.875rem); /* 12-14 */
+}
+.header-widget-region a {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .header-widget-region .widget {
+        padding: 0.6em 0;
+        font-size: clamp(0.8125rem, 0.749rem + 0.2033vw, 0.875rem); /* 13-14 */
+    }
+}

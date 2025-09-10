@@ -1,0 +1,59 @@
+.io {
+  .yith-wcwl-icon.fa.fa-heart-o {
+    display: none;
+  }
+
+  .site-header-cart .woocommerce-Price-amount.amount {
+    color: $io-color-dark;
+  }
+
+  .js-wpml-ls-item-toggle.wpml-ls-item-toggle {
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  .wpml-ls-legacy-dropdown {
+    width: auto;
+  }
+
+  .copyright {
+    background: #222;
+  }
+
+  ul.products li.product .yith-wcwl-add-button a::before {
+    font-size: 16px;
+  }
+
+  footer:last-child:not(:only-of-type) {
+    margin-top: 0;
+  }
+
+  .mg-brand-wrapper.mg-brand-wrapper-category {
+    z-index: 2;
+    position: relative;
+  }
+
+  .mg-brand-wrapper-category {
+    b {
+      display: none;
+    }
+
+    a {
+      background: green;
+      padding: 0 5px;
+      color: white;
+    }
+  }
+
+  .berocket_label_widgets {
+    margin-left: 5px;
+  }
+
+  .site .main-navigation ul.menu ul li  .mg-brand-wrapper-category a{
+    background: green;
+    padding: 0 5px;
+    color: white;
+    display:inline-block;
+  }
+
+}

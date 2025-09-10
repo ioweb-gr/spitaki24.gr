@@ -1,0 +1,281 @@
+/*
+Modal
+========
+*/
+dialog.shoptimizer-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  animation: 0.2s shoptimizermodal-fadein;
+}
+body:has(dialog.shoptimizer-modal[open]) {
+    overflow: hidden;
+}
+dialog.shoptimizer-modal {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: min(80vw, 60ch);
+  max-block-size: min(80vh, 100%);
+  max-block-size: min(80dvb, 100%);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0.75rem;
+  overflow: visible;
+}
+dialog.shoptimizer-modal .shoptimizer-modal--container {
+  padding: 1.8rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-padding="none"] .shoptimizer-modal--container {
+  padding: 0;
+}
+dialog.shoptimizer-modal:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+}
+/* -- Close Button -- */
+dialog.shoptimizer-modal form[method="dialog"] {
+	position: absolute;
+	z-index: 1;
+ 	right: 20px;
+	top: -10px;
+}
+dialog.shoptimizer-modal form[method="dialog"] button {
+  position: fixed;
+}
+dialog.shoptimizer-modal form[method="dialog"] button span {
+  color: #fff;
+}
+dialog.shoptimizer-modal .shoptimizer-modal--button_close {
+  border-radius: 99%;
+}
+dialog.shoptimizer-modal .widget {
+	margin: 0;
+}
+.shoptimizer-modal--button_close {
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border: 1.5px solid transparent;
+  border-color: #444;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+}
+.shoptimizer-modal--button_close svg {
+  width: 16px;
+  height: 16px;
+  stroke: #444;
+  transition: stroke 0.2s;
+  cursor: pointer;
+  stroke-width: 2.5;
+}
+.theme-shoptimizer .shoptimizer-modal .shoptimizer-modal--button_close:focus {
+	outline: none;
+}
+.theme-shoptimizer.keyboard-active .shoptimizer-modal .shoptimizer-modal--button_close:focus-visible {
+	outline: 0.2rem solid #2491ff;
+	outline-offset: 0;
+	border-color: transparent;
+	box-shadow: none;
+}
+/* -- Animation -- */
+dialog.shoptimizer-modal[open] {
+  animation: shoptimizermodal-slideup-fadein ease 0.35s;
+}
+@keyframes shoptimizermodal-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shoptimizermodal-slideup-fadein {
+  0% {
+      opacity:0;
+      transform:  translate(0px,40px)  ;
+  }
+  100% {
+      opacity:1;
+      transform:  translate(0px,0px)  ;
+  }
+}
+/* -- Responsive -- */
+@media only screen and (max-width: 600px) {
+  dialog[data-shoptimizermodal-size].shoptimizer-modal,
+  dialog[data-shoptimizermodal-position].shoptimizer-modal {
+    margin: auto 0 0 0;
+    min-inline-size: 100%;
+    max-inline-size: 100%;
+  }
+}
+/* -- RTL -- */
+.rtl dialog.shoptimizer-modal[data-shoptimizermodal-id="callBack"] form[method="dialog"] {
+	left: 20px;
+	right: auto;
+}
+/* -- Call Back -- */
+.call-back-feature {
+	transition: all 0.2s linear;
+}
+@media (min-width: 993px) {
+	.call-back-feature {
+		position: fixed;
+		z-index: 5;
+		right: 30px;
+		bottom: 30px;
+	}
+	.call-back-feature:hover {
+		transform: scale(1.03);
+	}
+	.sticky-b .call-back-feature {
+		bottom: 85px;
+	}
+}
+@media (min-width: 771px) and (max-width: 992px ) {
+	.call-back-feature {
+		display: none;
+	}
+}
+@media (max-width: 770px) {
+	.call-back-feature {
+		position: inherit;
+		width: 100%;
+		margin-top: 1rem;
+	}
+	.call-back-feature button {
+		width: 100%;
+	}
+	dialog.shoptimizer-modal[data-shoptimizermodal-id="callBack"] {
+		max-inline-size: 100%;
+		top: auto;
+		width: calc(100% - 30px);
+        margin: 15px;
+	}
+}
+.woocommerce-demo-store .call-back-feature {
+	bottom: 90px;
+}
+.callback-product_content {
+	gap: 3px;
+    display: flex;
+    flex-direction: column;
+}
+.call-back-feature button {
+	padding: 0.8em 1.3em;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #dc9814;
+	font-size: 12.5px;
+	font-weight: 600;
+	line-height: 1.2;
+	cursor: pointer;
+}
+.callback-product_wrapper {
+	display: flex;
+	align-items: center;
+	margin: -30px -30px 20px -30px;
+	padding: 20px 30px;
+	border-bottom: 1px solid #e2e2e2;
+	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(240,240,240,0.5) 100%);
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="callBack"] .wpforms-confirmation-container-full {
+	font-size: 14px;
+	padding: 10px 15px;
+	margin: 0;
+}
+.callback-product_wrapper img {
+	max-width: 70px;
+	margin-right: 20px;
+}
+.callback-product_title {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+.callback-product_rating {
+	font-size: 14px;
+}
+.callback-product_price {
+	font-size: 13px;
+}
+.callback-product_price del {
+	opacity: 0.5;
+	font-size: 0.9em;
+    margin-right: 3px;
+}
+/* -- Header Search -- */
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] {
+	margin: 0;
+	max-inline-size: 100%;
+	z-index: 1000;
+	display: block;
+	bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity .4s;
+    z-index: 100000;
+    height: 100%;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] .shoptimizer-modal--container {
+	padding: 0;
+}
+.admin-bar dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] .shoptimizer-modal--container {
+	padding-top: 32px;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] .shoptimizer-modal--content {
+	position: relative;
+	padding-left: 1.8rem;
+	padding-right: 1.8rem;
+	max-width: 700px;
+	margin: 0 auto;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] form[method="dialog"] {
+	position: relative;
+	top: auto;
+	right: auto;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0.85rem 1.8rem;
+    margin-bottom: 2rem;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] form[method="dialog"] button {
+	position: relative;
+	height: 2rem;
+    width: 2rem;
+    border: none;
+    border-radius: 0;
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] .shoptimizer-modal--button_close svg {
+	height: 2rem;
+    width: 2rem;
+	stroke-width: 1.5px;
+}
+@media (max-width: 992px) {
+	dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] {
+		display: none;
+	}
+}
+dialog.shoptimizer-modal[data-shoptimizermodal-id="searchToggle"] .shoptimizer-modal--container {
+	overflow: visible;
+	width: 100vw;
+	height: 100vh;
+	border-radius: 0;
+}
+@media (min-width: 993px) {
+    .header-4 dialog .site-search {
+        display: block;
+    }
+}

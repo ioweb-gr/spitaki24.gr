@@ -1,0 +1,134 @@
+/*
+Top Bar
+========
+*/
+.col-full.topbar-wrapper {
+	max-width: 100%;
+	border-bottom: 1px solid #eee;
+}
+.top-bar form,
+.top-bar .widget {
+	margin: 0;
+}
+.top-bar select {
+	font-size: 13px;
+	height: 26px;
+	background-size: 12px 12px;
+	background-position: calc(100% - 7px);
+}
+.top-bar .col-full {
+	display: flex;
+	padding: 0;
+	align-items: center;
+}
+.top-bar p {
+	margin: 0;
+}
+.top-bar a {
+	transition: all 0.2s;
+}
+.top-bar a:hover {
+	opacity: 0.85;
+}
+.top-bar svg {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+.top-bar-left {
+	display: flex;
+	flex: 1;
+}
+.top-bar-center {
+	display: flex;
+	justify-content: center;
+	max-width: 45%;
+	text-align: center;
+}
+.top-bar-center:only-child {
+	width: 100%;
+	max-width: inherit;
+	text-align: center;
+}
+.top-bar-right {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* -- Menu widget -- */
+.top-bar .widget_nav_menu {
+	z-index: 30;
+}
+.top-bar .widget_nav_menu ul li {
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	margin: 0 7px 0 0;
+}
+.top-bar .widget_nav_menu ul > li > a {
+	padding: 6px 0;
+}
+.top-bar .widget_nav_menu.top-bar-right ul li {
+	margin: 0 0 0 7px;
+}
+.top-bar .widget_nav_menu ul li .sub-menu {
+	display: none;
+	position: absolute;
+	margin-top: 6px;
+	margin-left: -15px;
+	background-color: #fff;
+	padding: 15px 15px 11px 15px;
+	box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+}
+.top-bar .widget_nav_menu ul li .sub-menu li {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 13px;
+}
+.top-bar .widget_nav_menu ul li:hover > .sub-menu {
+	display: block;
+	width: 150px;
+}
+.top-bar .widget_nav_menu ul li .sub-menu li a:hover {
+	text-decoration: underline;
+}
+@media (max-width: 992px) {
+	.topbar-wrapper .top-bar {
+		padding: 0.6rem 0;
+		font-size: clamp(0.75rem, 0.623rem + 0.4065vw, 0.875rem); /* 12-14 */
+	}
+	.mobile-toggled.drawer-open .top-bar {
+		display: none;
+	}
+	.mobile-toggled .topbar-wrapper:before {
+		visibility: visible;
+		opacity: 1;
+	}
+	.top-bar {
+		border-bottom: none;
+	}
+	.top-bar select {
+		font-size: 13px;
+	}
+	.top-bar .col-full {
+		padding: 0;
+	}
+}
+@media (max-width: 768px) {
+	.col-full.topbar-wrapper.hide-on-mobile {
+		display: none;
+	}
+	.top-bar .col-full,
+	.top-bar-left,
+	.top-bar-center,
+	.top-bar-right {
+		display: block;
+		text-align: center;
+		max-width: 100%;
+	}
+	.top-bar select {
+		margin-top: 5px;
+		width: 100%;
+	}
+}

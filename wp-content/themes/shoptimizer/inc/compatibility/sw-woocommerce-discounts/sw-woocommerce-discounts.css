@@ -1,0 +1,11 @@
+/* Studio Wombat: WooCommerce Discounts */
+
+.summary .wdp-discount {
+	clear:both;
+}
+.summary .wdp-discount p {
+	display: inline-flex;
+	background: #eee;
+	padding: 2px 8px;
+	font-size: 13px;
+}

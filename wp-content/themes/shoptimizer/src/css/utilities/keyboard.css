@@ -1,0 +1,24 @@
+/*
+Keyboard navigation
+========
+*/
+.keyboard-active :focus-visible,
+.keyboard-active .input-text:focus-visible,
+.keyboard-active input[type="email"]:focus-visible,
+.keyboard-active input[type="password"]:focus-visible,
+.keyboard-active input[type="search"]:focus-visible {
+    outline: 0.2rem solid #2491ff;
+    outline-offset: 0;
+    border-color: transparent;
+    box-shadow: none;
+}
+.keyboard-active select.orderby:focus-visible {
+    outline-offset: 4px;
+}
+.keyboard-active .swiper-slide-imglink:focus-visible {
+    outline-offset: -4px;
+}
+.keyboard-active input:focus,
+.keyboard-active textarea:focus {
+    border-color: transparent;
+}

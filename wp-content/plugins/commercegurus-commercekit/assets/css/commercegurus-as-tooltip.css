@@ -1,0 +1,49 @@
+/* CSS Document */
+[data-cgkit-tooltip] {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	padding: 4px;
+}
+/* Tooltip styling */
+[data-cgkit-tooltip]:before {
+content: attr(data-cgkit-tooltip);
+	display: none;
+	position: absolute;
+	background: #000000;
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 13px;
+	line-height: 1.1;
+	min-width: max-content;
+	text-align: center;
+	border-radius: 4px;
+	left: 50%;
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	bottom: 100%;
+	margin-bottom: 6px;
+}
+/* Tooltip arrow styling/placement */
+[data-cgkit-tooltip]:after {
+	content: '';
+	display: none;
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	left: 50%;
+	margin-left: -6px;
+	bottom: calc(100% + 1px);
+	border-width: 6px 6px 0;
+	border-top-color: #000;
+}
+/* Show the tooltip when hovering */
+[data-cgkit-tooltip]:hover:before,
+[data-cgkit-tooltip]:hover:after {
+	display: block;
+	z-index: 50;
+}

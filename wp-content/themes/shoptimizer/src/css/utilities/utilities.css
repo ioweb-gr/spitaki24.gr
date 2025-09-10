@@ -1,0 +1,29 @@
+/*
+Utility classes
+========
+*/
+.sr-only,
+.screen-reader-text {
+    position: absolute;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+.clear {
+    clear: both;
+}
+label.inline {
+    display: inline !important;
+    margin-left: 1em;
+}
+@media (max-width: 992px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}

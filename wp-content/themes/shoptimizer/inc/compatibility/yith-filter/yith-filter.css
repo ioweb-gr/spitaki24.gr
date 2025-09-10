@@ -1,0 +1,123 @@
+/* Shoptimizer YITH Filter Styling */
+
+/* -- YITH Layered Nav -- */
+
+ul.yith-wcan-color.yith-wcan.yith-wcan-group {
+	padding-top: 1px;
+}
+
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li a::before,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span::before {
+	display: block;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	margin-top: 7px;
+	border-radius: 50%;
+	background-color: inherit;
+	content: "";
+}
+
+body .yith-wcan-color li {
+	float: none;
+}
+
+body .yith-wcan-color li a {
+	margin: 0;
+}
+
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li a,
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span {
+	display: block;
+	overflow: visible;
+	width: 0;
+	white-space: nowrap;
+	text-indent: 25px;
+}
+
+.woocommerce #secondary .widget_layered_nav ul.yith-wcan-color li a,
+.woocommerce-page #secondary .widget_layered_nav ul.yith-wcan-color li a,
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span,
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span:hover {
+	border: 0;
+}
+
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
+body.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li a {
+	min-width: 30px;
+	height: 30px;
+	padding: 0;
+	border-radius: 50%;
+	background: 0 0;
+	font-size: 12px;
+	line-height: 27px;
+	text-align: center;
+}
+
+#secondary .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li {
+	margin-bottom: -1px;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li.chosen a,
+.woocommerce .widget_layered_nav ul.yith-wcan-label li.chosen a:hover,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li.chosen a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li.chosen a:hover {
+	border-color: #777;
+	border-radius: 50%;
+	color: #fff;
+	background: transparent;
+}
+
+.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a,
+.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a {
+	background-position: center right;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li a:focus,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li a:focus {
+	outline: 0;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li a:hover,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li a:hover {
+	border-color: #999;
+	border-radius: 50%;
+	color: #111;
+	background: 0 0;
+}
+
+#secondary .widget.yith-woo-ajax-reset-navigation {
+	margin: 0;
+	padding: 0;
+	border: 0
+}
+
+.yith-wcan-reset-navigation.button {
+	display: block;
+	background-color: #f5f5f5;
+	font-size: 13px;
+	text-align: center;
+}
+
+.yith-wcan-reset-navigation.button:hover {
+	background-color: #f5f5f5;
+}
+
+.yith-wcan-reset-navigation {
+	margin-bottom: 35px;
+}
+
+.woocommerce #secondary .widget_layered_nav ul.yith-wcan-color li a:focus,
+.woocommerce-page #secondary .widget_layered_nav ul.yith-wcan-color li a:focus {
+	outline: 0;
+}

@@ -1,0 +1,311 @@
+/*
+Header Desktop
+========
+*/
+@media (min-width: 993px) {
+    /* Hide these on desktop */
+    .site-branding + .shoptimizer-myaccount,
+    .mobile-summary {
+        display: none;
+    }
+    .site-header .col-full {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .site-header {
+        position: relative;
+        z-index: 20; /* Required for search suggestions to appear */
+    }
+    body:has(.commercekit-waitlist-popup--active) .site-header {
+        z-index: 2;
+    }
+    .site-header .site-branding {
+        line-height: 1;
+    }
+    .site-branding .site-title {
+        margin: 0;
+        font-size: 20px;
+    }
+    .site-branding .logo {
+        display: inline-block;
+        margin: 0;
+    }
+    .site-header .custom-logo-link img {
+        width: auto;
+    }
+    .site-header .site-search {
+        margin-left: 3em;
+        flex-grow: 1;
+    }
+    .site-search input {
+        padding-top: 1.45rem;
+        padding-bottom: 1.45rem;
+    }
+    .site-header .widget {
+        margin-bottom: 0;
+    }
+    .site-branding a {
+        color: #111;
+        font-weight: bold;
+    }
+    .site-branding p {
+        margin-top: 5px;
+        margin-bottom: 0;
+        color: #555;
+        font-size: 12px;
+    }
+    .site-branding .site-description {
+        display: block;
+        margin-top: 0.35rem;
+        font-size: 0.755em;
+    }
+    .main-header {
+        display: flex;
+    }
+    /* -- Search style -- */
+    .site-search.type-outline input[type="search"] {
+      background-color: #fff;
+      border: 1px solid #e2e2e2;
+    }
+    /* -- Header 2 and 3: Centered -- */
+    .header-2 .main-header,
+    .header-3 .main-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .header-2 .site-header,
+    .header-3 .site-header {
+        position: relative;
+    }
+    .header-2 .site-header .site-search {
+        order: 1;
+    }
+    .header-3 .site-header .site-search {
+        order: 3;
+    }
+    .header-2 .site-header .site-search,
+    .header-3 .site-header .site-search {
+        max-width: 25%;
+        margin: 0;
+    }
+    .header-2 .site-header .site-branding,
+    .header-3 .site-header .site-branding {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        order: 2;
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+    .header-2 .site-header .secondary-navigation,
+    .header-3 .site-header .secondary-navigation {
+        padding: 0;
+    }
+    .header-2 .site-header .secondary-navigation {
+        order: 3;
+    }
+    .header-3 .site-header .secondary-navigation {
+        order: 1;
+        margin-right: auto;
+        margin-left: -18px;
+    }
+    .header-2 .col-full-nav,
+    .header-3 .col-full-nav {
+        order: 4;
+    }
+
+    /* -- Header 5: Cart within the main header bar -- */
+    .header-5 .site-header input[type="search"] {
+        height: 55px;
+    }
+    .header-5 .site-header .site-header-cart {
+        display: block;
+        height: 55px;
+        margin-left: 35px;
+    }
+    .header-5 .shoptimizer-cart a.cart-contents {
+        height: 55px;
+        padding: 0 15px;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        line-height: 55px;
+    }
+    .header-5 .shoptimizer-cart a.cart-contents:hover {
+        border-color: #e2e2e2;
+    }
+    .header-5 .col-full-nav .site-header-cart {
+        display: none;
+    }
+    .header-5 .site-header .main-navigation {
+        width: 100%;
+    }
+    .header-5 .shoptimizer-cart .cart-contents .amount {
+        font-size: 14px;
+        display: contents;
+    }
+    .header-5 .shoptimizer-cart a.cart-contents .shoptimizer-cart-icon .mini-count {
+        margin-right: -10px;
+        color: #111;
+        background-color: #eee;
+    }
+}
+
+/* -- Header 4: One row header -- */
+@media (min-width: 1199px) {
+    .header-4 .primary-navigation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (min-width: 993px) {
+    .header-4 {
+        overflow-x: hidden;
+    }
+    .header-4 .header-4-container {
+        position: relative;
+        z-index: 99;
+        padding: 0 30px;
+        border-bottom: 1px solid #eee;
+        box-shadow: 0 3px 15px -5px rgba(0, 0, 0, 0.08);
+    }
+    .sticky-d.header-4 .header-4-container {
+        position: sticky;
+        top: 0;
+    }
+    .admin-bar.sticky-d.header-4:not(.woocommerce-checkout) .header-4-container {
+        top: 32px;
+    }
+    .admin-bar.sticky-d.header-4.single-product .header-4-container {
+        top: 0px;
+    }
+    /* Unstick if the top sticky bar is chosen on single products */
+    .single-product.sticky-t.sticky-d.header-4 .header-4-container {
+        position: relative;
+    }
+    .admin-bar.single-product.sticky-t.sticky-d.header-4 .header-4-container {
+        top: 0px;
+    }
+    .header-4 .header-4-inner {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+    .header-4 .site-header {
+        flex: 0 0 auto;
+        margin-right: 30px;
+    }
+    
+    /* -- Full width -- */
+    .full-width-header.header-4 .header-4-container {
+        display: flex;
+    }
+    .header-4:not(.full-width-header) .header-4-inner {
+        display: flex;
+        align-items: center;
+        max-width: 1170px;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+    }
+    .header-4 .header-4-container .main-header.col-full {
+        padding: 0;
+        max-width: inherit;
+    }
+    .header-4 .site-search {
+        display: none;
+    }
+    .header-4 .site-header-cart {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .header-4 .shoptimizer-cart .cart-contents {
+        height: auto;
+    }
+    .header-4 .shoptimizer-cart .cart-contents,
+    .header-4 .search-trigger {
+        position: relative;
+        z-index: 9;
+    }
+    .header-4 .search-trigger,
+    .header-4 .search-trigger:focus,
+    .header-4 .search-trigger:hover {
+        background: none;
+        cursor: pointer;
+    }
+    .header-4 .search-trigger svg {
+        width: 18px;
+        height: 18px;
+        margin: -4px 0px;
+    }
+    .header-4 .search-trigger span {
+        padding: 8px 10px 8px 0;
+        margin-right: 10px;
+        border-right: 1px solid #eee;
+        line-height: inherit;
+        font-size: 14px;
+        pointer-events: none;
+    }
+    .header-4 .shoptimizer-myaccount {
+        margin-left: -6px;
+        padding-right: 20px;
+    }
+    .header-4 .shoptimizer-myaccount a {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        position: relative;
+    }
+    .header-4 .shoptimizer-myaccount svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+/* -- Header 4 and 5: Search -- */
+@media (max-width: 1060px) and (min-width: 993px) {
+    body:not(.header-4):not(.header-5) .site-header .site-search {
+        width: 100px;
+    }
+}
+@media (min-width: 993px) and (max-width: 1155px) {
+    .header-5 .site-header .site-search {
+        width: 50px;
+    }
+}
+/* -- Minimal Checkout Header 2,3 -- */
+@media (min-width: 993px) {
+    .woocommerce-checkout.min-ck.header-2:not(.woocommerce-order-received) .site-header .site-branding,
+    .woocommerce-checkout.min-ck.header-3:not(.woocommerce-order-received) .site-header .site-branding {
+        position: relative;
+        left: auto;
+        order: 0;
+        transform: none;
+    }
+}
+/* -- Minimal Checkout Header 4 -- */
+@media (min-width: 993px) {
+    .sticky-d.header-4.woocommerce-checkout.min-ck:not(.woocommerce-order-received) .header-4-container {
+        position: relative;
+    }
+}
+.sticky-d.woocommerce-checkout.min-ck.header-4:not(.woocommerce-order-received) .search-trigger {
+    display: none;
+}
+.woocommerce-checkout.min-ck.header-4:not(.woocommerce-order-received) .site-header {
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+.header-4:not(.woocommerce-order-received) .woocommerce-checkout.min-ck .site-header {
+    border: none;
+    width: 100%;
+}
+/* Ajax Search for WC - https://wordpress.org/plugins/ajax-search-for-woocommerce/ */
+.dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier {
+    z-index: 1;
+}

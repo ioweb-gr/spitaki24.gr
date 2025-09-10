@@ -1,0 +1,448 @@
+/*
+Navigation Desktop
+========
+*/
+@media (min-width: 993px) {
+    /* -- Hide mobile menu elements on desktop -- */
+    .menu-primary-menu-container + .shoptimizer-mobile-menu,
+    body:not(.header-4) .col-full-nav .site-search,
+    .main-navigation.toggled div.menu,
+    .mobile-menu.close-drawer,
+    .mobile-search-toggle,
+    .menu-toggle,
+    .mobile-extra {
+        display: none;
+    }
+    /* -- Logo within Navigation -- */
+    .logo-mark,
+    .logo-mark img {
+        display: inline-block;
+        position: absolute;
+    }
+    .is_stuck .logo-mark {
+        padding-right: 2em;
+    }
+    .menu-primary-menu-container {
+        margin-left: 0;
+        transition: all 0.55s;
+    }
+    .logo-mark {
+        float: left;
+        overflow: hidden;
+        width: 0;
+        margin-right: 0;
+        transition: all 0.4s cubic-bezier(0.33, 0, 0.2, 1);
+    }
+    .logo-mark img {
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+    }
+    /* -- Container -- */
+    .col-full-nav {
+        width: 100%;
+        border-top: 1px solid transparent;
+    }
+    .shoptimizer-primary-navigation {
+        display: flex;
+    }
+    /* -- Sticky -- */
+    .shoptimizer-primary-navigation.is_stuck {
+        position: fixed;
+        z-index: 99;
+        border-bottom: 1px solid #eee;
+    }
+    body:not(.header-4).sticky-d .col-full-nav {
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 10;
+        top: 0;
+    }
+    body:not(.header-4).sticky-d .col-full-nav.is_stuck {
+        z-index: 15;
+        box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.1);
+    }
+    body:not(.header-4).sticky-d.admin-bar .col-full-nav.is_stuck {
+        top: 32px;
+    }
+
+    /* -- Top level links -- */
+    .main-navigation ul {
+        margin: 0;
+    }
+    .main-navigation ul li {
+        display: inline-block;
+    }
+    .menu-primary-menu-container > ul.menu:hover > li > a {
+        opacity: 0.65;
+    }
+    .menu-primary-menu-container > ul.menu:hover > li:hover > a {
+        opacity: 1;
+    }
+    .main-navigation ul li.menu-item > a {
+        display: block;
+    }
+    .menu-primary-menu-container > ul > li > a span {
+        position: relative;
+    }
+    .menu-primary-menu-container > ul > li > a {
+        padding-right: 0.55em;
+        padding-left: 0.55em;
+        transition: all 0.2s;
+    }
+    .menu-primary-menu-container > ul > li:first-child > a {
+        padding-left: 0;
+    }
+    .main-navigation ul.menu > li.menu-item-has-children {
+        position: relative;
+        text-align: left;
+    }
+    /* Underline animation on hover */
+    .menu-primary-menu-container > ul > li > a span:before,
+    .menu-primary-menu-container > ul > li.nolink > span:before {
+        display: block;
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        content: "";
+        transition: transform 0.6s cubic-bezier(0.28, 0.75, 0.22, 0.95);
+        transform: scale(0, 1);
+        transform-origin: right center;
+    }
+    .menu-primary-menu-container > ul > li.nolink > span:before {
+        width: calc(100% - 18px);
+    }
+    .menu-primary-menu-container > ul > li:hover > a span:before,
+    .menu-primary-menu-container > ul > li.nolink:hover > span:before {
+        transform: scale(1, 1);
+        transform-origin: left center;
+    }
+    /* -- Top level caret -- */ 
+    .menu-primary-menu-container > ul > li.menu-item-has-children > a:after,
+    .menu-primary-menu-container > ul > li.menu-item-has-children.nolink > span:after {
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        margin-left: 6px;
+        width: 12px;
+        height: 12px;
+        content: "";
+        background-color: #fff;
+        transition: transform 0.4s;
+    }
+    .main-navigation ul.menu > li.menu-item-has-children:hover > a:after,
+    .main-navigation ul.menu > li.menu-item-has-children.nolink:hover > span:after {
+        transform: rotate(180deg);
+    }
+    /* -- Nolink in the Top Level Menu -- */
+    .main-navigation ul.menu > li.full-width.nolink {
+        display: inline-block;
+		padding-right: 0.55em;
+        padding-left: 0.55em;			
+    }
+	.main-navigation ul.menu > li.nolink li {
+        line-height: normal;
+        padding-right: 0;
+        padding-left: 0;
+    }
+	.main-navigation ul.menu > li.nolink > span {
+		position: relative;
+	}
+	.main-navigation ul.menu > li.nolink > span.caret {
+		display: none;
+	}
+    /* -- CTA Button in Top Menu -- */
+    .menu-primary-menu-container > ul > li.menu-button > a span {
+        padding: 6px 16px;
+        border-radius: 30px;
+        color: #fff;
+        background: #444;
+        font-size: 13px;
+        font-weight: bold;
+        transition: 0.2s background;
+    }
+    .menu-primary-menu-container > ul > li.menu-button > a {
+        position: relative;
+        top: -1px;
+    }
+    .menu-primary-menu-container > ul > li.menu-button > a span:before {
+        display: none;
+    }
+    .menu-primary-menu-container > ul > li.menu-button > a:hover span {
+        background: #555;
+    }
+    /* -- Regular dropdown -- */
+    .main-navigation ul li:hover > .sub-menu-wrapper ul,
+    .main-navigation ul li:focus-within > .sub-menu-wrapper ul {
+        left: 0;
+    }
+    .main-navigation ul ul {
+        position: absolute;
+    }
+    .main-navigation ul.menu > li:not(.full-width) > .sub-menu-wrapper {
+        visibility: hidden;
+        position: absolute;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.15s ease-in-out;
+        transform: scale(0.8);
+    }
+    .main-navigation ul.menu > li.menu-item-has-children:hover > .sub-menu-wrapper,
+    .main-navigation ul.menu > li.menu-item-has-children:focus-within > .sub-menu-wrapper {
+        visibility: visible;
+        z-index: 30;
+        opacity: 1;
+        transform: scale(1);
+    }
+    .main-navigation ul.menu > li:not(.full-width) ul.sub-menu {
+        padding: 20px 12px;
+        box-shadow: 0 1px 15px rgba(0, 0, 0, 0.08);
+        line-height: 1.4;
+        margin: 0;
+        width: 200px;
+        box-sizing: content-box;
+    }
+    /* -- Regular dropdown 2 columns -- */
+    .main-navigation ul li.col-2 > .sub-menu-wrapper > .container > ul.sub-menu {
+        column-count: 2;
+        width: 400px;
+    }
+    /* -- Regular dropdown 3 columns -- */
+    .main-navigation ul li.col-3 > .sub-menu-wrapper > .container > ul.sub-menu {
+        column-count: 3;
+        width: 600px;
+    }
+    /* -- Links -- */
+    .main-navigation ul.menu > li:not(.full-width) a.sub-menu-link,
+    ul.menu ul li.nolink {
+        padding: 0.3em 0.8em;
+    }
+    /* -- Dropdown child menus -- */
+    .main-navigation ul ul li {
+        display: block;
+        position: relative;
+    }
+    .main-navigation ul.menu > li:not(.full-width) ul li .sub-menu-wrapper {
+        visibility: hidden;
+        position: absolute;
+        z-index: 1; /* Required */
+        top: -20px;
+        left: 220px;
+        opacity: 0;
+        transition: all 0.15s ease-in-out;
+    }
+    .main-navigation ul.menu > li:not(.full-width) ul li.menu-item-has-children > a:after {
+        position: absolute;
+        top: 0px;
+        display: inline-block;
+        right: 15px;
+        width: 13px;
+        height: 13px;
+        content: "";
+        background-color: #111;
+        transform: translateX(50%) translateY(50%);
+    }
+    .main-navigation ul.menu > li:not(.full-width) ul > li:hover > .sub-menu-wrapper,
+    .main-navigation ul.menu > li:not(.full-width) ul > li:focus-within > .sub-menu-wrapper {
+        visibility: visible;
+        position: absolute;
+        top: -20px;
+        left: 200px;
+        opacity: 1;
+    }
+    /* -- Highlight Label -- */
+    .main-navigation ul li a span strong {
+        color: #fff;
+        background-color: #222;
+        font-size: 9px;
+        height: 16px;
+        line-height: 16px;
+        padding: 0px 6px;
+        display: inline-flex;
+        margin-left: 7px;
+        position: absolute;
+        top: 2.5px;
+        border-radius: 3px;
+    }
+    /* -- Full width dropdown -- */
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper {
+        position: absolute;
+        visibility: hidden;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        background: #fff;
+        border-top: 1px solid #eee;
+    }
+    .main-navigation ul.menu li.full-width:hover > .sub-menu-wrapper,
+    .main-navigation ul.menu li.full-width:focus-within > .sub-menu-wrapper {
+        visibility: visible;
+        opacity: 1;
+    }
+    .main-navigation ul.menu li.full-width ul li > .sub-menu-wrapper {
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+    .main-navigation ul.menu li.full-width {
+        position: inherit;
+    }
+    .main-navigation ul li.full-width .container {
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .main-navigation ul li.full-width ul {
+        position: inherit;
+    }
+    .main-navigation ul li.full-width ul.products {
+        display: block;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 40px 0;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li {
+        display: inline-block;
+        vertical-align: top;
+        float: none;
+        width: 23%;
+        padding-right: 25px;
+        padding-left: 25px;
+        border-left: 1px solid #eee;
+        break-inside: avoid;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li:last-child {
+        border-right: 1px solid #eee;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu ul {
+        width: 100%;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-2 {
+        width: 40%;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-3 {
+        width: 60%;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-4 {
+        width: 80%;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-5 {
+        width: 100%;
+    }
+    .main-navigation ul.menu li.menu-item-has-children.full-width > .sub-menu-wrapper li.menu-item-has-children > a:hover {
+        color: inherit;
+    }
+    .main-navigation ul.menu > li.full-width li:not(.heading):not(.menu-item-has-children):not(.menu-item-image) > a.sub-menu-link:hover span:not(.caret),
+    .main-navigation ul.menu > li.full-width li.menu-item-image > a.sub-menu-link:hover span.sub {
+        text-decoration: underline;
+        text-decoration-thickness: 0.5px;
+        text-underline-offset: 0.18em;
+    }
+    /* Prevent column-count wrapping */
+    .col-2 .sub-menu .sub-menu,
+    .col-3 .sub-menu .sub-menu {
+        overflow: hidden; /* fix for Firefox */
+        break-inside: avoid-column;
+        -webkit-column-break-inside: avoid;
+    }
+    /* -- Heading -- */
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li.menu-item-has-children > a,
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li.heading > a,
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li.nolink > span:not(.caret) {
+        margin-bottom: 0.25rem;
+    }
+    .main-navigation ul.menu li.full-width li.heading {
+        clear: both;
+        padding-top: 15px;
+    }
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li {
+        margin-bottom: 0.25rem;
+    }
+    /* -- No link -- */
+    .main-navigation ul.menu li.full-width li.nolink span:not(.caret) {
+        display: block;
+        padding-top: 0.15em;
+        padding-bottom: 0.15em;
+    }
+    .main-navigation ul.menu li.full-width li.heading.nolink:first-child,
+    .main-navigation ul.menu li.full-width li.heading.nolink:first-child span:not(.caret) {
+        padding-top: 0;
+    }
+    /* -- Products within full width dropdown -- */
+    .main-navigation ul.products li.product:not(.product-category):before {
+        display: none;
+    }
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li.product:not(.product-category) {
+        padding-bottom: 0;
+    }
+    .main-navigation ul.products li.product {
+        padding: 0;
+        width: 100%;
+    }
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li a.button {
+        width: 100%;
+    }
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li a.button,
+    .main-navigation ul.menu li.full-width > .sub-menu-wrapper li.product a.added_to_cart {
+        position: relative;
+    }
+    /* -- Divider in full width dropdown -- */
+    .main-navigation ul.menu li.full-width ul li.divider {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+    /* -- Columns within full width dropdown -- */
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-2 ul.sub-menu {
+        column-count: 2;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-3 ul.sub-menu {
+        column-count: 3;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-4 ul.sub-menu {
+        column-count: 4;
+    }
+    .main-navigation ul li.full-width > .sub-menu-wrapper > .container > ul.sub-menu > li.col-5 ul.sub-menu {
+        column-count: 5;
+    }
+    /* -- When hover intent theme option active -- */
+    .main-navigation.hover-intent ul.menu li.menu-item-has-children.full-width:hover > .sub-menu-wrapper,
+    .main-navigation.hover-intent ul.menu > li.menu-item-has-children:hover > .sub-menu-wrapper {
+        display: none;
+    }
+    .main-navigation.hover-intent ul.menu li.menu-item-has-children.full-width.visible > .sub-menu-wrapper,
+    .main-navigation.hover-intent ul.menu > li.menu-item-has-children.visible > .sub-menu-wrapper {
+        display: block;
+    }
+    /* -- Images within full width dropdown -- */
+    .main-navigation ul.menu ul li.menu-item-image span {
+        font-size: 0px;
+        display: block;
+    }
+    .main-navigation ul.menu ul li.menu-item-image img {
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        width: 100%;
+    }
+    .main-navigation ul.menu ul li.menu-item-image span.sub {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+    }
+    /* -- Header 4 Navigation -- */
+    .header-4 .col-full-nav {
+        width: auto;
+        display: flex;
+        margin-left: auto;
+        background: transparent;
+    }
+    .header-4 .main-navigation ul.menu li > .sub-menu-wrapper {
+        border-color: transparent;
+    }
+}

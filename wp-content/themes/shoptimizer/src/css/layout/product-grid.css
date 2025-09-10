@@ -1,0 +1,113 @@
+/*
+Product Grid
+========
+*/
+ul.products {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-bottom: 0;
+    clear: both;
+}
+ul.products li.product {
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+    list-style: none;
+}
+@media (min-width: 993px) {
+    .static-cta-buttons ul.products li.product.cgkit-swatch-hover,
+    body:not(.static-cta-buttons) ul.products li.product {
+        align-self: flex-start;
+    }
+}
+@media (min-width: 993px) {
+	ul.products li.product:not(.product-category) {
+		padding-bottom: 40px;
+	}
+	ul.products li.product.product-category {
+		margin-bottom: 2.5rem;
+	}
+	.columns-1 ul.products li.product,
+	.upsells .columns-1 li.product,
+	.related .columns-1 li.product,
+	.cross-sells .columns-1 li.product {
+		float: none;
+		width: 100%;
+		margin-right: 0
+	}
+	.columns-2 ul.products li.product,
+	ul.products.columns-2 li.product,
+	.upsells .columns-2 li.product,
+	.related .columns-2 li.product,
+	.cross-sells .columns-2 li.product {
+		float: left;
+		width: 49.9%;
+	}
+	.columns-3 ul.products li.product,
+	ul.products.columns-3 li.product,
+	.upsells .columns-3 li.product,
+	.related .columns-3 li.product,
+	.cross-sells .columns-3 li.product {
+		float: left;
+		width: 33.3053%;
+	}
+	.columns-4 ul.products li.product,
+	.upsells .columns-4 li.product,
+	.related .columns-4 li.product,
+	.cross-sells .columns-4 li.product {
+		float: left;
+		width: 24.97%;
+	}
+	.columns-5 ul.products li.product,
+	.upsells .columns-5 li.product,
+	.related .columns-5 li.product,
+	.cross-sells .columns-5 li.product {
+		width: 19.98%;
+	}
+	.columns-6 ul.products li.product,
+	.upsells .columns-6 li.product,
+	.related .columns-6 li.product,
+	.cross-sells .columns-6 li.product {
+		float: left;
+		width: 16.647%;
+	}
+}
+@media (max-width: 992px) {
+	ul.products {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(10px, 1fr));
+		column-gap: 20px;
+		row-gap: 30px;
+		width: 100%;
+		margin-left: 0;
+    }
+    ul.products li.product {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+    	margin-bottom: 0;
+    }
+    ul.products li.product .button {
+    	margin-top: auto;
+    }
+    .elementor-shortcode ul.products {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .mobile-scroll ul.products {
+    	width: calc(100% + 25px);
+    }
+}
+@media (max-width: 600px) {
+	.m-grid-1 ul.products {
+		grid-template-columns: repeat(1, minmax(10px, 1fr));
+	}
+	.m-grid-1 ul.products li.product {
+		width: 100%;
+	}
+}

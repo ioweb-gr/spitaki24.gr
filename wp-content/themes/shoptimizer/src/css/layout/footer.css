@@ -1,0 +1,186 @@
+/*
+Footer
+========
+*/
+.below-content .col-full,
+footer .col-full {
+    display: flex;
+    padding-right: calc(2.617924em - 20px);
+    padding-left: calc(2.617924em - 20px);
+}
+/* -- Below content -- */
+.below-content {
+    clear: both;
+    overflow: hidden;
+    padding-top: 2rem;
+    padding-bottom: 1.7em;
+    border-top: 1px solid #eee;
+}
+.below-content .widget .widget-title {
+    margin-bottom: 0;
+    padding-left: 32px;
+    font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+    font-weight: 600;
+    line-height: 1.35;
+    text-transform: none;
+    letter-spacing: 0;
+}
+.below-content .widget .textwidget p {
+    margin-bottom: 0;
+    padding-left: 32px;
+    font-size: clamp(0.8125rem, 0.749rem + 0.2033vw, 0.875rem); /* 13-14 */
+    line-height: 1.4;
+    margin-top: 0.15rem;
+}
+.below-content .widget,
+footer .widget {
+    position: relative;
+    margin: 0;
+    padding: 0 20px;
+    flex: 1;
+}
+.below-content .widget .ri,
+.below-content .widget svg {
+    position: absolute;
+    top: 3px;
+    left: 20px;
+}
+.below-content .widget .ri {
+    color: #999;
+    font-size: 16px;
+}
+.below-content .widget svg {
+    stroke: #dc9814;
+    width: 20px;
+    height: 20px;
+}
+.below-content .widget svg path {
+    stroke-width: 1.5px;
+}
+/* -- Footer -- */
+footer {
+    clear: both;
+}
+.site-footer .widget .widget-title {
+    margin-bottom: 12.5px;
+}
+footer .widget li {
+    margin-bottom: 5px;
+}
+footer a:not(.button):hover {
+    color: #fff;
+}
+footer.site-footer a:has(svg) {
+    margin-right: 15px;
+}
+footer.site-footer a:hover,
+footer.copyright a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.16em;
+}
+footer .review {
+    font-size: 14px;
+}
+footer .review strong {
+    font-size: 12px;
+}
+.site-footer {
+    padding: 4rem 0;
+}
+.site-footer .widget p,
+.site-footer .widget li {
+    font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+    line-height: 1.5;
+}
+footer.copyright .widget:last-child {
+    text-align: right;
+}
+footer.copyright .widget p {
+    margin: 0;
+    font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+}
+footer.copyright .widget:last-child img {
+    width: auto;
+    height: 28.5px;
+    margin: 0;
+}
+footer.copyright {
+    padding: 2rem 0;
+}
+footer:last-child:not(:only-of-type) {
+    margin-top: -3rem;
+}
+footer.copyright .col-full {
+    align-items: center;
+}
+.site-footer .widget_nav_menu a {
+    display: inline-flex;
+}
+.site-footer .widget_nav_menu .icon-wrapper {
+    order: -1;
+}
+.site-footer .widget_nav_menu .icon-wrapper svg {   
+    width: 22px;
+    min-width: 22px;
+    margin-right: 8px;
+}
+.site-footer .widget_nav_menu ul ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.site-footer .icon-wrapper:empty {
+    min-width: auto;
+    margin: 0;
+}
+@media (max-width: 992px) {
+    .below-content .widget .ri,
+    .below-content .widget svg {
+        left: 0;
+    }
+    .below-content .col-full,
+    footer .col-full {
+        display: block;
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+    .below-content .widget {
+        padding: 0;
+        margin-bottom: 15px; 
+    }
+    .below-content {
+        padding-bottom: calc(1.7em - 15px);
+    }
+    .below-content .col-full,
+    .site-footer .col-full {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+    .site-footer {
+        padding: 2.5rem 0 1rem 0;
+    }
+    .site-footer .widget {
+        padding: 0;
+        margin-bottom: 1.25rem;
+    }
+    .site-footer.alignright,
+    footer.copyright .widget:last-child img {
+        display: block;
+        float: none;
+    }
+    footer.copyright .widget {
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    footer.copyright .widget:last-child {
+        margin-bottom: 0;
+    }
+}
+@media (max-width: 768px) {
+    .below-content .col-full,
+    .site-footer .col-full {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

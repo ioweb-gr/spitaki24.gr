@@ -1,0 +1,184 @@
+/*
+Styleguide
+========
+*/
+/* Links */
+.below-woocommerce-category a, .product-widget a,
+.post-meta a, .comment-text a, .comment-respond p a, .product_meta a, .woocommerce-tabs table.woocommerce-product-attributes a,
+.entry-content article a:not(.elementor-button), a.reset_variations,
+body:not(.elementor-page):not(.woocommerce-account):not(.woocommerce-order-received) .entry-content p:not(.product__categories) a:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 0.75px;
+}
+/* -- Horizontal Rule -- */
+hr {
+  height: 0;
+  margin-top: 38px;
+  margin-bottom: 38px;
+  border: 0;
+  border-top: 1px solid #e9e9e9;
+}
+/* -- Headings -- */
+h1,h2 {
+  margin: 0 0 1rem;
+}
+h3,h4,h5,h6 {
+  margin: 0 0 0.5rem;
+}
+h5 {
+  font-size: 1.2em;
+}
+h6 {
+  font-size: 1em;
+}
+blockquote+h2,blockquote+h3,blockquote+h4,blockquote+header h2,form+h2,form+h3,form+h4,form+header h2,ol+h2,ol+h3,ol+h4,ol+header h2,p+h2,p+h3,p+h4,p+header h2,table+h2,table+h3,table+h4,table+header h2,ul+h2,ul+h3,ul+h4,ul+header h2 {
+  margin-top: 1.2906835em;
+}
+/* -- Definition Lists -- */
+dl.variation {
+  margin: 0.4em 0;
+  font-size: 0.9em;
+  color: #545454;
+}
+dl.variation dd {
+  margin-bottom: 0;
+  margin-right: 5px;
+  color: #323232;
+}
+dl.variation dt {
+  line-height: 1.2;
+}
+dl.variation dd p {
+  margin-bottom: 0;
+}
+dl.variation dd,
+dl.variation dt,
+dl.variation dd p {
+  display: inline;
+}
+/* -- Video Container -- */
+.video-container {
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.video-container:last-child {
+    margin-bottom: 0;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* -- Captions -- */
+.wp-block-image figcaption {
+  margin-top: 0.8em;
+  color: #555;
+  font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+  text-align: center;
+}
+.wp-caption {
+  max-width: 100%;
+  margin-bottom: 1em;
+}
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin: 0 auto;
+}
+.wp-caption .wp-caption-text {
+  font-size: 14px;
+}
+/* Alignments */
+.alignleft,
+.alignright {
+  display: inline;
+  margin-top: 5px;
+}
+.alignleft {
+  float: left;
+  margin-right: 2.5em;
+}
+.alignright {
+  float: right;
+  margin-left: 2.5em;
+}
+.aligncenter {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1070px) {
+    .alignfull img,
+    .alignwide img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+/* -- Blockquote -- */
+.content-area blockquote {
+  position: relative;
+  margin: 2.5em 40px;
+}
+.content-area blockquote.alignleft,
+.content-area blockquote.alignright {
+  margin-top: 0.6em;
+  padding: 2em 0;
+}
+.content-area blockquote p {
+  margin-bottom: 0;
+}
+.content-area blockquote::before {
+  position: absolute;
+  top: -12px;
+  left: -40px;
+  margin: 0;
+  color: #ccc;
+  font-family: Georgia, serif;
+  font-size: 50px;
+  content: "\201c";
+}
+.content-area h3 + blockquote {
+  margin-top: 10px;
+}
+/* -- Embed -- */
+.entry-content figure.wp-block-embed {
+  width: 100%;
+  margin: 0;
+}
+/* -- Lists -- */
+.entry-content ol ol,
+.entry-content ul ul {
+  margin: 1em 0 1em 2em;
+}
+.entry-content ol li {
+  padding-left: 6px;
+}
+/* -- Mobile -- */
+@media (max-width: 768px) {
+  .site,
+  .entry-content {
+    font-size: 15px;
+  }
+  input, select, textarea {
+    font-size: 16px;
+  }
+  .entry-content:not(.wc-tab) p.form-row {
+    font-size: 14px;
+  }
+  .site h1 {
+    font-size: 30px;
+    letter-spacing: -0.01em;
+  }
+  .site h2 {
+    font-size: clamp(1.375rem, 0.9939rem + 1.2195vw, 1.75rem);
+    letter-spacing: -0.01em;
+  }
+}

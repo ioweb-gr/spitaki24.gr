@@ -1,0 +1,11 @@
+{
+    "require": {
+        "wp-cli/wp-cli-bundle": "^2.4",
+        "interconnectit/search-replace-db": "^4.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "cweagans/composer-patches": true
+        }
+    }
+}

@@ -1,0 +1,270 @@
+/* Shoptimizer Elementor Pro Styling */
+
+.site .elementor-products-grid ul.products.elementor-grid li.product {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 40px;
+}
+
+.page-template-elementor_header_footer .site-content:after { 
+	display: none;
+}
+
+.col-full.topbar-wrapper {
+	border: none;
+}
+
+@media (min-width: 992px) {
+    .col-full.main-header, .col-full-nav { 
+    	padding-top: 0px;
+    	padding-bottom: 0px;
+    }
+}
+@media (max-width: 992px) {
+    .main-header, .site-branding { 
+        height: 0px;
+    }
+}
+
+@media (min-width: 993px) {
+
+	.elementor-products-grid ul.products {
+		width: auto;
+	}
+
+	.elementor-element.elementor-products-grid ul.products li.product {
+		width: 100%;
+	}
+
+	.elementor-element.elementor-products-grid ul.products li.product.ckit-hide-cta:not(.product-category) {
+		padding-bottom: 0;
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 992px) {
+
+	.elementor-element.elementor-products-grid ul.products {
+		width: 100%;
+    }
+
+    .theme-shoptimizer.m-grid-2 .elementor-products-grid .commercekit-wishlist.mini {
+        top: 15px;
+        right: 30px;
+    }
+
+    .m-grid-2 ul.products.elementor-grid {
+    	padding: 0;
+    }
+
+    /* If using a custom Elementor Pro header, ensure that the mobile "show filters" button and the sticky tabs don't have a gap */
+    body:has(div[data-elementor-type=header]) .mobile-filter,
+    body:has(div[data-elementor-type=header]) .commercekit-atc-sticky-tabs {
+        top: -1px;
+    }
+
+}
+
+/* PLP */
+@media (min-width: 993px) {
+	.products.elementor-grid {
+		display: grid;
+	}
+
+	.products.elementor-grid.columns-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.products.elementor-grid.columns-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.products.elementor-grid.columns-2 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.elementor-element.elementor-products-grid ul.products li.product {
+	width: 100%;
+}
+
+ul.products.elementor-grid {
+	margin-left: 0;
+}
+
+body.static-cta-buttons ul.products.elementor-grid li.product:not(.product-category) {
+    margin-bottom: 0px;
+}
+
+body.static-cta-buttons ul.products.elementor-grid li.product .button {
+	position: relative;
+}
+
+/* Elementor Pro PDP */
+.single-product .product .elementor-widget-woocommerce-product-price .price {
+	float: none;
+}
+
+.single-product .elementor-add-to-cart .cart .single_add_to_cart_button {
+	float: none;
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
+}
+
+/* Prevent next/prev buttons flash on transition */
+.single-product .swiper-slide {
+	will-change: revert;
+}
+
+@media (max-width: 991px) {
+	.m-grid-1 .elementor-grid-tablet-2 .elementor-grid,
+	.m-grid-2 .elementor-grid-tablet-2 .elementor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .m-grid-1 .elementor-grid-tablet-3 .elementor-grid,
+    .m-grid-2 .elementor-grid-tablet-3 .elementor-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+	.m-grid-1 .elementor-grid-mobile-1 .elementor-grid,
+	.m-grid-2 .elementor-grid-mobile-1 .elementor-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.m-grid-1 .elementor-grid-mobile-2 .elementor-grid,
+	.m-grid-2 .elementor-grid-mobile-2 .elementor-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Cart */
+
+.e-cart__container .woocommerce-cart-form,
+.e-cart__container .cart-collaterals {
+	float: none;
+	width: 100%;
+}
+
+.e-cart__container .cart_totals .shop_table {
+	background-color: transparent;
+}
+
+.e-cart__container .cart_totals .shop_table tr.shipping td,
+.e-cart__container .cart_totals .shop_table tr.shipping th {
+	width: 100%;
+	display: table-cell;
+}
+
+.e-cart__container .cart_totals .shop_table td,
+.e-cart__container .cart_totals .shop_table th {
+	padding: 0;
+}
+
+.elementor-widget-woocommerce-cart .woocommerce .e-cart__container .input-text.qty {
+	border: none;
+	text-align: center;
+}
+
+.e-cart__container table.cart td.actions input,
+.e-cart__container table.cart td.actions button {
+	height: inherit;
+	line-height: initial;
+}
+
+.elementor-widget-woocommerce-cart .woocommerce .e-cart__container .input-text {
+	height: inherit;
+}
+
+@media (min-width: 993px) {
+    .e-checkout__container .col2-set,
+	.e-checkout__container #customer_details + #wc_checkout_add_ons,
+	.e-checkout__container #order_review,
+	.e-checkout__container #order_review_heading {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .m-cart .e-cart__container table.cart td.product-thumbnail { 
+		position: relative;
+		min-height: auto;
+		margin: 0;
+	}
+	.m-cart .e-cart__container table.cart td:before {
+		font-size: unset;
+	}
+	.elementor-widget-woocommerce-cart .woocommerce table.cart tr {
+		padding: 0;
+	}
+}
+
+.e-checkout__container #ship-to-different-address {
+	padding: 0;
+	border: none;
+}
+
+.e-checkout__container .woocommerce-checkout-review-order-table tr.shipping td,
+.e-checkout__container .woocommerce-checkout-review-order-table tr.shipping th {
+	width: 100%;
+	display: table-cell;
+	text-align: inherit
+}
+
+.e-checkout__container .woocommerce-checkout-review-order-table tr.shipping td {
+	text-align: right;
+}
+
+.elementor-widget-woocommerce-checkout-page .woocommerce .e-coupon-box .form-row .input-text {
+	height: inherit;
+}
+
+.woocommerce-js form .e-checkout__container .form-row {
+    padding: 3px;
+    margin: 0 0 6px;
+}
+
+.e-checkout__container ul#shipping_method li span.amount {
+	float: none;
+}
+
+.e-checkout__container #order_review .shop_table tr.shipping th {
+	border: none;
+}
+
+.e-checkout__container .woocommerce-checkout-review-order-table tfoot td,
+.e-checkout__container .woocommerce-checkout-review-order-table tfoot th {
+	background-color: transparent;
+	padding: 0;
+}
+
+.e-checkout__container #payment .payment_methods {
+	border: none;
+	border-radius: 0;
+}
+
+.e-checkout__container #payment .payment_methods > .wc_payment_method > label,
+.e-checkout__container #payment .payment_methods > .woocommerce-PaymentMethod > label {
+	padding: 0;
+}
+
+.e-checkout__container #payment .payment_methods li .payment_box {
+	padding: 1em;
+	margin: 1em 0;
+}
+
+.e-checkout__container #payment .place-order {
+	margin-top: 0;
+}
+
+.e-checkout__container #payment .payment_methods p {
+	padding: 0
+}
+
+.e-checkout__container .commercekit-order-bump-wrap {
+    width: 100%;
+    contain: inline-size;
+}

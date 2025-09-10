@@ -1,0 +1,40 @@
+/* -- Mailchimp for WC Styling -- */
+footer .mc4wp-form {
+    position: relative;
+    margin-top: 15px
+}
+
+footer .mc4wp-form label {
+    font-size: 0;
+}
+
+footer .mc4wp-form input {
+    height: 45px;
+    border: 0;
+    font-size: 14px;
+}
+
+footer .mc4wp-form input[type="email"] {
+    width: 97%;
+    padding: 0 15px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #fff;
+}
+
+footer .mc4wp-form input[type="submit"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
+    padding: 0 15px;
+    border-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #fff;
+    background-color: #dc9814;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+}

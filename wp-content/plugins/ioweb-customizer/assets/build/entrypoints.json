@@ -1,0 +1,13 @@
+{
+  "entrypoints": {
+    "ioweb-custom": {
+      "js": [
+        "/wp-content/plugins/ioweb-customizer/assets/build/runtime.js",
+        "/wp-content/plugins/ioweb-customizer/assets/build/ioweb-custom.js"
+      ],
+      "css": [
+        "/wp-content/plugins/ioweb-customizer/assets/build/ioweb-custom.css"
+      ]
+    }
+  }
+}

@@ -1,0 +1,101 @@
+/*
+Header Cart
+========
+*/
+@media (min-width: 993px) {
+    .site-header-cart {
+        line-height: 60px;
+        margin-left: auto;
+    }
+    .shoptimizer-cart .cart-contents {
+        padding: 0;
+        color: #fff;
+    }
+    .shoptimizer-cart a.cart-contents .count {
+        position: relative;
+    }
+    .site-header .site-header-cart {
+        display: none;
+        width: auto;
+    }
+}
+.shoptimizer-cart .cart-contents .count {
+    opacity: 1;
+    font-size: 0.8em;
+}
+.shoptimizer-cart a.cart-contents:hover .count {
+    color: #fff;
+    background-color: #dc9814;
+}
+.shoptimizer-cart .cart-contents:after {
+    margin-left: 10px;
+}
+.shoptimizer-cart a.cart-contents .count {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    min-width: 28px;
+    height: 28px;
+    margin-left: 5px;
+    padding: 3px;
+    border: 1px solid #dc9814;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #dc9814;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.7px;
+    transition: all 0.2s;
+}
+.shoptimizer-cart a.cart-contents .count:after {
+    position: absolute;
+    bottom: 90%;
+    left: 50%;
+    width: 10px;
+    height: 6px;
+    margin-bottom: 1px;
+    margin-left: -6px;
+    border: 1px solid #dc9814;
+    border-bottom: 0;
+    border-top-left-radius: 99px;
+    border-top-right-radius: 99px;
+    content: "";
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.shoptimizer-cart a.cart-contents:hover .count:after {
+    bottom: calc(100% - 2px);
+}
+/* -- Cart icon -- */
+.shoptimizer-cart-icon svg {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    top: 6px;
+}
+.shoptimizer-cart-icon svg path {
+    stroke-width: 1.5px;
+}
+.shoptimizer-cart a.cart-contents .shoptimizer-cart-icon .mini-count {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #444;
+    border: 1px solid #444;
+    font-size: 8px;
+    line-height: 18px;
+    text-align: center;
+    transition: 0.2s all;
+}
+.shoptimizer-cart a.cart-contents:hover .shoptimizer-cart-icon .mini-count {
+    top: 2px;
+}
+.shoptimizer-cart .cart-contents {
+    display: block;
+    text-decoration: none;
+}

@@ -1,0 +1,55 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages"
+         },
+         "Preparing...": [
+            "준비 중..."
+         ],
+         "All jobs have been cancelled": [
+            "모든 작업이 취소되었습니다"
+         ],
+         "There is no more jobs to cancel": [
+            "더 이상 취소할 작업이 없습니다"
+         ],
+         "The jobs cancellation has failed": [
+            "작업 취소에 실패했습니다"
+         ],
+         "Cancel in-progress automatic jobs": [
+            "진행 중인 자동 작업을 취소합니다"
+         ],
+         "Enabling WPML's Advanced Translation Editor...": [
+            "WPML의 고급 번역 편집기 활성화 중..."
+         ],
+         "Force-enable WPML's Advanced Translation Editor": [
+            "WPML의 고급 번역 편집기 강제 활성화"
+         ],
+         "If you're running this website from two or more domains on the same installation, this action will allow both to use the Advanced Translation Editor. Don't use this if you've moved or copied the site to a different domain on a different server.": [
+            "동일한 설치에서 두 개 이상의 도메인으로 이 웹사이트를 운영하는 경우, 이 작업을 통해 두 도메인 모두에서 고급 번역 편집기를 사용할 수 있습니다. 사이트를 다른 서버의 다른 도메인으로 이동하거나 복사한 경우에는 이 기능을 사용하지 마십시오."
+         ],
+         "An error occurred while enabling WPML on both domains. Please try again.": [
+            "두 도메인에서 WPML을 활성화하는 동안 오류가 발생했습니다. 다시 시도해 주세요."
+         ],
+         "You can now use the Advanced Translation Editor from this site, as well as the other site(s) running from a different domain on the same installation.": [
+            "이제 이 사이트와 동일한 설치에서 다른 도메인으로 실행되는 다른 사이트에서도 고급 번역 편집기를 사용할 수 있습니다."
+         ],
+         "Domain name has been updated": [
+            "도메인 이름이 업데이트되었습니다"
+         ],
+         "Domain name update has been failed": [
+            "도메인 이름을 업데이트하지 못했습니다"
+         ],
+         "Update domain name in language switcher settings": [
+            "언어 변환기 설정에서 도메인 이름을 업데이트하세요"
+         ],
+         "Refresh license data to recognise license update": [
+            "라이선스 업데이트를 인식할 수 있도록 라이선스 데이터를 새로 고칩니다"
+         ],
+         "WPML License has been refreshed": [
+            "WPML 라이선스가 새로 고쳐졌습니다"
+         ]
+      }
+   }
+}

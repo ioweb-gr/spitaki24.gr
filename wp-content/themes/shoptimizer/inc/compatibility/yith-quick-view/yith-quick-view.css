@@ -1,0 +1,360 @@
+/* Shoptimizer WooCommerce Quick Views Styling */
+
+/* YITH */
+body ul.products li.product .yith-wcqv-button.button {
+	position: relative;
+    width: fit-content;
+    padding: 2px 8px;
+    display: inline-flex;
+    line-height: inherit;
+    font-size: 11px;
+    margin-bottom: 5px;
+    background: #eee;
+    font-weight: 500;
+    height: inherit;
+    color: #111;
+    transition: 0.2s border;
+    order: -1;
+}
+
+.woocommerce-card__header {
+	display: flex;
+	flex-direction: column;
+}
+
+.yith-wcqv-wrapper .summary h1 {
+	font-size: 26px;
+}
+
+.yith-wcqv-wrapper div.product .product_meta:has(span) {
+	font-size: 12px;
+	text-align: left;
+}
+
+.yith-wcqv-wrapper .stock {
+	font-size: 14px;
+}
+
+.yith-wcqv-wrapper .product_meta .sku_wrapper {
+	margin-left: 0;
+}
+
+.yith-wcqv-wrapper div.product .woocommerce-product-rating {
+    margin-bottom: 0.2em;
+}
+
+.yith-wcqv-wrapper .product p.price {
+	float: none;
+	clear: both;
+}
+
+.page .yith-wcqv-wrapper .product_meta {
+	width: auto;
+	left: auto;
+	right: auto;
+	margin: 0;
+}
+
+.yith-wcqv-wrapper div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+	position: absolute;
+	margin: 10px;
+	width: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background: #ccc;
+    display: inline-flex;
+    border-radius: 50%;
+}
+
+.yith-wcqv-wrapper div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger:before {
+	display: none;
+}
+
+.yith-wcqv-wrapper select {
+	width: 100%;
+	max-width: 100%;
+	height: 40px;
+	margin-bottom: 5px;
+	padding: 0 31px 0 11px;
+	border: 1px solid #e2e2e2;
+	border-radius: 3px;
+	background: url("data:image/svg+xml;charset=utf8,%3Csvg width='1792' height='1792' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3Ebackground%3C/title%3E%3Crect fill='none' id='canvas_background' height='402' width='582' y='-1' x='-1'/%3E%3C/g%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cpath fill='%23bfbfbf' id='svg_1' d='m1408,704q0,26 -19,45l-448,448q-19,19 -45,19t-45,-19l-448,-448q-19,-19 -19,-45t19,-45t45,-19l896,0q26,0 45,19t19,45z'/%3E%3C/g%3E%3C/svg%3E") calc(100% - 12px) 12px no-repeat;
+	background-size: 15px 15px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 40px;
+	text-indent: 0.01px;
+	text-overflow: "";
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: inherit;
+}
+
+.yith-wcqv-wrapper select:hover {
+	border-color: #ccc;
+}
+
+.yith-wcqv-wrapper div.product.bundled_product_summary {
+	display: flex;
+}
+
+#yith-quick-view-content div.product.bundled_product_summary div.images {
+	float: none;
+	width: 15%;
+	flex-shrink: 0;
+	margin-right: 20px;
+}
+
+.yith-wcqv-wrapper .bundled_product .details {
+	width: 100%;
+}
+
+.yith-wcqv-wrapper .commercekit-pdp-before-form_wrapper {
+	display: none;
+}
+
+
+/* CommerceKit swatch styling */
+.cgkit-as-wrap .cgkit-attribute-swatches {
+	padding: 0px;
+	margin: 0px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch {
+	list-style: none;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	line-height: 0;
+	margin:  0 5px 5px 0;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.ckit-button {
+	margin: 0 4px 4px 0;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button {
+	vertical-align: top;
+    display: block;
+    position: relative;
+	text-decoration: none;
+    font-weight: 400;
+	outline: none;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button span.cross {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: linear-gradient(to top left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) calc(50% - 0.4px), rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) calc(50% + 0.4px), rgba(0,0,0,0) 100%)
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button.cgkit-disabled span.cross {
+	display: block;
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	background: linear-gradient(to top left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) calc(50% - 0.4px), rgba(0,0,0,1) 50%, rgba(0,0,0,0) calc(50% + 0.4px), rgba(0,0,0,0) 100%)
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button.cgkit-disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button.cgkit-disabled:active {
+	pointer-events: none;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button.cgkit-disabled span.cross {
+	display: block;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button.cgkit-as-outofstock {
+	opacity: 0.1;
+}
+.variations .cgkit-chosen-attribute {
+	font-weight: normal;
+	font-size: 14px;
+	letter-spacing: 0;
+	text-transform: none;
+	padding-left: 3px;
+}
+.variations .cgkit-chosen-attribute span {
+	display: none;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button:before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #ccc;
+    margin: 0;
+	border-radius: 50%;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button:hover:before {
+	border-color: #353c4e;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button.cgkit-disabled:hover:before {
+	border-color: #ccc;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button.cgkit-swatch-selected:before {
+	border: 1px solid #353c4e;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color span.color-div {
+    display: block;
+	border-radius: 50%;
+	white-space: nowrap;
+    margin: 0px;
+    padding: 0px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image button {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image > button:before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #ccc;
+    margin: 0;
+    z-index: 1;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image > button:not(.cgkit-disabled):hover:before {
+	border-color: #353c4e;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image > button.cgkit-swatch-selected:before {
+	border: 1px solid #353c4e;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image > button span.cross {
+	width: 60px;
+	height: 60px;
+	z-index: 2;
+	display: none;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image > a.cgkit-swatch-selected:before {
+	border: 1px solid #353c4e;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image img {
+    white-space: nowrap;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button {
+	position: relative;
+	margin: 0px 5px 5px 0px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button button {
+	border: 1px solid #333;
+    display: inline-block;
+    padding: 0 9px;
+    border-radius: 2px;
+    background: #fff;
+    font-size: 13px;
+    line-height: 1;
+    color: #333;
+    position: relative;
+    min-width: 47px;
+    min-height: 43px;
+    line-height: 43px;
+    text-align: center;
+    transition: background 0.2s;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button button.button-fluid {
+	padding: 9px 15px;
+	min-width: auto;
+    min-height: auto;
+    line-height: 1.4;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button button:not(.cgkit-disabled):not(.cgkit-swatch-selected):hover {
+	background-color: #eee;
+}
+.cgkit-as-wrap .cgkit-swatch-title {
+	display: none;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button > button span.cross {
+	width: 100%;
+	height: 100%;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-button button.cgkit-swatch-selected {
+	background: #111;
+	border-color: #111;
+	color: #fff;
+}
+.cgkit-as-wrap .cgkit-chosen-attribute.no-selection {
+	opacity: 0.5;
+	font-weight: normal;
+	padding-left: 3px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches {
+	margin: 0;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-image button {
+	width: 60px;
+	height: 60px;
+	border-radius: 0;
+	border: 1px solid transparent;
+	transition: border 0.2s;
+	box-sizing: border-box;
+	background: unset;
+	padding: 0px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch > button {
+	width: 100%;
+	display: block;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button {
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	padding: 2px;
+}
+.cgkit-as-wrap .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color span.color-div {
+	width: 26px;
+	height: 26px;
+	text-indent: 100px;
+	overflow: hidden;
+}
+.summary .variations label {
+	font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.woocommerce-tabs table.woocommerce-product-attributes .no-selection,
+.woocommerce-tabs table.woocommerce-product-attributes .ckit-chosen-attribute_semicolon {
+	display: none;
+}
+/* PDP swatch sizes */
+.summary .cgkit-attribute-swatches .cgkit-attribute-swatch {
+	margin: 0px 8px 8px 0px;
+}
+.summary .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button {
+	width: auto;
+}
+.summary .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button {
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+	background: unset;
+	position: relative;
+}
+.summary .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color > button.cgkit-swatch-selected:before {
+	border-width: 2px;
+}
+.summary .cgkit-attribute-swatches .cgkit-attribute-swatch.cgkit-color span.color-div {
+	width: 32px;
+	height: 32px;
+	text-indent: 100px;
+	overflow: hidden;
+}
+
+

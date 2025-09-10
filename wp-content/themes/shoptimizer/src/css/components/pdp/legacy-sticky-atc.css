@@ -1,0 +1,158 @@
+/*
+Legacy Sticky ATC
+========
+*/
+.shoptimizer-sticky-add-to-cart {
+    z-index: 5;
+    position: fixed;
+    border-bottom: 1px solid #eee;
+    display: block;
+    overflow: hidden;
+    zoom: 1;
+    top: -300px;
+    right: 0;
+    left: 0;
+    padding: 0 0.15em;
+    background-color: #fff;
+    font-size: clamp(0.8125rem, 0.749rem + 0.2033vw, 0.875rem); /* 13-14 */
+    transition: all 0.45s;
+}
+.page-template .shoptimizer-sticky-add-to-cart {
+    display: none;
+}
+.site-content .shoptimizer-sticky-add-to-cart .col-full {
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 2.617924em;
+    background-color: #fff;
+}
+@media (max-width: 992px) {
+    .site-content .shoptimizer-sticky-add-to-cart .col-full {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+.single-product .site-content .shoptimizer-sticky-add-to-cart .col-full {
+    background-color: #fff;
+}
+.shoptimizer-sticky-add-to-cart.visible {
+    top: 0;
+}
+.admin-bar .shoptimizer-sticky-add-to-cart.visible {
+    top: 32px;
+}
+.sticky-t .shoptimizer-sticky-add-to-cart {
+    box-shadow: 5px 0 5px 0 rgba(27, 31, 35, 0.1);
+}
+@media (max-width: 992px) {
+    .shoptimizer-sticky-add-to-cart {
+        top: auto;
+        bottom: -95px;
+    }
+    .sticky-t .shoptimizer-sticky-add-to-cart.visible,
+    .admin-bar.sticky-t .shoptimizer-sticky-add-to-cart.visible {
+        top: auto;
+        bottom: 0px;
+    }
+}
+.sticky-b .shoptimizer-sticky-add-to-cart {
+    top: auto;
+    bottom: -300px;
+    border-top: 1px solid #eee;
+    border-bottom: none;
+}
+.sticky-b .shoptimizer-sticky-add-to-cart.visible,
+.admin-bar.sticky-b .shoptimizer-sticky-add-to-cart.visible {
+    top: auto;
+    bottom: 0;
+    box-shadow: 5px 0 5px 0 rgba(27, 31, 35, 0.1);
+}
+.shoptimizer-sticky-add-to-cart__content-product-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    color: #222;
+    min-width: 0;
+    flex: 1;
+    margin-right: auto;
+}
+.shoptimizer-sticky-add-to-cart__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shoptimizer-sticky-add-to-cart__content-title {
+    display: block;
+    padding-right: 15px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.shoptimizer-sticky-add-to-cart .star-rating {
+    margin-top: 2px;
+    font-size: 10px;
+}
+.shoptimizer-sticky-add-to-cart__content-price {
+    margin-right: 5px;
+    color: #111;
+}
+.shoptimizer-sticky-add-to-cart__content-price del {
+    margin-right: 5px;
+    opacity: 0.35;
+    font-size: 0.85em;
+}
+.shoptimizer-sticky-add-to-cart__content-button {
+    margin-left: auto;
+}
+.site .shoptimizer-sticky-add-to-cart__content-button a.button {
+    font-size: clamp(0.75rem, 0.6865rem + 0.2033vw, 0.8125rem); /* 12-13 */
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.shoptimizer-sticky-add-to-cart__content-button a.added_to_cart {
+    display: none;
+}
+.shoptimizer-sticky-add-to-cart img {
+    width: inherit;
+    max-height: 65px;
+}
+.admin-bar .shoptimizer-sticky-add-to-cart--slideInDown {
+    top: 32px;
+}
+.site .has-subscription-plans .shoptimizer-sticky-add-to-cart__content-button a.button {
+    display: none;
+}
+/* -- Sticky anchor -- */
+.sticky-d #shoptimizer-sticky-anchor,
+.sticky-m #shoptimizer-sticky-anchor {
+    scroll-margin-top: 80px;
+}
+.admin-bar.sticky-d #shoptimizer-sticky-anchor,
+.admin-bar.sticky-m #shoptimizer-sticky-anchor {
+    scroll-margin-top: 110px;
+}
+@media (max-width: 992px) {
+    .shoptimizer-sticky-add-to-cart img {
+        display: none;
+    }
+    .shoptimizer-sticky-add-to-cart__content-product-info {
+        padding-left: 0;
+    }
+}
+@media (max-width: 768px) {
+    .shoptimizer-sticky-add-to-cart img {
+        display: none;
+    }
+    .shoptimizer-sticky-add-to-cart__content {
+        padding: 10px 0;
+    }
+    .shoptimizer-sticky-add-to-cart__content-product-info {
+        padding-left: 0;
+    }
+    .shoptimizer-sticky-add-to-cart__content-button {
+        min-width: 200px;
+        text-align: right;
+    }
+}

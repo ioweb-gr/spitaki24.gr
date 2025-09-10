@@ -1,0 +1,24 @@
+{
+  "urls": [
+    {
+      "link": "https://shoptimizerdemo.commercegurus.com/",
+      "name": "criticalcss/home"
+    },
+    {
+      "link": "https://shoptimizerdemo.commercegurus.com/shop/",
+      "name": "criticalcss/shop-archive"
+    },
+    {
+      "link": "https://shoptimizerdemo.commercegurus.com/product/knitted-top/",
+      "name": "criticalcss/single-product"
+    },
+    {
+      "link": "https://shoptimizerdemo.commercegurus.com/blog/",
+      "name": "criticalcss/blog-archive"
+    },
+    {
+      "link": "https://shoptimizerdemo.commercegurus.com/2021/05/14/for-the-girls-our-top-birthday-picks/",
+      "name": "criticalcss/single-post"
+    }
+  ]
+}

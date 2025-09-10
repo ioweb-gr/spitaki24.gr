@@ -1,0 +1,67 @@
+/*
+Secondary Navigation
+========
+*/
+.secondary-navigation {
+    display: none;
+}
+@media (min-width: 993px) {
+    .secondary-navigation {
+        display: block;
+        float: right;
+        margin-left: auto;
+        padding-left: 1.2em;
+    }
+    .secondary-navigation .menu {
+        margin-right: -15px;
+    }
+    .secondary-navigation .sub-menu {
+        display: none;
+    }
+    .secondary-navigation ul {
+        margin: 0;
+    }
+    .secondary-navigation ul li {
+        display: inline-block;
+        position: relative;
+    }
+    .secondary-navigation ul li a {
+        position: relative;
+        display: block;
+        padding: 0.7em 0.875em 0;
+        color: #111;
+        font-size: 14px;
+    }
+    .secondary-navigation .menu .ri a,
+    .secondary-navigation .menu .fa a {
+        padding-top: 50px;
+    }
+    .secondary-navigation .menu li:not(.ri) a {
+        padding-top: 35px;
+    }
+    .secondary-navigation [class*=" ri-"],
+    .secondary-navigation [class^=ri-] {
+        -webkit-font-smoothing: inherit;
+    }
+    .secondary-navigation .icon-wrapper {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        top: 5px;
+        transform: translate(-50%, 0%);
+    }
+    .secondary-navigation .icon-wrapper svg {
+        width: 28px;
+        height: 28px;
+    }
+    .secondary-navigation .icon-wrapper svg path {
+        stroke-width: 1.5px;
+    }
+    .secondary-navigation .menu-item {
+        padding: 0 5px;
+        border-left: 1px solid #eee;
+    }
+    .secondary-navigation .menu-item:first-child {
+        border: 0;
+    }
+}

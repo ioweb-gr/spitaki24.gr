@@ -1,0 +1,111 @@
+/* -- Germanized Plugin Styling -- */
+
+li.product p.wc-gzd-rating-authenticity-status {
+	margin-bottom: 5px;
+}
+
+li.product p.wc-gzd-additional-info {
+	font-size: 12px;
+	margin-top: 0;
+    margin-bottom: 0;
+}
+
+li.product p.wc-gzd-additional-info:last-of-type {
+    margin-bottom: 15px;
+}
+
+.products .wc-gzd-additional-info {
+	position: relative;
+	z-index: 10;
+}
+
+.wc-gzd-additional-info a,
+.entry-content .wc-gzd-additional-info a {
+	text-decoration: underline;
+}
+
+.widget_shopping_cart.widget .wc-gzd-cart-info.wc-gzd-item-desc h2 {
+	font-size: 12px;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.widget_shopping_cart.widget p.total.total-cart-tax.wc-gzd-total-mini-cart {
+	border: none;
+    padding-top: 0px;
+    font-weight: normal;
+    font-size: 13px;
+    margin-bottom: 1em;
+}
+
+.widget_shopping_cart.widget p.total.wc-gzd-total-mini-cart {
+	font-size: 14px;
+	text-align: center;
+}
+
+.widget_shopping_cart.widget p.total.wc-gzd-total-mini-cart a {
+	color: #111;
+}
+
+.site-main .cart_totals p.wc-gzd-additional-info {
+	display: block;
+	width: auto;
+	padding-top: 0;
+	border: none;
+	text-align: center;
+}
+
+.entry-content .wc-gzd-additional-wrapper p {
+	font-size: 14px;
+	text-align: center;
+}
+
+.entry-content .product p.wc-gzd-additional-info {
+	margin: 0;
+	font-size: 0.8em;
+}
+.entry-content .product p.wc-gzd-additional-info:last-of-type {
+    margin-bottom: 1rem;
+}
+
+.wc-gzd-product-name-left img {
+	margin-right: 15px;
+	max-width: 50px;
+}
+
+.site-main .wc-gzd-product-name-left,
+.site-main .wc-gzd-product-name-right {
+	display: table-cell;
+	float: none;
+	vertical-align: middle;
+}
+
+.wc-gzd-checkbox-placeholder-legal {
+	margin-top: 10px;
+}
+
+#order_review .wc-gzd-checkbox-placeholder p.form-row label {
+	position: relative;
+}
+
+.wc-gzd-checkbox-placeholder-legal input.input-checkbox {
+	position: absolute;
+	margin-top: 3px;
+}
+
+.wc-gzd-checkbox-placeholder-legal .woocommerce-gzd-legal-checkbox-text {
+	display: block;
+	padding-left: 30px;
+}
+
+.woocommerce-checkout-review-order-table .wc-gzd-cart-item-thumbnail,
+.woocommerce-checkout-review-order-table .wc-gzd-cart-info {
+	display: none;
+}
+
+@media (min-width: 993px) { 
+	#order_review_heading.wc-gzd-heading-moved {
+		float: none;
+		width: 100%;
+	}
+}

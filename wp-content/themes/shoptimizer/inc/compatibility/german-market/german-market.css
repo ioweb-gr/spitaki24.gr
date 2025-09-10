@@ -1,0 +1,14 @@
+/* -- German Market Plugin Styling -- */
+
+.woocommerce_de_versandkosten, .woocommerce-de_price_taxrate {
+	clear: both;
+}
+#reviews label.german-market-privacy-declaration-product-review {
+	display: inline-block;
+}
+#german_market_privacy_declaration {
+	margin-right: 6px;
+}
+.woocommerce_de_versandkosten, .woocommerce-de_price_taxrate, .shipping_de.shipping_de_string {
+	position: relative;
+}

@@ -1,0 +1,32 @@
+/* Sendy Widget Pro */
+body .swp-form-cont {
+	margin: 0;
+}
+body .swp-form .swp-row {
+	margin-bottom: 10px;
+}
+body .swp-form .swp-row .swp-spinner {
+	display: none !important;
+}
+.swp-email-valid-error, .swp-raw-error, .swp-email-duplicate-error, .swp-captcha-error, .swp-success {
+	background: #fff3cc;
+	font-size: 13px;
+	padding: 10px;
+	line-height: 1.45;
+	margin-bottom: 10px;
+	border-radius: 0.3rem;
+	text-align: center;
+	overflow: hidden;
+}
+.swp-success,
+dialog.cgpopup-modal .cgpopup-modal--container .swp-success {
+	font-size: 15px;
+    padding: 1.4rem;
+    border: 1px solid #ff9a00;
+    background: #fff1dc;
+    margin: 10px 0;
+    border-radius: 0;
+}
+form.swp-form:has(.swp-success[style*="display: block"]) .swp-row {
+	display: none;
+}

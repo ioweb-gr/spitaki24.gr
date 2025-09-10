@@ -1,0 +1,33 @@
+/* Jetpack Styling */
+
+.site-main #jp-relatedposts h3.jp-relatedposts-headline em {
+	font-weight: 400;
+}
+
+.site-main #jp-relatedposts h3.jp-relatedposts-headline {
+	font-size: 20px;
+}
+
+.site-main #jp-relatedposts .jp-relatedposts-items-visual .jp-relatedposts-post {
+	transition: all 0.2s;
+}
+
+.site-main #jp-relatedposts .jp-relatedposts-items-visual h4.jp-relatedposts-post-title {
+	padding-top: 15px;
+	padding-right: 15px;
+	font-size: 15px;
+	line-height: 1.5em;
+}
+
+.site-main #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a {
+	border: 0;
+	color: #111;
+}
+
+.site-main #jp-relatedposts h3.jp-relatedposts-headline em:before {
+	display: none;
+}
+
+.site-main #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post:hover .jp-relatedposts-post-title a {
+	text-decoration: none;
+}

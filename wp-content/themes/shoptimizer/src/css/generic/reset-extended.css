@@ -1,0 +1,290 @@
+/*
+Reset Extended
+========
+*/
+html {
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-wrap: break-word;
+  scrollbar-gutter: stable;
+}
+/* -- Elements 'display: block' by default. -- */
+img, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+}
+/* -- Constrain images and videos and preserve aspect ratio. -- */
+img, picture, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* -- Pretty text wrapping -- */
+h1, h2, h3, h4 {
+  text-wrap: pretty;
+}
+/* -- Disable zoom on tappable elements -- */
+a, button, input {
+  touch-action: manipulation;
+}
+/* -- Smooth text -- */
+body, button, input, textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* -- Removes the default spacing and border -- */
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ol, ul, menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* -- Prevent resizing textareas horizontally -- */
+textarea {
+  resize: vertical;
+}
+/* -- Make elements stay hidden by default -- */
+[hidden] {
+  display: none;
+}
+/* Set spacing between cells to 0. Remove gaps between borders -- */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+/* -- Buttons-- */
+button,
+[role="button"] {
+  cursor: pointer;
+}
+button::-moz-focus-inner,input::-moz-focus-inner {
+  padding: 0;
+  border: 0
+}
+/* -- Prevent pointer cursor. -- */
+:disabled {
+  cursor: default;
+}
+/* -- Forms -- */
+button,input:where([type='button']),input:where([type='reset']),input:where([type='submit']) {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+mark {
+  background-color: transparent;
+}
+address {
+  font-style: normal;
+}
+article,aside,figcaption,figure,footer,header,hgroup,main,menu,nav,section {
+  display: block;
+}
+audio,canvas,progress,video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+a {
+  color: #2c2d33;
+  background-color: transparent;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:active, a:hover {
+  outline: 0;
+}
+a, button, input {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+}
+mark {
+  color: #000;
+  background: #ff0;
+}
+small {
+  font-size: 75%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 0;
+}
+optgroup {
+  margin: 0;
+  color: inherit;
+}
+input[type=checkbox],input[type=radio] {
+  box-sizing: border-box;
+}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  margin: 1.618em 0;
+  padding: 1em 1.618em 1.618em;
+  border: 0;
+}
+legend {
+  border: 0;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  font-size: 15px;
+}
+legend, ol, td, th, ul {
+  padding: 0;
+}
+address,p,table {
+  margin: 0 0 1.21575rem;
+}
+p:empty {
+  margin: 0;
+}
+ol, ul {
+  margin: 0 0 1.41575em 20px;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li > ol, li > ul {
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+b,dt,strong {
+  font-weight: 600;
+}
+dd {
+  margin: 0 0 1.618em;
+}
+pre {
+  overflow: auto;
+  max-width: 100%;
+  margin-bottom: 1.618em;
+  padding: 1.618em;
+  background: rgba(0,0,0,.1);
+  font-family: "Courier 10 Pitch",Courier,monospace;
+}
+code,kbd,tt,var {
+  padding: .202em .5407911001em;
+  background-color: rgba(0,0,0,.05);
+  font-family: Monaco,Consolas,"Andale Mono","DejaVu Sans Mono",monospace;
+}
+abbr,acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+ins,mark {
+  background: 0 0;
+  font-weight: 400;
+  text-decoration: none;
+}
+table td,
+table th {
+  text-align: left;
+  vertical-align: middle;
+}
+table caption,
+table th {
+  font-weight: 600;
+}
+select, embed, iframe, object, video {
+  max-width: 100%;
+}
+/* -- Gallery -- */
+.gallery {
+  margin-bottom: 1em;
+}
+.gallery .gallery-item {
+  float: left;
+}
+.gallery {
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: hidden;
+}
+.gallery .gallery-item {
+  margin-bottom: 2em;
+  padding: 0 15px;
+}
+.gallery .gallery-item .gallery-icon a {
+  display: block;
+}
+.gallery .gallery-item .gallery-icon img {
+  height: auto;
+  margin: 0 auto;
+  border: 0;
+}
+.gallery .gallery-item .gallery-caption {
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+.gallery.gallery-columns-1 .gallery-item {
+  width: 100%;
+}
+.gallery.gallery-columns-2 .gallery-item {
+  width: 50%;
+}
+.gallery.gallery-columns-2 .gallery-item:nth-child(2n+1) {
+  clear: left;
+}
+.gallery.gallery-columns-3 .gallery-item {
+  width: 33.3%;
+}
+.gallery.gallery-columns-3 .gallery-item:nth-child(3n+1) {
+  clear: left;
+}
+.gallery.gallery-columns-4 .gallery-item {
+  width: 25%;
+}
+.gallery.gallery-columns-4 .gallery-item:nth-child(4n+1) {
+  clear: left;
+}
+.gallery.gallery-columns-5 .gallery-item {
+  width: 20%;
+}
+.gallery.gallery-columns-5 .gallery-item:nth-child(5n+1) {
+  clear: left;
+}
+.gallery.gallery-columns-6 .gallery-item {
+  width: 16.666666667%;
+}
+.gallery.gallery-columns-7 .gallery-item {
+  width: 14.285714286%;
+}
+.gallery.gallery-columns-8 .gallery-item {
+  width: 12.5%;
+}
+.gallery.gallery-columns-9 .gallery-item {
+  width: 11.111111111%
+}

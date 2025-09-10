@@ -1,0 +1,24 @@
+/* -- WooCommerce Subscriptions -- */
+.product-subtotal span.subscription-price {
+    line-height: 1.5em;
+    display: inline-block;
+    min-width: 110px;
+    padding-left: 15px;
+}
+td.product-subtotal span.subscription-price {
+    max-width: 150px;
+}
+.product-price span.subscription-details {
+    display: block;
+    font-size: 12px;
+    min-width: 135px;
+    margin-top: -4px;
+}
+.first-payment-date {
+    line-height: 1.1em;
+}
+.woocommerce-view-subscription table th,
+.woocommerce-view-subscription table td {
+    padding-left: 0px;
+    padding-bottom: 0px;
+}

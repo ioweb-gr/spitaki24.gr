@@ -1,0 +1,27 @@
+/* Shoptimizer Product Video for WooCommerce Styling: https://woocommerce.com/products/product-video-for-woocommerce/  */
+
+/* WooCommerce Product Video plugin - iframe - hide the hover image */
+.woocommerce-image__wrapper .woocommerce-product-gallery:has(iframe) + img.gallery-image {
+    display: none;
+}
+
+.woocommerce-image__wrapper .woocommerce-product-gallery iframe {
+    position: relative;
+    z-index: 0;
+}
+
+/* WooCommerce Product Video plugin - iframe */
+
+.woocommerce-product-gallery .feat_image {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+.woocommerce-product-gallery .feat_image iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

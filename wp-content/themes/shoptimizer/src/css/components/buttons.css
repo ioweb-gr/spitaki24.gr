@@ -1,0 +1,100 @@
+/*
+Buttons
+========
+*/
+.added_to_cart.loading,
+.button.loading,
+.modal button.close:hover,
+button.loading,
+input[type=button].loading,
+input[type=reset].loading,
+input[type=submit].loading {
+    opacity: 0.5;
+}
+.added_to_cart.disabled,
+.added_to_cart:disabled,
+.button.disabled,
+.button:disabled,
+button.disabled,
+button:disabled,
+input[type=button].disabled
+,input[type=button]:disabled,
+input[type=reset].disabled,
+input[type=reset]:disabled,
+input[type=submit].disabled,
+input[type=submit]:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+.added_to_cart.disabled:hover,
+.added_to_cart:disabled:hover,
+.button.disabled:hover,
+.button:disabled:hover,
+button.disabled:hover,
+button:disabled:hover,
+input[type=button].disabled:hover,
+input[type=button]:disabled:hover,
+input[type=reset].disabled:hover,
+input[type=reset]:disabled:hover,
+input[type=submit].disabled:hover,
+input[type=submit]:disabled:hover {
+    opacity: 0.35;
+}
+/* -- Loading spinner in button -- */
+.single-product .product form.cart .single_add_to_cart_button:after,
+.ajax_add_to_cart.add_to_cart_button:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -9px;
+    opacity: 0;
+    transition: opacity 0s ease;
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-left-color: #fff;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.single-product .product form.cart .loading.single_add_to_cart_button:after,
+.loading.ajax_add_to_cart.add_to_cart_button:after {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+    animation: rotate 450ms infinite linear;
+}
+.single-product div.product form.cart .button.loading,
+.ajax_add_to_cart.add_to_cart_button.loading {
+    color: transparent !important;
+}
+@media (max-width: 992px) {
+    ul.products li.product .added_to_cart,
+    ul.products li.product .button {
+        opacity: 1;
+    }
+}
+/* -- Lock icon -- */
+#payment .place-order .button:before,
+.cart-collaterals .checkout-button:before,
+.widget_shopping_cart .buttons .checkout:before,
+.wp-element-button.wc-block-cart__submit-button:before,
+.wp-element-button.wc-block-components-button.wc-block-components-checkout-place-order-button:before {
+    content: "";
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    background-color: #fff;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z'%3E%3C/path%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+}
+.widget_shopping_cart .buttons .checkout:before {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 1px;
+}

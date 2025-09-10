@@ -1,0 +1,61 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages"
+         },
+         "WPML Translation Editor": [
+            "WPML Translation Editor"
+         ],
+         "WordPress Editor": [
+            "WordPress 편집기"
+         ],
+         "Translate with the WordPress Editor when you want to create different designs for translations, or if you're translating content that's incompatible with WPML's Translation Editor.": [
+            "번역된 콘텐츠에 대해 다른 디자인을 만들고 싶거나 WPML의 번역 에디터와 호환되지 않는 콘텐츠를 번역할 때 WordPress 에디터로 번역하세요."
+         ],
+         "What do you want to translate with the WordPress Editor?": [
+            "WordPress 에디터로 무엇을 번역하시겠습니까?"
+         ],
+         "I understand, switch to the WordPress Editor": [
+            "이해했습니다. WordPress 에디터로 전환하겠습니다"
+         ],
+         "What do you want to translate with WPML Translation Editor?": [
+            "WPML 번역 에디터로 무엇을 번역하시겠습니까?"
+         ],
+         "I understand, switch to WPML's Translation Editor": [
+            "이해했습니다. WPML의 번역 에디터로 전환하겠습니다"
+         ],
+         "Apply": [
+            "적용"
+         ],
+         "Cancel": [
+            "취소"
+         ],
+         "Only this %s": [
+            "이 %s만"
+         ],
+         "Recommended": [
+            "권장"
+         ],
+         "All %s": [
+            "모든 %s"
+         ],
+         "All the site's content": [
+            "사이트의 모든 컨텐츠"
+         ],
+         "Are you sure?": [
+            "확실합니까?"
+         ],
+         "The WordPress Editor doesn't offer Automatic Translation, Translation Memory and other features that make translation easier.": [
+            "WordPress 에디터는 자동 번역, 번역 메모리 및 번역을 더 쉽게 만드는 다른 기능들을 제공하지 않습니다."
+         ],
+         "And, if you switch back to WPML's Translation Editor, you will need to translate from scratch what you translated with the WordPress editor.": [
+            "그리고 WPML의 번역 에디터로 다시 전환하면, WordPress 에디터로 번역한 것을 처음부터 다시 번역해야 합니다."
+         ],
+         "When you update content that you previously translated with the WordPress Editor, you will need to translate from scratch.": [
+            "이전에 WordPress 에디터로 번역한 콘텐츠를 업데이트할 때는 처음부터 다시 번역해야 합니다."
+         ]
+      }
+   }
+}

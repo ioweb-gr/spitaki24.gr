@@ -1,0 +1,158 @@
+/*
+Notices
+========
+*/
+.woocommerce-message {
+    max-width: 1170px;
+    margin-bottom: 1em;
+    background-color: #3bb54a;
+    margin-right: auto;
+    margin-left: auto;
+}
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message,
+.woocommerce-noreviews,
+p.no-comments {
+    clear: both;
+    margin-bottom: 2rem;
+    margin-left: 0;
+    padding: 1em 1.618em;
+    border-left: 0.4180469716em solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-size: clamp(0.8125rem, 0.749rem + 0.2033vw, 0.875rem); /* 13-14 */
+    color: #fff;
+    outline: 0;
+}
+.woocommerce-message .button:hover {
+    opacity: 0.75;
+}
+ul.woocommerce-error li,
+ul.woocommerce-info li {
+    margin-bottom: 0;
+}
+.woocommerce-error a,
+.woocommerce-info a,
+.woocommerce-message a,
+.woocommerce-noreviews a,
+p.no-comments a {
+    color: #fff;
+    transition: 0.2s all;
+}
+.woocommerce-error a:hover,
+.woocommerce-info a:hover,
+.woocommerce-message a:hover,
+.woocommerce-noreviews a:hover,
+p.no-comments a:hover {
+    opacity: 0.7;
+    color: #fff;
+}
+.woocommerce-error a.button:hover,
+.woocommerce-info a.button:hover,
+.woocommerce-noreviews a.button:hover,
+p.no-comments a.button:hover {
+    opacity: 1;
+}
+.woocommerce-error .button,.woocommerce-info .button,
+.woocommerce-message .button,
+.woocommerce-noreviews .button,
+p.no-comments .button {
+    float: right;
+    padding: 0 0 0 1em;
+    border-width: 0 0 0 1px;
+    border-left-style: solid;
+    border-left-color: rgba(255, 255, 255, 0.25)!important;
+    border-radius: 0;
+    color: #fff;
+    background: 0 0;
+    box-shadow: none;
+    line-height: 1.618;
+    font-weight: 600;
+}
+.woocommerce-error .button:hover,
+.woocommerce-info .button:hover,
+.woocommerce-message .button:hover,
+.woocommerce-noreviews .button:hover,
+p.no-comments .button:hover {
+    opacity: 0.7;
+    color: #fff;
+    background: 0 0;
+}
+.woocommerce-error pre,.woocommerce-info pre,
+.woocommerce-message pre,
+.woocommerce-noreviews pre,
+p.no-comments pre {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.woocommerce-error {
+    list-style: none;
+}
+.woocommerce-error:focus-visible {
+    outline: none;
+}
+/* -- Colors -- */
+.woocommerce-info,
+.woocommerce-noreviews,
+p.no-comments {
+    background-color: #3d9cd2;
+}
+.woocommerce-error {
+    background-color: #e2401c;
+}
+.woocommerce-message .buttons-wrapper {
+    display: none;
+}
+@media (min-width: 993px) {
+    .woocommerce-message .message-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .woocommerce-message .message-content a.button {
+        float: none;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+.woocommerce-message a.button:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.16em;
+}
+@media (max-width: 768px) {
+    .woocommerce-message .message-inner {
+        text-align: center;
+    }
+    .woocommerce-message .message-content a.button {
+        display: block;
+        padding-left: 0;
+        border: none;
+        float: none;
+        margin: 0.5rem auto 0 auto;
+        font-size: 13px;
+    }
+}
+/* -- Cart Page Notices -- */
+.woocommerce-cart .woocommerce > .woocommerce-error {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+.woocommerce-cart .woocommerce-notices-wrapper {
+    margin-bottom: 2rem;
+}
+.woocommerce-cart .woocommerce-notices-wrapper:empty {
+    margin: 0;
+}
+.woocommerce-cart .woocommerce-notices-wrapper:not(:empty) + .checkout-wrap {
+    margin-top: 2.5rem;
+}
+.woocommerce-cart:has(.checkout-wrap) .archive-header .woocommerce-message {
+    margin-top: 1.5rem;
+    margin-bottom: 0px;
+}
+@media (max-width: 992px) {
+    .woocommerce-cart:has(.checkout-wrap) .archive-header .woocommerce-message {
+        margin-bottom: 0.5rem;
+    }
+}

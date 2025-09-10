@@ -1,0 +1,52 @@
+/*
+Product Carousel
+========
+*/
+@media (max-width: 992px) {
+    .related.products ul.products,
+    .upsells.products ul.products,
+    .cross-sells ul.products,
+    .m-grid-2 .cross-sells ul.products,
+    .mobile-scroll ul.products {
+        display: flex;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-top: 5px;
+        padding-right: 1em;
+        padding-bottom: 20px;
+        margin-left: -15px;
+        padding-left: 1.25em;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+    }
+    .related.products ul.products,
+    .upsells.products ul.products {
+    	width: calc(100% + 1.95em);
+    }
+    .related.products ul.products li.product,
+    .upsells.products ul.products li.product,
+    .cross-sells ul.products li.product,
+    .mobile-scroll ul.products li.product {
+        display: flex;
+        max-width: 320px;
+        min-width: 320px;
+        flex-direction: column;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+    .m-grid-1 .related.products ul.products li.product,
+    .m-grid-1 .upsells.products ul.products li.product,
+    .m-grid-1 .cross-sells ul.products li.product,
+    .m-grid-1 .mobile-scroll ul.products li.product {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .related.products ul.products li.product .woocommerce-card__header,
+    .upsells.products ul.products li.product .woocommerce-card__header,
+    .cross-sells ul.products li.product .woocommerce-card__header,
+    .mobile-scroll ul.products li.product .woocommerce-card__header {
+        box-shadow: 0 0 10px rgb(0 0 0/10%);
+        padding: 15px;
+    }
+}

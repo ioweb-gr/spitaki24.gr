@@ -1,0 +1,70 @@
+# Wordpress - ignore core, configuration, examples, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+
+# Core
+#
+# Note: if you want to stage/commit WP core files
+# you can delete this whole section/until Configuration.
+/wp-admin/
+/wp-content/index.php
+/wp-content/languages
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
+# Configuration
+wp-config.php
+
+# Example themes
+/wp-content/themes/twenty*/
+
+# Example plugin
+/wp-content/plugins/hello.php
+
+# Uploads
+/wp-content/uploads/
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
+
+# All plugins
+#
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+#/wp-content/plugins
+
+# All themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+#/wp-content/themes
+
+
+.idea
+**zip
+**tar.gz
+/.well-known
+/vendor
+/node_modules
+/wp-content/webp-express
+/wp-snapshots
+/wp-content/updraft
+/wp-content/wflogs/GeoLite2-Country.mmdb
+/wp-content/wflogs/*
+/wp-content/wpvivid_staging/*
+/wp-content/cache/*
+/wp-content/plugins/litespeed-cache/tpl/cache
+/wp-content/plugins/polylang/integrations/cache
+/wp-content/themes/Divi/core/components/cache
+/wp-content/et-cache
+/wp-content/ai1wm-backups
+/wp-content/backups-dup-pro
+/wp-content/upgrade-temp-backup

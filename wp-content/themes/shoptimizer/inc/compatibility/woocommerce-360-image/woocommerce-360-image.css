@@ -1,0 +1,16 @@
+/* Shoptimizer WooCommerce 360º Image Styling: https://woocommerce.com/products/woocommerce-360-image/ */
+
+.site-main #container.wc360-container {
+        width: 100%;
+}
+@media (min-width: 770px) {
+    .site-main #container.wc360-container {
+        width: 60%;
+    }
+    .pdp-g-regular .site-main #container.wc360-container {
+        width: 48%;
+    }
+    .pdp-g-skinny .site-main #container.wc360-container {
+        width: 40%;
+    }
+}

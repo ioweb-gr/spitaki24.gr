@@ -1,0 +1,378 @@
+/*
+Comments
+========
+*/
+#reviews {
+	outline: 0;
+	margin-bottom: 2rem;
+}
+#reviews .commentlist {
+	margin-top: 1.5rem;
+	margin-bottom: 0;
+	margin-left: 0;
+	list-style: none;
+}
+#reviews .commentlist li {
+	margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+	padding-left: 0;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+}
+@media (min-width: 993px) {
+	#reviews .commentlist li {
+		margin-bottom: 1.75rem;
+		padding-bottom: 1.75rem;
+	}
+}
+#reviews .commentlist li .avatar {
+	float: left;
+	width: 70px;
+	height: auto;
+	margin-top: 0.25rem;
+	margin-right: 0;
+	border-radius: 50%;
+}
+#reviews .commentlist li .comment_container .comment-text {
+	float: right;
+	width: calc(100% - 100px);
+}
+#reviews .commentlist li p.meta {
+	margin-bottom: 0.5rem;
+}
+#reviews .commentlist li p.meta .verified {
+	font-size: 0.815em;
+	font-style: normal;
+}
+@media (max-width: 770px) {
+	#reviews .commentlist li p.meta .verified {
+		display: block;
+		margin-top: -0.15rem;
+		margin-bottom: 0.25rem;
+	}
+}
+#reviews .commentlist li time {
+	display: block;
+	color: #555;
+    font-size: 0.8em;
+}
+#reviews .woocommerce-review__dash {
+	display: none;
+}
+#reviews .commentlist li .comment_container .comment-text .star-rating {
+	float: right;
+	top: 6px;
+}
+#reviews .commentlist li .description {
+	font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+}
+#reviews .commentlist li .description p:last-child {
+	margin-bottom: 0;
+}
+.site .woocommerce-noreviews {
+	padding: 0px;
+	margin: 0;
+	color: inherit;
+	background-color: transparent;
+	border: none;
+	font-size: clamp(0.875rem, 0.7188rem + 0.5vw, 1rem); /* 14-16 */
+}
+@media (max-width: 770px) {
+	#reviews .commentlist li .avatar {
+		width: 50px;
+	}
+	#reviews .commentlist li .comment_container .comment-text .star-rating {
+		top: 3px;
+	}
+	#reviews .commentlist li .comment_container .comment-text {
+		width: calc(100% - 70px);
+	}
+}
+/* -- Review Reply -- */
+#reviews .commentlist ul.children {
+	clear: both;
+	margin-left: 70px;
+}
+@media (min-width: 993px) {
+	#reviews .commentlist {
+		margin-top: 2rem;
+	}
+	#reviews .commentlist ul.children {
+		margin-left: 100px;
+	    padding-top: 0.5rem;
+	    clear: both;
+	}
+}
+#reviews .commentlist ul.children li.comment {
+	border: none;
+	background-color: #f0f5fa;
+	padding: 1.5rem;
+	border-left: 2px solid #d4e2ee;
+}
+#reviews .commentlist ul.children li.comment .comment-text {
+	margin-bottom: 0;
+}
+#reviews li.review:has(.children) .comment-text {
+	margin-bottom: 1rem;
+}
+@media (min-width: 993px) {
+	#reviews .commentlist ul.children li.comment {
+		padding: 2rem;
+	}
+}
+#reviews .commentlist li ul.children li:last-child {
+	margin-bottom: 0;
+}
+#reviews .commentlist ul.children li.comment .avatar {
+	display: none;
+}
+#reviews .commentlist li ul.children .comment_container .comment-text {
+	float: none;
+	width: 100%;
+}
+#reviews .commentlist li ul.children .comment_container .comment-text p:last-child {
+	margin-bottom: 0;
+}
+/* -- Reply Form -- */
+@media (min-width: 993px) {
+	#respond .comment-form-author {
+		float: left;
+		width: 47%;
+		margin-right: 2.703529412%;
+	}
+	#respond .comment-form-email {
+		float: left;
+		width: 50%;
+	}
+	#respond .comment-form-comment {
+		clear: both;
+	}
+}
+#respond {
+	font-size: 15px;
+	padding-top: 1.5rem;
+}
+#respond .comment-form-url {
+	display: none;
+}
+#respond .comment-reply-title {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	line-height: 1.35;
+	color: #111;
+	font-size: clamp(1.25rem, 0.9959rem + 0.813vw, 1.5rem); /* 20-24 */
+}
+#respond .comment-reply-title a,
+#respond .comment-reply-title a:hover {
+	color: #111;
+}
+#respond p.comment-notes {
+	font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+}
+#reviews .comment-form-rating {
+	margin-bottom: 1rem;
+}
+#reviews .comment-form-rating p.stars a {
+	width: 1.6em;
+	height: 1.6em;
+}
+#reviews .comment-form-rating p.stars a:before {
+	width: 1.6em;
+	height: 1.6em;
+	font-size: 24px;
+}
+#respond label {
+	display: block;
+	margin-bottom: 0.35rem;
+	color: #222;
+	font-size: 15px;
+	font-weight: 600;
+}
+#respond .comment-form-author input,
+#respond .comment-form-email input,
+#respond textarea {
+	width: 100%;
+}
+#respond input[type="checkbox"] {
+	position: absolute;
+    top: 4px;
+    left: 0;
+    margin: 0;
+}
+#respond p:has(input[type="checkbox"]) {
+	position: relative;
+	padding-left: 1.5rem;
+	clear: both;
+	margin-bottom: 0.5rem;
+}
+#respond p:has(input[type="checkbox"]):last-child {
+	margin-bottom: 2rem;
+}
+#respond p:has(input[type="checkbox"]) label {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+}
+/* -- Comments -- */
+.comment-list #respond,
+.comment-list .comment-content {
+	float: right;
+	width: calc(100% - 70px);
+}
+.comment-list .comment-meta {
+	float: left;
+	width: 54px;
+}
+@media (min-width: 993px) {
+	.comment-list #respond,
+	.comment-list .comment-content {
+		width: calc(100% - 100px);
+	}
+	.comment-list .comment-meta {
+		width: 74px;
+	}
+	.comment-list #respond .comment-form-author {
+		float: left;
+		width: 48%;
+	}
+	.comment-list #respond .comment-form-email {
+		float: right;
+		width: 48%;
+	}
+	.comment-list .comment-body #respond {
+		margin-top: 2rem;
+		margin-bottom: 0.5rem;
+		padding: 2.5em;
+		background-color: #f9f9f9;
+		position: relative;
+	}
+	.comment-list .comment-body #respond .comment-reply-title {
+		margin-bottom: 0.5rem;
+		color: #111;
+		font-size: 20px;
+	}
+	#comments .comment-list .children {
+		margin-left: 6em;
+	}
+}
+#comments .comments-title {
+	margin-bottom: 1.5rem;
+	font-size: 24px;
+}
+.comments-area {
+	margin: 1rem 0 3rem 0;
+	padding-top: 2rem;
+}
+#comments .comment-list {
+	margin-bottom: 0;
+	margin-left: 0;
+	list-style: none;
+}
+.comment-list li {
+	margin-bottom: 1.75rem;
+	padding-bottom: 1.75rem;
+	padding-left: 0;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	clear: both;
+}
+#comments .comment-list .comment-meta .avatar {
+	max-width: 50px;
+	height: auto;
+	margin-top: 5px;
+	margin-bottom: 0.5rem;
+	border-radius: 50%;
+}
+@media (min-width: 993px) {
+	#comments .comment-list .comment-meta .avatar {
+		max-width: 74px;
+	}
+}
+#comments .comment-list .comment-content cite {
+	margin-top: 0;
+	font-size: 16px;
+	font-weight: 600;
+}
+#comments .comment-list .comment-content cite a {
+	color: #222;
+}
+#comments .comment-list .comment_meta {
+	margin-bottom: 0.5rem;
+}
+#comments .comment-list .comment_meta a.comment-date {
+	display: block;
+	color: #555;
+	font-size: 13px;
+	pointer-events: none;
+}
+#comments .comment-list .comment-content .comment-text {
+	font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+}
+.comment-list #respond p.comment-form-url {
+	display: none;
+}
+#comments .comment-list .reply a {
+	display: inline-block;
+	margin-right: 3px;
+	padding: 3px 10px;
+	border-radius: 2px;
+	color: #666;
+	border: 1px solid #e2e2e2;
+	font-size: 11px;
+}
+#comments .comment-list .reply a:hover {
+	color: #222;
+	border-color: #ccc;
+}
+.comment-awaiting-moderation {
+	font-size: 10px;
+	display: block;
+	text-align: center;
+}
+#comments .comment-list .children {
+	padding-top: 2rem;
+	margin-left: 4.5rem;
+	list-style: none;
+	clear: both;
+}
+@media (min-width: 993px) {
+	#comments .comment-list .children {
+		margin-left: 6.5rem;
+	}
+}
+#comments .comment-list .children li:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border: 0;
+}
+#respond p.form-submit {
+	margin-top: 1.5rem;
+	margin-bottom: 0;
+}
+#respond #cancel-comment-reply-link {
+	display: block;
+	position: absolute;
+	top: 15px;
+	right: 40px;
+	width: 1em;
+	height: 1em;
+	font-size: 0px;
+	line-height: 1;
+	text-align: center;
+}
+#respond #cancel-comment-reply-link:before {
+	opacity: 0.4;
+	content: "";
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 18L18 6M6 6L18 18' stroke='%234A5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	transition: opacity 0.2s;
+}
+#respond #cancel-comment-reply-link:hover:before {
+	opacity: 0.8;
+}

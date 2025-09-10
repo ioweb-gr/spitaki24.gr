@@ -1,0 +1,61 @@
+{
+   "domain": "messages",
+   "locale_data": {
+      "messages": {
+         "": {
+            "domain": "messages"
+         },
+         "WPML Translation Editor": [
+            "Editor de traducción de WPML"
+         ],
+         "WordPress Editor": [
+            "Editor de WordPress"
+         ],
+         "Translate with the WordPress Editor when you want to create different designs for translations, or if you're translating content that's incompatible with WPML's Translation Editor.": [
+            "Traduce con el Editor de WordPress cuando quieras crear diseños diferentes para las traducciones, o si estás traduciendo contenido que es incompatible con el Editor de Traducción de WPML."
+         ],
+         "What do you want to translate with the WordPress Editor?": [
+            "¿Qué quieres traducir con el Editor de WordPress?"
+         ],
+         "I understand, switch to the WordPress Editor": [
+            "Entiendo, cambiar al Editor de WordPress"
+         ],
+         "What do you want to translate with WPML Translation Editor?": [
+            "¿Qué quieres traducir con el Editor de Traducción de WPML?"
+         ],
+         "I understand, switch to WPML's Translation Editor": [
+            "Entiendo, cambiar al Editor de Traducción de WPML"
+         ],
+         "Apply": [
+            "Usar"
+         ],
+         "Cancel": [
+            "Cancelar"
+         ],
+         "Only this %s": [
+            "Solo este %s"
+         ],
+         "Recommended": [
+            "Recomendado"
+         ],
+         "All %s": [
+            "Todo %s"
+         ],
+         "All the site's content": [
+            "Todo el contenido del sitio"
+         ],
+         "Are you sure?": [
+            "¿Estás seguro?"
+         ],
+         "The WordPress Editor doesn't offer Automatic Translation, Translation Memory and other features that make translation easier.": [
+            "El Editor de WordPress no ofrece Traducción Automática, Memoria de Traducción y otras funciones que facilitan la traducción."
+         ],
+         "And, if you switch back to WPML's Translation Editor, you will need to translate from scratch what you translated with the WordPress editor.": [
+            "Y, si vuelves al Editor de Traducción de WPML, tendrás que traducir desde cero lo que hayas traducido con el editor de WordPress."
+         ],
+         "When you update content that you previously translated with the WordPress Editor, you will need to translate from scratch.": [
+            "Cuando actualices contenido que hayas traducido previamente con el Editor de WordPress, tendrás que traducirlo desde cero."
+         ]
+      }
+   }
+}

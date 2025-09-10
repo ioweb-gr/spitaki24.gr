@@ -1,0 +1,23 @@
+/*
+About
+========
+*/
+.title-left h2, .title-right h2 {
+	position: relative;
+}
+@media (min-width: 993px) {
+	.title-left h2:after, .title-right h2:before {
+		position: absolute;
+		top: 20px;
+		width: 100px;
+		height: 1px;
+		background-color: #ccc;
+		content: "";
+	}
+	.title-left h2:after {
+		right: -115px;
+	}
+	.title-right h2:before {
+		left: -115px;
+	}
+}

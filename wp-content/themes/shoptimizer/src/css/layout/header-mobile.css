@@ -1,0 +1,162 @@
+/*
+Header Mobile
+========
+*/
+@media (max-width: 992px) {
+    .main-header {
+        position: relative;
+    }
+    .site-branding {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 70px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .site-header .custom-logo-link img {
+        width: auto;
+    }
+    .site-branding p {
+        margin: 5px 0 -3px 0;
+        font-size: 11px;
+        line-height: 1.22;
+        display: none;
+    }
+    .site-header .shoptimizer-cart a.cart-contents .amount {
+        display: none;
+    }
+    .site-branding button.menu-toggle {
+        position: absolute;
+        left: 15px;
+        width: 60px;
+        height: 30px;
+        padding: 0;
+        background-color: transparent;
+        display: block;
+    }
+    .site-branding button.menu-toggle:hover {
+        background-color: transparent;
+    }
+    .menu-toggle .bar {
+        display: block;
+        position: absolute;
+        top: calc(50% - 1px);
+        z-index: 0;
+        width: 22px;
+        height: 2px;
+        opacity: 1;
+        background-color: #222;
+        transition: transform 0.15s ease-in 0s, margin 0.15s ease-in 0.2s, opacity 0s ease-in 0.15s;
+        transform: rotate(0deg);
+        pointer-events: none;
+    }
+    .menu-toggle .bar:nth-child(1) {
+        margin-top: -7px;
+    }
+    .menu-toggle .bar:nth-child(2) {
+        margin-top: -1px;
+    }
+    .menu-toggle .bar:nth-child(3) {
+        margin-top: 5px;
+    }
+    .menu-toggle .bar-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 8px;
+        margin-left: 28px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        pointer-events: none;
+    }
+    button.mobile-search-toggle {
+        position: absolute;
+        top: 0px;
+        right: 60px;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background-color: transparent;
+    }
+    .mobile-search-toggle.with-myaccount-icon {
+        right: 95px;
+    }
+    .mobile-search-toggle svg {
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+    }
+    .shoptimizer-myaccount {
+        position: absolute;
+        top: 0px;
+        right: 60px;
+        height: 100%;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .shoptimizer-myaccount a {
+        display: inline-block;
+        line-height: 1;
+    }
+    .shoptimizer-myaccount svg {
+        width: 24px;
+        height: 24px;
+    }
+    .site-header .site-header-cart {
+        position: absolute;
+        z-index: 2;
+        right: 15px;
+    }
+    .shoptimizer-cart-icon {
+        position: relative;
+        top: -4px;
+        right: -8px;
+    }
+     /* -- Hide the mobile menu and cart when the distraction free checkout option is selected -- */
+    .min-ck.woocommerce-checkout button.menu-toggle,
+    .min-ck.woocommerce-checkout .site-header .site-header-cart {
+        display: none;
+    }
+    /* -- Visible search bar within header on mobile -- */
+    .m-search-bh .site-header .col-full {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .m-search-bh .site-search,
+    .m-search-toggled .site-search {
+        display: block;
+        padding: 0 1em 1em 1em;
+        height: 60px;
+        background-color: #fff;
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.18);
+        position: relative;
+        z-index: 1;
+    }
+    .m-search-toggled .site-header .site-search {
+        margin-left: -1em;
+        margin-right: -1em;
+    }
+    .m-search-bh:not(.woocommerce-checkout.min-ck) .site-header .col-full {
+        margin-bottom: 60px;
+    }
+    /* -- Mobile sticky -- */
+    body:not(.mobile-toggled).sticky-m .site-header {
+        position: sticky;
+        z-index: 9;
+        top: 0;
+        box-shadow: 0 1px 15px rgba(0, 0, 0, 0.08);
+    }
+}
+@media (max-width: 480px) {
+    .site .site-branding p {
+        max-width: 240px;
+        line-height: 1.2;
+    }
+}

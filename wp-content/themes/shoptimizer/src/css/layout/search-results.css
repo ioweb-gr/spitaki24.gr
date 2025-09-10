@@ -1,0 +1,65 @@
+/*
+Search Results
+========
+*/
+.search-results .content-area {
+    float: right;
+}
+.search-results article {
+    display: flex;
+    margin: 1.75em 0 0 0em;
+    padding-top: 1.75em;
+    padding-bottom: 0;
+    border-top: 1px solid #eee;
+    border-bottom: 0;
+}
+.search-results article a.image-result {
+    max-width: 100px;
+    margin-right: 1.5rem;
+}
+.search-results article h2 {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.25rem, 1.123rem + 0.4065vw, 1.375rem); /* 20-22 */
+    font-weight: 600;
+    letter-spacing: 0;
+}
+.search-results article h2 a {
+    color: #222;
+}
+.search-results article,
+.search-results article p {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.875rem, 0.8115rem + 0.2033vw, 0.9375rem); /* 14-15 */
+}
+.search-results article:last-of-type {
+    margin-bottom: 2rem;
+}
+.search-results .content-area {
+    margin-bottom: 2rem;
+}
+.search-results .no-results.not-found {
+    margin-bottom: 4rem;
+}
+/* -- No Results -- */
+.search-no-results .secondary-wrapper {
+    display: none;
+}
+.search-no-results .content-area {
+    width: 100%;
+    float: none;
+    margin-bottom: 4em;
+}
+.search-no-results form.search-form {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+}
+.search-no-results form.search-form label {
+    margin-right: 1rem;
+}
+.search-no-results form.search-form label,
+.search-no-results form.search-form input[type="search"] {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
