@@ -16,7 +16,7 @@ class ProductsParser extends ProductsParserBase  {
      */
     public function parse() {
         $this->data = array();
-        $this->getChunk() == 1 && $this->log(__('Composing product data...', \PMWI_Plugin::TEXT_DOMAIN));
+        $this->getChunk() == 1 && $this->log(__('Composing product data...', 'wpai_woocommerce_addon_plugin'));
         foreach ($this->getParsingWorkflow() as $callback => $options) {
             if (!empty($options)) {
                 array_map(array($this, $callback), $options);
@@ -60,6 +60,7 @@ class ProductsParser extends ProductsParserBase  {
             ),
             'parseOptionType_3' => array(
                 'product_sku',
+	            'product_global_unique_id',
                 'product_variation_description',
                 'product_url',
                 'product_button_text',

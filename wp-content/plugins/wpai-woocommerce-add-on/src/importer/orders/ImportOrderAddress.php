@@ -49,20 +49,20 @@ class ImportOrderAddress extends ImportOrderBase {
     public function importBilling() {
 
         if ($this->isNewOrder() || $this->getImport()->options['update_all_data'] == 'yes' || $this->getImport()->options['is_update_billing_details']) {
-            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Importing billing & shipping information for Order ID `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $this->getOrderID()));
+            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Importing billing & shipping information for Order ID `%s`.', 'wpai_woocommerce_addon_plugin'), $this->getOrderID()));
             $customer = FALSE;
             switch ($this->getImport()->options['pmwi_order']['billing_source']) {
                 // Load details from existing customer
                 case 'existing':
                     $customer = $this->getParser()->get_existing_customer('billing_source', $this->getIndex());
                     if ($customer) {
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Existing customer with ID `%s` founded for Order `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $customer->ID, $this->getOrderID()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Existing customer with ID `%s` founded for Order `%s`.', 'wpai_woocommerce_addon_plugin'), $customer->ID, $this->getOrderID()));
                         foreach ($this->billing_fields as $billing_field) {
                             $this->billing_data[$billing_field] = get_user_meta($customer->ID, $billing_field, TRUE);
                             $setter = 'set_' . $billing_field;
                             if ( is_callable( array( $this->getOrder(), $setter ) ) ) {
                                 $this->getOrder()->{$setter}( $this->billing_data[$billing_field] );
-                                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', \PMWI_Plugin::TEXT_DOMAIN), $billing_field, $this->billing_data[$billing_field], $this->getOrderID()));
+                                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', 'wpai_woocommerce_addon_plugin'), $billing_field, $this->billing_data[$billing_field], $this->getOrderID()));
                             }
                         }
                         $this->getOrder()->set_customer_id($customer->ID);
@@ -73,12 +73,12 @@ class ImportOrderAddress extends ImportOrderBase {
                                 $setter = 'set_' . $billing_field;
                                 if ( is_callable( array( $this->getOrder(), $setter ) ) ) {
                                     $this->getOrder()->{$setter}( $this->billing_data[$billing_field] );
-                                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', \PMWI_Plugin::TEXT_DOMAIN), $billing_field, $this->getValue('guest_' . $billing_field), $this->getOrderID()));
+                                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', 'wpai_woocommerce_addon_plugin'), $billing_field, $this->getValue('guest_' . $billing_field), $this->getOrderID()));
                                 }
                             }
                             $this->getOrder()->set_customer_id(0);
                         } else {
-                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('<b>WARNING</b>: Existing customer not found for Order `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $this->order_data['post_title']));
+                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('<b>WARNING</b>: Existing customer not found for Order `%s`.', 'wpai_woocommerce_addon_plugin'), $this->order_data['post_title']));
                         }
                     }
                     break;
@@ -91,7 +91,7 @@ class ImportOrderAddress extends ImportOrderBase {
                         $setter = 'set_' . $billing_field;
                         if ( is_callable( array( $this->getOrder(), $setter ) ) ) {
                             $this->getOrder()->{$setter}( $this->billing_data[$billing_field] );
-                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', \PMWI_Plugin::TEXT_DOMAIN), $billing_field, $this->getValue($billing_field), $this->getOrderID()));
+                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Billing field `%s` has been updated with value `%s` for order `%s` ...', 'wpai_woocommerce_addon_plugin'), $billing_field, $this->getValue($billing_field), $this->getOrderID()));
                         }
                     }
                     $this->getOrder()->set_customer_id(0);
@@ -120,7 +120,7 @@ class ImportOrderAddress extends ImportOrderBase {
                 // Copy from billing
                 case 'copy':
 
-                    $this->getLogger() and call_user_func($this->getLogger(), __('- Copying shipping from billing information...', \PMWI_Plugin::TEXT_DOMAIN));
+                    $this->getLogger() and call_user_func($this->getLogger(), __('- Copying shipping from billing information...', 'wpai_woocommerce_addon_plugin'));
 
                     if (!empty($this->billing_data)) {
                         foreach ($this->billing_data as $key => $value) {
@@ -128,7 +128,7 @@ class ImportOrderAddress extends ImportOrderBase {
                             $setter = 'set_' . $shipping_field;
                             if ( is_callable( array( $this->getOrder(), $setter ) ) ) {
                                 $this->getOrder()->{$setter}( $value );
-                                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Shipping field `%s` has been updated with value `%s` for order `%s` ...', \PMWI_Plugin::TEXT_DOMAIN), $shipping_field, $value, $this->getOrderID()));
+                                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Shipping field `%s` has been updated with value `%s` for order `%s` ...', 'wpai_woocommerce_addon_plugin'), $shipping_field, $value, $this->getOrderID()));
                             }
                         }
                     }
@@ -148,7 +148,7 @@ class ImportOrderAddress extends ImportOrderBase {
                         $setter = 'set_' . $shipping_field;
                         if ( is_callable( array( $this->getOrder(), $setter ) ) ) {
                             $this->getOrder()->{$setter}( $shipping_value );
-                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Shipping field `%s` has been updated with value `%s` for order `%s` ...', \PMWI_Plugin::TEXT_DOMAIN), $shipping_field, $shipping_value, $this->getOrderID()));
+                            $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- Shipping field `%s` has been updated with value `%s` for order `%s` ...', 'wpai_woocommerce_addon_plugin'), $shipping_field, $shipping_value, $this->getOrderID()));
                         }
                     }
 

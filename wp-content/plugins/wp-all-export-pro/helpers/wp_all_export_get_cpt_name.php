@@ -13,10 +13,18 @@ function wp_all_export_get_cpt_name($cpt = array(), $count = 2, $post = array())
 		{
 			$cptName = ($count > 1) ? __('Customers', 'wp_all_export_plugin') : __('Customer', 'wp_all_export_plugin');
 		}
+		elseif (in_array('shop_guest_customer', $cpt))
+		{
+			$cptName = ($count > 1) ? __('Guest Customers', 'wp_all_export_plugin') : __('Guest Customer', 'wp_all_export_plugin');
+		}
 		elseif (in_array('comments', $cpt))
 		{
 			$cptName = ($count > 1) ? __('Comments', 'wp_all_export_plugin') : __('Comment', 'wp_all_export_plugin');
 		}
+		elseif (in_array('shop_review', $cpt))
+        {
+            $cptName = ($count > 1) ? __('Reviews', 'wp_all_export_plugin') : __('Review', 'wp_all_export_plugin');
+        }
         elseif (in_array('taxonomies', $cpt))
         {
             if (!empty($post['taxonomy_to_export'])){
@@ -26,6 +34,9 @@ function wp_all_export_get_cpt_name($cpt = array(), $count = 2, $post = array())
             else{
                 $cptName = ($count > 1) ? __('Taxonomy Terms', 'wp_all_export_plugin') : __('Taxonomy Term', 'wp_all_export_plugin');
             }
+        }
+        elseif (in_array('custom_wpae-gf-addon', $cpt)) {
+            $cptName = ($count > 1) ? __('Entries', 'wp_all_export_plugin') : __('Entry', 'wp_all_export_plugin');
         }
         else
 		{

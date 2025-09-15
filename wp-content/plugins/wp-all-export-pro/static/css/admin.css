@@ -18,6 +18,96 @@
 	border: none;
 	cursor: pointer;
 }
+
+.wpallexport-plugin .wp-all-export-link-wrapper{
+	display: inline-block;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+	transition-property: all;
+	color: #00b3b6;
+	text-decoration: none;
+	font-weight: 600;
+	line-height: 1.75;
+	font-size: 16px;
+	padding-bottom: 10px;
+	margin-left: 0!important;
+}
+
+.wpallexport-plugin .wp-all-export-link:hover, .wpallexport-plugin .wp-all-export-link:focus{
+	color: #007a7c;
+}
+
+/* Export Finished */
+
+.wpallexport-plugin .export-finished .wpallexport-content-section-wrap.rte-complete{
+	display: flex; align-items: center; justify-content: center;
+}
+
+.wpallexport-plugin .export-finished .wpallexport-content-section.rte-complete{
+	max-width: 700px;
+}
+
+.wpallexport-plugin .export-finished h2{
+	color:#425f9a;
+	font-size:24px;
+	margin-bottom: 20px;
+}
+
+.wpallexport-plugin .export-finished{
+	padding-top: 10px;
+	text-align:left;
+}
+
+.wpallexport-plugin .export-finished .input{
+	padding-top:20px;
+	text-align:center;
+}
+
+.wpallexport-plugin .export-finished  .wpallexport-admin-link.rte-complete{
+	text-align: left;
+	margin: -10px 0 -20px 0;
+}
+
+.wpallexport-plugin .export-finished  .wpallexport-admin-link-padded.rte-complete{
+	text-align: left;
+	margin: -10px 0 26px 0;
+}
+
+.wpallexport-plugin .export-finished .wp-all-export-link-wrapper{
+
+	margin-left:20px;
+}
+
+.wpallexport-plugin .wp-all-export-link-text{
+	font-weight: 500;
+	font-size: 16px;
+	text-decoration: none;
+	float:left;
+	text-align: left;
+	margin-left: 0!important;
+}
+
+.wpallexport-plugin .wp-all-export-link-arrow{
+	margin-left: 5px;
+	position:relative;
+	height: 9px;
+
+}
+
+.wpallexport-plugin .admin-page-link .wp-all-export-link-text{
+	font-size: 14px;
+}
+
+.wpallexport-plugin .admin-page-link .wp-all-export-link-arrow{
+	top: -2px;
+}
+
+.wpallexport-plugin .wp-all-export-paragraph{
+	font-size: 16px;
+	color: #777;
+	text-align:left;
+}
+
 .wpallexport-plugin .wp_all_export_custom_xml_help,
 .wpallexport-plugin .wp_all_export_scheduling_help
 {
@@ -53,6 +143,19 @@
     font-size: 14px;
     font-weight: normal;
     margin: 5px 0;
+}
+.wpallexport-plugin .unable-to-connect {
+	color: #f2b03d;
+}
+
+.wpallexport-plugin .wpai-no-license,
+.wpallexport-plugin .wpai-license {
+	display: flex;
+}
+
+.wpallexport-plugin .connection-icon .help_scheduling {
+	margin: 0;
+	position: initial;
 }
 
 .wpallexport-plugin .code-block {
@@ -174,6 +277,9 @@
 	margin-left: 0;
 	overflow: auto;	
 }
+.wpallexport-plugin .CodeMirror-wrap pre {
+    word-break: break-word;
+}
 .wpallexport-plugin .CodeMirror-line.pmxe-state-hover,
 .wpallexport-plugin .CodeMirror-line.pmxe-state-default{	
 	width: 100%;
@@ -188,13 +294,17 @@
 	width: 100%;
 	border: 4px dashed #bbb;
 }
+.wpallexport-plugin .columns-to-export-content ol {
+	position: relative;
+}
 .wpallexport-plugin .columns-to-export-content ol li.placeholder{
 	font-size: 20px;	
 	line-height: 26px;
 	margin-bottom: 0;
-	margin-left: 25% !important;
+	margin-left: calc(50% - 225px) !important;
+	top: calc(50% - 39px);
+	position: absolute;
 	margin-right: auto;
-	margin-top: 7% !important;
 	text-align: center;
 	width: 450px;
 }
@@ -281,7 +391,7 @@
 }
 .wpallexport-plugin .wp-all-export-product-bundle-warning,
 .wpallexport-plugin .wp-all-export-warning{
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .wpallexport-plugin .wp-all-export-warning .notice-dismiss{
 	margin-top: 5px;
@@ -382,48 +492,61 @@
 	position: relative;
 
 }
-	.wpallexport-plugin .wpallexport-import-to-format.selected{
-		background: #38a659 none repeat scroll 0 0;
-		border: 1px solid #3da55c;
-		color: #fff !important;
-	}
+.wpallexport-plugin .wpallexport-import-to-format.selected{
+	background: #38a659 none repeat scroll 0 0;
+	border: 1px solid #3da55c;
+	color: #fff !important;
+}
 
-	.wpallexport-plugin .wpallexport-import-to-format span.wpallexport-import-to-arrow{
-		display: none;
-	}
-	.wpallexport-plugin .wpallexport-import-to-format.selected span.wpallexport-import-to-arrow{
-		background: url('../img/bottom_arrow.png') no-repeat;
-		position: absolute;
-		bottom: -12px;
-		left: 48%;
-		display: block;
-		height: 14px;
-		width: 24px;	
-	}
-	
+.wpallexport-plugin .wpallexport-import-to-format span.wpallexport-import-to-arrow{
+	display: none;
+}
+.wpallexport-plugin .wpallexport-import-to-format.selected span.wpallexport-import-to-arrow{
+	background: url('../img/bottom_arrow.png') no-repeat;
+	position: absolute;
+	bottom: -12px;
+	left: 48%;
+	display: block;
+	height: 14px;
+	width: 24px;
+}
 
-	.wpallexport-plugin .wpallexport-import-to-format.wpallexport-csv-type span.wpallexport-import-to-title:before{	
-		color: #888;
-		content: "\f495";	
-		font-family: "dashicons";
-		font-size: 30px;
-		padding-right: 5px;
-		position: relative;
-		top: 7px;
-	}	
-	.wpallexport-plugin .wpallexport-import-to-format.wpallexport-xml-type span.wpallexport-import-to-title:before{
-		color: #888;
-		content: "\f499";	
-		font-family: "dashicons";
-		font-size: 30px;
-		padding-right: 5px;
-		position: relative;
-		top: 7px;
-	}
-	.wpallexport-plugin .wpallexport-import-to-format.wpallexport-csv-type.selected span.wpallexport-import-to-title:before,
-	.wpallexport-plugin .wpallexport-import-to-format.wpallexport-xml-type.selected span.wpallexport-import-to-title:before{	
-		color: #a3ddb4;
-	}	
+
+.wpallexport-plugin .wpallexport-import-to-format.wpallexport-csv-type span.wpallexport-import-to-title:before{
+	color: #888;
+	content: "\f495";
+	font-family: "dashicons";
+	font-size: 30px;
+	padding-right: 5px;
+	position: relative;
+	top: 7px;
+}
+.wpallexport-plugin .wpallexport-import-to-format.wpallexport-xml-type span.wpallexport-import-to-title:before{
+	color: #888;
+	content: "\f499";
+	font-family: "dashicons";
+	font-size: 30px;
+	padding-right: 5px;
+	position: relative;
+	top: 7px;
+}
+
+.dashicon-custom_wpae-gf-addon::before {
+	height: 22px;
+	width: 22px;
+	background-repeat: no-repeat;
+	content: ' ';
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='-15 77 581 640' enable-background='new -15 77 581 640' xml:space='preserve'%3E%3Cg id='Layer_2'%3E%3Cpath fill='%23555' d='M489.5,227L489.5,227L315.9,126.8c-22.1-12.8-58.4-12.8-80.5,0L61.8,227c-22.1,12.8-40.3,44.2-40.3,69.7v200.5c0,25.6,18.1,56.9,40.3,69.7l173.6,100.2c22.1,12.8,58.4,12.8,80.5,0L489.5,567c22.2-12.8,40.3-44.2,40.3-69.7V296.8C529.8,271.2,511.7,239.8,489.5,227z M401,300.4v59.3H241v-59.3H401z M163.3,490.9c-16.4,0-29.6-13.3-29.6-29.6c0-16.4,13.3-29.6,29.6-29.6s29.6,13.3,29.6,29.6C192.9,477.6,179.6,490.9,163.3,490.9z M163.3,359.7c-16.4,0-29.6-13.3-29.6-29.6s13.3-29.6,29.6-29.6s29.6,13.3,29.6,29.6S179.6,359.7,163.3,359.7z M241,490.9v-59.3h160v59.3H241z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dd-selected-text.dashicon-custom_wpae-gf-addon::before {
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='-15 77 581 640' enable-background='new -15 77 581 640' xml:space='preserve'%3E%3Cg id='Layer_2'%3E%3Cpath fill='%2346ba69' d='M489.5,227L489.5,227L315.9,126.8c-22.1-12.8-58.4-12.8-80.5,0L61.8,227c-22.1,12.8-40.3,44.2-40.3,69.7v200.5c0,25.6,18.1,56.9,40.3,69.7l173.6,100.2c22.1,12.8,58.4,12.8,80.5,0L489.5,567c22.2-12.8,40.3-44.2,40.3-69.7V296.8C529.8,271.2,511.7,239.8,489.5,227z M401,300.4v59.3H241v-59.3H401z M163.3,490.9c-16.4,0-29.6-13.3-29.6-29.6c0-16.4,13.3-29.6,29.6-29.6s29.6,13.3,29.6,29.6C192.9,477.6,179.6,490.9,163.3,490.9z M163.3,359.7c-16.4,0-29.6-13.3-29.6-29.6s13.3-29.6,29.6-29.6s29.6,13.3,29.6,29.6S179.6,359.7,163.3,359.7z M241,490.9v-59.3h160v59.3H241z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.wpallexport-plugin .wpallexport-import-to-format.wpallexport-csv-type.selected span.wpallexport-import-to-title:before,
+.wpallexport-plugin .wpallexport-import-to-format.wpallexport-xml-type.selected span.wpallexport-import-to-title:before{
+	color: #a3ddb4;
+}
 
 .wpallexport-plugin .wpallexport-all-options .wpallexport-file-format-options{
 	margin: 10px auto;	
@@ -457,14 +580,39 @@
 	color: #000;
 	font-weight: bold;
 }
+
 .wpallexport-plugin .taxonomy_to_export_wrapper{
 	display: none;
 }
+
+.wpae-taxonomy-h2 {
+	color: #40ad6e;
+	font-size: 1.3em;
+	margin-bottom: 25px;
+	font-weight: normal;
+}
+
+.wpae-taxonomy-h2 a {
+	margin-bottom: 11px;
+}
+
+.wpallexport-plugin .sub_post_type_to_export_wrapper{
+	display: none;
+}
+
 .wpallexport-plugin .wp-all-export-advanced-field-options-content{
 	padding: 14px 0;
 }
 .wpallexport-plugin .wp-all-export-additional-csv-options{
 	margin-left: 20px;
+}
+
+.wpallexport-plugin .wpallexport-footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+	margin-bottom: -20px;
+	clear: both;
 }
 /*--------------------------------------------------------------------------
 *
@@ -478,6 +626,7 @@
 	color: #ddd;
 	background-color: #ddd;
 	margin-bottom: 15px;
+	margin-top: 15px;
 }
 .wpallexport-plugin a:focus, 
 .wpallexport-plugin input:focus{ box-shadow: none; }
@@ -519,14 +668,12 @@
 	background-position: center;
 }
 .wpallexport-plugin .preload {
-	background-image: url("../img/loading-step-2.gif");
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
 	background-position: 50% 10px;
 	min-height: 35px;
 }
 .wpallexport-plugin .wpallexport-preview-preload {
-	background-image: url("../img/loading-step-2.gif");
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
 	background-position: 50% 20px;
 	height: 80px;
 }
@@ -551,46 +698,68 @@
 	background: url('../img/continue.png') no-repeat 93% 50% #425f9a;
 	border: none;
 }
-.wpallexport-plugin .wpallexport-large-button:hover{
+.wpallexport-plugin .wpallexport-large-button:hover,
+.wpallexport-plugin .wpallexport-large-button:active,
+.wpallexport-plugin .wpallexport-large-button:focus{
 	background: url('../img/continue.png') no-repeat 93% 50% #425f9a;
 	border: none;
 	box-shadow: none;
 }
 
 /*@+ header */
+.wpallexport-plugin .wpallexport-title p{
+	font-size: 18px !important;
+	line-height: 16px;
+	color: #777;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.wpallexport-plugin .wpallexport-title h2,
+.wpallexport-plugin .wpallexport-title h3{
+	font-size: 33px;
+	color: #425f9a;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-right: 0;
+	margin-left: 2px;
+}
+.wpallexport-plugin .wpallexport-title h2,
+.wpallexport-plugin .wpallexport-title h3{
+	margin: 8px 0 !important;
+}
+.wpallexport-plugin .wpallexport-title > h2:before,
+.wpallexport-plugin .wpallexport-title > h3:before {
+	content: '';
+  background: url(../img/wpallexport.svg) no-repeat;
+  background-size: 134px 14px;
+  width: 134px;
+  height: 25px;
+  display: block;
+}
 .wpallexport-plugin .wpallexport-logo{
-	background: url('../img/logo.png');
-	width: 60px;
-	height: 53px;
-	float: left;
-	margin-right: 10px;
+  background: url(../img/logo.svg) no-repeat;
+  background-size: 55px 55px;
+  width: 55px;
+  height: 55px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  float: left;
+  margin-right: 8px;
 }
 .wpallexport-plugin .wpallexport-title{
 	float: left;
 }
-	.wpallexport-plugin .wpallexport-title p{
-		font-size: 18px !important;
-		line-height: 16px;
-		color: #777;
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-	.wpallexport-plugin .wpallexport-title h2,
-	.wpallexport-plugin .wpallexport-title h3{
-		font-size: 33px;
-		color: #425f9a;
-		font-weight: bold;
-		padding-top: 5px;
-		padding-right: 0;
-		margin-left: 2px;
-	}	
-	.wpallexport-plugin .wpallexport-title h3{
-		margin: 5px 0;
-	}
+.wpallexport-plugin .wpallexport-title p{
+	font-size: 18px !important;
+	line-height: 16px;
+	color: #777;
+	margin-top: 0;
+	margin-bottom: 0;
+}
 .wpallexport-plugin .wpallexport-links{
 	float: right;
 	margin-right: 3px;
-	margin-top: 33px;	
+	margin-top: 20px;
 }
 .wpallexport-plugin .wpallexport-links a{
 	font-size: 12px;
@@ -798,9 +967,25 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	color: #40acad;
 	text-decoration: none;
 }
-.wpallexport-plugin div.error{
-	clear: both;
+.wpallexport-plugin div.error,
+.wpallexport-plugin div.updated {
 	margin-top: 15px;
+}
+
+.wpallexport-plugin div.error.inline,
+.wpallexport-plugin div.updated.inline {
+	margin: 0;
+}
+
+.wpallexport-plugin div.error.license-status,
+.wpallexport-plugin div.updated.license-status {
+	margin: 0 0 0 2px;
+	display: inline-block;
+	text-transform: capitalize;
+	padding: 2px 10px;
+	height: 18px;
+	vertical-align: 1px;
+	line-height: 17px;
 }
 .wpallexport-plugin .wp-pointer-content ul,
 .wpallexport-plugin .wpallexport-pointer-content ul{
@@ -840,7 +1025,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	font-size: 12px;
 	/*height: 25px;*/
 	width: auto;
-	padding: 2px;
+	padding: 4px 25px 4px 12px;
 	color: #000;
 }
 .wpallexport-plugin .wpallexport-template input[type="text"],
@@ -866,7 +1051,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	top: 0;
 }
 .wpallexport-plugin .wpallexport-template .wpallexport-section input[type="text"], 
-.wpallexport-plugin .options .wpallexport-section input[type="text"],
+.wpallexport-plugin .options .wpallexport-section input[type="text"], .wpallexport-plugin .edit .wpallexport-section input[type="text"],
 .wpallexport-plugin .wp-pointer-content input[type="text"]
 {
 	font-size: 14px;
@@ -1160,7 +1345,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	font-size: 12px;
 }
 .wpallexport-plugin .wpallexport-created-by span{
-	background: url('../img/soflyy-logo.png') no-repeat;
+	background: url('../img/soflyy-logo.svg') no-repeat;
 	display: block;
 	float: right;
 	width: 72px;
@@ -1216,8 +1401,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 }
 	.wpallexport-plugin table.wpallexport-layout td {
 		vertical-align: top;
-		border: none;		
-		font-size: 12px !important;
+		border: none;
 	}
 	.wpallexport-plugin table.wpallexport-layout td.left {
 		/*min-width: 490px;*/
@@ -1323,6 +1507,10 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 }
 
 .wpallexport-plugin .wpallexport-wrapper{
+	width: 100%;
+}
+
+.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 	width: 1200px;
 }
 
@@ -1347,6 +1535,13 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	.wpallexport-plugin form.wpallexport-choose-file input[type="password"] {
 		width: 80px;
 		font-size: 12px;
+	}
+	.wpallexport-plugin form.wpallexport-choose-file .chosen-search input[type="text"] {
+		font-size: 15px;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+		background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xNS44NTMgMTYuNTZjLTEuNjgzIDEuNTE3LTMuOTExIDIuNDQtNi4zNTMgMi40NC01LjI0MyAwLTkuNS00LjI1Ny05LjUtOS41czQuMjU3LTkuNSA5LjUtOS41IDkuNSA0LjI1NyA5LjUgOS41YzAgMi40NDItLjkyMyA0LjY3LTIuNDQgNi4zNTNsNy40NCA3LjQ0LS43MDcuNzA3LTcuNDQtNy40NHptLTYuMzUzLTE1LjU2YzQuNjkxIDAgOC41IDMuODA5IDguNSA4LjVzLTMuODA5IDguNS04LjUgOC41LTguNS0zLjgwOS04LjUtOC41IDMuODA5LTguNSA4LjUtOC41eiIvPjwvc3ZnPg==') no-repeat right 5px top 50%;
+		background-size: auto;
+		background-size: 12px;
 	}
 	.wpallexport-plugin form.wpallexport-choose-file input.regular-text,
 	.wpallexport-plugin form.wpallexport-choose-file select.regular-text {
@@ -1583,7 +1778,8 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin #custom_type_selector, 
 .wpallexport-plugin #file_selector,
 .wpallexport-plugin #wp_query_selector,
-.wpallexport-plugin #taxonomy_to_export{
+.wpallexport-plugin #taxonomy_to_export,
+.wpallexport-plugin #sub_post_to_export{
 	margin: 0 auto;
 	margin-bottom: 20px;
 	text-align: left;
@@ -1603,13 +1799,15 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin #custom_type_selector .dd-options li,
 .wpallexport-plugin #file_selector .dd-options li,
 .wpallexport-plugin #wp_query_selector .dd-options li,
-.wpallexport-plugin #taxonomy_to_export .dd-options li{
+.wpallexport-plugin #taxonomy_to_export .dd-options li,
+.wpallexport-plugin #sub_post_to_export .dd-options li{
 	margin-bottom: 0;
 }
 .wpallexport-plugin #custom_type_selector .dd-options li .dd-option,
 .wpallexport-plugin #file_selector .dd-options li .dd-option,
 .wpallexport-plugin #wp_query_selector .dd-options li .dd-option,
-.wpallexport-plugin #taxonomy_to_export .dd-options li .dd-option{
+.wpallexport-plugin #taxonomy_to_export .dd-options li .dd-option,
+.wpallexport-plugin #sub_post_to_export .dd-options li .dd-option{
 	font-size: 18px;
 	color: #555;
 	border: none;
@@ -1626,7 +1824,9 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	.wpallexport-plugin #wp_query_selector .dd-options li .dd-option:hover, 
 	.wpallexport-plugin #wp_query_selector .dd-options li .dd-option-selected,
 	.wpallexport-plugin #taxonomy_to_export .dd-options li .dd-option:hover,
-	.wpallexport-plugin #taxonomy_to_export .dd-options li .dd-option-selected{
+	.wpallexport-plugin #taxonomy_to_export .dd-options li .dd-option-selected,
+	.wpallexport-plugin #sub_post_to_export .dd-options li .dd-option:hover,
+	.wpallexport-plugin #sub_post_to_export .dd-options li .dd-option-selected{
 		background: #eee;
 		color: #555;
 	}
@@ -1638,7 +1838,8 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin #custom_type_selector .dd-select,
 .wpallexport-plugin #file_selector .dd-select,
 .wpallexport-plugin #wp_query_selector .dd-select,
-.wpallexport-plugin #taxonomy_to_export .dd-select{
+.wpallexport-plugin #taxonomy_to_export .dd-select,
+.wpallexport-plugin #sub_post_to_export .dd-select{
 	background: #fff !important;
 	padding: 10px 0;
 	/*margin-left: -5px;*/
@@ -1646,22 +1847,25 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin #custom_type_selector .dd-selected,
 .wpallexport-plugin #file_selector .dd-selected,
 .wpallexport-plugin #wp_query_selector .dd-selected,
-.wpallexport-plugin #taxonomy_to_export .dd-selected{
+.wpallexport-plugin #taxonomy_to_export .dd-selected,
+.wpallexport-plugin #sub_post_to_export .dd-selected{
 	color: #000;
 	font-weight: normal;
 	font-size: 18px;	
 	padding: 0;
-	padding: 0 10px;
+	padding: 0 12px;
 	line-height: 24px;
 }
-.wpallexport-plugin .change_file #file_selector .dd-select,
-.wpallexport-plugin .change_file #wp_query_selector .dd-select,
-.wpallexport-plugin .change_file #taxonomy_to_export .dd-select{
-	padding: 5px 0 0;
-}
+	.wpallexport-plugin .change_file #file_selector .dd-select,
+	.wpallexport-plugin .change_file #wp_query_selector .dd-select,
+	.wpallexport-plugin .change_file #taxonomy_to_export .dd-select,
+	.wpallexport-plugin .change_file #sub_post_to_export .dd-select{
+		padding: 5px 0 0;
+	}
 	.wpallexport-plugin .change_file #file_selector .dd-options .dd-option,
 	.wpallexport-plugin .change_file #wp_query_selector .dd-options .dd-option,
-	.wpallexport-plugin .change_file #taxonomy_to_export .dd-options .dd-option{
+	.wpallexport-plugin .change_file #taxonomy_to_export .dd-options .dd-option,
+	.wpallexport-plugin .change_file #sub_post_to_export .dd-options .dd-option{
 		padding: 0 10px;
 	}
 .wpallexport-plugin .dd-options{
@@ -1699,6 +1903,20 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	color: #555;
 	margin-top: 0;
 }
+.wpallexport-plugin #file_selector .dd-option .dashicon-review:before,
+.wpallexport-plugin #file_selector .dd-selected .dashicon-review:before{
+	content: '';
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'%3E%3Csvg version='1.0' xmlns='http://www.w3.org/2000/svg' width='1280.000000pt' height='1222.000000pt' viewBox='0 0 1280.000000 1222.000000' preserveAspectRatio='xMidYMid meet'%3E%3Cmetadata%3E%0ACreated by potrace 1.15, written by Peter Selinger 2001-2017%0A%3C/metadata%3E%3Cg transform='translate(0.000000,1222.000000) scale(0.100000,-0.100000)'%0Afill='%23555' stroke='none'%3E%3Cpath d='M6273 12205 c-115 -32 -205 -96 -266 -187 -19 -29 -304 -602 -635%0A-1273 -330 -671 -719 -1461 -864 -1755 l-264 -535 -220 -32 c-3672 -539 -3667%0A-538 -3722 -557 -100 -35 -199 -123 -248 -219 -76 -148 -69 -309 18 -454 23%0A-37 448 -457 1450 -1430 1270 -1233 1418 -1380 1413 -1403 -2 -14 -39 -223%0A-80 -465 -42 -242 -111 -645 -155 -895 -43 -250 -124 -718 -180 -1040 -56%0A-322 -135 -778 -176 -1015 -90 -512 -92 -552 -30 -680 102 -216 358 -320 574%0A-233 31 13 836 432 1788 931 l1731 906 804 -420 c442 -231 1223 -640 1734%0A-907 512 -268 953 -495 980 -504 63 -22 202 -23 268 -3 111 33 228 129 277%0A225 29 57 50 146 50 212 0 32 -41 292 -90 578 -138 795 -261 1506 -371 2145%0A-56 319 -124 716 -153 882 l-52 303 1422 1392 c965 944 1432 1408 1453 1442%0A43 71 62 130 68 211 16 208 -126 413 -324 468 -32 9 -379 61 -770 117 -392 55%0A-1034 145 -1425 200 -392 56 -868 123 -1058 150 -190 26 -419 58 -510 71 -91%0A12 -170 27 -177 33 -6 6 -399 799 -873 1761 -473 963 -877 1774 -898 1804 -44%0A65 -131 131 -210 161 -74 29 -207 36 -279 15z'/%3E%3C/g%3E%3C/svg%3E");
+	background-size: 22px 22px;
+	background-repeat: no-repeat;
+	margin-top: -2px;
+	width: 22px;
+	height: 22px;
+}
+.wpallexport-plugin #file_selector .dd-selected .dashicon-review:before {
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'%3E%3Csvg version='1.0' xmlns='http://www.w3.org/2000/svg' width='1280.000000pt' height='1222.000000pt' viewBox='0 0 1280.000000 1222.000000' preserveAspectRatio='xMidYMid meet'%3E%3Cmetadata%3E%0ACreated by potrace 1.15, written by Peter Selinger 2001-2017%0A%3C/metadata%3E%3Cg transform='translate(0.000000,1222.000000) scale(0.100000,-0.100000)'%0Afill='%2346ba69' stroke='none'%3E%3Cpath d='M6273 12205 c-115 -32 -205 -96 -266 -187 -19 -29 -304 -602 -635%0A-1273 -330 -671 -719 -1461 -864 -1755 l-264 -535 -220 -32 c-3672 -539 -3667%0A-538 -3722 -557 -100 -35 -199 -123 -248 -219 -76 -148 -69 -309 18 -454 23%0A-37 448 -457 1450 -1430 1270 -1233 1418 -1380 1413 -1403 -2 -14 -39 -223%0A-80 -465 -42 -242 -111 -645 -155 -895 -43 -250 -124 -718 -180 -1040 -56%0A-322 -135 -778 -176 -1015 -90 -512 -92 -552 -30 -680 102 -216 358 -320 574%0A-233 31 13 836 432 1788 931 l1731 906 804 -420 c442 -231 1223 -640 1734%0A-907 512 -268 953 -495 980 -504 63 -22 202 -23 268 -3 111 33 228 129 277%0A225 29 57 50 146 50 212 0 32 -41 292 -90 578 -138 795 -261 1506 -371 2145%0A-56 319 -124 716 -153 882 l-52 303 1422 1392 c965 944 1432 1408 1453 1442%0A43 71 62 130 68 211 16 208 -126 413 -324 468 -32 9 -379 61 -770 117 -392 55%0A-1034 145 -1425 200 -392 56 -868 123 -1058 150 -190 26 -419 58 -510 71 -91%0A12 -170 27 -177 33 -6 6 -399 799 -873 1761 -473 963 -877 1774 -898 1804 -44%0A65 -131 131 -210 161 -74 29 -207 36 -279 15z'/%3E%3C/g%3E%3C/svg%3E");
+	margin-top: 2px;
+}
 .wpallexport-plugin #file_selector .dd-option .dashicon-shop_order:before,
 .wpallexport-plugin #file_selector .dd-selected .dashicon-shop_order:before,
 .wpallexport-plugin #file_selector .dd-option .dashicon-shop_order_refund:before,
@@ -1712,11 +1930,20 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	color: #555;
 	margin-top: 2px;
 }
+
+.wpallexport-plugin #file_selector .dd-option .dashicon-shop_guest_customer:before,
+.wpallexport-plugin #file_selector .dd-selected .dashicon-shop_guest_customer:before{
+	font-family: "WooCommerce";
+	content: "\e03d";
+	color: #555;
+	margin-top: 2px;
+}
 .wpallexport-plugin #file_selector .dd-option .dashicon-cpt:before,
 .wpallexport-plugin #file_selector .dd-selected .dashicon-cpt:before{
 	font-family: "dashicons";
-	content: "\f333";
+	content: "\f111";
 	color: #555;
+	margin-top: -2px;
 }
 .wpallexport-plugin #file_selector .dd-option .dashicon-users:before,
 .wpallexport-plugin #file_selector .dd-selected .dashicon-users:before{
@@ -1839,6 +2066,17 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin .chosen-container-active.chosen-with-drop .chosen-single{
 	background: none;
 }
+.wpallexport-plugin .chosen-results .group-result,
+.wpallexport-plugin .chosen-results .active-result {
+	font-size: 15px;
+	line-height: 28px;
+}
+
+.wpallexport-plugin .chosen-results .active-result.highlighted {
+	background: #eee;
+	color: #555;
+}
+
 .wpallexport-plugin .wp_all_export_product_matching_mode{
 	margin-top: 25px;
 	margin-left: 10px;
@@ -1908,10 +2146,10 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	color: #fff;
 	display: inline-block;
 	font-size: 14px;
-	height: 18px;
+	height: 21px;
 	margin: 0;
 	float: right;
-	padding: 12px 40px 10px 50px;
+	padding: 13px 40px 10px 50px;
 	text-decoration: none;
 	font-weight: bold;	
 	min-width: 60px;
@@ -1941,17 +2179,37 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	width: 100% !important;
 }
 .wpallexport-plugin .wp_all_export_rule_inputs .chosen-container-single .chosen-single{
-	height: 41px;
+	height: 48px;
 	line-height: 38px;
-	font-size: 14px;
+	font-size: 15px;
 }
+.wpallexport-plugin .chosen-container-single .chosen-single span {
+	margin-top: 5px;
+	color: #777;
+}
+
+.wpallexport-plugin .googleMerchants .chosen-container-single .chosen-single span,
+.wpallexport-plugin .export-single .chosen-container-single .chosen-single span {
+	margin-top: 0;
+}
+
+.wpallexport-plugin .timezone-select .chosen-container-single .chosen-single span {
+	margin-top: 0;
+}
+
+.wpallexport-plugin .chosen-container-single .chosen-search input[type="text"] {
+	background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xNS44NTMgMTYuNTZjLTEuNjgzIDEuNTE3LTMuOTExIDIuNDQtNi4zNTMgMi40NC01LjI0MyAwLTkuNS00LjI1Ny05LjUtOS41czQuMjU3LTkuNSA5LjUtOS41IDkuNSA0LjI1NyA5LjUgOS41YzAgMi40NDItLjkyMyA0LjY3LTIuNDQgNi4zNTNsNy40NCA3LjQ0LS43MDcuNzA3LTcuNDQtNy40NHptLTYuMzUzLTE1LjU2YzQuNjkxIDAgOC41IDMuODA5IDguNSA4LjVzLTMuODA5IDguNS04LjUgOC41LTguNS0zLjgwOS04LjUtOC41IDMuODA5LTguNSA4LjUtOC41eiIvPjwvc3ZnPg==') no-repeat right 5px top 50%;
+	background-size: 12px;
+}
+
 .wpallexport-plugin .wp_all_export_rule_inputs .chosen-container-single .chosen-single div{
 	top: 9px;
+	display: none;
 }
 
 .wpallexport-plugin #wp_all_export_value{
 	font-size: 16px;
-	height: 42px;
+	height: 48px;
 	padding: 10px;	
 	border: 1px solid #ddd;
 	border-radius: 5px;
@@ -1982,24 +2240,32 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	width: 30%;
 	color:#46ba69;
 	font-size: 14px;
+	vertical-align: top;
 }
 .wpallexport-plugin .wp_all_export_filtering_rules .drag-element .rule_as_is{
 	display: inline-block;
 	width: 20%;
 	color:#40acad;
 	font-size: 14px;
+	vertical-align: top;
 }
 .wpallexport-plugin .wp_all_export_filtering_rules .drag-element .rule_condition_value{
 	display: inline-block;
 	width: 20%;
 	color:#000;
 	font-size: 14px;
+	word-wrap: break-word;
+	vertical-align: top;
+	padding-right: 15px;
+	max-width: 20vw; /* Prevents the column from overflowing when the string is too large */
 }
+
 .wpallexport-plugin .wp_all_export_filtering_rules .drag-element .condition{
 	display: inline-block;
 	width: 25%;
 	color: #000;
 	font-size: 14px;
+	vertical-align: top;
 }
 .wpallexport-plugin .wp_all_export_filtering_rules li{
 	position: relative;
@@ -2184,6 +2450,19 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	.wpallexport-plugin form.wpallexport-template .load-template {		
 		display: block;
 		font-size: 12px;		
+	}
+
+	.wpallexport-plugin .load-template-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.wpallexport-plugin form.wpallexport-template .load-template select {
+		width: auto;
+		padding: 2px 25px 2px 10px;
+		font-size: 12px !important;
+		height: 34px;
+		background-size: 14px 14px;
 	}
 
 	.wpallexport-plugin form.wpallexport-step-3 .wpallexport-section .wpallexport-content-section{
@@ -2680,6 +2959,8 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 
 .wpallexport-plugin .product_variations .sub-options {
 	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 8px;
 }
 
 .sub-options {
@@ -3329,6 +3610,18 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .product_variations {
 	display: none;
 }
+
+.wpallexport-plugin .product_variations input {
+	margin-bottom: 0;
+}
+
+.wpallexport-plugin .wpallexport-custom-xml-template .cdata label {
+	vertical-align: 0px;
+}
+
+.wpallexport-plugin .wpallexport-custom-xml-template .cdata input {
+	vertical-align: -2px;
+}
 /*@*/
 
 /*--------------------------------------------------------------------------
@@ -3381,6 +3674,11 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin table.wpallexport-layout td.left{float:left;}
 .wpallexport-plugin table.wpallexport-layout td.right{float:right;}
 
+.wpallexport-plugin .manage-column.check-column,
+.wpallexport-plugin #the-pmxi-admin-import-list .check-column{
+	padding: 10px;
+}
+
 /*--------------------------------------------------------------------------
 *
 *	Setting Page
@@ -3397,7 +3695,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 }
 .wpallexport-plugin form.settings .wpallexport-header{
 	overflow: hidden;
-	height: 60px;
+	height: 70px;
 	padding-top: 10px;
 }
 
@@ -3468,6 +3766,16 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 .wpallexport-plugin .wpae-custom-field ul li{
 	margin-left: 15px;
 }
+
+.wpallexport-plugin .function-editor,
+.wpallexport-plugin .client-mode-settings {
+	margin-top: 2em;
+}
+
+.wpallexport-plugin .settings .submit-buttons {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
 /*--------------------------------------------------------------------------
 *
 *	Media Queries
@@ -3501,7 +3809,7 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 		width: 270px;
 	}	
 
-	.wpallexport-plugin .pmxi-admin-imports tr td em{
+	.wpallexport-plugin .pmxi-admin-imports tr td em {
 		display: block;
 		max-width: 585px;
 	}
@@ -3511,8 +3819,13 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	}
 }
 
-@media screen and (min-width: 1350px) and (max-width: 1415px) {  
+@media screen and (min-width: 1350px) and (max-width: 1415px) {
+
 	.wpallexport-plugin .wpallexport-wrapper{
+		width: 100%;
+	}
+
+	.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 		width: 1120px;		
 	}
 	/*.wpallexport-plugin a.wpallexport-import-from{
@@ -3549,8 +3862,13 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	}
 }
 
-@media screen and (min-width: 1250px) and (max-width: 1349px) {  
+@media screen and (min-width: 1250px) and (max-width: 1349px) {
+
 	.wpallexport-plugin .wpallexport-wrapper{
+		width: 100%;
+	}
+
+	.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 		width: 1020px;		
 	}
 	.wpallexport-plugin .change_file .wpallexport-import-types h3{
@@ -3590,8 +3908,13 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	}
 }
 
-@media screen and (min-width: 1150px) and (max-width: 1249px) {  
+@media screen and (min-width: 1150px) and (max-width: 1249px) {
+
 	.wpallexport-plugin .wpallexport-wrapper{
+		width: 100%;
+	}
+
+	.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 		width: 920px;		
 	}
 	/*.wpallexport-plugin a.wpallexport-import-from{
@@ -3658,7 +3981,12 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 	/*.wpallexport-plugin form.wpallexport-step-3{
 		width: 55%;
 	}*/
+
 	.wpallexport-plugin .wpallexport-wrapper{
+		width: 100%;
+	}
+
+	.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 		width: 800px;		
 	}
 	/*.wpallexport-plugin a.wpallexport-import-from{
@@ -3729,8 +4057,13 @@ a.wpallexport-import-to-format span.wpallexport-import-to-title {
 		width: 67%;
 	}
 }
-@media screen and (max-width: 1049px) {  
+@media screen and (max-width: 1049px) {
+
 	.wpallexport-plugin .wpallexport-wrapper{
+		width: 100%;
+	}
+
+	.wpallexport-plugin .wpallexport-step-1 .wpallexport-wrapper, .wpallexport-plugin .wpallexport-step-6.wpallexport-wrapper{
 		width: 760px;		
 	}
 	/*.wpallexport-plugin a.wpallexport-import-from{
@@ -4128,6 +4461,12 @@ input label {
 	display: none;
 }
 
+.wpallexport-plugin #wp_all_export_xml_element_chosen,
+.wpallexport-plugin #wp_all_export_rule_chosen {
+	background: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E') no-repeat right 5px top 50%;
+    background-size: auto;
+	background-size: 16px 16px;
+}
 .wpallexport-plugin .chosen-container-single .chosen-single {
 	height: 41px;
 	line-height: 38px;
@@ -4135,10 +4474,14 @@ input label {
 	background: none;
 	box-shadow: none;
 	color: #555 !important;
+	padding: 0 0 0 12px;
 }
-
 .wpallexport-plugin .chosen-container-single .chosen-single div {
 	top: 9px;
+}
+.wpallexport-plugin .chosen-results li.no-results {
+	padding: 10px;
+	font-size: 15px;
 }
 /** END COMBINE MULTIPLE ELEMENTS INTO ONE **/
 
@@ -4157,6 +4500,11 @@ input label {
     color: #000;
     display: none;
 }
+
+.wpallexport-plugin .wpae-custom-field .wpallexport-free-edition-notice {
+	display: block;
+}
+
 .wpallexport-plugin .wpallexport-free-edition-notice p{
     color: #000 !important;
     font-size: 1.3em !important;
@@ -4168,12 +4516,314 @@ input label {
     font-size: 1.3em;
     text-decoration: underline !important;
 }
-.wpallexport-plugin .wpallexport-user-export-notice, .wpallexport-plugin .wpallexport-customer-export-notice
+.wpallexport-plugin form.wpallexport-choose-file .wpallexport-free-edition-notice
 {
     padding: 20px;
     width: 558px;
     margin: 0 auto;
 }
+.wpallexport-plugin .wp_all_export_saving_status {
+	padding: 10px;
+	display: block;
+}
+
+.wpallexport-plugin .wp_all_export_saving_status.error,
+.wpallexport-plugin .wp_all_export_saving_status.updated {
+	background: white !important;
+}
 /** END INSTALL ELEMENTS NOTICE */
 
+.category-mapper .mask {
+	display: none;
+}
 
+.wpallexport-xml-advanced-options .simple_xml_template_options {
+	margin-top: 30px;
+}
+
+.wpallexport-xml-advanced-options .switcher-target-simple_custom_xml_cdata_logic_never {
+	padding-left: 26px;
+}
+
+.wpallexport-xml-advanced-options .switcher-target-simple_custom_xml_cdata_logic_never p {
+	font-style: normal;
+}
+
+.wpallexport-xml-advanced-options .product_variations input[type="radio"] {
+	margin-bottom: -3px;
+}
+
+.wpallexport-xml-advanced-options #custom_xml_cdata_logic_auto,
+.wpallexport-xml-advanced-options #custom_custom_xml_cdata_logic_all,
+.wpallexport-xml-advanced-options #custom_custom_xml_cdata_logic_never {
+	margin-bottom: -4px;
+}
+
+/*
+ * Download Import Templates
+ */
+
+.wpallexport-plugin .download-import-templates p {
+	font-size: 14px;
+}
+
+.wpallexport-plugin .download-import-templates h2 {
+	margin-bottom: 10px;
+}
+
+.open_cron_scheduling-disabled {
+	color: #555 !important;
+	text-decoration: none;
+}
+
+/**
+ * Generate Secure URL
+ */
+
+#wpae-secure-url-container {
+
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 696px;
+	margin: auto;
+}
+
+#wpae-generate-token {
+
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-top: 0 !important;
+	background-color: #435F9A;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	margin-left: 0;
+	outline: none;
+}
+
+#wpae-secure-url {
+
+	width: 350px;
+	margin-right: 0;
+	padding: 9px;
+	border: none;
+	flex: 1;
+	border-radius: 0 3px 3px 0;
+}
+
+
+.wpallexport-settings-page .wpallexport-content-section {
+	margin-top: 10px;
+
+}
+
+.wpallexport-settings-page .wpallexport-collapsed-header {
+	padding-left: 25px !important;
+}
+
+.wpallexport-settings-page .wpallexport-collapsed-content {
+	padding: 0 !important;
+}
+
+.wpallexport-settings-page .form-table {
+	max-width:none;
+}
+
+.wpallexport-settings-page .input.wpallexport_realtime_show_bom {
+	margin:5px 0;
+	max-width: 900px;
+}
+
+.wpallexport-settings-page .input.wpallexport_realtime_show_bom > div{
+
+	margin-left: 24px;
+	margin-bottom: 15px;
+}
+
+.wpallexport-settings-page .input.wpallexport_realtime_show_bom > div p{
+
+	margin-bottom: 10px;
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.wpallexport-settings-page .wpae-hidden {
+	display:none;
+}
+
+.wpallexport-settings-page .input {
+	margin:5px 0;
+}
+
+
+.wpallexport-settings-page .wpallexport-help {
+	position: relative;
+	top: 0 !important;
+}
+
+
+.wpallexport-settings-page .wpallexport-help.upper {
+	position: relative;
+	top: -2px !important;
+}
+
+.wpallexport-settings-page .switcher-target-split_large_exports {
+	display:block;
+	clear: both;
+	width: 100%;
+}
+
+.wpallexport-settings-page .wp_all_export_sub_input {
+	width: 50px;
+}
+
+.wpallexport-settings-page .wp_all_export_sub_input.records_per_iteration {
+	width: 40px !important;
+}
+
+
+
+.wpallexport-settings-page label.save_import_as_label {
+	width: 103px;
+}
+
+.wpallexport-settings-page input.friendly-name {
+	vertical-align:middle;
+	background:#fff !important;
+	width: 350px;
+}
+
+.wpallexport-settings-page .wpae-align-right {
+	text-align:right;
+}
+
+.wpallexport-plugin .custom-error-notice{
+    background-color: #fff;
+    border: 1px solid #c3c4c7;
+    border-left: 4px solid #d63638;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    color: #3c434a;
+    font-size: 13px;
+    line-height: 1.4em;
+    padding: 12px;
+    margin: 15px 0px 15px 0px;
+    display: inline-block;
+    width: -webkit-fill-available;
+}
+
+
+.wpallexport-plugin .cross-sale-notice.codebox{
+    background-color: #122031;
+    padding:20px;
+    font-family: 'Inter';
+	color: #fff;
+}
+
+.wpallexport-plugin .wpallexport-collapsed-content-inner .cross-sale-notice.codebox{
+    margin:15px 0px 15px 0px;
+    border:1px solid lightgray;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-inner{
+	display: flex;
+	position:relative;
+}
+
+.wpallexport-plugin .wpallexport-collapsed-content-inner.wpallexport-modal-container .cross-sale-notice.codebox .codebox-inner{
+	flex-direction: column;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-inner .codebox-left{
+	flex: 1;
+	padding-right: 20px;
+	min-width: 310px;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-inner .codebox-right{
+	flex: 1;
+	padding-left: 20px;
+	border-left: 1px solid #ddd;
+	display: flex;
+	flex-direction: column;
+	padding-top: 42px;
+}
+
+.wpallexport-plugin .wpallexport-collapsed-content-inner.wpallexport-modal-container .cross-sale-notice.codebox .codebox-inner .codebox-right{
+	border-left: none;
+	border-top: 1px solid #ddd;
+	padding: 0;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-inner .codebox-image-container{
+	display: flex;align-items: center;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-inner img{
+	width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox h1{
+    margin:0;
+    color: #fff;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox p{
+    font-size: 16px !important;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox .codebox-button-container{
+	position: absolute;
+	bottom: -5px;
+}
+
+.wpallexport-plugin .wpallexport-collapsed-content-inner.wpallexport-modal-container .cross-sale-notice.codebox .codebox-inner .codebox-button-container{
+	position: inherit;
+	bottom: inherit;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox a {
+    background-color: #859eff;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox a span {
+    font-size: 16px !important;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox a:hover{
+    cursor: pointer;
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox a:hover span::after {
+    transform: translateX(5px);
+}
+
+.wpallexport-plugin .cross-sale-notice.codebox a span::after {
+    mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20d%3D%22M502.6%20278.6c12.5-12.5%2012.5-32.8%200-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3%200s-12.5%2032.8%200%2045.3L402.7%20224%2032%20224c-17.7%200-32%2014.3-32%2032s14.3%2032%2032%2032l370.7%200-73.4%2073.4c-12.5%2012.5-12.5%2032.8%200%2045.3s32.8%2012.5%2045.3%200l128-128z%22%2F%3E%3C%2Fsvg%3E');
+    content: '';
+    background-color: #000;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100%;
+    width: 14px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+}

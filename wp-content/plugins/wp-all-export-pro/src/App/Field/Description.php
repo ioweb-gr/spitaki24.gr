@@ -9,11 +9,8 @@ class Description extends Field
 
     private $basicInformationData = null;
 
-    private $snippetData;
-
     public function getValue($snippetData)
     {
-        $this->snippetData = $snippetData;
         $this->basicInformationData = $this->feed->getSectionFeedData(self::SECTION);
 
         if($this->entry->post_type === 'product') {
@@ -27,7 +24,12 @@ class Description extends Field
                 if(!empty($variation_description[0])) {
                     if(!empty($variation_description[0])) {
                         if(empty($variation_description[0])) {
-                            $parentDescription = $this->getDescription(get_post($this->entry->post_parent));
+                            $postParent = get_post($this->entry->post_parent);
+                            if(is_object($postParent)) {
+                                $parentDescription = $this->getDescription($postParent);
+                            } else {
+                                $parentDescription = '';
+                            }
                             return $parentDescription;
                         }
                         return $variation_description[0];
@@ -68,7 +70,7 @@ class Description extends Field
         } else if ($this->basicInformationData['itemDescription'] == 'productShortDescription') {
             return $product->post_excerpt;
         } else if ($this->basicInformationData['itemDescription'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($this->basicInformationData['itemDescriptionCV'], $this->snippetData);
+            return $this->basicInformationData['itemDescriptionCV'];
         } else {
             throw new \Exception('Unknown field value');
         }

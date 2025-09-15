@@ -56,7 +56,7 @@ class Import {
 						'import_id' => $import->id,
 						'date'      => date( 'Y-m-d H:i:s' ),
 						'type'      => 'processing',
-						'summary'   => __( 'cron processing', 'wp_all_import_plugin' ),
+						'summary'   => __( 'cron processing', 'wp-all-import-pro' ),
 					)
 				)->save();
 			}
@@ -114,7 +114,7 @@ class Import {
 				'import_id' => $import->id,
 				'date'      => date( 'Y-m-d H:i:s' ),
 				'type'      => 'trigger',
-				'summary'   => __( 'triggered by cron', 'wp_all_import_plugin' ),
+				'summary'   => __( 'triggered by cron', 'wp-all-import-pro' ),
 			)
 		)->save();
 		return $history_log;

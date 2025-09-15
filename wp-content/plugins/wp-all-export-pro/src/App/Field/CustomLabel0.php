@@ -14,9 +14,9 @@ class CustomLabel0 extends Field
         if(!isset($advancedAttributes['customLabel0'])) {
             return '';
         }
-        
-        $customLabel = $this->replaceSnippetsInValue($advancedAttributes['customLabel0'], $snippetData);
-        return $this->replaceMappings($advancedAttributes['customLabel0Mappings'], $customLabel);
+
+		$this->mappings = $advancedAttributes['customLabel0Mappings'];
+        return $advancedAttributes['customLabel0'];
     }
 
     public function getFieldName()

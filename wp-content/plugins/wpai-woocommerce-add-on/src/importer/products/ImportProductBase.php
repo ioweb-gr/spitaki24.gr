@@ -106,7 +106,7 @@ abstract class ImportProductBase extends ImportBase {
                         continue;
                     }
                     $linked_products[] = $linked_product_id;
-                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Product with ID `%d` added to %s list.', \PMWI_Plugin::TEXT_DOMAIN), $linked_product_id, $type == '_upsell_ids' ? 'Up-Sells' : 'Cross-Sells'));
+                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Product with ID `%d` added to %s list.', 'wpai_woocommerce_addon_plugin'), $linked_product_id, $type == '_upsell_ids' ? 'Up-Sells' : 'Cross-Sells'));
                 } else {
                     $not_found[] = $id;
                 }
@@ -246,7 +246,7 @@ abstract class ImportProductBase extends ImportBase {
                         ));
                         $dest->insert();
                     } else {
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b>: Unable to create cloaked link for %s', \PMWI_Plugin::TEXT_DOMAIN), $url));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b>: Unable to create cloaked link for %s', 'wpai_woocommerce_addon_plugin'), $url));
                         $link = NULL;
                     }
                 }

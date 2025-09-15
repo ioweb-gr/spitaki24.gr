@@ -3,7 +3,7 @@
 Plugin Name: WP All Import - WooCommerce Import Add-On Pro
 Plugin URI: http://www.wpallimport.com/
 Description: Import to WooCommerce. Adds a section to WP All Import that looks just like WooCommerce. Requires WP All Import.
-Version: 4.0.0
+Version: 4.0.5
 Author: Soflyy
 WC tested up to: 8.0
 */
@@ -20,7 +20,7 @@ if ( is_plugin_active('woocommerce-xml-csv-product-import/plugin.php') ) {
 }
 else {
 
-    define('PMWI_VERSION', '4.0.0');
+  define('PMWI_VERSION', '4.0.5');
 
 	define('PMWI_EDITION', 'paid');
 
@@ -664,7 +664,11 @@ EOT;
 				'single_product_featured' => '',
 				'is_product_visibility' => 'visible',
 				'single_product_visibility' => '',
+				// Set defaults for product matching
+				'duplicate_indicator' => 'custom field',
+				'custom_duplicate_name' => '_sku',
 				'single_product_sku' => '',
+				'single_product_global_unique_id' => '',
 				'single_product_url' => '',
 				'single_product_button_text' => '',
 				'single_product_regular_price' => '',
@@ -784,9 +788,11 @@ EOT;
 				'variable_product_files_names_delim' => ',',
 				'variable_image' => '',
 				'variable_sku' => '',
+				'variable_global_unique_id' => '',
 				'is_variable_product_enabled' => 'yes',
 				'single_variable_product_enabled' => '',
 				'link_all_variations' => 0,
+				'block_low_stock_notice' => 1,
 				'variable_stock_use_parent' => 0,
 				'variable_regular_price_use_parent' => 0,
 				'variable_sale_price_use_parent' => 0,
@@ -942,6 +948,7 @@ EOT;
 					'notes_repeater_mode_separator' => '|',
 					'notes_repeater_mode_foreach' => '',
 					'notes' => array(),
+					'notes_add_auto_order_status_notes' => 0,
                     // Backwards compatibility settings
                     'products' => array(),
                     'manual_products' => array(),
@@ -994,7 +1001,56 @@ EOT;
                 'single_product_subscription_limit' => '',
 				'grouped_product_children' => 'xpath',
 				'grouped_product_children_xpath' => '',
-                'woo_add_on_version' => ''
+                'woo_add_on_version' => '',
+				'is_update_status' => 1,
+				'is_update_title' => 1,
+				'is_update_content' => 1,
+				'is_update_excerpt' => 1,
+				'is_update_price' => 1,
+				'is_update_regular_price' => 1,
+				'is_update_sale_price' => 1,
+				'is_update_sale_price_dates_from' => 1,
+				'is_update_sale_price_dates_to' => 1,
+				'is_update_sale_price_dates' => 1,
+				'is_update_sku' => 1,
+				'is_update_weight' => 1,
+				'is_update_length' => 1,
+				'is_update_width' => 1,
+				'is_update_height' => 1,
+				'is_update_up_sells' => 1,
+				'is_update_cross_sells' => 1,
+				'is_update_grouping' => 1,
+				'is_update_shipping_class' => 1,
+				'is_update_stock' => 1,
+				'is_update_stock_status' => 1,
+				'is_update_manage_stock' => 1,
+				'is_update_global_unique_id' => 1,
+				'is_update_backorders' => 1,
+				'is_update_tax_class' => 1,
+				'is_update_tax_status' => 1,
+				'is_update_downloadable' => 1,
+				'is_update_download_limit' => 1,
+				'is_update_download_expiry' => 1,
+				'is_update_downloadable_files' => 1,
+				'is_update_virtual' => 1,
+				'is_update_allow_backorders' => 1,
+				'is_update_sold_individually' => 1,
+				'is_update_woocommerce_general_options' => 1,
+				'is_update_woocommerce_shipping_options' => 1,
+				'is_update_woocommerce_inventory_options' => 1,
+				'is_update_woocommerce_linked_product_options' => 1,
+				'is_update_stock_quantity' => 1,
+				'is_update_slug' => 1,
+				'is_update_author' => 1,
+				'is_update_attachments' => 1,
+				'is_update_menu_order' => 1,
+				'is_update_purchase_note' => 1,
+				'is_update_comment_status' => 1,
+				'is_update_dates' => 1,
+				'is_update_images' => 1,
+				'is_update_custom_fields' => 1,
+				'is_update_categories' => 1,
+				'is_using_new_product_import_options' => 0,
 			);
 		}
 	}
@@ -1036,4 +1092,3 @@ EOT;
 		}
 	}
 }
-

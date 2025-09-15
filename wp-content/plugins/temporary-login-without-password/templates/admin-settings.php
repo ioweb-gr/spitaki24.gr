@@ -14,25 +14,36 @@ $tabs = array(
 		'url'  => $base_url . 'home',
 		'name' => __( 'Temporary Logins', 'temporary-login-without-password' ),
 		'visible' => ! $is_temporary_login, 
+		'priority'=> 10,
 	),
 	'settings' => array(
 		'url'  => $base_url . 'settings',
 		'name' => __( 'Settings', 'temporary-login-without-password' ),
 		'visible' => ! $is_temporary_login, 
+		'priority'=> 20,
 	),
 	'system-info' => array(
 		'url'  => $base_url . 'system-info',
 		'name' => __( 'System Info', 'temporary-login-without-password' ),
 		'visible' => true, 
+		'priority'=> 90,
 	),
 	'other-plugins' => array(
 		'url'  => $base_url . 'other-plugins',
 		'name' => __( 'Other Awesome Plugins', 'temporary-login-without-password' ),
-		'visible' => true, 
+		'visible' => true,
+		'priority'=> 100, 
 	), 
 ); 
 
 $filtered_tabs =  apply_filters( 'tlwp_custom_extra_tab', $tabs, $active_tab ); 
+// 🔹 Sort tabs by priority
+uasort( $filtered_tabs, function( $a, $b ) {
+    if ( $a['priority'] == $b['priority'] ) {
+        return 0;
+    }
+    return ( $a['priority'] < $b['priority'] ) ? -1 : 1;
+});
 ?>
 <h2 class="nav-tab-wrapper">
 	<?php
@@ -53,13 +64,21 @@ $filtered_tabs =  apply_filters( 'tlwp_custom_extra_tab', $tabs, $active_tab );
 	}?>
 </h2>
 
-<?php
+<?php  
 if ( 'home' === $active_tab && !$is_temporary_login ) { ?>
 	<div class="wrap wtlwp wtlwp-settings-wrap" id="temporary-logins">
-		<h2 class="font-semibold text-gray-700">
-			<?php echo esc_html__( 'Temporary Logins', 'temporary-login-without-password' ); ?> 
-			<span class="cursor-pointer ml-3 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white transition duration-150 ease-in-out px-3 py-1 hover:bg-gray-50 hover:text-gray-700 focus:ring-2 focus:ring-blue-200" id="add-new-wtlwp-form-button"><?php esc_html_e( 'Create New', 'temporary-login-without-password' ); ?></span>
-		</h2>
+		<div class="w-full flex flex-row justify-between items-center mt-4">
+			<div class="w-3/4"> 
+				<h2 class="font-semibold text-gray-700">
+					<?php //echo esc_html__( 'Temporary Logins', 'temporary-login-without-password' ); ?> 
+					<span class="cursor-pointer ml-3 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white transition duration-150 ease-in-out px-3 py-1 hover:bg-gray-50 hover:text-gray-700 focus:ring-2 focus:ring-blue-200" id="add-new-wtlwp-form-button"><?php esc_html_e( 'Create New', 'temporary-login-without-password' ); ?></span>		
+				</h2>
+			</div>
+			<div class="w-1/5 text-sm text-gray-600 text-right">
+				<?php echo esc_html( Wp_Temporary_Login_Without_Password_Common::count_tlwp_users() . ' Users' ); ?>
+			</div>
+		</div>
+		
 		<div class="wtlwp wtlwp-settings">
 			<!-- Add New Form Start -->
 
@@ -67,10 +86,13 @@ if ( 'home' === $active_tab && !$is_temporary_login ) { ?>
 				<?php include WTLWP_PLUGIN_DIR . '/templates/new-login.php'; ?>
 			</div>
 
-			<?php if ( $do_update ) { ?>
+			<?php
+			
+			if ( $do_update ) { ?>
 
 				<div class="wrap update-wtlwp-form" id="update-wtlwp-form">
-					<?php include WTLWP_PLUGIN_DIR . '/templates/update-login.php'; ?>
+					<?php 
+					include WTLWP_PLUGIN_DIR . '/templates/update-login.php'; ?>
 				</div>
 
 			<?php } ?>
@@ -152,6 +174,7 @@ if ( 'home' === $active_tab && !$is_temporary_login ) { ?>
 		<?php include WTLWP_PLUGIN_DIR . '/templates/system-info.php'; ?>
 	</div>
 <?php } ?>
+
 <?php
 /**
  * Hook to render custom tab content 

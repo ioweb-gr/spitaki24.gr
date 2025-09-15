@@ -15,7 +15,7 @@ class AdwordsRedirect extends Field
             return '';
         }
 
-        return $this->replaceSnippetsInValue($advancedAttributesData['adwordsRedirect'], $snippetData);
+        return $advancedAttributesData['adwordsRedirect'];
     }
 
     public function getFieldName()

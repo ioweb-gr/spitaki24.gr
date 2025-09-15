@@ -43,7 +43,9 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password' ) ) {
 		 * Wp_Temporary_Login_Without_Password constructor.
 		 */
 		public function __construct() {
-			global $tlwp_feedback, $tlwp_tracker;
+			global $tlwp_feedback, $tlwp_tracker, $wpdb, $wpbd; 
+
+			$wpbd = $wpdb;
 
 			$this->plugin_name = 'temporary-login-without-password';
 			$this->version     = WTLWP_PLUGIN_VERSION;
@@ -69,7 +71,7 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password' ) ) {
 		 */
 		public function define_constants() {
 
-			global $wpdb;
+			global $wpdb; 
 
 			$upload_dir = wp_upload_dir( null, false );
 

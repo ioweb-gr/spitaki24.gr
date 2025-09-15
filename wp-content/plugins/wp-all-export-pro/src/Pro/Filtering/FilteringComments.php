@@ -38,13 +38,12 @@ class FilteringComments extends FilteringBase
     /**
      *
      */
-    public function checkNewStuff(){
-        //If re-run, this export will only include records that have not been previously exported.
-        if ($this->isExportNewStuff()){
-            $postList = new \PMXE_Post_List();
-            $this->queryWhere = " AND ({$this->wpdb->comments}.comment_ID NOT IN (SELECT post_id FROM " . $postList->getTable() . " WHERE export_id = '". $this->exportId ."'))";
-        }
+    public function getExcludeQueryWhere($postsToExclude){
+
+        return " AND ({$this->wpdb->comments}.comment_ID NOT IN (" . $postsToExclude . "))";
     }
+
+
 
     /**
      * @param $rule
@@ -92,5 +91,10 @@ class FilteringComments extends FilteringBase
                 break;
         }
         $this->recursion_parse_query($rule);
+    }
+
+    protected function getModifiedQueryWhere($export)
+    {
+        return '';
     }
 }

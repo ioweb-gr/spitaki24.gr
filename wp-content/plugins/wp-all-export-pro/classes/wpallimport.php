@@ -24,13 +24,12 @@ final class PMXE_Wpallimport
 	public static function create_an_import( & $export )
 	{
 
-		$custom_type = (empty($export->options['cpt'])) ? 'post' : $export->options['cpt'][0];
+		if (
+		    $export->options['is_generate_import'] && wp_all_export_is_compatible()
+            && (!isset($export->options['enable_real_time_exports']) || !$export->options['enable_real_time_exports'])
+        )
+		{
 
-		// Do not create an import for WooCommerce Orders & Refunds
-		// if ( in_array($custom_type, array('shop_order'))) return false;
-
-		if ( $export->options['is_generate_import'] and wp_all_export_is_compatible() ){				
-				
 			$import = new PMXI_Import_Record();
 
 			if ( ! empty($export->options['import_id']) ) $import->getById($export->options['import_id']);
@@ -107,11 +106,20 @@ final class PMXE_Wpallimport
 	}
 
 	public static $templateOptions = array();
+
 	public static function generateImportTemplate( & $export, $file_path = '', $foundPosts = 0, $link_to_import = true )
 	{
 		$exportOptions = $export->options;
 
 		$custom_type = (empty($exportOptions['cpt'])) ? 'post' : $exportOptions['cpt'][0];
+
+		if ($custom_type == 'shop_review') {
+		    $custom_type = 'woo_reviews';
+        }
+
+        if(XmlExportEngine::$is_custom_addon_export) {
+		    $custom_type = 'gf_entries';
+        }
 
 		// Do not create an import template for WooCommerce Refunds
 		if ( $export->options['export_to'] == 'xml' && in_array($export->options['xml_template_type'], array('custom', 'XmlGoogleMerchants')) )  return false;
@@ -145,6 +153,18 @@ final class PMXE_Wpallimport
 				'is_update_attachments' => 0,
 				'is_update_acf' => 0,
                 'is_update_comment_status' => 0,
+                'is_update_comment_post_id' => 0,
+                'is_update_comment_author' => 0,
+                'is_update_comment_author_email' => 0,
+                'is_update_comment_author_url' => 0,
+                'is_update_comment_author_IP' => 0,
+                'is_update_comment_karma' => 0,
+                'is_update_comment_approved' => 0,
+                'is_update_comment_verified' => 0,
+                'is_update_comment_rating' => 0,
+                'is_update_comment_agent' => 0,
+                'is_update_comment_user_id' => 0,
+                'is_update_comment_type' => 0,
                 'import_img_tags' => 1,
 				'update_acf_logic' => 'only',
 				'acf_list' => '',					
@@ -160,7 +180,26 @@ final class PMXE_Wpallimport
 				'update_categories_logic' => 'only',
 				'taxonomies_list' => '',
 				'export_id' => $export->id
-			);					
+			);
+
+            $addons = \XmlExportEngine::get_addons();
+            foreach ( $addons as $addon ) {
+                self::$templateOptions[ $addon ]                = [];
+                self::$templateOptions[ $addon . '_groups' ]    = [];
+                self::$templateOptions[ $addon . '_switchers' ] = [];
+                self::$templateOptions[ $addon . '_multiple' ]  = [];
+            }
+
+			if(XmlExportEngine::$is_custom_addon_export) {
+
+                $gf_addon = \GF_Export_Add_On::get_instance();
+                $sub_post_type = $gf_addon->add_on->get_sub_post_type();
+
+                if(class_exists('GFAPI')) {
+                    $form = GFAPI::get_form($sub_post_type);
+                    self::$templateOptions['gravity_form_title'] = $form['title'];
+                }
+            }
 
 			if ( in_array('product', $exportOptions['cpt']) )
 			{				
@@ -209,7 +248,7 @@ final class PMXE_Wpallimport
 					'convert_decimal_separator' => 1,
 					'grouping_indicator' => 'xpath',				
 					'is_update_product_type' => 1,
-					'make_simple_product' => 1,
+					'make_simple_product' => 0,
 					'single_product_regular_price_adjust_type' => '%',
 					'single_product_sale_price_adjust_type' => '%',					
 					'is_variation_product_manage_stock' => 'no',
@@ -286,26 +325,30 @@ final class PMXE_Wpallimport
 				self::$templateOptions['is_update_url'] = 0;
 			}
 
-			if (XmlExportEngine::$is_taxonomy_export){
-          self::$templateOptions['taxonomy_type'] = $exportOptions['taxonomy_to_export'];
-      }
+            if ( XmlExportEngine::$is_woo_review_export || XmlExportEngine::$is_comment_export) {
+                self::$templateOptions['is_update_comment_type'] = 1;
+            }
+
+            if (XmlExportEngine::$is_taxonomy_export){
+                self::$templateOptions['taxonomy_type'] = $exportOptions['taxonomy_to_export'];
+            }
 
 			self::prepare_import_template( $exportOptions );
 
-      if ( in_array('product', $exportOptions['cpt']) )
-      {
-          self::$templateOptions['single_page_parent'] = '';
-          if ( ! empty($exportOptions['export_variations']) && $exportOptions['export_variations'] == XmlExportEngine::VARIABLE_PRODUCTS_EXPORT_VARIATION ){
-              if ( $exportOptions['export_variations_title'] == XmlExportEngine::VARIATION_USE_PARENT_TITLE ){
-                  self::$templateOptions['matching_parent'] = 'first_is_variation';
-              }
-              if ( $exportOptions['export_variations_title'] == XmlExportEngine::VARIATION_USE_DEFAULT_TITLE ) {
-                  self::$templateOptions['matching_parent'] = 'first_is_parent_id';
-              }
-              self::$templateOptions['create_new_records'] = 0;
-              self::$templateOptions['is_update_product_type'] = 0;
-          }
-      }
+            if ( in_array('product', $exportOptions['cpt']) )
+            {
+                self::$templateOptions['single_page_parent'] = '';
+                if ( ! empty($exportOptions['export_variations']) && $exportOptions['export_variations'] == XmlExportEngine::VARIABLE_PRODUCTS_EXPORT_VARIATION ){
+                      if ( $exportOptions['export_variations_title'] == XmlExportEngine::VARIATION_USE_PARENT_TITLE ){
+                          self::$templateOptions['matching_parent'] = 'first_is_variation';
+                      }
+                      if ( $exportOptions['export_variations_title'] == XmlExportEngine::VARIATION_USE_DEFAULT_TITLE ) {
+                          self::$templateOptions['matching_parent'] = 'first_is_parent_id';
+                      }
+                      self::$templateOptions['create_new_records'] = 0;
+                      self::$templateOptions['is_update_product_type'] = 0;
+                }
+            }
 
 			$tpl_options = self::$templateOptions;
 
@@ -361,7 +404,13 @@ final class PMXE_Wpallimport
 
 		}
 
-		$link_to_import and $export->options['is_generate_import'] and self::link_template_to_import( $export, $file_path, $foundPosts );
+		if($link_to_import && $export->options['is_generate_import']
+            &&
+            (!isset($export->options['enable_real_time_exports'])
+                || !$export->options['enable_real_time_exports'])
+        ) {
+            self::link_template_to_import( $export, $file_path, $foundPosts );
+        }
 	}
 
 	public static function link_template_to_import( & $export, $file_path, $foundPosts )
@@ -376,7 +425,7 @@ final class PMXE_Wpallimport
 									
 			$import = new PMXI_Import_Record();
 
-			$import->getById($exportOptions['import_id']);	
+			$import->getById($exportOptions['import_id']);
 
 			if ( ! $import->isEmpty() and $import->parent_import_id == 99999 ){
 
@@ -408,7 +457,7 @@ final class PMXE_Wpallimport
 
 					if ( ! in_array($xmlPath, $exportOptions['attachment_list']) )
 					{
-						$exportOptions['attachment_list'][] = $csv->xml_path;							
+						$exportOptions['attachment_list'][] = $csv->xml_path;
 					}
 					
 					$historyPath = $csv->xml_path;
@@ -435,15 +484,40 @@ final class PMXE_Wpallimport
 					'deleted' => 0,
 					'iteration' => 1,		
 					'count' => $foundPosts				
-				))->save();				
+				))->save();
 
+				// Get a list of all files linked to the related import.
+				$history_file_list = new PMXI_File_List();
+				$history_file_list->getBy( array('import_id' => $import->id), 'id DESC' );
+
+				// If there is more than one file linked, delete them all as something is wrong.
+				// However, do not delete the linked files themselves as there should only be one file
+				// and it should be the export file.
+				if($history_file_list->total() > 1){
+					foreach($history_file_list->convertRecords() as $hs_file){
+						// Delete each of the existing history files since we have more than expected.
+						$hs_file->delete(false); // Passing false is required otherwise the export file we just generated could be deleted.
+					}
+				}
+
+				// Create a new file record for the new export file.
+				// Try to get the current record if one exists.
 				$history_file = new PMXI_File_Record();
-				$history_file->set(array(
+				$history_file->getBy( array('import_id' => $import->id), 'id DESC' );
+
+				$history_file_data = array(
 					'name' => $import->name,
 					'import_id' => $import->id,
 					'path' => $historyPath,
 					'registered_on' => date('Y-m-d H:i:s')
-				))->save();		
+				);
+
+				// Update the history file record if it exists, insert it otherwise.
+				if(!$history_file->isEmpty()){
+					$history_file->set($history_file_data)->update();
+				}else{
+					$history_file->set($history_file_data)->insert();
+				}
 
 				$exportOptions['import_id']	= $import->id;					
 				
@@ -456,6 +530,7 @@ final class PMXE_Wpallimport
 
 	public static function prepare_import_template( $exportOptions )
 	{
+
 		$options = $exportOptions;
 
 		$is_xml_template = $options['export_to'] == 'xml';
@@ -471,7 +546,7 @@ final class PMXE_Wpallimport
 
 		if ( ! empty($options['is_user_export']) ) self::$templateOptions['pmui']['import_users'] = 1;
 
-		foreach ($options['ids'] as $ID => $value) 
+		foreach ($options['ids'] as $ID => $value)
 		{
 			if (empty($options['cc_type'][$ID])) continue;
 
@@ -492,24 +567,23 @@ final class PMXE_Wpallimport
 			{
 				case 'woo':
 					
-					if ( ! empty($options['cc_value'][$ID]) )
-					{												
-						if (empty($required_add_ons['PMWI_Plugin']))
-						{
-							$required_add_ons['PMWI_Plugin'] = array(
-								'name' => 'WooCommerce Add-On Pro',
-								'paid' => true,
-								'url'  => 'http://www.wpallimport.com/woocommerce-product-import/'
-							);
-						}
+					if ( ! empty($options['cc_value'][$ID]) ) {
+                        if (empty($required_add_ons['PMWI_Plugin'])) {
+                            $required_add_ons['PMWI_Plugin'] = array(
+                                'name' => 'WooCommerce Add-On Pro',
+                                'paid' => true,
+                                'url' => 'http://www.wpallimport.com/woocommerce-product-import/'
+                            );
+                        }
 
-						XmlExportWooCommerce::prepare_import_template( $options, self::$templateOptions, $cf_list, $attr_list, $element_name, $options['cc_label'][$ID] );
-					}
+                        if (XmlExportEngine::get_addons_service()->isWooCommerceAddonActive() || XmlExportEngine::get_addons_service()->isWooCommerceProductAddonActive()) {
+                            XmlExportWooCommerce::prepare_import_template($options, self::$templateOptions, $cf_list, $attr_list, $element_name, $options['cc_label'][$ID]);
+                        }
+                    }
 
 					break;
 
-				case 'acf':					
-
+				case 'acf':
 					if (empty($required_add_ons['PMAI_Plugin']))
 					{
 						$required_add_ons['PMAI_Plugin'] = array(
@@ -523,12 +597,18 @@ final class PMXE_Wpallimport
 
 					// add ACF group ID to the template options
 					if( ! in_array($field_options['group_id'], self::$templateOptions['acf'])){
-						self::$templateOptions['acf'][$field_options['group_id']] = 1;
-					}					
+						$group = get_post($field_options['group_id']);
+						if (!empty($group)) {
+							self::$templateOptions['acf'][$group->post_excerpt] = 1;
+						}
+					}
 
-					self::$templateOptions['fields'][$field_options['key']] = XmlExportACF::prepare_import_template( $options, self::$templateOptions, $acf_list, $element_name, $field_options);											 
+					if(XmlExportEngine::get_addons_service()->isAcfAddonActive()) {
+                        self::$templateOptions['fields'][$field_options['key']] = XmlExportACF::prepare_import_template($options, self::$templateOptions, $acf_list, $element_name, $field_options);
+                    }
 
-					break;				
+					break;
+
 
 				default:
 
@@ -548,12 +628,51 @@ final class PMXE_Wpallimport
                         }
 
 						XmlExportUser::prepare_import_template($options, self::$templateOptions, $element_name, $ID, $cf_list);
-
                     }
 
+
+                    if(XmlExportEngine::$is_custom_addon_export) {
+					    XmlExportCustomRecord::prepare_import_template($options, self::$templateOptions, $element_name, $ID);
+                        if (empty($required_add_ons['PMAI_Plugin']))
+                        {
+                            $required_add_ons['PMGI_Plugin'] = array(
+                                'name' => 'Gravity Forms Add-On',
+                                'paid' => true,
+
+                                'url'  => 'http://www.wpallimport.com/advanced-custom-fields/?utm_source=wordpress.org&utm_medium=wpai-import-template&utm_campaign=free+wp+all+export+plugin'
+                            );
+                        }
+					}
+
+					if (XmlExportEngine::$is_comment_export) {
+                        XmlExportComment::prepare_import_template($options, self::$templateOptions, $element_name, $ID);
+                    }
                     XmlExportTaxonomy::prepare_import_template( $options, self::$templateOptions, $element_name, $ID);
 
-					XmlExportWooCommerceOrder::prepare_import_template( $options, self::$templateOptions, $element_name, $ID);
+					if(XmlExportEngine::get_addons_service()->isWooCommerceAddonActive()) {
+                        if (XmlExportEngine::$is_woo_review_export) {
+                            XmlExportWooCommerceReview::prepare_import_template($options, self::$templateOptions, $element_name, $ID);
+                        }
+                    }
+                    if(XmlExportEngine::get_addons_service()->isWooCommerceAddonActive() || XmlExportEngine::get_addons_service()->isWooCommerceOrderAddonActive()) {
+
+                        XmlExportWooCommerceOrder::prepare_import_template($options, self::$templateOptions, $element_name, $ID);
+                    }
+
+					// Run addon hooks
+					foreach (\XmlExportEngine::get_addons() as $addon) {
+						apply_filters("pmxe_{$addon}_addon_prepare_import_template", $options, self::$templateOptions, $element_name, $ID);
+					}
+
+                    $field_options = maybe_unserialize($options['cc_options'][$ID]);
+
+                    foreach (\XmlExportEngine::get_addons() as $addon) {
+                        apply_filters("pmxe_{$addon}_addon_prepare_import_template", $options, self::$templateOptions, $element_name, $ID);
+
+                        if ( isset($field_options['addon']) && $field_options['addon'] == $addon ) {
+                            self::$templateOptions = apply_filters("pmxe_{$addon}_addon_override_import_template", self::$templateOptions, $options, $element_name, $field_options );
+                        }
+                    }
 
 					break;
 			}

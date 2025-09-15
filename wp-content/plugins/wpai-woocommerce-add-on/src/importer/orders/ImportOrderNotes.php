@@ -59,7 +59,7 @@ class ImportOrderNotes extends ImportOrderBase {
                         $user = get_user_by('id', get_current_user_id());
                         $comment_author_email = $user->user_email;
                     } else {
-                        $comment_author_email = strtolower(__('WooCommerce', \PMWI_Plugin::TEXT_DOMAIN)) . '@';
+                        $comment_author_email = strtolower(__('WooCommerce', 'wpai_woocommerce_addon_plugin')) . '@';
                         $comment_author_email .= isset($_SERVER['HTTP_HOST']) ? str_replace('www.', '', $_SERVER['HTTP_HOST']) : 'noreply.com';
                         $comment_author_email = sanitize_email($comment_author_email);
                     }

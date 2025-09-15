@@ -6,8 +6,9 @@
  */
 
 ?>
+<?php /*
 <h2 class="font-semibold text-gray-700"> <?php echo esc_html__( 'Temporary Login Settings', 'temporary-login-without-password' ); ?></h2>
-
+*/ ?>
 
 <div class="bg-white rounded-lg shadow-md meta-box-sortables ui-sortable">
 	<form class="flex-row pt-8 mt-2 ml-5 mr-4 text-left item-center" method="post" action="">

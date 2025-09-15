@@ -29,7 +29,7 @@ class VariationsParser extends VariationsParserBase  {
      */
     public function parse() {
         try {
-            $this->getChunk() == 1 && $this->log(__('Composing variations data...', \PMWI_Plugin::TEXT_DOMAIN));
+            $this->getChunk() == 1 && $this->log(__('Composing variations data...', 'wpai_woocommerce_addon_plugin'));
             $variations = \XmlImportParser::factory($this->getXml(), $this->getCompleteVariationsXPath(), '/', $file)->parse(); $tmp_files[] = $file;
             $this->countVariations = count($variations);
             foreach ($this->getParsingWorkflow() as $callback => $options) {
@@ -61,6 +61,7 @@ class VariationsParser extends VariationsParserBase  {
         return array(
             'parseOptionType_1' => array(
                 'variable_sku',
+	            'variable_global_unique_id',
                 'variable_file_paths',
                 'variable_file_names'
             ),

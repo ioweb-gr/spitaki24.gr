@@ -51,9 +51,6 @@ class WpaeXmlProcessor
 
             $xml = $this->cleanResponse($response);
 
-            // if ($this->step > 8) {
-            //  throw new WpaeTooMuchRecursionException('Too much recursion');
-            // }
         }
 
         $xml = $this->postProcessXml($xml);
@@ -184,8 +181,10 @@ class WpaeXmlProcessor
                         $tagValues[$snippet] = $snippetValue;
 
 
-                        if (count($tagValues[$snippet]) > $maxTagValues) {
-                            $maxTagValues = count($tagValues[$snippet]);
+                        if(is_array($tagValues[$snippet])) {
+                            if (count($tagValues[$snippet]) > $maxTagValues) {
+                                $maxTagValues = count($tagValues[$snippet]);
+                            }
                         }
                     }
                     //We have arrays
@@ -294,7 +293,7 @@ class WpaeXmlProcessor
         foreach ($snippets as $snippet) {
             $isCdataString = '<![CDATA' . $snippet;
 
-            if (strpos($this->xml, $isCdataString) === false) {
+            if (strpos($this->xml ?? '', $isCdataString) === false) {
                 $results[] = $snippet;
             }
         }
@@ -357,6 +356,8 @@ class WpaeXmlProcessor
     private function checkIfFunctionExists($functionName)
     {
         if (!function_exists($functionName) && $functionName != 'array') {
+			// Log the function name before throwing an exception as it's not always logged as part of the exception.
+	        error_log('User supplied function ' . $functionName . ' does not exist.');
             throw new WpaeMethodNotFoundException($functionName);
         }
     }
@@ -371,6 +372,35 @@ class WpaeXmlProcessor
         $sanitizedSnippet = str_replace('\'', '"', $sanitizedSnippet);
 
         return $sanitizedSnippet;
+    }
+
+    /**
+     * @param $snippet
+     * @param $functionName
+     * @return mixed
+     */
+    private function handleEmptyArgs($snippet, $functionName) {
+
+        $argsStr = preg_replace("%^".$functionName."\((.*)\)$%", "$1", $snippet);
+
+        $args_list = explode(',', $argsStr);
+
+        $new_args_list = [];
+
+        foreach ($args_list as $args_list_item) {
+
+            if ($args_list_item == '') {
+                $new_args_list[] = "\"\"";
+            } else {
+                $new_args_list[] = $args_list_item;
+            }
+            
+        }
+
+        $newArgsStr = implode(',', $new_args_list);
+
+        return str_replace($argsStr, $newArgsStr, $snippet);
+
     }
 
     /**
@@ -444,7 +474,6 @@ class WpaeXmlProcessor
 
     /**
      * @param $xml
-     * @return DOMDocument
      */
     private function initVariables($xml)
     {
@@ -474,23 +503,65 @@ class WpaeXmlProcessor
 
         $sanitizedSnippet = $this->sanitizeSnippet($snippet);
 
+		// Retrieve the snippets themselves for processing.
+	    preg_match_all('/\*SNIPPET\*(.*?)\*SNIPPET\*/', $sanitizedSnippet, $snippetStrings);
+
+		// Sanitize the values to ensure only functions provided by the WPAE configurer are run.
+	    // This avoids running functions listed in the processed values.
+		foreach($snippetStrings[0] as $snippetString){
+			$cleanString = str_replace(WpaeXmlProcessor::SNIPPET_DELIMITER, '', $snippetString);
+
+			// We need to convert all of the placeholders back to actual values.
+			// This way the receiving function will get usable data.
+			$cleanString = str_replace('CDATABEGIN', '<![CDATA[', $cleanString);
+			$cleanString = str_replace('CDATACLOSE', ']]>', $cleanString);
+
+			$cleanString = str_replace('CLOSEBRAKET', ']', str_replace('OPENBRAKET', '[', $cleanString));
+			$cleanString = str_replace('CLOSECURVE', '}', str_replace('OPENCURVE', '{', $cleanString));
+			$cleanString = str_replace('CLOSECIRCLE', ')', str_replace('OPENCIRCLE', '(', $cleanString));
+
+			$cleanString = str_replace('**SINGLEQUOT**', "'", $cleanString);
+			$cleanString = str_replace('**DOUBLEQUOT**', "\"", $cleanString);
+
+			$cleanString = str_replace('**GT**', ">", $cleanString);
+			$cleanString = str_replace('**LT**', "<", $cleanString);
+
+			$cleanString = $this->decodeSpecialCharacters($cleanString);
+
+			// We use var_export and html_entity_decode to ensure the strings passed contain the expected data.
+			// For non-string values the data could be serialized so we need to unserialize it before passing it to the function.
+			$sanitizedSnippet = str_replace( $snippetString, var_export( \maybe_unserialize(html_entity_decode( $cleanString )), 'true' ), $sanitizedSnippet );
+		}
+
         $sanitizedSnippet = str_replace(WpaeXmlProcessor::SNIPPET_DELIMITER, '"', $sanitizedSnippet);
         $functionName = $this->sanitizeFunctionName($sanitizedSnippet);
 
+		// Failsafe if we no longer have a function to process after sanitizing.
+		if(empty($functionName))
+		{
+			return '';
+		}
+
         $this->checkIfFunctionExists($functionName);
 
+        $sanitizedSnippet = $this->handleEmptyArgs($sanitizedSnippet, $functionName);
+
         $argsStr = preg_replace("%^".$functionName."\((.*)\)$%", "$1", $sanitizedSnippet);
-        preg_match_all("%(\"[^\"]*\")%", $argsStr, $matches);
+
+		preg_match_all("%(\"(?:[^\"\\\\]|\\.|\"\")*\")%", $argsStr, $matches);
         if (!empty($matches[0])){
             $args = $matches[0];
             foreach ($args as $k => $arg){
-                $sanitizedSnippet = str_replace($arg, 'apply_filters("wp_all_export_post_process_xml", '. $arg .')' ,$sanitizedSnippet);
+
+	            // Ensure $arg doesn't have any rogue double quotes.
+	            $clean_arg = preg_replace("%(?!^)\"(?!$)%m", "**DOUBLEQUOT**", $arg);
+
+                $sanitizedSnippet = str_replace($arg, 'apply_filters("wp_all_export_post_process_xml", '. $clean_arg .')' ,$sanitizedSnippet);
             }
         }
 
         // Clean empty strings
         $sanitizedSnippet = str_replace( array( '(,', '( ,', ',)', ', )' ), array( '(""', '(""', ',"")', ',"")' ), $sanitizedSnippet );
-
 
         $snippetValue = eval('return ' . $sanitizedSnippet . ';');
         $snippetValue = $this->encodeSpecialCharacters($snippetValue);
@@ -644,7 +715,8 @@ class WpaeXmlProcessor
      * Cloning DOMNode with including child DOMNode elements
      *
      * @param $node
-     * @return \DOMNode*
+     *
+     * @return DOMNode|string
      */
     private function cloneNode(DOMNode $node, $snippet, $snippetValues){
 

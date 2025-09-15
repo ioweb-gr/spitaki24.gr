@@ -15,7 +15,7 @@ class Multipack extends Field
             return '';
         }
 
-        return $this->replaceSnippetsInValue($advancedAttributes['multipack'], $snippetData);
+        return $advancedAttributes['multipack'];
     }
 
     public function getFieldName()

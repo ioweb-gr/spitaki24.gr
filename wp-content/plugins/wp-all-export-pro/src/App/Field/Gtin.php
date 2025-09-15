@@ -11,7 +11,7 @@ class Gtin extends Field
     {
         $uniqueIdentifiersData = $this->feed->getSectionFeedData(self::SECTION);
 
-        return $this->replaceSnippetsInValue($uniqueIdentifiersData['gtin'], $snippetData);
+        return $uniqueIdentifiersData['gtin'];
     }
 
     public function getFieldName()

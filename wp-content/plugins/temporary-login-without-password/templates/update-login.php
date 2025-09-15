@@ -3,8 +3,7 @@
  * Update Login template
  *
  * @package Temporary Login Without Password
- */
-
+ */  
 ?>
 <h2> <?php echo esc_html__( 'Update Temporary Login', 'temporary-login-without-password' ); ?></h2>
 <form method="post">

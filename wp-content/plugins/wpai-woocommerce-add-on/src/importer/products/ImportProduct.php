@@ -77,7 +77,13 @@ abstract class ImportProduct extends ImportProductBase {
      *  Save product data into database.
      */
     public function save() {
+		if($this->getImport()->options['block_low_stock_notice'] ?? 1 && apply_filters('pmwi_block_low_stock_notice', true)){
+			add_filter( 'woocommerce_should_send_low_stock_notification', '__return_false' );
+		}
         $this->product->save();
+	    if($this->getImport()->options['block_low_stock_notice'] ?? 1 && apply_filters('pmwi_block_low_stock_notice', true)){
+		    remove_filter( 'woocommerce_should_send_low_stock_notification', '__return_false' );
+	    }
         wc_delete_product_transients($this->product->get_id());
     }
 
@@ -87,7 +93,28 @@ abstract class ImportProduct extends ImportProductBase {
     public function setProperties() {
         $this->prepareProperties();
         foreach ($this->productProperties as $property => $value) {
-            $this->log(sprintf(__('Property `%s` updated with value `%s`', \PMWI_Plugin::TEXT_DOMAIN), $property, maybe_serialize($value)));
+            $this->log(sprintf(__('Property `%s` updated with value `%s`', 'wpai_woocommerce_addon_plugin'), $property, maybe_serialize($value)));
+
+			/**
+			 * Handle date props separately so they match the WC format used when
+			 * manually updating them: https://github.com/woocommerce/woocommerce/pull/22973
+			 */
+			if(in_array($property, ['date_on_sale_to', 'date_on_sale_from']) && apply_filters('wp_all_import_use_wc_to_and_from_sale_date_times', true)){
+
+				switch($property){
+					case 'date_on_sale_to':
+						if ( ! empty( $value ) ) {
+							$this->productProperties[$property] = date( 'Y-m-d 23:59:59', strtotime( $value ) );
+						}
+						break;
+					case 'date_on_sale_from':
+						if ( ! empty( $value ) ) {
+							$this->productProperties[$property] = date( 'Y-m-d 00:00:00', strtotime( $value ) );
+						}
+						break;
+				}
+
+			}
         }
         $errors = $this->product->set_props($this->productProperties);
         if (is_wp_error($errors)) {
@@ -210,16 +237,15 @@ abstract class ImportProduct extends ImportProductBase {
      */
     public function prepareInventoryProperties() {
         $this->prepareSKU();
+		$this->setProperty('global_unique_id', wc_clean( trim( stripslashes( $this->getValue('product_global_unique_id')))));
         $this->setProperty('manage_stock', $this->getValue('product_manage_stock') == 'yes');
         $backorders = $this->getValue('product_allow_backorders');
         $this->setProperty('backorders', $backorders != '' ? wc_clean($backorders) : null);
         $this->setProperty('stock_status', wc_clean($this->getValue('product_stock_status')));
         $this->setProperty('stock_quantity', $this->getStockQuantity());
         $this->setProperty('sold_individually', 'yes' == $this->getValue('product_sold_individually'));
-        // Do not set Low stock threshold for variations.
-        if (!$this->getProduct() instanceof \WC_Product_Variation) {
-            $this->setProperty('low_stock_amount', $this->getValue('product_low_stock_amount'));
-        }
+		$this->setProperty('low_stock_amount', $this->getValue('product_low_stock_amount'));
+
     }
 
     /**
@@ -365,6 +391,9 @@ abstract class ImportProduct extends ImportProductBase {
                             if ( ! empty($values) && taxonomy_exists( wc_attribute_taxonomy_name( $real_attr_name ) )){
                                 $attr_values = array();
                                 foreach ($values as $key => $val) {
+									if(empty($val) && 0 !== $val && '0' !== $val){
+										continue;
+									}
                                     $value = substr($val, 0, $max_attribute_length);
                                     $term_slug = sanitize_title(str_replace('#', '_', $value));
                                     $term = get_term_by('name', $value, wc_attribute_taxonomy_name( $real_attr_name ), ARRAY_A);
@@ -387,7 +416,7 @@ abstract class ImportProduct extends ImportProductBase {
                                             }
                                         }
                                     }
-                                    if (!is_wp_error($term)) {
+                                    if (!is_wp_error($term) && $term) {
                                         $attr_values[] = (int) $term['term_id'];
                                     }
                                 }

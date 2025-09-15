@@ -42,14 +42,28 @@ class SchedulingLicenseController
     {
         $license = $_POST['license'];
 
-        if($this->licensingManager->checkLicense($license, \PMXE_Plugin::getSchedulingName())){
+		$licenseCheckResponse = $this->licensingManager->checkLicense($license, \PMXE_Plugin::getSchedulingName());
+        if(!empty($licenseCheckResponse['success'])) {
             PMXE_Plugin::getInstance()->updateOption(array('scheduling_license' => $license));
             $post['license_status'] = $this->check_scheduling_license();
             $response = $this->activate_scheduling_licenses();
 
-            return new JsonResponse(array('success' => true));
+	        if (class_exists('PMXI_Plugin')) {
+		        if (method_exists('PMXI_Plugin', 'getSchedulingName')) {
+
+			        if (!empty($license)) {
+				        $schedulingLicenseData = array();
+				        $schedulingLicenseData['scheduling_license_status'] = $post['license_status'];
+				        $schedulingLicenseData['scheduling_license'] = $license;
+
+				        \PMXI_Plugin::getInstance()->updateOption($schedulingLicenseData);
+			        }
+		        }
+	        }
+
+	        return new JsonResponse($licenseCheckResponse);
         } else {
-            return new JsonResponse(array('success'=> false));
+            return new JsonResponse($licenseCheckResponse);
         }
     }
 

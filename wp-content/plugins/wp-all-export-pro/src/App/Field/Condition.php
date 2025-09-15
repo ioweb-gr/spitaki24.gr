@@ -12,10 +12,7 @@ class Condition extends Field
         $basicInformationData = $this->feed->getSectionFeedData(self::SECTION);
 
         $condition = $basicInformationData['condition'];
-        $mappings = $basicInformationData['conditionMappings'];
-
-        $condition = $this->replaceSnippetsInValue($condition, $snippetData);
-        $condition = $this->replaceMappings($mappings, $condition);
+        $this->mappings = $basicInformationData['conditionMappings'];
 
         return $condition;
     }

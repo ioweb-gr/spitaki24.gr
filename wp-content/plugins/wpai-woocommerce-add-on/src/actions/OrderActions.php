@@ -57,7 +57,7 @@ class OrderActions extends Actions {
             if ($this->getParser()->getImport()->options['pmwi_order']['billing_source'] == 'existing') {
                 $customer = $this->getParser()->get_existing_customer('billing_source', $index);
                 if (empty($customer) && empty($this->getParser()->getImport()->options['pmwi_order']['is_guest_matching'])) {
-                    $this->getParser()->getLogger() and call_user_func($this->getParser()->getLogger(), sprintf(__('<b>SKIPPED</b>: %s Existing customer not found for Order `%s`.', \PMWI_Plugin::TEXT_DOMAIN), $this->getParser()->get_existing_customer_for_logger('billing_source', $index), $order_title));
+                    $this->getParser()->getLogger() and call_user_func($this->getParser()->getLogger(), sprintf(__('<b>SKIPPED</b>: %s Existing customer not found for Order `%s`.', 'wpai_woocommerce_addon_plugin'), $this->getParser()->get_existing_customer_for_logger('billing_source', $index), $order_title));
                     $is_post_to_skip = TRUE;
                 }
             }

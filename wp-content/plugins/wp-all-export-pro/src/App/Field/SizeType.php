@@ -14,12 +14,7 @@ class SizeType extends Field
         if(isset($detailedInformationData['sizeType'])) {
             
             $sizeType = $detailedInformationData['sizeType'];
-            $sizeType = $this->replaceSnippetsInValue($sizeType, $snippetData);
-
-            $mappings = $detailedInformationData['sizeTypeMappings'];
-
-            $sizeType = $this->replaceMappings($mappings, $sizeType);
-
+            $this->mappings = $detailedInformationData['sizeTypeMappings'];
             return $sizeType;
         } else {
             return '';

@@ -15,14 +15,14 @@ class Material extends Field
 
             if(isset($detailedInformationData['materialAttribute'])) {
                 $materialAttribute = $detailedInformationData['materialAttribute'];
-                return $this->replaceSnippetsInValue($materialAttribute, $snippetData);
+                return $materialAttribute;
             } else {
                 return '';
             }
 
 
         } else if($detailedInformationData['material'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($detailedInformationData['materialCV'], $snippetData);
+            return $detailedInformationData['materialCV'];
         } else {
             throw new \Exception('Unknown vale '.$detailedInformationData['material'].' for field material');
         }

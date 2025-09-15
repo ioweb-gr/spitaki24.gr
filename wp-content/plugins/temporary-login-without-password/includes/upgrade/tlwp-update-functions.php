@@ -18,3 +18,11 @@ function tlwp_update_192_add_activity_log() {
 function tlwp_update_192_db_version() {
 	TLWP_Install::update_db_version( '1.9.2' );
 } 
+
+function tlwp_update_193_add_bulk_user_import() {
+    TLWP_Install::create_tables('1.9.3');
+}
+
+function tlwp_update_193_db_version() {
+	TLWP_Install::update_db_version( '1.9.3' );
+} 

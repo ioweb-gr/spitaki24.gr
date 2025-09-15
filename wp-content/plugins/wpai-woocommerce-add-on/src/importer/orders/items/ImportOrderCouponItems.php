@@ -81,7 +81,7 @@ class ImportOrderCouponItems extends ImportOrderItemsBase {
                     }
 
                     if ( ! $item_id ) {
-                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order coupon line.', \PMWI_Plugin::TEXT_DOMAIN));
+                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order coupon line.', 'wpai_woocommerce_addon_plugin'));
                     } else {
                         $order_item->set( [
                             'import_id'   => $this->getImport()->id,

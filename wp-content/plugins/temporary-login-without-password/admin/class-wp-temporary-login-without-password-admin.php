@@ -207,8 +207,7 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password_Admin' ) ) {
 			}
 
 			$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ( $is_temporary_login ? 'system-info' : 'home' );
-
-
+ 
 			if ( ! $is_temporary_login ) {
 
 				if ( ! empty( $user_id ) ) {
@@ -491,7 +490,7 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password_Admin' ) ) {
 			// Don't have wtlwp_action or user_id? Say Good Bye...
 			if ( empty( $_REQUEST['wtlwp_action'] ) || empty( $_REQUEST['user_id'] ) ) {
 				return;
-			}
+			} 
 
 			$action = $_REQUEST['wtlwp_action'];
 

@@ -8,7 +8,10 @@ function wp_all_export_posts_join($join){
 		$customJoin = PMXE_Plugin::$session->get('joinClause');
 		if ( ! empty( $customJoin ) ) {
 			$join .= implode( ' ', array_unique( $customJoin ) );		
-		}			
+		}else if( !empty(XmlExportEngine::$exportOptions['joinclause']) ){
+			// The session join clauses aren't always populated when running RTE exports.
+			$join .= implode( ' ', array_unique( XmlExportEngine::$exportOptions['joinclause'] ) );
+		}
 	}
 	else
 	{

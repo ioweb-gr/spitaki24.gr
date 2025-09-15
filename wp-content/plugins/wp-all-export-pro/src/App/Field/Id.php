@@ -13,7 +13,7 @@ class Id extends Field
         if(empty($basicInformationData['itemId'])) {
             return $this->entry->ID;
         } else {
-            return $this->replaceSnippetsInValue($basicInformationData['itemId'], $snippetData);
+            return $basicInformationData['itemId'];
         }
 
     }

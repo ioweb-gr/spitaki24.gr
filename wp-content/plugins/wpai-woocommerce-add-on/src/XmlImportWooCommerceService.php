@@ -33,6 +33,48 @@ final class XmlImportWooCommerceService {
      */
     const FIRST_VARIATION = '__first_variation_id';
 
+	public static $custom_fields_handled_internally = [
+		'product' => [
+			'_regular_price' => ['is_update_regular_price','is_update_regular_price'],
+			'_sale_price' => ['is_update_sale_price','is_update_sale_price'],
+			'_sale_price_dates_from' => ['is_update_sale_price_dates_from','is_update_sale_price_dates_from'],
+			'_sale_price_dates_to' => ['is_update_sale_price_dates_to','is_update_sale_price_dates_to'],
+			'_price' => ['is_update_price','is_update_price'],
+			'_virtual' => ['is_update_virtual','is_update_virtual'],
+			'_downloadable' => ['is_update_downloadable','is_update_downloadable'],
+			'_download_limit' => ['is_update_download_limit','is_update_download_limit'],
+			'_download_expiry' => ['is_update_download_expiry','is_update_download_expiry'],
+			'_downloadable_files' => ['is_update_downloadable_files','is_update_downloadable_files'],
+			'_files' => ['is_update_downloadable_files', 'is_update_downloadable_files'],
+			'_files_names' => ['is_update_downloadable_files', 'is_update_downloadable_files'],
+			'_downloads' => ['is_update_downloadable_files', 'is_update_downloadable_files'],
+			'_tax_status' => ['is_update_tax_status','is_update_tax_status'],
+			'_tax_class' => ['is_update_tax_class','is_update_tax_class'],
+			'_sku' => ['is_update_sku','is_update_sku'],
+			'_global_unique_id' => ['is_update_global_unique_id','is_update_global_unique_id'],
+			'_manage_stock' => ['is_update_manage_stock','is_update_manage_stock'],
+			'_stock_status' => ['is_update_stock_status','is_update_stock_status'],
+			'_stock' => ['is_update_stock_quantity','is_update_stock_quantity'],
+			'_backorders' => ['is_update_backorders', 'is_update_backorders'],
+			'_sold_individually' => ['is_update_sold_individually','is_update_sold_individually'],
+			'_weight' => ['is_update_weight','is_update_weight'],
+			'_length' => ['is_update_length','is_update_length'],
+			'_width' => ['is_update_width','is_update_width'],
+			'_height' => ['is_update_height','is_update_height'],
+			'_shipping_class_id' => ['is_update_shipping_class','is_update_shipping_class'],
+			'_shipping_class' => ['is_update_shipping_class','is_update_shipping_class'],
+			'_upsell_ids' => ['is_update_up_sells','is_update_up_sells'],
+			'_crosssell_ids' => ['is_update_cross_sells','is_update_cross_sells'],
+			'_children' => ['is_update_grouping','is_update_grouping'],
+			'_purchase_note' => ['is_update_purchase_note','is_update_purchase_note'],
+			'_featured' => ['is_update_featured_status','is_update_featured_status'],
+			'_catalog_visibility' => ['is_update_catalog_visibility','is_update_catalog_visibility'],
+			'_product_attributes' => ['is_update_attributes','is_update_attributes'],
+			'_product_image_gallery' => ['is_update_images','is_update_images'],
+			
+		]
+	];
+
     /**
      * @var XmlImportWooTaxonomyService
      */
@@ -77,6 +119,14 @@ final class XmlImportWooCommerceService {
             $taxonomies = array('post_format', 'product_type', 'product_shipping_class', 'product_visibility');
             $taxonomies = apply_filters('wp_all_import_variation_taxonomies', $taxonomies);
             $this->product_taxonomies = array_diff_key(get_taxonomies_by_object_type(array('product'), 'object'), array_flip($taxonomies));
+
+			// Bypass the new field handling if the import configuration hasn't yet been updated to use it.
+	        // In that case, retain the previous behavior until it is updated. 
+			if(!($this->getImport()->options['is_using_new_product_import_options'] ?? 0) && $this->getImport()->options['custom_type'] == 'product'){
+				error_log('Bypassing the new field handling for WooCommerce products.');
+				self::$custom_fields_handled_internally['product'] = [];
+			}
+
         } catch(\Exception $e) {
             self::getLogger() && call_user_func(self::getLogger(), '<b>ERROR:</b> ' . $e->getMessage());
         }
@@ -216,7 +266,7 @@ final class XmlImportWooCommerceService {
                             }
                         }
 						if (!empty($parentAttribute['value'])) {
-							$parent_terms = explode("|", $parentAttribute['value']);
+							$parent_terms = is_array($parentAttribute['value']) ? $parentAttribute['value'] : explode("|", $parentAttribute['value']);
 							$parent_terms = array_filter($parent_terms);
 							if (!empty($parent_terms)) {
 								foreach ($parent_terms as $parent_term) {
@@ -227,7 +277,7 @@ final class XmlImportWooCommerceService {
 							}
 						}
                     } else {
-                        $terms = explode("|", $parentAttribute['value']);
+                        $terms = is_array($parentAttribute['value']) ? $parentAttribute['value'] : explode("|", $parentAttribute['value']);
                         $terms = array_filter($terms);
                     }
                     if (!empty($terms)) {
@@ -308,6 +358,13 @@ final class XmlImportWooCommerceService {
                         update_post_meta($firstVariationID, $customFieldName, maybe_unserialize($parentMeta[$customFieldName][0]));
                     }
                 }
+
+				// Sync specific fields even if not configured in the import explicitly.
+	            $specific_fields = ['_global_unique_id'];
+
+				foreach ($specific_fields as $specific_field) {
+					!empty(($parentMeta[$specific_field][0] ?? null)) && update_post_meta($firstVariationID, $specific_field, maybe_unserialize($parentMeta[$specific_field][0]));
+				}
             }
             $sync_parent_acf_with_first_variation = apply_filters('wp_all_import_sync_parent_acf_with_first_variation', true);
             if ($sync_parent_acf_with_first_variation) {
@@ -479,25 +536,33 @@ final class XmlImportWooCommerceService {
      * @param bool $isNewProduct
      * @return bool
      */
-    public function isUpdateDataAllowed($option = '', $isNewProduct = TRUE) {
-        // Allow update data for newly created products.
-        if ($isNewProduct) {
-            return TRUE;
-        }
-        // `Update existing posts with changed data in your file` option disabled.
-        if ($this->getImport()->options['is_keep_former_posts'] == 'yes') {
-            return FALSE;
-        }
-        // `Update all data` option enabled
-        if ($this->getImport()->options['update_all_data'] == 'yes') {
-            return TRUE;
-        }
-        if (in_array($option, array('is_update_catalog_visibility', 'is_update_featured_status')) && empty($this->getImport()->options['is_update_advanced_options'])) {
-            return FALSE;
-        }
+	public function isUpdateDataAllowed($option = '', $isNewProduct = TRUE) {
+		// Allow update data for newly created products.
+		if ($isNewProduct) {
+			return TRUE;
+		}
+		// `Update existing posts with changed data in your file` option disabled.
+		if ($this->getImport()->options['is_keep_former_posts'] == 'yes') {
+			return FALSE;
+		}
+		// `Update all data` option enabled
+		if ($this->getImport()->options['update_all_data'] == 'yes') {
+			return TRUE;
+		}
 
-        return empty($this->getImport()->options[$option]) ? FALSE : TRUE;
-    }
+		// For our fields that are handled internally we must check that both the section
+		// and the specific field are allowed to update
+		$post_type = $this->getImport()->options['custom_type'];
+		if (isset(self::$custom_fields_handled_internally[$post_type])) {
+			foreach (self::$custom_fields_handled_internally[$post_type] as $meta_key => $field_options) {
+				if ($field_options[0] === $option) {
+					return !empty($this->getImport()->options[$option]) && !empty($this->getImport()->options[$field_options[1]]);
+				}
+			}
+		}
+
+		return empty($this->getImport()->options[$option]) ? FALSE : TRUE;
+	}
 
     /**
      * @param $tx_name
@@ -557,10 +622,22 @@ final class XmlImportWooCommerceService {
      * @return bool
      */
     public function isUpdateCustomField($meta_key) {
-        $options = $this->getImport()->options;
+	    $options = $this->getImport()->options;
+		
         if ($options['update_all_data'] == 'yes') {
             return TRUE;
         }
+
+	    $post_type = $options['custom_type'];
+	    if(isset(self::$custom_fields_handled_internally[$post_type]) && array_key_exists($meta_key, self::$custom_fields_handled_internally[$post_type])) {
+		    $internal_field = self::$custom_fields_handled_internally[$post_type][$meta_key];
+		    if(isset($options[$internal_field[0]]) && $options[$internal_field[0]] && isset($options[$internal_field[1]]) && $options[$internal_field[1]]) {
+			    return true;
+		    }else{
+			    return false;
+		    }
+	    }
+		
         if (!$options['is_update_custom_fields']) {
             return FALSE;
         }

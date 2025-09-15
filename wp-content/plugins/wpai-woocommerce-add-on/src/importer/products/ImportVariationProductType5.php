@@ -65,7 +65,7 @@ class ImportVariationProductType5 extends ImportVariationBase {
                 do_action('pmxi_update_product_variation', $this->getProduct()->get_id());
             }
         } catch (\Exception $e) {
-            $this->log(__('<b>ERROR:</b> ' . $e->getMessage(), \PMWI_Plugin::TEXT_DOMAIN));
+            $this->log(__('<b>ERROR:</b> ' . $e->getMessage(), 'wpai_woocommerce_addon_plugin'));
         }
     }
 
@@ -161,7 +161,7 @@ class ImportVariationProductType5 extends ImportVariationBase {
         }
         if ($newSKU == '' && !$this->getImport()->options['disable_auto_sku_generation']) {
             if ($this->isNewVariation() || $this->getImportService()->isUpdateCustomField('_sku')) {
-                $variationTitle = sprintf( __( 'Variation #%s of %s', \PMWI_Plugin::TEXT_DOMAIN ), absint( $this->getProduct()->get_id() ), $this->getProduct()->get_title());
+                $variationTitle = sprintf( __( 'Variation #%s of %s', 'wpai_woocommerce_addon_plugin' ), absint( $this->getProduct()->get_id() ), $this->getProduct()->get_title());
                 $newSKU = substr(md5($variationTitle), 0, 12);
             }
         }
@@ -199,7 +199,7 @@ class ImportVariationProductType5 extends ImportVariationBase {
         $postRecord = new \PMXI_Post_Record();
         $postRecord->clear();
         // Generate a useful post title.
-        $variationPostTitle = sprintf(__('Variation #%s of %s', \PMWI_Plugin::TEXT_DOMAIN), $variationSkuForTitle, $this->getParentProduct()->get_title());
+        $variationPostTitle = sprintf(__('Variation #%s of %s', 'wpai_woocommerce_addon_plugin'), $variationSkuForTitle, $this->getParentProduct()->get_title());
 
         $this->isNewVariation = FALSE;
         $postRecord->getBy([
@@ -233,7 +233,7 @@ class ImportVariationProductType5 extends ImportVariationBase {
             $postRecord->set(['iteration' => $this->getImport()->iteration])
                 ->update();
             $this->isNewVariation = TRUE;
-            $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('- `%s`: variation created successfully', \PMWI_Plugin::TEXT_DOMAIN), sprintf(__('Variation #%s of %s', \PMWI_Plugin::TEXT_DOMAIN), absint($variationToUpdateID), esc_html($this->getParentProduct()->get_title()))));
+            $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('- `%s`: variation created successfully', 'wpai_woocommerce_addon_plugin'), sprintf(__('Variation #%s of %s', 'wpai_woocommerce_addon_plugin'), absint($variationToUpdateID), esc_html($this->getParentProduct()->get_title()))));
         } else {
             // Maybe skip by filter wp_all_import_is_post_to_update..
             $continue_import = apply_filters('wp_all_import_is_post_to_update', true, $variationToUpdateID, NULL, $this->getImport()->id, NULL);
@@ -254,13 +254,13 @@ class ImportVariationProductType5 extends ImportVariationBase {
             $variation->set_parent_id($this->getParentProduct()->get_id());
             $variation->save();
 
-            $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('- `%s`: variation updated successfully', \PMWI_Plugin::TEXT_DOMAIN), $variationPostTitle));
+            $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('- `%s`: variation updated successfully', 'wpai_woocommerce_addon_plugin'), $variationPostTitle));
             // Handle obsolete files (i.e. delete or keep) according to import settings.
             if ($this->getImport()->options['update_all_data'] == 'yes' || (
                     $this->getImport()->options['update_all_data'] == 'no'
                     && $this->getImport()->options['is_update_attachments'])
             ) {
-                $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('Deleting attachments for `%s`', \PMWI_Plugin::TEXT_DOMAIN), $variationPostTitle));
+                $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('Deleting attachments for `%s`', 'wpai_woocommerce_addon_plugin'), $variationPostTitle));
                 wp_delete_attachments($variationToUpdateID, TRUE, 'files');
             }
             // Handle obsolete images (i.e. delete or keep) according to import settings.
@@ -269,7 +269,7 @@ class ImportVariationProductType5 extends ImportVariationBase {
                     && $this->getImport()->options['is_update_images']
                     && $this->getImport()->options['update_images_logic'] == "full_update")
             ) {
-                $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('Deleting images for `%s`', \PMWI_Plugin::TEXT_DOMAIN), $variationPostTitle));
+                $this->getLogger() && call_user_func($this->getLogger(), sprintf(__('Deleting images for `%s`', 'wpai_woocommerce_addon_plugin'), $variationPostTitle));
                 wp_delete_attachments($variationToUpdateID, !$this->getImport()->options['do_not_remove_images'], 'images');
             }
         }

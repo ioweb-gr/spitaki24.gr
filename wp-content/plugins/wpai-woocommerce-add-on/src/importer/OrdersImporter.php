@@ -41,7 +41,10 @@ class OrdersImporter extends Importer {
             add_filter('woocommerce_email_classes', [$this, 'woocommerce_email_classes'], 99, 1);
         }
 
-        add_filter('woocommerce_new_order_note_data', [$this, 'woocommerce_new_order_note_data'], 10, 2);
+		// Block automatic order notes unless they're explicitly allowed.
+	    if( empty($this->getImport()->options['pmwi_order']['notes_add_auto_order_status_notes'])) {
+		    add_filter( 'woocommerce_new_order_note_data', [ $this, 'woocommerce_new_order_note_data' ], 10, 2 );
+	    }
 
         $order = wc_get_order($this->index->getPid());
 
@@ -62,6 +65,9 @@ class OrdersImporter extends Importer {
         }
 
         $order->update_taxes();
+
+		// Remove order note filter.
+	    remove_filter('woocommerce_new_order_note_data', [$this, 'woocommerce_new_order_note_data']);
 
     }
 

@@ -33,25 +33,45 @@ class PMWI_Admin_Import extends PMWI_Controller_Admin
 		$this->data['post'] =& $post;
 
 		$this->data['existing_meta_keys'] = array();
+		
+		$targetView = null;
+		
+		switch ($post['custom_type']) {
+			case 'shop_order':
+				if ( ! in_array( $post['custom_type'], array( 'import_users' ) ) ) {
+					
+					$targetView = 'admin/import/options.php';
 
-		if ( ! in_array($post['custom_type'], array('import_users'))){
-
-			// Get all meta keys for requested post type
-			$hide_fields = array('_wp_page_template', '_edit_lock', '_edit_last', '_wp_trash_meta_status', '_wp_trash_meta_time');
-			$records = get_posts( array('post_type' => $post['custom_type']) );
-			if ( ! empty($records)){
-				foreach ($records as $record) {
-					$record_meta = get_post_meta($record->ID, '');
-					if ( ! empty($record_meta)){
-						foreach ($record_meta as $record_meta_key => $record_meta_value) {
-							if ( ! in_array($record_meta_key, $this->data['existing_meta_keys']) and ! in_array($record_meta_key, $hide_fields)) $this->data['existing_meta_keys'][] = $record_meta_key;
+					// Get all meta keys for requested post type
+					$hide_fields = array(
+						'_wp_page_template',
+						'_edit_lock',
+						'_edit_last',
+						'_wp_trash_meta_status',
+						'_wp_trash_meta_time'
+					);
+					$records     = get_posts( array( 'post_type' => $post['custom_type'] ) );
+					if ( ! empty( $records ) ) {
+						foreach ( $records as $record ) {
+							$record_meta = get_post_meta( $record->ID, '' );
+							if ( ! empty( $record_meta ) ) {
+								foreach ( $record_meta as $record_meta_key => $record_meta_value ) {
+									if ( ! in_array( $record_meta_key, $this->data['existing_meta_keys'] ) and ! in_array( $record_meta_key, $hide_fields ) ) {
+										$this->data['existing_meta_keys'][] = $record_meta_key;
+									}
+								}
+							}
 						}
 					}
 				}
-			}
+				break;
+			case 'product':
+				$targetView = 'admin/import/options.php';
+				break;
 		}
+		
 
-		$this->render();
+		$targetView && $this->render($targetView);
 	}
 
     public function confirm( $isWizard = false, $post = array() )

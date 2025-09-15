@@ -12,7 +12,7 @@ class ImageLink extends Field
         $basicInformationData = $this->feed->getSectionFeedData(self::SECTION);
 
         if ($basicInformationData['itemImageLink'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($basicInformationData['itemImageLinkCV'], $snippetData);
+            return $basicInformationData['itemImageLinkCV'];
         } else {
             if ($this->entry->post_type == 'product_variation') {
                 if ($basicInformationData['useVariationImage']) {

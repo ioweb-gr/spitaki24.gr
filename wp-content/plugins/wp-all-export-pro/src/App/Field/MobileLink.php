@@ -15,7 +15,7 @@ class MobileLink extends Field
             return '';
         }
 
-        return $this->replaceSnippetsInValue($basicInformationData['mobileLink'], $snippetData);
+        return $basicInformationData['mobileLink'];
 
     }
 

@@ -5,143 +5,222 @@ namespace Wpae\Scheduling;
 
 use Wpae\Scheduling\Exception\SchedulingHttpException;
 
-class SchedulingApi
-{
-    private $apiUrl;
+class SchedulingApi {
 
-    public function __construct($apiUrl)
-    {
-        $this->apiUrl = $apiUrl;
-    }
+	const TIMEOUT = 30;
 
-    public function checkConnection()
-    {
-        if ( is_multisite() ) {
-            $siteUrl = get_site_url( get_current_blog_id() );
-        } else {
-            $siteUrl = get_site_url();
-        }
+	/**
+	 * @var
+	 */
+	private $api_url;
 
-        $pingBackUrl = $this->getApiUrl('connection').'?url='.urlencode($siteUrl);
+	/**
+	 * SchedulingApi constructor.
+	 * @param $api_url
+	 */
+	public function __construct( $api_url ) {
+		$this->api_url = $api_url;
+	}
 
-        $response = wp_remote_request(
-            $pingBackUrl,
-            array(
-                'method' => 'GET'
-            )
-        );
+	/**
+	 * @return bool
+	 */
+	public function checkConnection() {
 
-        if($response instanceof \WP_Error) {
-            return false;
-        }
+		// Short-circuit check if connection transient is set to true.
+		if ( get_transient( 'wpai_wpae_scheduling_connection_confirmed' ) ) {
+			return true;
+		}
 
-        if ($response['response']['code'] == 200) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+		if ( is_multisite() ) {
+			$url = get_site_url( get_current_blog_id(), '/wp-load.php' );
+		} else {
+			$url = get_site_url( null, '/wp-load.php');
+		}
 
-    public function getSchedules($elementId, $elementType)
-    {
-        $response = wp_remote_request(
+		$ping_back_url = $this->get_api_url( 'connection' ) . '?url=' . rawurlencode( $url );
 
-            $this->getApiUrl('schedules?forElement='.$elementId.
-                '&type=' . $elementType.
-                '&endpoint='.urlencode(get_site_url())),
-            array(
-                'method' => 'GET',
-                'headers' => $this->getHeaders()
-            )
-        );
+		$response = wp_remote_request(
+			$ping_back_url,
+			array(
+				'method'  => 'GET',
+				'timeout' => self::TIMEOUT,
+			)
+		);
 
-        if($response instanceof \WP_Error) {
-            return false;
-        }
+		if ( $response instanceof \WP_Error ) {
+			return false;
+		}
 
-        return json_decode($response['body']);
-    }
+		if ( 200 === (int) $response['response']['code'] ) {
+			// Set transient so we don't keep checking the connection unnecessarily.
+			// Expire transient after ten minutes.
+			set_transient( 'wpai_wpae_scheduling_connection_confirmed', true, 600 );
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    public function getSchedule($scheduleId)
-    {
-        wp_remote_request(
+	/**
+	 * @param $elementId
+	 * @param $elementType
+	 * @return array|bool|mixed|null|object
+	 */
+	public function getSchedules( $elementId, $elementType ) {
+		$response = wp_remote_request(
+			$this->get_api_url(
+				'schedules?forElement=' . $elementId .
+				'&type=' . $elementType .
+				'&endpoint=' . rawurlencode( get_site_url() )
+			),
+			array(
+				'method'  => 'GET',
+				'headers' => $this->getHeaders(),
+				'timeout' => self::TIMEOUT,
+			)
+		);
 
-            $this->getApiUrl('schedules/' . $scheduleId),
-            array(
-                'method' => 'GET',
-                'headers' => $this->getHeaders()
-            )
-        );
-    }
+		if ( $response instanceof \WP_Error ) {
+			return [];
+		}
 
-    public function createSchedule($scheduleData)
-    {
+		$body = json_decode($response['body']);
 
-        $response = wp_remote_request(
-            $this->getApiUrl('schedules'),
-            array(
-                'method' => 'PUT',
-                'headers' => $this->getHeaders(),
-                'body' => json_encode($scheduleData)
-            )
-        );
+		return empty($body) ? [] : $body;
+	}
 
-        if($response instanceof \WP_Error) {
-            throw new SchedulingHttpException('There was a problem saving the schedule');
-        }
+	/**
+	 * @param $scheduleId
+	 */
+	public function getSchedule( $scheduleId ) {
+		wp_remote_request(
+			$this->get_api_url( 'schedules/' . $scheduleId ),
+			array(
+				'method'  => 'GET',
+				'headers' => $this->getHeaders(),
+				'timeout' => self::TIMEOUT,
+			)
+		);
+	}
 
-        return $response;
-    }
+	/**
+	 * @param $scheduleData
+	 * @return array|\WP_Error
+	 * @throws \Wpae\Scheduling\Exception\SchedulingHttpException
+	 */
+	public function createSchedule( $scheduleData ) {
 
-    public function deleteSchedule($scheduleId)
-    {
-        wp_remote_request(
-            $this->getApiUrl('schedules/' . $scheduleId),
-            array(
-                'method' => 'DELETE',
-                'headers' => $this->getHeaders()
-            )
-        );
-    }
+		$response = wp_remote_request(
+			$this->get_api_url( 'schedules' ),
+			array(
+				'method'  => 'PUT',
+				'headers' => $this->getHeaders(),
+				'body'    => json_encode( $scheduleData ),
+				'timeout' => self::TIMEOUT,
+			)
+		);
 
-    public function updateSchedule($scheduleId, $scheduleTime)
-    {
+		if ( $response instanceof \WP_Error ) {
+			throw new SchedulingHttpException( 'There was a problem saving the schedule' );
+		}
 
-        $response = wp_remote_request(
-            $this->getApiUrl('schedules/' . $scheduleId),
-            array(
-                'method' => 'POST',
-                'headers' => $this->getHeaders(),
-                'body' => json_encode($scheduleTime)
-            ));
+		return $response;
+	}
 
-        if($response instanceof \WP_Error) {
-            throw new SchedulingHttpException('There was a problem saving the schedule');
-        }
+	/**
+	 * @param $scheduleId
+	 */
+	public function deleteSchedule( $scheduleId ) {
+		wp_remote_request(
+			$this->get_api_url( 'schedules/' . $scheduleId ),
+			array(
+				'method'  => 'DELETE',
+				'headers' => $this->getHeaders(),
+				'timeout' => self::TIMEOUT,
+			)
+		);
+	}
 
-        return $response;
-    }
+	/**
+	 * @param $scheduleId
+	 * @param $scheduleTime
+	 * @return array|\WP_Error
+	 * @throws \Wpae\Scheduling\Exception\SchedulingHttpException
+	 */
+	public function updateSchedule( $scheduleId, $scheduleTime ) {
 
-    private function getHeaders()
-    {
+		$response = wp_remote_request(
+			$this->get_api_url( 'schedules/' . $scheduleId ),
+			array(
+				'method'  => 'POST',
+				'headers' => $this->getHeaders(),
+				'body'    => json_encode( $scheduleTime ),
+				'timeout' => self::TIMEOUT,
+			)
+		);
+
+		if ( $response instanceof \WP_Error ) {
+			throw new SchedulingHttpException( 'There was a problem saving the schedule' );
+		}
+
+		return $response;
+	}
+
+	public function disableSchedule( $remoteScheduleId ) {
+		wp_remote_request(
+			$this->get_api_url( 'schedules/' . $remoteScheduleId . '/disable' ),
+			array(
+				'method'  => 'DELETE',
+				'headers' => $this->getHeaders(),
+			)
+		);
+	}
+
+	public function enableSchedule( $scheduleId ) {
+		wp_remote_request(
+			$this->get_api_url( 'schedules/' . $scheduleId . '/enable' ),
+			array(
+				'method'  => 'POST',
+				'headers' => $this->getHeaders(),
+			)
+		);
+	}
+
+	public function updateScheduleKey( $remoteScheduleId, $newKey ) {
+		wp_remote_request(
+			$this->get_api_url( 'schedules/' . $remoteScheduleId . '/key' ),
+			array(
+				'method'  => 'POST',
+				'headers' => $this->getHeaders(),
+				'body'    => json_encode( array( 'key' => $newKey ) ),
+
+			)
+		);
+	}
+
+	/**
+	 * @return array
+	 * @throws \Exception
+	 */
+	private function getHeaders() {
 
         $options = \PMXE_Plugin::getInstance()->getOption();
 
-        if (!empty($options['scheduling_license'])) {
-            return array(
+		if ( ! empty( $options['scheduling_license'] ) ) {
+			return array(
                 'Authorization' => 'License ' . \PMXE_Plugin::decode($options['scheduling_license'])
-            );
-        } else {
-            //TODO: Throw custom exception
-            throw new \Exception('No license present');
-        }
-    }
+			);
+		} else {
+			//TODO: Throw custom exception
+			throw new \Exception( 'No license present' );
+		}
+	}
 
-    /**
-     * @return string
-     */
-    private function getApiUrl($resource)
-    {
-        return $this->apiUrl . '/' . $resource;
-    }
+	/**
+	 * @return string
+	 */
+	private function get_api_url( $resource_str ) {
+		return $this->api_url . '/' . $resource_str;
+	}
 }

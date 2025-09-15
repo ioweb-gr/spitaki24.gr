@@ -12,7 +12,7 @@ class Adult extends Field
         $advancedAttributes = $this->feed->getSectionFeedData(self::SECTION);
 
         if($advancedAttributes['adult'] === self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($advancedAttributes['adultCV'], $snippetData);
+            return $advancedAttributes['adultCV'];
         } else {
             return $advancedAttributes['adult'];
         }

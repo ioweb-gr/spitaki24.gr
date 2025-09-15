@@ -73,7 +73,7 @@ if( ! class_exists('PMWI_Updater') ) {
         public function plugin_row_meta( $links, $file ) {
             if ( $file == $this->name ) {
                 $row_meta = array(
-                    'changelog'    => '<a href="' . admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpai-woocommerce-add-on&section=changelog&TB_iframe=true&width=600&height=800' ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( __( 'View WP All Import - WooCommerce Add-On Pro Changelog', PMWI_Plugin::TEXT_DOMAIN ) ) . '">' . __( 'Changelog', PMWI_Plugin::TEXT_DOMAIN ) . '</a>',
+                    'changelog'    => '<a href="' . admin_url( 'plugin-install.php?tab=plugin-information&plugin=wpai-woocommerce-add-on&section=changelog&TB_iframe=true&width=600&height=800' ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( __( 'View WP All Import - WooCommerce Add-On Pro Changelog', 'wpai_woocommerce_addon_plugin' ) ) . '">' . __( 'Changelog', 'wpai_woocommerce_addon_plugin' ) . '</a>',
                 );
 
                 return array_merge( $links, $row_meta );
@@ -237,6 +237,10 @@ if( ! class_exists('PMWI_Updater') ) {
                 if( ! is_object( $version_info ) ) {
                     return;
                 }
+
+	            if(!is_object($update_cache)) {
+		            $update_cache = new stdClass();
+	            }
 
                 if( version_compare( $this->version, $version_info->new_version, '<' ) ) {
 

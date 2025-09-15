@@ -8,6 +8,23 @@ use wpai_woocommerce_add_on\XmlImportWooCommerceService;
 function pmwi_pmxi_missing_post($pid) {
     if ('product_variation' == get_post_type($pid)) {
         $variation = new WC_Product_Variation($pid);
+
+	    // If the parent product no longer exists then we do nothing.
+	    // get_post would normally be used, but this is already tested so we'll go with it.
+	    if(empty(get_post_status($variation->get_parent_id()))){
+
+			// Remove these orphaned variations from WP All Import's table so they aren't processed again.
+		    if (!empty($pid) && is_numeric($pid)) {
+			    $post    = new PMXI_Post_Record();
+			    $is_post = ! $post->getBy( 'post_id', $pid )->isEmpty();
+			    if ( $is_post ) {
+				    $post->delete();
+			    }
+		    }
+
+		    return;
+	    }
+
 	    // Variations should be set to 'private' instead of 'draft'
 	    // when using 'Instead of deletion, change post status to Draft'.
         $options = XmlImportWooCommerceService::getInstance()->getImport()->options;

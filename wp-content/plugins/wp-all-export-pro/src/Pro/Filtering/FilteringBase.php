@@ -80,10 +80,9 @@ abstract class FilteringBase implements FilteringInterface
      */
     abstract public function parse();
 
-    /**
-     *
-     */
-    abstract public function checkNewStuff();
+    abstract protected function getExcludeQueryWhere($postsToExclude);
+
+    abstract protected function getModifiedQueryWhere($export);
 
     /**
      * @return bool
@@ -119,6 +118,8 @@ abstract class FilteringBase implements FilteringInterface
 
         if (strpos($rule->value, "+") !== 0
             && strpos($rule->value, "-") !== 0
+            && strpos($rule->value, 'first') !== 0
+            && strpos($rule->value, 'last') !== 0
             && strpos($rule->value, "next") === false
             && strpos($rule->value, "last") === false
             && (strpos($rule->value, "second") !== false || strpos($rule->value, "minute") !== false || strpos($rule->value, "hour") !== false || (strpos($rule->value, "day") !== false && strpos($rule->value, "today") === false && strpos($rule->value, "yesterday") === false) || strpos($rule->value, "week") !== false || strpos($rule->value, "month") !== false || strpos($rule->value, "year") !== false))
@@ -126,7 +127,31 @@ abstract class FilteringBase implements FilteringInterface
             $rule->value = "-" . trim(str_replace("ago", "", $rule->value));
         }
 
-        $rule->value = strpos($rule->value, ":") !== false ? date("Y-m-d H:i:s", strtotime($rule->value)) : ( in_array($rule->condition, array('greater')) ? date("Y-m-d", strtotime('+1 day', strtotime($rule->value))) : date("Y-m-d", strtotime($rule->value)));
+        if ( strpos($rule->value, ":") !== false ) {
+
+            $rule->value = date("Y-m-d H:i:s", strtotime($rule->value));
+
+        } else {
+
+            if ( in_array($rule->condition, array('greater')) ) {
+                if ( (strpos($rule->value, "-") !== 0 && strpos($rule->value, "-") !== false) || strpos($rule->value, "/") !== false ) {
+                    $rule->value = date("Y-m-d", strtotime('+1 day', strtotime($rule->value)));
+                } else {
+                    $rule->value = date("Y-m-d H:i:s", strtotime($rule->value));
+                }
+
+            } else if( strpos($rule->value, 'day') !== false && in_array($rule->condition, array('equals_or_less'))) {
+                $rule->value = date("Y-m-d", strtotime('+1 day', strtotime($rule->value)));
+                $rule->condition = 'less';
+            } else if (preg_match("/(\d{1,2})\/(\d{2})\/(\d{4})$/", $rule->value,$matches) && in_array($rule->condition, array('equals_or_less'))) {
+                $rule->value = date("Y-m-d", strtotime('+1 day', strtotime($rule->value)));
+                $rule->condition = 'less';
+            }
+            else {
+                $rule->value = date("Y-m-d", strtotime($rule->value));
+            }
+
+        }
 
     }
 
@@ -197,12 +222,23 @@ abstract class FilteringBase implements FilteringInterface
                 $q = "NOT LIKE '%". addslashes($value) ."%'";
                 break;
             case 'is_empty':
-                $q = " = '' OR " . $rule->element . " IS NULL";
+                $q = " = ''";
+                if ($table_alias) $q .= " OR $table_alias.meta_value IS NULL";
                 break;
             case 'is_not_empty':
-                $q = "IS NOT NULL";
+                $q = "IS NOT NULL ";
                 if ($table_alias) $q .= " AND $table_alias.meta_value <> '' ";
                 break;
+	        case 'is_in_list':
+		        $values = array_map('trim', explode(',', $value));
+		        $values = array_map('esc_sql', $values);
+		        $q = "IN ('" . implode("','", $values) . "')";
+		        break;
+	        case 'is_not_in_list':
+		        $values = array_map('trim', explode(',', $value));
+		        $values = array_map('esc_sql', $values);
+		        $q = "NOT IN ('" . implode("','", $values) . "')";
+		        break;
             default:
                 # code...
                 break;
@@ -251,7 +287,11 @@ abstract class FilteringBase implements FilteringInterface
      */
     public function getExportId(){
         $input  = new \PMXE_Input();
-        $export_id = $input->get('id', 0);
+		// Don't use the GET value if it's a real time export as it is probably wrong.
+	    if( ! (isset(\XmlExportEngine::$exportOptions['do_not_generate_file_on_new_records']) &&  \XmlExportEngine::$exportOptions['do_not_generate_file_on_new_records']) ){
+		    $export_id = $input->get('id', 0);
+	    }
+
         if (empty($export_id))
         {
             $export_id = $input->get('export_id', 0);
@@ -263,6 +303,36 @@ abstract class FilteringBase implements FilteringInterface
             }
         }
         return $export_id;
+    }
+
+    public function checkNewStuff(){
+
+        $export = new \PMXE_Export_Record();
+        $export->getById($this->exportId);
+
+	    if(!empty($export)) {
+
+            //If re-run, this export will only include records that have not been previously exported.
+            if ($this->isExportNewStuff()) {
+
+                if($export->iteration > 0) {
+                    global $wpdb;
+                    $postList = new \PMXE_Post_List();
+
+                    $postsToExcludeSql = 'SELECT post_id FROM ' . $postList->getTable() . ' WHERE export_id = %d AND iteration < %d';
+                    $postsToExcludeSql = $wpdb->prepare($postsToExcludeSql, $this->exportId, $export->iteration);
+
+                    $this->queryWhere .= $this->getExcludeQueryWhere($postsToExcludeSql);
+                }
+            }
+
+            if ($this->isExportModifiedStuff() && !empty($export->registered_on)) {
+                $export = new \PMXE_Export_Record();
+                $export->getById($this->exportId);
+
+                $this->getModifiedQueryWhere($export);
+            }
+        }
     }
 
     /**
@@ -284,6 +354,36 @@ abstract class FilteringBase implements FilteringInterface
      * @return mixed value of session variable
      */
     public function get( $key, $default = null ) {
+
+		switch( $key ){
+			case 'queryWhere':
+				if( ! empty($this->queryWhere) && apply_filters('pmxe_clean_query_where', true)) {
+					$this->queryWhere = $this->cleanWhere( $this->queryWhere );
+					$this->queryWhere = $this->insertMissingAndClauses( $this->queryWhere );
+					return $this->queryWhere;
+				}
+				break;
+		}
+
         return isset( $this->{$key} ) ? $this->{$key} : $default;
     }
+
+	public function cleanWhere($query) {
+		// Pattern to match AND/OR followed by a closing parenthesis with optional spaces.
+		$pattern = '/\s*(AND|OR)\s*(?=\))/i';
+
+		return preg_replace($pattern, '', $query);
+	}
+
+	public function insertMissingAndClauses($query) {
+		// Pattern for ensuring there is an AND between certain fragments.
+		$pattern = '/\(\s*([^()]+?)\s*\)(\s*\()/';
+		$replacement = '($1) AND $2';
+
+		while (preg_match($pattern, $query)) {
+			$query = preg_replace($pattern, $replacement, $query);
+		}
+
+		return $query;
+	}
 }

@@ -1,4 +1,4 @@
-/*! elementor - v3.31.0 - 09-09-2025 */
+/*! elementor - v3.32.0 - 15-09-2025 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["vendors-node_modules_react-query_devtools_index_js"],{
 
 /***/ "../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":

@@ -7,7 +7,7 @@ function pmwi_admin_notices() {
 		?>
 		<div class="error"><p>
 			<?php printf(
-					__('<b>%s Plugin</b>: WooCommerce must be installed.', PMWI_Plugin::TEXT_DOMAIN),
+					__('<b>%s Plugin</b>: WooCommerce must be installed.', 'wpai_woocommerce_addon_plugin'),
 					PMWI_Plugin::getInstance()->getName()
 			) ?>
 		</p></div>
@@ -21,7 +21,7 @@ function pmwi_admin_notices() {
 		?>
 		<div class="error"><p>
 			<?php printf(
-					__( '<b>%s Plugin</b>: WP All Import must be installed. Free edition of WP All Import at <a href="https://wordpress.org/plugins/wp-all-import/" target="_blank">https://wordpress.org/plugins/wp-all-import/</a> and the paid edition at <a href="https://www.wpallimport.com/" target="_blank">https://www.wpallimport.com/</a>', PMWI_Plugin::TEXT_DOMAIN),
+					__( '<b>%s Plugin</b>: WP All Import must be installed. Free edition of WP All Import at <a href="https://wordpress.org/plugins/wp-all-import/" target="_blank">https://wordpress.org/plugins/wp-all-import/</a> and the paid edition at <a href="https://www.wpallimport.com/" target="_blank">https://www.wpallimport.com/</a>', 'wpai_woocommerce_addon_plugin'),
 					PMWI_Plugin::getInstance()->getName()
 			) ?>
 		</p></div>
@@ -46,7 +46,7 @@ function pmwi_admin_notices() {
 		?>
 		<div class="error"><p>
 			<?php printf(
-					__('<b>%s Plugin</b>: Please update your WooCommerce to the latest version', PMWI_Plugin::TEXT_DOMAIN),
+					__('<b>%s Plugin</b>: Please update your WooCommerce to the latest version', 'wpai_woocommerce_addon_plugin'),
 					PMWI_Plugin::getInstance()->getName()
 			) ?>
 		</p></div>

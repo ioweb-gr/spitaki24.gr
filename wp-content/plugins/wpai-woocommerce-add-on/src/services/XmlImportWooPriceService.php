@@ -86,6 +86,12 @@ class XmlImportWooPriceService extends XmlImportWooServiceBase {
             $price = preg_replace("/[^0-9\.,]/", "", $price);
         }
 
+	    // Special case where there is one digit after a comma decimal separator: 2,9
+	    if (preg_match('/^\d+,\d$/', $price)) {
+		    $price = str_replace(".","", $price);
+		    $price = str_replace(',', '.', $price);
+	    }
+
         if ($convert_decimal_separator && strlen($price) > 3) {
             $comma_position = strrpos($price, ",", strlen($price) - 3);
             if ($comma_position !== FALSE) {

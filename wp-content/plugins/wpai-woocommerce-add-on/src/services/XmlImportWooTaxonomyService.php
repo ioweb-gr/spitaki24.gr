@@ -55,7 +55,7 @@ class XmlImportWooTaxonomyService extends XmlImportWooServiceBase {
         }
         if ($values) {
             if ( false === $this->wpdb->query( "INSERT INTO {$this->wpdb->term_relationships} (object_id, term_taxonomy_id, term_order) VALUES " . join( ',', $values ) . " ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" ) ){
-                $this->getLogger() and call_user_func($this->getLogger(), __('<b>ERROR</b> Could not insert term relationship into the database', \PMWI_Plugin::TEXT_DOMAIN) . ': '. $this->wpdb->last_error);
+                $this->getLogger() and call_user_func($this->getLogger(), __('<b>ERROR</b> Could not insert term relationship into the database', 'wpai_woocommerce_addon_plugin') . ': '. $this->wpdb->last_error);
             }
         }
         wp_cache_delete($pid, $txName . '_relationships');
@@ -98,9 +98,9 @@ class XmlImportWooTaxonomyService extends XmlImportWooServiceBase {
                         ) )
                     );
                     $this->createWooCommerceAttribute($args);
-                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>CREATED</b>: Taxonomy attribute “%s” have been successfully created.', \PMWI_Plugin::TEXT_DOMAIN), wc_attribute_taxonomy_name( $attribute_name )));
+                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>CREATED</b>: Taxonomy attribute “%s” have been successfully created.', 'wpai_woocommerce_addon_plugin'), wc_attribute_taxonomy_name( $attribute_name )));
                 } else {
-                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b>: Taxonomy “%s” name is more than 28 characters. Change it, please.', \PMWI_Plugin::TEXT_DOMAIN), $attr_name));
+                    $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b>: Taxonomy “%s” name is more than 28 characters. Change it, please.', 'wpai_woocommerce_addon_plugin'), $attr_name));
                 }
             }
         } else {

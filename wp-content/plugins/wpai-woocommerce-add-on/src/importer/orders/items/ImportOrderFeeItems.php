@@ -83,7 +83,7 @@ class ImportOrderFeeItems extends ImportOrderItemsBase {
                     }
 
                     if ( ! $item_id ) {
-                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> order line fee is not added.', \PMWI_Plugin::TEXT_DOMAIN));
+                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> order line fee is not added.', 'wpai_woocommerce_addon_plugin'));
                     } else {
                         $fee_item->set( [
                             'import_id'   => $this->getImport()->id,

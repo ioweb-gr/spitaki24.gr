@@ -16,9 +16,8 @@ class PromotionId extends Field
         }
         
         $promotionId = $advancedAttributes['promotionId'];
-        $promotionId = $this->replaceSnippetsInValue($promotionId, $snippetData);
-
-        return $this->replaceMappings($advancedAttributes['promotionIdMappings'], $promotionId);
+		$this->mappings = $advancedAttributes['promotionIdMappings'];
+		return $promotionId;
     }
 
     public function getFieldName()

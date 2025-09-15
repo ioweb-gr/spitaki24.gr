@@ -158,6 +158,7 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password_Layout' ) ) {
 		 */
 		public static function prepare_row_actions( $user, $wtlwp_status ) {
 
+			
 			$is_active = ( 'active' === strtolower( $wtlwp_status ) ) ? true : false;
 			$user_id   = $user->ID;
 			$email     = $user->user_email;

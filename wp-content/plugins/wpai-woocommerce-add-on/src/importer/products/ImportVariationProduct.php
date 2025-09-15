@@ -20,7 +20,22 @@ class ImportVariationProduct extends ImportVariationBase {
         $this->setProperty('description', $this->getValue('product_variation_description'));
         // Is variation enabled.
         if ($this->getImportService()->isUpdateDataAllowed('is_update_status', $this->isNewProduct())) {
-            $post_status = $this->getValue('product_enabled') == 'yes' ? 'publish' : 'private';
+            // For existing items imports where variations are imported as simple products,
+            // check if WP All Import core has already set a specific status that differs from product_enabled default
+            $current_post_status = get_post_status($this->product->get_id());
+            $product_enabled_status = $this->getValue('product_enabled') == 'yes' ? 'publish' : 'private';
+
+            // If this is an existing items import and the current post status is 'private'
+            // but product_enabled would set it to 'publish', respect the current status
+            if ($this->getImport()->options['wizard_type'] == 'matching' &&
+                $current_post_status == 'private' &&
+                $product_enabled_status == 'publish') {
+                $post_status = 'private';
+            } else {
+                // Use the traditional product_enabled logic
+                $post_status = $product_enabled_status;
+            }
+
             $this->product->set_status($post_status);
         }
         if ($this->getImportService()->isUpdateDataAllowed('is_update_attributes', $this->isNewProduct())) {

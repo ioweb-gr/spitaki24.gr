@@ -22,6 +22,26 @@ function pmwi_pmxi_custom_field_to_delete($field_to_delete, $pid, $post_type, $o
         return false;
     }
 
+    // Check if the field is handled internally and should not be deleted unless marked for update
+    if (class_exists('wpai_woocommerce_add_on\XmlImportWooCommerceService') && $options['update_all_data'] == 'no' && !empty($options['is_using_new_product_import_options'])) {
+        $custom_fields_handled_internally = wpai_woocommerce_add_on\XmlImportWooCommerceService::$custom_fields_handled_internally;
+        if(isset($custom_fields_handled_internally[$post_type]) && array_key_exists($cur_meta_key, $custom_fields_handled_internally[$post_type])) {
+            $internal_field = $custom_fields_handled_internally[$post_type][$cur_meta_key];
+
+            // Special handling for _product_attributes when using specific attribute logic
+            if ($cur_meta_key == '_product_attributes' && isset($options['update_attributes_logic']) && in_array($options['update_attributes_logic'], ['all_except', 'only'])) {
+                // For "all_except" and "only" modes, we need to let the existing logic below handle this
+                // Don't return early here, let it fall through to the existing attribute logic
+            } else {
+                if(isset($options[$internal_field[0]]) && $options[$internal_field[0]] && isset($options[$internal_field[1]]) && $options[$internal_field[1]]) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
 	if ($cur_meta_key == '_is_first_variation_created') {
 		delete_post_meta($pid, $cur_meta_key);
 		return false;
@@ -80,6 +100,6 @@ function pmwi_pmxi_custom_field_to_delete($field_to_delete, $pid, $post_type, $o
             return false;
         }
 	}
-	
+
 	return true;		
 }

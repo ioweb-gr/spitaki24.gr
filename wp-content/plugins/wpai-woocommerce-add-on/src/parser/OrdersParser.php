@@ -37,7 +37,7 @@ class OrdersParser extends Parser {
 
         $this->data = [];
 
-        $this->getChunk() == 1 and $this->log(__('Composing shop order data...', \PMWI_Plugin::TEXT_DOMAIN));
+        $this->getChunk() == 1 and $this->log(__('Composing shop order data...', 'wpai_woocommerce_addon_plugin'));
 
         $default = \PMWI_Plugin::get_default_import_options();
 
@@ -606,19 +606,19 @@ class OrdersParser extends Parser {
      * @return string
      */
     public function get_existing_customer_for_logger($option_slug, $index ) {
-        $log = __("Search customer by ", \PMWI_Plugin::TEXT_DOMAIN);
+        $log = __("Search customer by ", 'wpai_woocommerce_addon_plugin');
         switch ($this->getImport()->options['pmwi_order'][$option_slug . '_match_by']){
             case 'username':
-                $log .= __("username", \PMWI_Plugin::TEXT_DOMAIN) . " `" . $this->getValue($option_slug . '_username', $index) . "`";
+                $log .= __("username", 'wpai_woocommerce_addon_plugin') . " `" . $this->getValue($option_slug . '_username', $index) . "`";
                 break;
             case 'email':
-                $log .= __("email", \PMWI_Plugin::TEXT_DOMAIN) . " `" . $this->getValue($option_slug . '_email', $index) . "`";
+                $log .= __("email", 'wpai_woocommerce_addon_plugin') . " `" . $this->getValue($option_slug . '_email', $index) . "`";
                 break;
             case 'cf':
-                $log .= __("custom field", \PMWI_Plugin::TEXT_DOMAIN) . ": `" . $this->getValue($option_slug . '_cf_name', $index) . "` equals to `" . $this->getValue($option_slug . '_cf_value', $index) . "`";
+                $log .= __("custom field", 'wpai_woocommerce_addon_plugin') . ": `" . $this->getValue($option_slug . '_cf_name', $index) . "` equals to `" . $this->getValue($option_slug . '_cf_value', $index) . "`";
                 break;
             case 'id':
-                $log .= __("ID", \PMWI_Plugin::TEXT_DOMAIN) . " `" . $this->getValue($option_slug . '_id', $index) . "`";
+                $log .= __("ID", 'wpai_woocommerce_addon_plugin') . " `" . $this->getValue($option_slug . '_id', $index) . "`";
                 break;
         }
         return $log . ".";

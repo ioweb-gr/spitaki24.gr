@@ -7,9 +7,9 @@ class Availability extends Field
 {
     const SECTION = 'availabilityPrice';
 
-    const IN_STOCK = 'in stock';
+    const IN_STOCK = 'in_stock';
 
-    const OUT_OF_STOCK = 'out of stock';
+    const OUT_OF_STOCK = 'out_of_stock';
 
     public function getValue($snippetData)
     {
@@ -23,7 +23,7 @@ class Availability extends Field
                 return self::OUT_OF_STOCK;
             }
         } else if($availabilityPrice['availability'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($availabilityPrice['availabilityCV'], $snippetData);
+            return $availabilityPrice['availabilityCV'];
         } else {
             throw new \Exception('Unknown value for availability: '. $availabilityPrice['availability']);
         }

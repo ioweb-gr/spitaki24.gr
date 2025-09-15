@@ -30,12 +30,12 @@ class Gender extends Field
             } else {
                 $genderAttribute = '';
             }
-            return $this->replaceSnippetsInValue($genderAttribute, $snippetData);
+            return $genderAttribute;
 
         }
         else if ($detailedInformationData['gender'] == self::CUSTOM_VALUE_TEXT) {
 
-            return $this->replaceSnippetsInValue($detailedInformationData['genderCV'], $snippetData);
+            return $detailedInformationData['genderCV'];
 
         } else if ($detailedInformationData['gender'] == 'autodetectBasedOnProductTaxonomies') {
 
@@ -126,7 +126,7 @@ class Gender extends Field
     }
 
     /**
-     * @return string
+     * @return array|string|\WP_Post
      * @throws \Exception
      */
     private function getProduct()

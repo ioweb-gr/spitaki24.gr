@@ -14,11 +14,9 @@ class EnergyEfficiencyClass extends Field
         if(!isset($advancedAttributes['energyEfficiencyClass'])) {
             return '';
         }
-        
-        $energyEfficiencyClass = $advancedAttributes['energyEfficiencyClass'];
-        $energyEfficiencyClass = $this->replaceSnippetsInValue($energyEfficiencyClass, $snippetData);
-        
-        return $this->replaceMappings($advancedAttributes['energyEfficiencyClassMappings'], $energyEfficiencyClass);
+
+		$this->mappings = $advancedAttributes['energyEfficiencyClassMappings'];
+		return $advancedAttributes['energyEfficiencyClass'];
     }
 
     public function getFieldName()

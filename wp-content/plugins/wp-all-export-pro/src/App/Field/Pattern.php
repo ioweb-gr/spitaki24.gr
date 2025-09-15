@@ -15,14 +15,14 @@ class Pattern extends Field
 
             if(isset($detailedInformationData['patternAttribute'])){
                 $patternAttribute = $detailedInformationData['patternAttribute'];
-                return $this->replaceSnippetsInValue($patternAttribute, $snippetData);
+                return $patternAttribute;
             } else {
                 return '';
             }
 
             
         } else if($detailedInformationData['pattern'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($detailedInformationData['patternCV'], $snippetData);
+            return $detailedInformationData['patternCV'];
         } else {
             throw new \Exception('Unknown vale '.$detailedInformationData['pattern'].' for field pattern');
         }

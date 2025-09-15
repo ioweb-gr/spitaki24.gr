@@ -12,7 +12,7 @@ class ShippingLabel extends Field
         $shippingData = $this->feed->getSectionFeedData(self::SECTION);
 
         if(isset($shippingData['shippingLabel'])) {
-            return $this->replaceSnippetsInValue($shippingData['shippingLabel'], $snippetData);
+            return $shippingData['shippingLabel'];
         } else {
             return '';
         }

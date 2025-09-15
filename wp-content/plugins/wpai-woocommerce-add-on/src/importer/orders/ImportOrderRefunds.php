@@ -217,14 +217,21 @@ class ImportOrderRefunds extends ImportOrderBase {
 
                     }
 
-                    if (!$refund_item->isEmpty()) {
-                        $args['refund_id'] = str_replace('refund-item-', '', $refund_item->product_key);
-                    }
+	                if (!$refund_item->isEmpty()) {
+		                // Only use the refund ID reference if it's valid.
+		                $tmp_refund_id = str_replace('refund-item-', '', $refund_item->product_key);
+		                $orderRefund = wc_get_order( $tmp_refund_id );
+		                if ( $orderRefund && 'shop_order_refund' === $orderRefund->get_type() ) {
+			                $args['refund_id'] = $tmp_refund_id;
+		                }
+	                }
 
-                    $orderRefund = wc_create_refund($args);
+					if( !isset($orderRefund) || !$orderRefund ) {
+						$orderRefund = \wc_create_refund( $args );
+					}
 
                     if (is_wp_error($orderRefund)) {
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>ERROR</b> %s', \PMWI_Plugin::TEXT_DOMAIN), $orderRefund->get_error_message()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>ERROR</b> %s', 'wpai_woocommerce_addon_plugin'), $orderRefund->get_error_message()));
                     }
 
                     if ($orderRefund instanceOf \WC_Order_Refund) {

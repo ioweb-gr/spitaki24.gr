@@ -17,15 +17,32 @@ class ShippingWidth extends Field
             $toUnit = $shippingData['convertTo'];
 
             $product = $_product = wc_get_product($this->entry->ID);
+
             if($currentUnit !== $toUnit) {
-                $width = wc_get_dimension($product->width, $toUnit, $currentUnit);
+
+                $shippingWidth = $product->get_width();
+
+                if(is_numeric($shippingWidth)) {
+                    $width = wc_get_dimension($shippingWidth, $toUnit, $currentUnit);
+                } else {
+                    $width = $shippingWidth;
+                }
+
             } else {
-                $width = $product->width;
+                $width = $product->get_width();
             }
 
-            return $width . ' '.$toUnit;
+            if($width) {
+                return $width . ' ' . $toUnit;
+            } else {
+                return '';
+            }
         } else {
-            return $this->replaceSnippetsInValue($shippingData['dimensionsCV'], $snippetData);
+            if(isset($shippingData['dimensionsCV'])) {
+                return $shippingData['dimensionsCV'];
+            } else {
+                return '';
+            }
         }
     }
 

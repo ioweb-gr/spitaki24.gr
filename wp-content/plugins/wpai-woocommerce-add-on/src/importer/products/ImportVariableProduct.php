@@ -91,7 +91,7 @@ class ImportVariableProduct extends ImportProduct {
                 $this->saveParsedData();
 	            $added_variations = $this->linkAllVariations();
 	            $this->getImportService()->syncVariableProductData($this->getProduct()->get_id());
-	            $this->log(sprintf(__('<b>CREATED</b>: %s variations for parent product %s.', \PMWI_Plugin::TEXT_DOMAIN), $added_variations, $this->product->get_title()));
+	            $this->log(sprintf(__('<b>CREATED</b>: %s variations for parent product %s.', 'wpai_woocommerce_addon_plugin'), $added_variations, $this->product->get_title()));
                 return;
             }
             switch ($this->getImport()->options['matching_parent']) {
@@ -106,7 +106,7 @@ class ImportVariableProduct extends ImportProduct {
                         $this->importVariations($this->parent->get_id());
                     } else {
                     	if (empty($this->getImport()->options['create_new_product_if_no_parent'])) {
-		                    $this->log(sprintf(__('- Variation `%s` skipped. No parent product found.', \PMWI_Plugin::TEXT_DOMAIN), $this->getArticleData('post_title')));
+		                    $this->log(sprintf(__('- Variation `%s` skipped. No parent product found.', 'wpai_woocommerce_addon_plugin'), $this->getArticleData('post_title')));
 		                    wp_delete_post($this->getPid());
 	                    } else {
 		                    // Import basic product data.
@@ -119,10 +119,10 @@ class ImportVariableProduct extends ImportProduct {
                 case 'xml':
                     // Validation.
                     if (empty($this->getImport()->options['variations_xpath'])) {
-                        throw new \Exception(__('Variations XPath can\'t be empty.', \PMWI_Plugin::TEXT_DOMAIN));
+                        throw new \Exception(__('Variations XPath can\'t be empty.', 'wpai_woocommerce_addon_plugin'));
                     }
                     if (empty($this->getImport()->options['variable_sku']) && $this->getImport()->options['disable_auto_sku_generation']) {
-                        throw new \Exception(__('Variations SKU can\'t be empty when auto SKU generation disabled.', \PMWI_Plugin::TEXT_DOMAIN));
+                        throw new \Exception(__('Variations SKU can\'t be empty when auto SKU generation disabled.', 'wpai_woocommerce_addon_plugin'));
                     }
                     // Import parent product data.
                     parent::import();
@@ -133,7 +133,7 @@ class ImportVariableProduct extends ImportProduct {
                     // Parse product variations and get count of parsed variations.
                     $parser->parse();
 
-                    $this->log(__('- Importing Variations', \PMWI_Plugin::TEXT_DOMAIN));
+                    $this->log(__('- Importing Variations', 'wpai_woocommerce_addon_plugin'));
                     // Import variations.
                     for ($i = 0; $i < $parser->getCountVariations(); $i++) {
                         // Init index for variations import.
@@ -205,7 +205,7 @@ class ImportVariableProduct extends ImportProduct {
             // Matching parent product.
             if ($this->getImport()->options['existing_parent_product_matching_logic'] == 'title') {
                 if (empty($this->getImport()->options['existing_parent_product_title'])) {
-                    throw new \Exception(__('Match Parent by Title setting can\'t be empty.', \PMWI_Plugin::TEXT_DOMAIN));
+                    throw new \Exception(__('Match Parent by Title setting can\'t be empty.', 'wpai_woocommerce_addon_plugin'));
                 }
                 $parentProducts = pmxi_findDuplicates(array(
                     'post_type' => 'product',
@@ -215,10 +215,10 @@ class ImportVariableProduct extends ImportProduct {
                 ));
             } else {
                 if (empty($this->getImport()->options['existing_parent_product_cf_name'])) {
-                    throw new \Exception(__('Name field can\'t be empty in Match by Custom Field setting.', \PMWI_Plugin::TEXT_DOMAIN));
+                    throw new \Exception(__('Name field can\'t be empty in Match by Custom Field setting.', 'wpai_woocommerce_addon_plugin'));
                 }
                 if (empty($this->getImport()->options['existing_parent_product_cf_value'])) {
-                    throw new \Exception(__('Value field can\'t be empty in Match by Custom Field setting.', \PMWI_Plugin::TEXT_DOMAIN));
+                    throw new \Exception(__('Value field can\'t be empty in Match by Custom Field setting.', 'wpai_woocommerce_addon_plugin'));
                 }
                 $articleData = $this->getArticle();
                 $articleData['post_type'] = 'product';
@@ -234,9 +234,9 @@ class ImportVariableProduct extends ImportProduct {
                 ]);
                 $this->variations[] = new \WC_Product_Variation($this->getPid());
                 // Init parent product object.
-                $this->log(sprintf(__('- Existing parent product founded by %s - `%s` #%s', \PMWI_Plugin::TEXT_DOMAIN), $this->getImport()->options['existing_parent_product_matching_logic'], $this->parent->get_title(), $this->parent->get_id()));
+                $this->log(sprintf(__('- Existing parent product found by %s - `%s` #%s', 'wpai_woocommerce_addon_plugin'), $this->getImport()->options['existing_parent_product_matching_logic'], $this->parent->get_title(), $this->parent->get_id()));
             } else {
-                $this->log(sprintf(__('<b>WARNING:</b> - Existing parent product not founded by %s', \PMWI_Plugin::TEXT_DOMAIN), $this->getImport()->options['existing_parent_product_matching_logic']));
+                $this->log(sprintf(__('<b>WARNING:</b> - Existing parent product not found by %s', 'wpai_woocommerce_addon_plugin'), $this->getImport()->options['existing_parent_product_matching_logic']));
             }
         } else {
             if ( "manual" != $this->getImport()->options['duplicate_matching'] || $this->isNewProduct() ) {
@@ -319,7 +319,7 @@ class ImportVariableProduct extends ImportProduct {
             if ($this->getImportService()->isUpdateDataAllowed('is_update_attributes', $this->isNewProduct()) && $this->getImport()->options['make_simple_product']) {
                 $variation_attributes = $this->variationImporter->getProperty('attributes');
                 if (empty($variation_attributes)) {
-                    $this->log(sprintf(__('- Variation `%s` skipped. No attributes defined.', \PMWI_Plugin::TEXT_DOMAIN), $this->variationImporter->getProperty('sku')));
+                    $this->log(sprintf(__('- Variation `%s` skipped. No attributes defined.', 'wpai_woocommerce_addon_plugin'), $this->variationImporter->getProperty('sku')));
                     wp_delete_post($variation->get_id());
                     continue;
                 }
@@ -329,7 +329,7 @@ class ImportVariableProduct extends ImportProduct {
             // Skip duplicate variations.
             if ($this->getImport()->options['matching_parent'] == 'existing' && !$this->getImport()->options['disable_sku_matching'] && $this->isNewProduct()) {
                 if ($this->isVariationExistBySKU($this->variationImporter->getProperty('sku'))) {
-                    $this->log(sprintf(__('- Existing variation with the same SKU `%s` already exist. Skipped.', \PMWI_Plugin::TEXT_DOMAIN), $this->variationImporter->getProperty('sku')));
+                    $this->log(sprintf(__('- Existing variation with the same SKU `%s` already exist. Skipped.', 'wpai_woocommerce_addon_plugin'), $this->variationImporter->getProperty('sku')));
                     wp_delete_post($variation->get_id());
                     continue;
                 }
@@ -385,7 +385,7 @@ class ImportVariableProduct extends ImportProduct {
             // Enabled or disabled.
             $post_status = $this->getValue('product_enabled') == 'yes' ? 'publish' : 'private';
             // Generate a useful post title.
-            $variation_post_title = sprintf( __( 'Variation #%s of %s', \PMWI_Plugin::TEXT_DOMAIN ), absint( $variationID ), $this->product->get_title());
+            $variation_post_title = sprintf( __( 'Variation #%s of %s', 'wpai_woocommerce_addon_plugin' ), absint( $variationID ), $this->product->get_title());
             // Generate variation unique key.
             $variation_unique_key = 'Variation of ' . $this->getPid();
             // Update or Add Variation.
@@ -414,7 +414,7 @@ class ImportVariableProduct extends ImportProduct {
                             ))->insert();
                         }
                     } else {
-                        $this->log(__('<b>ERROR</b>', \PMWI_Plugin::TEXT_DOMAIN) . ': ' . $variationID->get_error_message());
+                        $this->log(__('<b>ERROR</b>', 'wpai_woocommerce_addon_plugin') . ': ' . $variationID->get_error_message());
                     }
                 }
             } else {
@@ -675,6 +675,12 @@ class ImportVariableProduct extends ImportProduct {
             // Sync SKU by adding variation ID as suffix, otherwise when variation have empty SKUs parent product imported as outofstock.
             $productVariation->set_sku($this->product->get_sku() . '-' . ($key + 1));
             $variation_id = $productVariation->save();
+
+			// Set post author for variation.
+	        wp_update_post([
+		        'ID' => $variation_id,
+		        'post_author'  => get_post_field( 'post_author', $this->product->get_id() ),
+	        ]);
 
             $postRecord = new \PMXI_Post_Record();
             $postRecord->isEmpty() and $postRecord->set(array(

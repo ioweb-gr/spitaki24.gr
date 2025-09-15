@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * Base class for models
- * 
+ *
  * @author Pavel Kulbakin <p.kulbakin@gmail.com>
  */
 class PMXE_Model_Record extends PMXE_Model {
@@ -12,11 +12,11 @@ class PMXE_Model_Record extends PMXE_Model {
 	public function __construct($data = array()) {
 		parent::__construct();
 		if (! is_array($data)) {
-			throw new Exception("Array expected as paramenter for " . get_class($this) . "::" . __METHOD__);
+			throw new Exception("Array expected as parameter for " . get_class($this) . "::" . __METHOD__);
 		}
 		$data and $this->set($data);
 	}
-	
+
 	/**
 	 * @see PMXE_Model::getBy()
 	 * @return PMXE_Model_Record
@@ -39,7 +39,7 @@ class PMXE_Model_Record extends PMXE_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Ger records related to current one
 	 * @param string $model Class name of model of related records
@@ -63,13 +63,21 @@ class PMXE_Model_Record extends PMXE_Model {
 		}
 		return $related instanceof PMXE_Model_List ? $related->convertRecords() : $related;
 	}
-	
+
 	/**
 	 * Saves currently set object data as database record
 	 * @return PMXE_Model_Record
 	 */
 	public function insert() {
-		if ($this->wpdb->insert($this->table, $this->toArray(TRUE))) {
+
+		$value = $this->toArray(TRUE);
+		// Clear the stored query to limit what's saved in the database.
+		// It will be created fresh each time the export is loaded regardless.
+		$options = isset($value['options']) ? maybe_unserialize($value['options']) : [];
+		$options['exportquery'] = null;
+		isset($value['options']) && $value['options'] = serialize($options);
+
+		if ($this->wpdb->insert($this->table, $value)) {
 			if (isset($this->auto_increment)) {
 				$this[$this->primary[0]] = $this->wpdb->insert_id;
 			}
@@ -82,15 +90,20 @@ class PMXE_Model_Record extends PMXE_Model {
 	 * Update record in database
 	 * @return PMXE_Model_Record
 	 */
-	public function update() {		
-		$record = $this->toArray(TRUE);	
-		$this->wpdb->update($this->table, $record, array_intersect_key($record, array_flip($this->primary)));							
+	public function update() {
+		$record = $this->toArray(TRUE);
+		// Clear the stored query to limit what's saved in the database.
+		// It will be created fresh each time the export is loaded regardless.
+		$options = isset($record['options']) ? maybe_unserialize($record['options']) : [];
+		$options['exportquery'] = null;
+		isset($record['options']) && $record['options'] = serialize($options);
+		$this->wpdb->update($this->table, $record, array_intersect_key($record, array_flip($this->primary)));
 		if ($this->wpdb->last_error) {
 			throw new Exception($this->wpdb->last_error);
-		}		
+		}
 		return $this;
 	}
-	
+
 	/**
 	 * Delete record form database
 	 * @return PMXE_Model_Record
@@ -115,12 +128,12 @@ class PMXE_Model_Record extends PMXE_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Set record data
-	 * When 1st parameter is an array, it expected to be an associative array of field => value pairs 
+	 * When 1st parameter is an array, it expected to be an associative array of field => value pairs
 	 * If 2 parameters are set, first one is expected to be a field name and second - it's value
-	 * 
+	 *
 	 * @param string|array $field
 	 * @param mixed[optional] $value
 	 * @return PMXE_Model_Record
@@ -134,10 +147,10 @@ class PMXE_Model_Record extends PMXE_Model {
 		} else {
 			$this[$field] = $value;
 		}
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * Magic method to resolved object-like request to record values in format $obj->%FIELD_NAME%
 	 * @param string $field
@@ -145,7 +158,10 @@ class PMXE_Model_Record extends PMXE_Model {
 	 */
 	public function __get($field) {
 		if ( ! $this->offsetExists($field)) {
-			throw new Exception("Undefined field $field.");
+			// Retrieve calling function details.
+			$called_by = debug_backtrace(!DEBUG_BACKTRACE_PROVIDE_OBJECT|DEBUG_BACKTRACE_IGNORE_ARGS,2)[1];
+
+			throw new Exception("Undefined field '$field' requested by: [ " . $called_by['function'] .' in ' . $called_by['file'] . ' line ' . $called_by['line'] .' ]');
 		}
 		return $this[$field];
 	}
@@ -172,5 +188,5 @@ class PMXE_Model_Record extends PMXE_Model {
 	public function __unset($field) {
 		$this->offsetUnset($field);
 	}
-	
+
 }

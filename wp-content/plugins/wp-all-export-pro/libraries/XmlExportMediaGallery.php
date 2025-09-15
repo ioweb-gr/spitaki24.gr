@@ -245,13 +245,10 @@ final class XmlExportMediaGallery
 	{
 		$options = $exportOptions;
 
-		$is_xml_template = $options['export_to'] == 'xml';
+        $element_type = $options['cc_type'][$ID];
+        $field_tpl_key = (preg_match('/^[0-9]/', $element_name)) ? 'el_' . $element_name : $element_name;
 
-		$implode_delimiter = XmlExportEngine::$implode;
-
-		$element_type = $options['cc_type'][$ID];
-
-		if ( is_null(self::$is_include_feature_meta) || is_null(self::$is_include_gallery_meta)) {
+        if ( is_null(self::$is_include_feature_meta) || is_null(self::$is_include_gallery_meta)) {
 			self::$is_include_feature_meta = false;
 			self::$is_include_gallery_meta = false;
 
@@ -274,81 +271,81 @@ final class XmlExportMediaGallery
 				$templateOptions['update_images_logic'] = 'add_new';
 				$templateOptions['download_featured_delim'] = (empty($field_options['image_separator'])) ? "|" : $field_options['image_separator'];
 				if ( empty($templateOptions['download_featured_image'])) {
-					$templateOptions['download_featured_image'] = '{'. $element_name .'[1]}';
+					$templateOptions['download_featured_image'] = '{'. $field_tpl_key .'[1]}';
 				}
 				else {
-					$templateOptions['download_featured_image'] .= $templateOptions['download_featured_delim'] . '{'. $element_name .'[1]}';
+					$templateOptions['download_featured_image'] .= $templateOptions['download_featured_delim'] . '{'. $field_tpl_key .'[1]}';
 				}
 				break;
 			case 'image_title':
 				$field_options = json_decode($options['cc_options'][$ID], true);
-				if ( (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
-				{					
-					$templateOptions['set_image_meta_title'] = 1;				
+				if ( isset($field_options['is_export_featured']) && (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && isset($field_option['is_export_attached']) &&(int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
+				{
+					$templateOptions['set_image_meta_title'] = 1;
 					$templateOptions['image_meta_title_delim'] = (empty($field_options['image_separator'])) ? "|" : $field_options['image_separator'];
 					if ( empty($templateOptions['image_meta_title'])) {
-						$templateOptions['image_meta_title'] = '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_title'] = '{'. $field_tpl_key .'[1]}';
 					}
 					else {
-						$templateOptions['image_meta_title'] .= $templateOptions['image_meta_title_delim'] . '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_title'] .= $templateOptions['image_meta_title_delim'] . '{'. $field_tpl_key .'[1]}';
 					}
 				}				
 				break;
 			case 'image_caption':
 				$field_options = json_decode($options['cc_options'][$ID], true);
-				if ( (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
+				if ( isset($field_options['is_export_featured']) && (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && isset($field_options['is_export_attached']) && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
 				{
 					$templateOptions['set_image_meta_caption'] = 1;				
 					$templateOptions['image_meta_caption_delim'] = (empty($field_options['image_separator'])) ? "|" : $field_options['image_separator'];
 					if ( empty($templateOptions['image_meta_caption'])) {
-						$templateOptions['image_meta_caption'] = '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_caption'] = '{'. $field_tpl_key .'[1]}';
 					}
 					else {
-						$templateOptions['image_meta_caption'] .= $templateOptions['image_meta_caption_delim'] . '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_caption'] .= $templateOptions['image_meta_caption_delim'] . '{'. $field_tpl_key .'[1]}';
 					}
 				}
 				break;
 			case 'image_description':
 				$field_options = json_decode($options['cc_options'][$ID], true);
-				if ( (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
+				if ( isset($field_options['is_export_featured']) && (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && isset($field_options['is_export_attached']) && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
 				{
 					$templateOptions['set_image_meta_description'] = 1;				
 					$templateOptions['image_meta_description_delim'] = (empty($field_options['image_separator'])) ? "|" : $field_options['image_separator'];
 					if ( empty($templateOptions['image_meta_description'])) {
-						$templateOptions['image_meta_description'] = '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_description'] = '{'. $field_tpl_key .'[1]}';
 					}
 					else {
-						$templateOptions['image_meta_description'] .= $templateOptions['image_meta_description_delim'] . '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_description'] .= $templateOptions['image_meta_description_delim'] . '{'. $field_tpl_key .'[1]}';
 					}
 				}
 				break;
 			case 'image_alt':
 				$field_options = json_decode($options['cc_options'][$ID], true);
-				if ( (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
+				if ( isset($field_options['is_export_featured']) && (int) $field_options['is_export_featured'] == (int) self::$is_include_feature_meta && isset($field_options['is_export_attached']) && (int) $field_options['is_export_attached'] == (int) self::$is_include_gallery_meta )
 				{
 					$templateOptions['set_image_meta_alt'] = 1;			
 					$templateOptions['image_meta_alt_delim'] = (empty($field_options['image_separator'])) ? "|" : $field_options['image_separator'];
 					if ( empty($templateOptions['image_meta_alt'])) {
-						$templateOptions['image_meta_alt'] = '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_alt'] = '{'. $field_tpl_key .'[1]}';
 					}
 					else {
-						$templateOptions['image_meta_alt'] .= $templateOptions['image_meta_alt_delim'] . '{'. $element_name .'[1]}';
+						$templateOptions['image_meta_alt'] .= $templateOptions['image_meta_alt_delim'] . '{'. $field_tpl_key .'[1]}';
 					}
 				}
 				break;
             case 'image_featured':
                 $templateOptions['is_featured'] = 1;
-                $templateOptions['is_featured_xpath'] = '{'. $element_name .'[1]}';
+                $templateOptions['is_featured_xpath'] = '{'. $field_tpl_key .'[1]}';
                 break;
 			case 'attachments':					
 			case 'attachment_url':				
 				$templateOptions['atch_delim'] = '|';
 				$templateOptions['is_update_attachments'] = 1;
 				if ( empty($templateOptions['attachments'])) {
-					$templateOptions['attachments'] = '{'. $element_name .'[1]}';
+					$templateOptions['attachments'] = '{'. $field_tpl_key .'[1]}';
 				}
 				else {
-					$templateOptions['attachments'] .= $templateOptions['atch_delim'] . '{'. $element_name .'[1]}';
+					$templateOptions['attachments'] .= $templateOptions['atch_delim'] . '{'. $field_tpl_key .'[1]}';
 				}
 				break;
 		}

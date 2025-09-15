@@ -1705,7 +1705,7 @@ msgstr "国："
 #: views/admin/import/shop_order/_tabs/_order_billing.php:132
 #: views/admin/import/shop_order/_tabs/_order_billing.php:229
 #: views/admin/import/shop_order/_tabs/_order_shipping.php:82
-msgid "State/Country"
+msgid "State/County"
 msgstr "市、州、国"
 
 #: views/admin/import/shop_order/_tabs/_order_billing.php:146

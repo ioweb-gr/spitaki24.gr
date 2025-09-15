@@ -17,6 +17,11 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 				'tlwp_update_192_add_activity_log',
 				'tlwp_update_192_db_version',
 			),
+
+			'1.9.3' => array(
+				'tlwp_update_193_add_bulk_user_import',
+				'tlwp_update_193_db_version',
+			),
         );
 
         /**
@@ -47,9 +52,9 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 
 			// Get latest available DB update version
 			$latest_db_version_to_update = self::get_latest_db_version_to_update();
-            
+			 
 			if ( version_compare( $current_db_version, $latest_db_version_to_update, '<' ) ) {
-
+ 
 				self::install();
 			}
 			
@@ -75,9 +80,9 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
             if ( 'yes' === get_transient( 'tlwp_installing' ) ) { 
 
 				return;
-			}
+			} 
  
-			if ( self::is_new_install() ) { 
+			if ( self::is_new_install() ) {  
  
 				// If we made it till here nothing is running yet, lets set the transient now.
 				set_transient( 'tlwp_installing', 'yes', MINUTE_IN_SECONDS * 10 );
@@ -103,9 +108,7 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 		public static function is_new_install() {
 			/**
 			 * We are storing tlwp_db_version if it's new installation.
-			 *
-			 * If we found 'current_sa_email_subscribers_db_version' option, which means it's a
-			 * migration from TLWP 3.5.x
+			 *  
 			 */
 			return is_null( get_option( 'tlwp_db_version', null ) );
 		}
@@ -120,7 +123,7 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 		public static function get_latest_db_version_to_update() {
 			$updates         = self::get_db_update_callbacks();
 			$update_versions = array_keys( $updates );
-			
+
 			usort( $update_versions, 'version_compare' );
 
 			return end( $update_versions );
@@ -138,7 +141,7 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 			$current_db_version = get_tlwp_db_version();
 			
 		    $latest_db_version_to_update = self::get_latest_db_version_to_update(); 
-            
+			  
 			return ! is_null( $current_db_version ) && version_compare( $current_db_version, $latest_db_version_to_update, '<' );
 		}
 
@@ -176,10 +179,9 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 		 * @since 4.0.0
 		 */
 		private static function update( $force = false ) {
-             
+            
 			// Check if we are not already running this routine.
-			if ( ! $force && 'yes' === get_transient( 'tlwp_updating' ) ) {
-				
+			if ( ! $force && 'yes' === get_transient( 'tlwp_updating' ) ) { 
 				return;
 			}
 
@@ -194,7 +196,7 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
  
 			// Get al tasks to process
 			$tasks = self::get_db_update_callbacks();
-			
+ 
 			if ( count( $tasks ) > 0 ) {
 
 				
@@ -350,8 +352,8 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 			} else {
 				$v         = str_replace( '.', '', $version );
 				$schema_fn = 'get_tlwp_' . $v . '_schema';
-			}
-
+			} 
+			
 			$wpdb->hide_errors();
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 			dbDelta( self::$schema_fn( $collate ) );
@@ -395,6 +397,24 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 
         }
 
+		public static function get_tlwp_193_schema( $collate = '' ) {
+
+            global $wpdb;
+
+            $tables = "
+            CREATE TABLE {$wpdb->prefix}tlwp_user_temp_import (
+				`ID` bigint(20) NOT NULL AUTO_INCREMENT,
+				`data` longtext NOT NULL,
+				`identifier` char(13) NOT NULL,
+				PRIMARY KEY (ID)
+			) $collate; 
+
+            ";
+
+            return $tables;
+
+        }
+
         /**
 		 * Collect multiple version schema
 		 *
@@ -407,6 +427,7 @@ if ( ! class_exists( 'TLWP_Install' ) ) {
 		private static function get_schema( $collate = '' ) {
 
 			$tables = self::get_tlwp_192_schema( $collate );
+			$tables .= self::get_tlwp_193_schema( $collate );
 
 			return $tables;
 		}

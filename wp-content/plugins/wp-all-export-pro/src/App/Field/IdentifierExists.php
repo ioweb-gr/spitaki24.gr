@@ -12,7 +12,7 @@ class IdentifierExists extends Field
         $uniqueIdentifiersData = $this->feed->getSectionFeedData(self::SECTION);
 
         if($uniqueIdentifiersData['identifierExists'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($uniqueIdentifiersData['identifierExistsCV'], $snippetData);
+            return $uniqueIdentifiersData['identifierExistsCV'];
         }
 
         return 'yes';

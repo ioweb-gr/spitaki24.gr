@@ -22,15 +22,12 @@ class Scheduling
         $this->licensingManager = $licensingManager;
     }
 
-    public function schedule($elementId, ScheduleTime $scheduleTime, $schedulingEnabled)
+    private function schedule($elementId, ScheduleTime $scheduleTime)
     {
         $elementId = intval($elementId);
 
-        if ($schedulingEnabled == 1) {
-            $this->enableSchedule($elementId, $scheduleTime);
-        } else {
-            $this->disableSchedule($elementId);
-        }
+        $this->enableSchedule($elementId, $scheduleTime);
+
     }
 
     public function scheduleExists($elementId)
@@ -56,7 +53,7 @@ class Scheduling
         $options = \PMXE_Plugin::getInstance()->getOption();
 
         if (empty($options['scheduling_license'])) {
-            return false;
+            return ['success' => false];
         }
 
         return $this->licensingManager->checkLicense($options['scheduling_license'], \PMXE_Plugin::getSchedulingName());
@@ -69,7 +66,7 @@ class Scheduling
 
     public function deleteScheduleIfExists($id) {
 
-        if(!$this->checkLicense()) {
+        if(empty($this->checkLicense()['success'])) {
             return true;
         }
 
@@ -86,10 +83,16 @@ class Scheduling
      */
     public function handleScheduling($id, $post)
     {
+
+        if (empty($this->checkLicense()['success'])) {
+            return false;
+        }
+
         $schedulingEnabled = $post['scheduling_enable'];
    
         if ($schedulingEnabled == 1) {
 
+            $this->userEnableSchedule($id);
 
             if ($post['scheduling_run_on'] == 'weekly') {
                 $monthly = false;
@@ -107,6 +110,8 @@ class Scheduling
                 new \Wpae\Scheduling\Interval\ScheduleTime($timesArray, $monthly, $post['scheduling_timezone']),
                 $schedulingEnabled
             );
+        } else {
+            $this->userDisableSchedule($id);
         }
     }
 
@@ -157,9 +162,22 @@ class Scheduling
         $this->schedulingApi->updateSchedule($scheduleId, $scheduleTime);
     }
 
-    private function disableSchedule($elementId)
+    public function userDisableSchedule($elementId)
     {
-        $this->deleteSchedule($elementId);
+        $remoteSchedule = $this->getSchedule($elementId);
+
+        if ($remoteSchedule) {
+            $this->schedulingApi->disableSchedule($remoteSchedule->id);
+        }
+    }
+
+    public function userEnableSchedule($elementId)
+    {
+        $remoteSchedule = $this->getSchedule($elementId);
+
+        if ($remoteSchedule) {
+            $this->schedulingApi->enableSchedule($remoteSchedule->id);
+        }
     }
 
     public static function buildTimesArray($schedulingWeeklyDays, $schedulingTimes)
@@ -175,7 +193,7 @@ class Scheduling
                 }
 
                 $timeParts = explode(':', $time);
-                $hour = $timeParts[0];
+                $hour = (int)$timeParts[0];
                 $min = (int)$timeParts[1];
 
                 if (strpos($time, 'pm') !== false && $hour < 12) {
@@ -197,6 +215,15 @@ class Scheduling
         }
 
         return $times;
+    }
+
+    public function updateApiKey($elementId, $newKey) {
+
+        $remoteSchedule = $this->getSchedule($elementId);
+
+        if ($remoteSchedule) {
+            $this->schedulingApi->updateScheduleKey($remoteSchedule->id, $newKey);
+        }
     }
 
     /**

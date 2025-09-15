@@ -3,7 +3,9 @@
 if (!class_exists('XmlExportTaxonomy')) {
     final class XmlExportTaxonomy
     {
-        private $init_fields = array(
+        private static $engine = false;
+
+    	private $init_fields = array(
             array(
                 'label' => 'term_id',
                 'name' => 'Term ID',
@@ -26,6 +28,11 @@ if (!class_exists('XmlExportTaxonomy')) {
                 'label' => 'term_id',
                 'name' => 'Term ID',
                 'type' => 'term_id'
+            ),
+            array(
+                'label' => 'term_permalink',
+                'name' => 'Term Permalink',
+                'type' => 'term_permalink'
             ),
             array(
                 'label' => 'term_name',
@@ -170,7 +177,7 @@ if (!class_exists('XmlExportTaxonomy')) {
             }
         }
 
-        public static function prepare_data($term, $exportOptions, $xmlWriter = false, &$acfs, $implode_delimiter, $preview)
+        public static function prepare_data($term, $exportOptions, $xmlWriter, &$acfs, $implode_delimiter, $preview)
         {
             $article = array();
 
@@ -187,7 +194,8 @@ if (!class_exists('XmlExportTaxonomy')) {
                     $postRecord->set(array(
                         'post_id' => $term->term_id,
                         'import_id' => $exportOptions['import_id'],
-                        'unique_key' => $term->term_id
+                        'unique_key' => $term->term_id,
+	                    'product_key' => 'taxonomy_term'
                     ))->save();
                 }
                 unset($postRecord);
@@ -235,29 +243,55 @@ if (!class_exists('XmlExportTaxonomy')) {
                     $snippetParser = new \Wpae\App\Service\SnippetParser();
                     $snippets = $snippetParser->parseSnippets($combineMultipleFieldsValue);
 
-                    $engine = new XmlExportEngine(XmlExportEngine::$exportOptions);
-                    $engine->init_available_data();
-                    $engine->init_additional_data();
-                    $snippets = $engine->get_fields_options($snippets);
+	                // Re-use the engine object if we've already initialized it as it's costly.
+	                if(!is_object(self::$engine)){
 
-                    $articleData = self::prepare_data($term, $snippets, $xmlWriter = false, $acfs, $implode_delimiter, $preview);
+		                self::$engine = new XmlExportEngine(XmlExportEngine::$exportOptions);
+		                self::$engine->init_available_data();
+		                self::$engine->init_additional_data();
 
-                    $functions = $snippetParser->parseFunctions($combineMultipleFieldsValue);
-                    $combineMultipleFieldsValue = \Wpae\App\Service\CombineFields::prepareMultipleFieldsValue($functions, $combineMultipleFieldsValue, $articleData);
+	                }
 
-                    if($preview) {
-                        $combineMultipleFieldsValue = trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($combineMultipleFieldsValue)));
-                    }
+                    $snippets = self::$engine->get_fields_options($snippets);
+
+                    $articleData = self::prepare_data($term, $snippets, false, $acfs, $implode_delimiter, $preview);
+
+                    $combineMultipleFieldsValue = \Wpae\App\Service\CombineFields::prepareMultipleFieldsValue($articleData, true, $combineMultipleFieldsValue, $preview);
+
 
                     wp_all_export_write_article($article, $element_name, pmxe_filter($combineMultipleFieldsValue, $fieldSnipped));
 
                 } else {
+                    // Run addons export field hooks
+                    $addons = XmlExportEngine::get_addons();
+                    $addonFieldOptions = maybe_unserialize($fieldOptions);
+
+                    if (in_array($fieldType, $addons)) {
+                        $article = apply_filters(
+                            "pmxe_{$fieldType}_addon_export_field",
+                            $article,
+                            $addonFieldOptions,
+                            $exportOptions,
+                            $ID,
+                            $term,
+                            $term->term_id,
+                            $xmlWriter,
+                            $element_name,
+                            $element_name_ns,
+                            $fieldSnipped,
+                            $preview
+                        );
+                    }
+
                     switch ($fieldType) {
                         case 'term_id':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_term_id', pmxe_filter($term->term_id, $fieldSnipped), $term->term_id));
                             break;
                         case 'term_name':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_term_name', pmxe_filter($term->name, $fieldSnipped), $term->term_id));
+                            break;
+                        case 'term_permalink':
+                            wp_all_export_write_article($article, $element_name, apply_filters('pmxe_term_permalink', pmxe_filter(get_term_link($term->term_id), $fieldSnipped, $term->term_id ) ) );
                             break;
                         case 'term_slug':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_term_slug', pmxe_filter($term->slug, $fieldSnipped), $term->term_id));

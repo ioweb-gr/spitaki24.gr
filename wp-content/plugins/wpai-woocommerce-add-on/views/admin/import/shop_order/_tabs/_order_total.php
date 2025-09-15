@@ -3,13 +3,13 @@
         <table class="form-field wpallimport_variable_table" style="width:100%;">
             <tr>
                 <td>
-                    <label><?php _e('Tax Amount', PMWI_Plugin::TEXT_DOMAIN); ?></label>
+                    <label><?php _e('Tax Amount', 'wpai_woocommerce_addon_plugin'); ?></label>
                     <div class="clear">
                         <input type="text" class="rad4" name="pmwi_order[order_total_tax_amount]" value="<?php echo esc_attr($post['pmwi_order']['order_total_tax_amount']) ?>" style="width:95%;"/>
                     </div>
                 </td>
                 <td>
-                    <label><?php _e('Order Total', PMWI_Plugin::TEXT_DOMAIN); ?><a href="#help" class="wpallimport-help" style="top:-1px;left:6px;" title="Provide the Order Total amount before any refunds are applied.">?</a></label>
+                    <label><?php _e('Order Total', 'wpai_woocommerce_addon_plugin'); ?><a href="#help" class="wpallimport-help" style="top:-1px;left:6px;" title="Provide the Order Total amount before any refunds are applied.">?</a></label>
                     <div class="clear">
                         <input type="text" class="rad4" name="pmwi_order[order_total_amount]" value="<?php echo esc_attr($post['pmwi_order']['order_total_amount']) ?>" style="width:95%;"/>
                     </div>

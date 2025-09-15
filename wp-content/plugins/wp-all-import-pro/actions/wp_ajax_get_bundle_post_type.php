@@ -3,11 +3,11 @@
 function pmxi_wp_ajax_get_bundle_post_type(){
 
 	if ( ! check_ajax_referer( 'wp_all_import_secure', 'security', false )){
-		exit( json_encode(array('success' => false, 'errors' => '<div class="error inline"><p>' . __('Security check', 'wp_all_import_plugin') . '</p></div>')) );
+		exit( json_encode(array('success' => false, 'errors' => '<div class="error inline"><p>' . __('Security check', 'wp-all-import-pro') . '</p></div>')) );
 	}
 
 	if ( ! current_user_can( PMXI_Plugin::$capabilities ) ){
-		exit( json_encode(array('success' => false, 'errors' => '<div class="error inline"><p>' . __('Security check', 'wp_all_import_plugin') . '</p></div>')) );
+		exit( json_encode(array('success' => false, 'errors' => '<div class="error inline"><p>' . __('Security check', 'wp-all-import-pro') . '</p></div>')) );
 	}
 
 	$input = new PMXI_Input();
@@ -35,7 +35,10 @@ function pmxi_wp_ajax_get_bundle_post_type(){
 
 		@wp_mkdir_p($tmp_dir);
 
-		$v_result_list = $archive->extract(WPAI_PCLZIP_OPT_PATH, $tmp_dir, WPAI_PCLZIP_OPT_REPLACE_NEWER, WPAI_PCLZIP_OPT_EXTRACT_DIR_RESTRICTION, $tmp_dir, WPAI_PCLZIP_OPT_EXTRACT_EXT_RESTRICTIONS, ['php','phtml','htaccess']);
+		// Get allowed file extensions (whitelist approach)
+		$allowed_extensions = wp_all_import_get_allowed_zip_extensions();
+
+		$v_result_list = $archive->extract(WPAI_PCLZIP_OPT_PATH, $tmp_dir, WPAI_PCLZIP_OPT_REPLACE_NEWER, WPAI_PCLZIP_OPT_EXTRACT_DIR_RESTRICTION, $tmp_dir, WPAI_PCLZIP_OPT_EXTRACT_WHITELIST_RESTRICTIONS, $allowed_extensions);
 
 		if ( $v_result_list )
 		{
@@ -49,12 +52,15 @@ function pmxi_wp_ajax_get_bundle_post_type(){
 
 						$decodedTemplates = json_decode($templates, true);
 
-						$templateOptions = empty($decodedTemplates[0]) ? current($decodedTemplates) : $decodedTemplates;
+						// Check if JSON decode was successful and result is not null
+						if ($decodedTemplates !== null && is_array($decodedTemplates)) {
+							$templateOptions = empty($decodedTemplates[0]) ? current($decodedTemplates) : $decodedTemplates;
 
-						$options = (empty($templateOptions[0]['options'])) ? false : maybe_unserialize($templateOptions[0]['options']);
+							$options = (empty($templateOptions[0]['options'])) ? false : \pmxi_maybe_unserialize($templateOptions[0]['options']);
 
-						$response['post_type'] = ( ! empty($options) ) ? $options['custom_type'] : false;
-                        $response['taxonomy_type'] = ( ! empty($options) && isset($options['taxonomy_type'])) ? $options['taxonomy_type'] : false;
+							$response['post_type'] = ( ! empty($options) ) ? $options['custom_type'] : false;
+	                        $response['taxonomy_type'] = ( ! empty($options) && isset($options['taxonomy_type'])) ? $options['taxonomy_type'] : false;
+						}
 					}
 				}
 			}
@@ -69,18 +75,18 @@ function pmxi_wp_ajax_get_bundle_post_type(){
 				case 'shop_order':
 
 					if ( ! class_exists('WooCommerce') ) {
-						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires WooCommerce.</p><a class="upgrade_link" href="https://wordpress.org/plugins/woocommerce/" target="_blank">Get WooCommerce</a>.', 'wp_all_import_plugin');
+						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires WooCommerce.</p><a class="upgrade_link" href="https://wordpress.org/plugins/woocommerce/" target="_blank">Get WooCommerce</a>.', 'wp-all-import-pro');
 					}
 					else {
 
 						if ( ! defined('PMWI_EDITION') ) {
 
-							$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the Pro version of the WooCommerce Add-On.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=2707227&edd_options%5Bprice_id%5D=1" class="upgrade_link" target="_blank">Purchase the WooCommerce Add-On</a>.', 'wp_all_import_plugin');
+							$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the Pro version of the WooCommerce Add-On.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=5839961&edd_options%5Bprice_id%5D=1&discount=welcome-upgrade-169" class="upgrade_link" target="_blank">Purchase the WooCommerce Add-On</a>.', 'wp-all-import-pro');
 
 						}
 						elseif ( PMWI_EDITION != 'paid' ) {
 
-							$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the Pro version of the WooCommerce Add-On, but you have the free version installed.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=2707227&edd_options%5Bprice_id%5D=1" target="_blank" class="upgrade_link">Purchase the WooCommerce Add-On</a>.', 'wp_all_import_plugin');
+							$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the Pro version of the WooCommerce Add-On, but you have the free version installed.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=5839961&edd_options%5Bprice_id%5D=1&discount=welcome-upgrade-169" target="_blank" class="upgrade_link">Purchase the WooCommerce Add-On</a>.', 'wp-all-import-pro');
 
 						}
 					}
@@ -90,7 +96,7 @@ function pmxi_wp_ajax_get_bundle_post_type(){
 				case 'import_users':
 
 					if ( ! class_exists('PMUI_Plugin') ) {
-						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the User Add-On.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=2707221&edd_options%5Bprice_id%5D=1" target="_blank" class="upgrade_link">Purchase the User Add-On</a>.', 'wp_all_import_plugin');
+						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the User Add-On.</p><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=5839963&edd_options%5Bprice_id%5D=1&discount=welcome-upgrade-169" target="_blank" class="upgrade_link">Purchase the User Add-On</a>.', 'wp-all-import-pro');
 					}
 
 					break;
@@ -98,10 +104,10 @@ function pmxi_wp_ajax_get_bundle_post_type(){
 				case 'shop_customer':
 
 					if ( ! class_exists('WooCommerce') ) {
-						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires WooCommerce.</p><a class="upgrade_link" href="https://wordpress.org/plugins/woocommerce/" target="_blank">Get WooCommerce</a>.', 'wp_all_import_plugin');
+						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires WooCommerce.</p><a class="upgrade_link" href="https://wordpress.org/plugins/woocommerce/" target="_blank">Get WooCommerce</a>.', 'wp-all-import-pro');
 					}
 					elseif ( ! class_exists('PMUI_Plugin') ) {
-						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the User Import Add-On Pro.</p><p class="wpallimport-upgrade-links-container"><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=2707221&edd_options%5Bprice_id%5D=1" target="_blank" class="upgrade_link">Purchase the User Import Add-On Pro</a>.</p>', 'wp_all_import_plugin');
+						$response['notice'] = __('<p class="wpallimport-bundle-notice">The import bundle you are using requires the User Import Add-On Pro.</p><p class="wpallimport-upgrade-links-container"><a href="https://www.wpallimport.com/checkout/?edd_action=add_to_cart&download_id=5839963&edd_options%5Bprice_id%5D=1&discount=welcome-upgrade-169" target="_blank" class="upgrade_link">Purchase the User Import Add-On Pro</a>.</p>', 'wp-all-import-pro');
 					}
 
 					break;

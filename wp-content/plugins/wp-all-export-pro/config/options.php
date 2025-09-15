@@ -4,7 +4,8 @@
  * and can be changed by corresponding WordPress function calls
  */
 $config = array(
-    "info_api_url" => "http://www.wpallimport.com",
+    "info_api_url" => "https://www.wpallimport.com",
+    "info_api_url_new" => "https://update.wpallimport.com",
     "dismiss" => 0,
 	"dismiss_manage_top" => 0,
 	"dismiss_manage_bottom" => 0,
@@ -18,5 +19,6 @@ $config = array(
 	"scheduling_license_status" => "",
 	"zapier_api_key" => wp_all_export_rand_char(32),
 	"zapier_invitation_url" => "",
-	"zapier_invitation_url_received" => ""
-);if (!defined('WPALLEXPORT_SIGNATURE')) define('WPALLEXPORT_SIGNATURE', 'OGY0YjE0MDg4ODcxMjgxODBkN2Q5MDc5NGJhOTA4YTI=');
+	"zapier_invitation_url_received" => "",
+    "client_mode_roles" => array()
+);

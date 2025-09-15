@@ -13,17 +13,26 @@ class Title extends Field
 
         if($basicInformationData['itemTitle'] == 'productTitle') {
             if($this->entry->post_type == 'product_variation' && $basicInformationData['useParentTitleForVariableProducts']) {
-                $value = get_post($this->entry->post_parent)->post_title;
+                $parent = get_post($this->entry->post_parent);
+                if(is_object($parent)) {
+                    $value = $parent->post_title;
+                } else {
+                    $value = '';
+                }
             } else {
                 $value = $this->entry->post_title;
             }
+
+            $value = str_replace("[","**OPENSHORTCODE**", $value);
+            $value = str_replace("]","**CLOSESHORTCODE**", $value);
+
         } else if($basicInformationData['itemTitle'] == self::CUSTOM_VALUE_TEXT) {
-            $value = $this->replaceSnippetsInValue($basicInformationData['itemTitleCV'], $snippetData);
+            $customValue = $basicInformationData['itemTitleCV'];
+            $value = $customValue;
         } else {
             throw new \Exception('Unknown field value');
         }
 
-        $value = substr($value, 0, 150);
         return $value;
     }
 
@@ -31,6 +40,5 @@ class Title extends Field
     {
         return 'title';
     }
-
 
 }

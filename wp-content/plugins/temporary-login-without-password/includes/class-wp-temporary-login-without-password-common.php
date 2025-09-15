@@ -1349,6 +1349,36 @@ if ( ! class_exists( 'Wp_Temporary_Login_Without_Password_Common' ) ) {
 
             return ($is_tlwp_user) ? true : false;
         }
-	
+
+
+		/**
+		 * 
+		 * count tlwp users  
+		 * 
+		 * @return integer
+		 * 
+		 */
+
+		public static function count_tlwp_users(){
+
+			global $wpdb;
+
+			$meta_key   = '_wtlwp_user';
+			$meta_value = '1';
+
+			$count = $wpdb->get_var( $wpdb->prepare(
+				"
+				SELECT COUNT(*) 
+				FROM {$wpdb->users} u
+				INNER JOIN {$wpdb->usermeta} um 
+					ON u.ID = um.user_id
+				WHERE um.meta_key = %s AND um.meta_value = %s
+				",
+				$meta_key, $meta_value
+			) );
+
+			return (int) $count;
+			
+		}
 	}
 }

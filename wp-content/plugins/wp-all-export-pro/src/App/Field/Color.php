@@ -15,7 +15,7 @@ class Color extends Field
 
             if(isset($detailedInformationData['colorAttribute'])) {
                 $colorAttribute = $detailedInformationData['colorAttribute'];
-                $color = $this->replaceSnippetsInValue($colorAttribute, $snippetData);
+                $color = $colorAttribute;
 
                 // Use max 3 colors
                 $colors = explode(',', $color);
@@ -27,7 +27,7 @@ class Color extends Field
             }
 
         } else if($detailedInformationData['color'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($detailedInformationData['colorCV'], $snippetData);
+            return $detailedInformationData['colorCV'];
         } else {
             throw new \Exception('Unknown value '.$detailedInformationData['color'].' for field color');
         }

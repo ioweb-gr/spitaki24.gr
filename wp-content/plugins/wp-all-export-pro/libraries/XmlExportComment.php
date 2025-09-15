@@ -1,8 +1,9 @@
 <?php
 
 if (!class_exists('XmlExportComment')) {
-    final class XmlExportComment
-    {
+    final class XmlExportComment {
+		private static $engine = false;
+
         private $init_fields = array(
             array(
                 'label' => 'comment_ID',
@@ -33,8 +34,34 @@ if (!class_exists('XmlExportComment')) {
                 'type' => 'comment_post_ID'
             ),
             array(
+                'label' => 'comment_content',
+                'name' => 'Content',
+                'type' => 'comment_content'
+            ),
+            array(
+                'label' => 'Approved',
+                'value' => 'approved',
+                'name' => 'Approved',
+                'type' => 'comment_approved'
+            ),
+            array(
+                'label' => 'comment_date',
+                'name' => 'Comment Date (Server Time)',
+                'type' => 'comment_date'
+            ),
+            array(
+                'label' => 'comment_date',
+                'name' => 'Comment Date (GMT)',
+                'type' => 'comment_date_gmt'
+            )
+
+
+        );
+
+        private $author_fields = array(
+            array(
                 'label' => 'comment_author',
-                'name' => 'Author',
+                'name' => 'Author Name',
                 'type' => 'comment_author'
             ),
             array(
@@ -53,54 +80,65 @@ if (!class_exists('XmlExportComment')) {
                 'type' => 'comment_author_IP'
             ),
             array(
-                'label' => 'comment_date',
-                'name' => 'Date',
-                'type' => 'comment_date'
-            ),
-            array(
-                'label' => 'comment_content',
-                'name' => 'Content',
-                'type' => 'comment_content'
-            ),
-            array(
-                'label' => 'comment_karma',
-                'name' => 'Karma',
-                'type' => 'comment_karma'
-            ),
-            array(
-                'label' => 'comment_approved',
-                'name' => 'Approved',
-                'type' => 'comment_approved'
-            ),
-            array(
                 'label' => 'comment_agent',
                 'name' => 'Agent',
                 'type' => 'comment_agent'
-            ),
-            array(
-                'label' => 'comment_type',
-                'name' => 'Type',
-                'type' => 'comment_type'
-            ),
-            array(
-                'label' => 'comment_parent',
-                'name' => 'Comment Parent',
-                'type' => 'comment_parent'
             ),
             array(
                 'label' => 'user_id',
                 'name' => 'User ID',
                 'type' => 'user_id'
             )
+        );
 
+
+        private $other_fields = array(
+            array(
+                'label' => 'comment_karma',
+                'name' => 'Karma',
+                'type' => 'comment_karma'
+            ),
+        );
+
+
+        private $parent_fields = array(
+            array(
+                'label' => 'parent_post_slug',
+                'name' => 'Parent Post Slug',
+                'type' => 'comment_parent_post_slug'
+            ),
+            array(
+                'label' => 'parent_post_title',
+                'name' => 'Parent Post Title',
+                'type' => 'comment_parent_post_title'
+            ),
+            array(
+                'label' => 'parent_post_id',
+                'name' => 'Parent Post ID',
+                'type' => 'comment_post_ID'
+            ),
+            array(
+                'label' => 'comment_parent',
+                'name' => 'Parent Comment ID',
+                'type' => 'comment_parent'
+            ),
+            array(
+                'label' => 'comment_parent_date',
+                'name' => 'Parent Comment Date (Server Time)',
+                'type' => 'comment_parent_date'
+            ),
+            array(
+                'label' => 'comment_parent_date_gmt',
+                'name' => 'Parent Comment Date (GMT)',
+                'type' => 'comment_parent_date_gmt'
+            ),
         );
 
         private $advanced_fields = array();
 
         public static $is_active = true;
 
-        public function __construct()
-        {
+        public function __construct() {
 
             if ((XmlExportEngine::$exportOptions['export_type'] == 'specific' and !in_array('comments', XmlExportEngine::$post_types))
                 or (XmlExportEngine::$exportOptions['export_type'] == 'advanced' and XmlExportEngine::$exportOptions['wp_query_selector'] != 'wp_comment_query')
@@ -113,6 +151,8 @@ if (!class_exists('XmlExportComment')) {
             add_filter("wp_all_export_init_fields", array(&$this, "filter_init_fields"), 10, 1);
             add_filter("wp_all_export_default_fields", array(&$this, "filter_default_fields"), 10, 1);
             add_filter("wp_all_export_other_fields", array(&$this, "filter_other_fields"), 10, 1);
+            add_filter("wp_all_export_available_data", array(&$this, "filter_available_data"), 10, 1);
+
         }
 
         // [FILTERS]
@@ -122,8 +162,7 @@ if (!class_exists('XmlExportComment')) {
          * Filter Init Fields
          *
          */
-        public function filter_init_fields($init_fields)
-        {
+        public function filter_init_fields($init_fields) {
             return $this->init_fields;
         }
 
@@ -132,8 +171,7 @@ if (!class_exists('XmlExportComment')) {
          * Filter Default Fields
          *
          */
-        public function filter_default_fields($default_fields)
-        {
+        public function filter_default_fields($default_fields) {
             return $this->default_fields;
         }
 
@@ -142,8 +180,7 @@ if (!class_exists('XmlExportComment')) {
          * Filter Other Fields
          *
          */
-        public function filter_other_fields($other_fields)
-        {
+        public function filter_other_fields($other_fields) {
             return $this->advanced_fields;
         }
 
@@ -152,22 +189,43 @@ if (!class_exists('XmlExportComment')) {
          * Filter Sections in Available Data
          *
          */
-        public function filter_available_sections($sections)
-        {
+        public function filter_available_sections($sections) {
 
             unset($sections['cats']);
             unset($sections['media']);
-            unset($sections['other']);
+            //unset($sections['other']);
+            unset($sections['cf']);
 
-            $sections['cf']['title'] = __("Comment meta", "wp_all_export_plugin");
+            $sections['author_info']['title'] = __('Author Info', 'wp_all_export_plugin');
+            $sections['author_info']['content'] = 'author_fields';
+
+            $sections['parent']['title'] = __('Parent', 'wp_all_export_plugin');
+            $sections['parent']['content'] = 'parent_fields';
+
+            $sections['default']['title'] = __("Comment Data", 'wp_all_export_plugin');
+
+            $sections['other']['title'] = __('Other', 'wp_all_export_plugin');
+            $sections['other']['content'] = 'other_fields';
+
+            $other = $sections['other'];
+            unset($sections['other']);
+            $sections['other'] = $other;
 
             return $sections;
         }
 
+        public function filter_available_data($available_data)
+        {
+            $available_data['author_fields'] = $this->author_fields;
+            $available_data['parent_fields'] = $this->parent_fields;
+            $available_data['other_fields'] = array_merge($this->other_fields, $available_data['existing_meta_keys']);
+
+            return $available_data;
+        }
+
         // [\FILTERS]
 
-        public function init(& $existing_meta_keys = array())
-        {
+        public function init(& $existing_meta_keys = array()) {
             if (!self::$is_active) return;
 
             global $wp_version;
@@ -207,14 +265,14 @@ if (!class_exists('XmlExportComment')) {
                     }
                 }
             }
+
         }
 
-        public static function prepare_data($comment, $exportOptions, $xmlWriter = false, $implode_delimiter, $preview)
-        {
+        public static function prepare_data($comment, $exportOptions, $xmlWriter, $implode_delimiter, $preview) {
             $article = array();
 
             // associate exported comment with import
-            if (wp_all_export_is_compatible() && isset($exportOptions['is_generate_import']) && $exportOptions['is_generate_import'] && $exportOptions['import_id']) {
+            if (wp_all_export_is_compatible() && isset($exportOptions['is_generate_import']) && $exportOptions['is_generate_import'] && $exportOptions['import_id'] && !$exportOptions['enable_real_time_exports']) {
                 $postRecord = new PMXI_Post_Record();
                 $postRecord->clear();
                 $postRecord->getBy(array(
@@ -226,7 +284,8 @@ if (!class_exists('XmlExportComment')) {
                     $postRecord->set(array(
                         'post_id' => $comment->comment_ID,
                         'import_id' => $exportOptions['import_id'],
-                        'unique_key' => $comment->comment_ID
+                        'unique_key' => $comment->comment_ID,
+                        'product_key' => ''
                     ))->save();
                 }
                 unset($postRecord);
@@ -271,32 +330,54 @@ if (!class_exists('XmlExportComment')) {
 
                     $combineMultipleFieldsValue = $exportOptions['cc_combine_multiple_fields_value'][$ID];
 
-                    $combineMultipleFieldsValue = stripslashes($combineMultipleFieldsValue);
+					$combineMultipleFieldsValue = stripslashes($combineMultipleFieldsValue);
                     $snippetParser = new \Wpae\App\Service\SnippetParser();
                     $snippets = $snippetParser->parseSnippets($combineMultipleFieldsValue);
-                    $engine = new XmlExportEngine(XmlExportEngine::$exportOptions);
-                    $engine->init_available_data();
-                    $engine->init_additional_data();
-                    $snippets = $engine->get_fields_options($snippets);
 
-                    $articleData = self::prepare_data($comment, $snippets, $xmlWriter = false, $implode_delimiter, $preview);
+                    // Re-use the engine object if we've already initialized it as it's costly.
+	                if(!is_object(self::$engine)){
 
-                    $functions = $snippetParser->parseFunctions($combineMultipleFieldsValue);
-                    $combineMultipleFieldsValue = \Wpae\App\Service\CombineFields::prepareMultipleFieldsValue($functions, $combineMultipleFieldsValue, $articleData);
+		                self::$engine = new XmlExportEngine(XmlExportEngine::$exportOptions);
+		                self::$engine->init_available_data();
+		                self::$engine->init_additional_data();
 
-                    if($preview) {
-                        $combineMultipleFieldsValue = trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($combineMultipleFieldsValue)));
-                    }
-                    
+	                }
+
+                    $snippets = self::$engine->get_fields_options($snippets);
+
+                    $articleData = self::prepare_data($comment, $snippets, false, $implode_delimiter, $preview);
+
+                    $combineMultipleFieldsValue = \Wpae\App\Service\CombineFields::prepareMultipleFieldsValue($articleData,true,$combineMultipleFieldsValue, $preview);
+
+
                     wp_all_export_write_article($article, $element_name, pmxe_filter($combineMultipleFieldsValue, $fieldSnipped));
 
                 } else {
+
+                    $comment_parent = false;
+
+                    $comment_parent_post = get_post($comment->comment_post_ID);
+
+                    if($comment->comment_parent) {
+                        $comment_parent = self::get_comment($comment->comment_parent);
+                    }
+
                     switch ($fieldType) {
                         case 'comment_ID':
+                            if ($element_name == 'ID' && !$ID && isset($exportOptions['export_to']) && $exportOptions['export_to'] == 'csv' && isset($exportOptions['export_to_sheet']) && $exportOptions['export_to_sheet'] != 'csv') {
+                                $element_name = 'id';
+                            }
+
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_id', pmxe_filter($comment->comment_ID, $fieldSnipped), $comment->comment_ID));
                             break;
                         case 'comment_post_ID':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_post_id', pmxe_filter($comment->comment_post_ID, $fieldSnipped), $comment->comment_ID));
+                            break;
+                        case 'comment_parent_post_slug':
+                            wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_post_id', pmxe_filter($comment_parent_post->post_name, $fieldSnipped), $comment->comment_ID));
+                            break;
+                        case 'comment_parent_post_title':
+                            wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_post_id', pmxe_filter($comment_parent_post->post_title, $fieldSnipped), $comment->comment_ID));
                             break;
                         case 'comment_author':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_author', pmxe_filter($comment->comment_author, $fieldSnipped), $comment->comment_ID));
@@ -320,8 +401,32 @@ if (!class_exists('XmlExportComment')) {
                         case 'comment_date':
 
                             $post_date = prepare_date_field_value($fieldSettings, strtotime($comment->comment_date), "Y-m-d H:i:s");
-
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter($post_date, $fieldSnipped), $comment->comment_ID));
+
+                            break;
+                        case 'comment_date_gmt':
+                            $post_date = prepare_date_field_value($fieldSettings, strtotime($comment->comment_date_gmt), "Y-m-d H:i:s");
+                            wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter($post_date, $fieldSnipped), $comment->comment_ID));
+
+                            break;
+                        case 'comment_parent_date':
+
+                            if($comment_parent) {
+                                $post_date = prepare_date_field_value($fieldSettings, strtotime($comment_parent->comment_date), "Y-m-d H:i:s");
+                                wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter($post_date, $fieldSnipped), $comment->comment_ID));
+                            } else {
+                                wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter('', $fieldSnipped), $comment->comment_ID));
+                            }
+                            break;
+                        case 'comment_parent_date_gmt':
+
+                            if($comment_parent) {
+                                $post_date = prepare_date_field_value($fieldSettings, strtotime($comment_parent->comment_date_gmt), "Y-m-d H:i:s");
+                                wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter($post_date, $fieldSnipped), $comment->comment_ID));
+                            } else {
+                                wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_date', pmxe_filter('', $fieldSnipped), $comment->comment_ID));
+                            }
+
                             break;
                         case 'comment_approved':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_comment_approved', pmxe_filter($comment->comment_approved, $fieldSnipped), $comment->comment_ID));
@@ -338,7 +443,7 @@ if (!class_exists('XmlExportComment')) {
                         case 'user_id':
                             wp_all_export_write_article($article, $element_name, apply_filters('pmxe_user_id', pmxe_filter($comment->user_id, $fieldSnipped), $comment->comment_ID));
                             break;
-                        case 'cf':
+                        case 'other':
                             if (!empty($fieldValue)) {
                                 $cur_meta_values = get_comment_meta($comment->comment_ID, $fieldValue);
                                 if (!empty($cur_meta_values) and is_array($cur_meta_values)) {
@@ -395,6 +500,80 @@ if (!class_exists('XmlExportComment')) {
             return $article;
         }
 
+        public static function prepare_import_template( $exportOptions, &$templateOptions, $element_name, $ID) {
+
+            $options = $exportOptions;
+
+            $element_type = $options['cc_type'][$ID];
+
+            $is_xml_template = $options['export_to'] == 'xml';
+
+            $implode_delimiter = XmlExportEngine::$implode;
+
+            switch ($element_type) {
+                case 'comment_ID':
+                    $templateOptions['unique_key'] = '{'. $element_name .'[1]}';
+                    break;
+                case 'comment_parent_post_title':
+                    $templateOptions['comment_post'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_post_id'] = 1;
+                    break;
+                case 'comment_author':
+                    $templateOptions['comment_author'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_author'] = 1;
+                    break;
+                case 'comment_author_email':
+                    $templateOptions['comment_author_email'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_author_email'] = 1;
+                    break;
+                case 'comment_author_url':
+                    $templateOptions['comment_author_url'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_author_url'] = 1;
+                    break;
+                case 'comment_author_IP':
+                    $templateOptions['comment_author_IP'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_author_IP'] = 1;
+                    break;
+                case 'comment_karma':
+                    $templateOptions['comment_karma'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_karma'] = 1;
+                    break;
+                case 'comment_content':
+                    $templateOptions['content'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_content'] = 1;
+                    break;
+                case 'comment_date_gmt':
+                    $templateOptions['date'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_dates'] = 1;
+                    break;
+                case 'comment_approved':
+                    $templateOptions['comment_approved'] = 'xpath';
+                    $templateOptions['comment_approved_xpath'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_approved'] = 1;
+                    break;
+                case 'comment_agent':
+                    $templateOptions['comment_agent'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_agent'] = 1;
+                    break;
+                case 'comment_type':
+                    $templateOptions['comment_type'] = 'xpath';
+                    $templateOptions['comment_type_xpath'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_comment_type'] = 1;
+                    break;
+                case 'comment_parent_date_gmt':
+                    $templateOptions['comment_parent'] = '{'. $element_name .'[1]}';
+                    $templateOptions['is_update_parent'] = 1;
+                    break;
+                case 'other':
+                    $templateOptions['custom_name'][] = $options['cc_value'][$ID];
+                    $templateOptions['custom_value'][] = '{'. $element_name .'[1]}';
+                    $templateOptions['custom_format'][] = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         /**
          * __get function.
          *
@@ -402,8 +581,7 @@ if (!class_exists('XmlExportComment')) {
          * @param mixed $key
          * @return mixed
          */
-        public function __get($key)
-        {
+        public function __get($key) {
             return $this->get($key);
         }
 
@@ -414,9 +592,13 @@ if (!class_exists('XmlExportComment')) {
          * @param  mixed $default used if the session variable isn't set
          * @return mixed value of session variable
          */
-        public function get($key, $default = null)
-        {
+        public function get($key, $default = null) {
             return isset($this->{$key}) ? $this->{$key} : $default;
+        }
+
+        public static function get_comment($comment_id)
+        {
+            return get_comment($comment_id);
         }
     }
 }

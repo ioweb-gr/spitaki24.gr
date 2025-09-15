@@ -43,7 +43,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
 	        $productItem['unique_key'] = isset($productItem['unique_key']) ? trim($productItem['unique_key']) : '';
 
             if ( (empty($productItem['qty']) || empty($productItem['sku'])) && empty($productItem['unique_key'])) {
-                $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Product item skipped because quantity or SKU and unique key are empty.', \PMWI_Plugin::TEXT_DOMAIN));
+                $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Product item skipped because quantity or SKU and unique key are empty.', 'wpai_woocommerce_addon_plugin'));
                 continue;
             }
             $productItem['sku'] = empty($productItem['sku']) ? '' : trim($productItem['sku']);
@@ -118,7 +118,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                     $item_id = $item->save();
 
                     if ( ! $item_id ) {
-                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order line product.', \PMWI_Plugin::TEXT_DOMAIN));
+                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order line product.', 'wpai_woocommerce_addon_plugin'));
                     } else {
                         $product_item->set([
                             'import_id' => $this->getImport()->id,
@@ -128,7 +128,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                             'iteration' => $this->getImport()->iteration
                         ])->save();
 
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been added for order `%s`', \PMWI_Plugin::TEXT_DOMAIN), $productItem['unique_key'], $this->getOrderID()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been added for order `%s`', 'wpai_woocommerce_addon_plugin'), $productItem['unique_key'], $this->getOrderID()));
 
                         if ( ! empty($productItem['meta_name']) ) {
                             foreach ($productItem['meta_name'] as $key => $meta_name) {
@@ -149,7 +149,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                             'iteration' => $this->getImport()->iteration
                         ])->save();
 
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been updated for order `%s`', \PMWI_Plugin::TEXT_DOMAIN), $productItem['unique_key'], $this->getOrderID()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been updated for order `%s`', 'wpai_woocommerce_addon_plugin'), $productItem['unique_key'], $this->getOrderID()));
 
                         if ( ! empty($productItem['meta_name']) ) {
                             foreach ($productItem['meta_name'] as $key => $meta_name) {
@@ -160,7 +160,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                 }
             } else {
 
-                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b> Could not link order item with identifier `%s` to existing product.', \PMWI_Plugin::TEXT_DOMAIN), $productItem['sku']));
+                $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('- <b>WARNING</b> Could not link order item with identifier `%s` to existing product.', 'wpai_woocommerce_addon_plugin'), $productItem['sku']));
 
                 $product_item_name = '';
                 if (!empty($productItem['unique_key'])) {
@@ -191,7 +191,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                     ]);
 
                     if (!$item_id) {
-                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order line product.', \PMWI_Plugin::TEXT_DOMAIN));
+                        $this->getLogger() and call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order line product.', 'wpai_woocommerce_addon_plugin'));
                     } else {
                         wc_add_order_item_meta($item_id, '_qty', wc_stock_amount($item_qty));
                         wc_add_order_item_meta($item_id, '_tax_class', $item_taxes['item_tax_class']);
@@ -219,7 +219,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                             'iteration' => $this->getImport()->iteration
                         ])->save();
 
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been added for order `%s`', \PMWI_Plugin::TEXT_DOMAIN), $productItem['unique_key'], $this->getOrderID()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been added for order `%s`', 'wpai_woocommerce_addon_plugin'), $productItem['unique_key'], $this->getOrderID()));
                     }
 
                 } else {
@@ -254,7 +254,7 @@ class ImportOrderProductItems extends ImportOrderItemsBase {
                             'iteration' => $this->getImport()->iteration
                         ])->save();
 
-                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been updated for order `%s`', \PMWI_Plugin::TEXT_DOMAIN), $productItem['unique_key'], $this->getOrderID()));
+                        $this->getLogger() and call_user_func($this->getLogger(), sprintf(__('Order item `%s` has been updated for order `%s`', 'wpai_woocommerce_addon_plugin'), $productItem['unique_key'], $this->getOrderID()));
                     }
                 }
             }

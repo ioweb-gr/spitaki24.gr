@@ -7,17 +7,15 @@ class CustomLabel1 extends Field
 {
     const SECTION = 'advancedAttributes';
 
-    public function getValue($snippetData)
-    {
-        $advancedAttributes = $this->feed->getSectionFeedData(self::SECTION);
+    public function getValue($snippetData) {
+	    $advancedAttributes = $this->feed->getSectionFeedData( self::SECTION );
 
-        if(!isset($advancedAttributes['customLabel1'])) {
-            return '';
-        }
+	    if ( ! isset( $advancedAttributes['customLabel1'] ) ) {
+		    return '';
+	    }
 
-        $customLabel = $this->replaceSnippetsInValue($advancedAttributes['customLabel1'], $snippetData);
-
-        return $this->replaceMappings($advancedAttributes['customLabel1Mappings'], $customLabel);
+	    $this->mappings = $advancedAttributes['customLabel1Mappings'];
+	    return $advancedAttributes['customLabel1'];
     }
 
     public function getFieldName()

@@ -23,7 +23,7 @@ class GoogleProductCategory extends Field
         } else if($categoryData['productCategories'] == 'useWooCommerceProductCategories') {
             return $this->getProductCategoryName($this->getProduct());
         } else if($categoryData['productCategories'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($categoryData['productCategoriesCV'], $snippetData);
+            return $categoryData['productCategoriesCV'];
         } else {
             throw new \Exception('Unknown value '.$categoryData['productCategories'].' for field product categories');
         }
@@ -80,7 +80,7 @@ class GoogleProductCategory extends Field
     }
 
     /**
-     * @return string
+     * @return array|string|\WP_Post
      * @throws \Exception
      */
     private function getProduct()

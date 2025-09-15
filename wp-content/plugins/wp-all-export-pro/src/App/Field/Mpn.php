@@ -11,7 +11,7 @@ class Mpn extends Field
     {
         $uniqueIdentifiersData = $this->feed->getSectionFeedData(self::SECTION);
 
-        return $this->replaceSnippetsInValue($uniqueIdentifiersData['mpn'], $snippetData);
+        return $uniqueIdentifiersData['mpn'];
     }
 
     public function getFieldName()

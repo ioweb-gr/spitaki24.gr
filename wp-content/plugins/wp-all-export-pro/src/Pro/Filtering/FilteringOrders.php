@@ -2,11 +2,12 @@
 
 namespace Wpae\Pro\Filtering;
 
+
 /**
  * Class FilteringOrders
- * @package Wpae\Pro\Filtering
+ * @package Pmwe\Pro\Filtering
  */
-class FilteringOrders extends FilteringCPT
+class FilteringOrders extends \Wpae\Pro\Filtering\FilteringCPT
 {
 
     /**
@@ -75,14 +76,14 @@ class FilteringOrders extends FilteringCPT
                     break;
                 default:
                     $this->meta_query = true;
-                    if ($rule->condition == 'is_empty'){
+                    if ($rule->condition == 'is_empty') {
                         $item_alias = (count($this->queryJoin) > 0) ? 'order_item' . count($this->queryJoin) : 'order_item';
                         $item_meta_alias = (count($this->queryJoin) > 0) ? 'order_itemmeta' . count($this->queryJoin) : 'order_itemmeta';
                         $this->queryJoin[] = " LEFT JOIN {$table_prefix}woocommerce_order_items AS $item_alias ON ({$this->wpdb->posts}.ID = $item_alias.order_id) ";
                         $this->queryJoin[] = " LEFT JOIN {$table_prefix}woocommerce_order_itemmeta AS $item_meta_alias ON ($item_alias.order_item_id = $item_meta_alias.order_item_id AND $item_meta_alias.meta_key = '{$rule->element}') ";
                         $this->queryWhere .= "$item_meta_alias.meta_id " . $this->parse_condition($rule);
                     }
-                    else{
+                    else {
                         $item_alias = (count($this->queryJoin) > 0) ? 'order_item' . count($this->queryJoin) : 'order_item';
                         $item_meta_alias = (count($this->queryJoin) > 0) ? 'order_itemmeta' . count($this->queryJoin) : 'order_itemmeta';
                         $this->queryJoin[] = " INNER JOIN {$table_prefix}woocommerce_order_items AS $item_alias ON ({$this->wpdb->posts}.ID = $item_alias.order_id) ";
@@ -103,7 +104,6 @@ class FilteringOrders extends FilteringCPT
             $this->recursion_parse_query($rule);
             return;
         }
-
         parent::parse_single_rule($rule);
     }
 
@@ -128,7 +128,7 @@ class FilteringOrders extends FilteringCPT
             'taxonomy_to_export' => ''
         );
 
-        $productsFilter = new FilteringCPT();
+        $productsFilter = new \Wpae\Pro\Filtering\FilteringCPT();
         $productsFilter->init($filter_args);
         $productsFilter->parse();
 
@@ -136,8 +136,8 @@ class FilteringOrders extends FilteringCPT
         $this->productsjoin  = $productsFilter->get('queryJoin');
 
         remove_all_actions('parse_query');
-        remove_all_actions('pre_get_posts');
         remove_all_filters('posts_clauses');
+        wp_all_export_remove_before_post_except_toolset_actions();
 
         add_filter('posts_join', array(&$this, 'posts_join'), 10, 1);
         add_filter('posts_where', array(&$this, 'posts_where'), 10, 1);

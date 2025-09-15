@@ -1,3 +1,8 @@
+<?php
+if(!defined('ABSPATH')) {
+    die();
+}
+?>
 <script type="text/javascript">
     (function ($) {
 
@@ -212,7 +217,8 @@
 
                     $preview.parent('.wp-pointer-content').removeClass('wp-pointer-content').addClass('wpallexport-pointer-content');
 
-                    $preview.find('.navigation a').unbind('click').die('click').live('click', function () {
+                    $preview.find('.navigation a').off('click');
+                    $preview.on('click', '.navigation a', function () {
 
                         tagno += '#prev' == $(this).attr('href') ? -1 : 1;
 
@@ -264,11 +270,11 @@
         $(function () {
 
             var $addAnotherForm = $('fieldset.wp-all-export-edit-column');
-            $addAnotherForm.click(function () {
+            $addAnotherForm.on('click', function () {
                 var rel = $addAnotherForm.attr('rel');
             });
 
-            $('select[name="column_value_type"]').change(function(){
+            $('select[name="column_value_type"]').on('change', function(){
                 $('.column_name').val($(this).find('option:selected').text());
             });
 
@@ -278,7 +284,7 @@
                 }
             });
 
-            $('.preview_action').unbind('click').click(function (event) {
+            $('.preview_action').off('click').on('click', function (event) {
                 if($('.column_name').val() == '') {
                     $('.column_name').addClass('error');
                     event.stopPropagation();
@@ -292,7 +298,7 @@
 
             });
 
-            $('input[name="combine_multiple_fields"]').change(function () {
+            $('input[name="combine_multiple_fields"]').on('change', function () {
                 if ($(this).val() == '1') {
                     $('#combine_multiple_fields_value_container').slideDown();
                     $('#combine_multiple_fields_data').slideDown();
@@ -367,15 +373,15 @@
 <form>
     <div class="wp-all-export-field-options" style="width: 54%; float:left; max-height: 770px;">
         <div class="input" style="margin-bottom: 15px;">
-            <label style="padding:4px; display: block;" class="wpae_column_name"><?php _e('Column name', 'wp_all_export_plugin'); ?></label>
-            <label style="padding:4px; display: none;" class="wpae_element_name"><?php _e('Element name', 'wp_all_export_plugin'); ?></label>
+            <label style="padding:4px; display: block;" class="wpae_column_name"><?php esc_html_e('Column name', 'wp_all_export_plugin'); ?></label>
+            <label style="padding:4px; display: none;" class="wpae_element_name"><?php esc_html_e('Element name', 'wp_all_export_plugin'); ?></label>
             <div class="clear"></div>
             <input type="text" class="column_name" value="" style="width:100%; padding: 8px; border-radius: 5px; color: #000;"/>
         </div>
         <!-- SINGLE ELEMENT -->
         <div class="input">
             <label>
-            <input type="radio" name="combine_multiple_fields" value="0" checked="checked" /> <?php _e('Select a field to export', 'wp_all_export_plugin') ?></label>
+            <input type="radio" name="combine_multiple_fields" value="0" checked="checked" /> <?php esc_html_e('Select a field to export', 'wp_all_export_plugin') ?></label>
         </div>
         <div class="input export-single wpae-select-field" style="margin-left:25px; margin-top:10px;">
             <div class="clear"></div>
@@ -387,10 +393,10 @@
 
         <!-- COMBINE ELEMENTS -->
         <div class="input" style="margin-top: 5px;">
-            <label><input type="radio" name="combine_multiple_fields" value="1" /> <?php _e('Custom export field', 'wp_all_export_plugin') ?></label>
+            <label><input type="radio" name="combine_multiple_fields" value="1" /> <?php esc_html_e('Custom export field', 'wp_all_export_plugin') ?></label>
         </div>
         <div class="elements export-multiple" id="combine_multiple_fields_value_container" style="margin-top: 10px; margin-left: 25px; display: none;">
-            <textarea placeholder="<?php _e('You can drag and drop fields from Available Data, add static text, and use PHP functions', PMXE_Plugin::LANGUAGE_DOMAIN); ?>" id="combine_multiple_fields_value" style="width: 100%;" rows="7"></textarea>
+            <textarea placeholder="<?php esc_html_e('You can drag and drop fields from Available Data, add static text, and use PHP functions', 'wp_all_export_plugin'); ?>" id="combine_multiple_fields_value" style="width: 100%;" rows="7"></textarea>
         </div>
 
         <!-- Functions editor -->
@@ -400,7 +406,7 @@
     <div style="width: 35%; float: right; margin-right: 33px; margin-top:10px; display: none;" class="wpae_available_data export-multiple"
          id="combine_multiple_fields_data">
         <fieldset id="available_data" class="optionsset rad4 wpae_available_data dialog-available-data" style="margin-bottom: 10px; ">
-            <div class="title"><?php _e('Available Data', 'wp_all_export_plugin'); ?></div>
+            <div class="title"><?php esc_html_e('Available Data', 'wp_all_export_plugin'); ?></div>
             <div class="wpallexport-xml resetable wpallexport-pointer-data available-data">
                 <ul>
                     <?php echo $available_data_view; ?>
@@ -410,13 +416,13 @@
     </div>
     <div style="clear:both;"></div>
     <div class="input wp-all-export-edit-column-buttons">
-        <input type="button" class="close_action" value="<?php _e("Cancel", "wp_all_export_plugin"); ?>"
+        <input type="button" class="close_action" value="<?php esc_html_e("Cancel", "wp_all_export_plugin"); ?>"
                style="border: none;"/>
-        <input type="button" class="preview_action" value="<?php _e("Preview", "wp_all_export_plugin"); ?>"
+        <input type="button" class="preview_action" value="<?php esc_html_e("Preview", "wp_all_export_plugin"); ?>"
                style="border: none; margin-left: 195px;"/>
-        <input type="button" class="delete_action" value="<?php _e("Delete", "wp_all_export_plugin"); ?>"
+        <input type="button" class="delete_action" value="<?php esc_html_e("Delete", "wp_all_export_plugin"); ?>"
                style="border: none;"/>
-        <input type="button" class="save_action" value="<?php _e("Save", "wp_all_export_plugin"); ?>"
+        <input type="button" class="save_action" value="<?php esc_html_e("Save", "wp_all_export_plugin"); ?>"
                style="border: none;"/>
     </div>
 </form>

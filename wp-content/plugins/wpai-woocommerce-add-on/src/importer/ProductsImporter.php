@@ -38,7 +38,7 @@ class ProductsImporter extends Importer {
      */
     public function import() {
 
-        $this->log(__('<strong>WooCommerce ADD-ON:</strong>', \PMWI_Plugin::TEXT_DOMAIN));
+        $this->log(__('<strong>WooCommerce ADD-ON:</strong>', 'wpai_woocommerce_addon_plugin'));
 
         $productID = $this->getArticleData('ID');
 

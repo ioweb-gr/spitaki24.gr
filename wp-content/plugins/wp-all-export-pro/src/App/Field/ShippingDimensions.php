@@ -3,7 +3,7 @@
 namespace Wpae\App\Field;
 
 
-class ShippingWidth extends Field
+class ShippingDimensions extends Field
 {
     const SECTION = 'shipping';
 
@@ -16,17 +16,32 @@ class ShippingWidth extends Field
             $currentUnit = get_option('woocommerce_dimension_unit');
             $toUnit = $shippingData['convertTo'];
 
-            $product = $_product = wc_get_product($this->entry->ID);
-            $width = wc_get_dimension($product->width, $currentUnit,  $toUnit);
+            $product = wc_get_product($this->entry->ID);
 
-            return $width . ' '.$toUnit;
+            $product_width = $product->get_width();
+
+            if(is_numeric($product_width)) {
+                $width = wc_get_dimension($product->get_width(), $toUnit, $currentUnit);
+            } else {
+                $width = '';
+            }
+
+            if($width) {
+                return $width . ' ' . $toUnit;
+            } else {
+                return '';
+            }
         } else {
-            return $this->replaceSnippetsInValue($shippingData['dimensionsCV'], $snippetData);
+            if(isset($shippingData['dimensionsCV'])) {
+                return $shippingData['dimensionsCV'];
+            } else {
+                return '';
+            }
         }
     }
 
     public function getFieldName()
     {
-        return 'shipping_width';
+        return 'shipping_dimensions';
     }
 }

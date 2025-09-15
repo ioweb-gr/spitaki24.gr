@@ -1,3 +1,8 @@
+<?php
+if(!defined('ABSPATH')) {
+    die();
+}
+?>
 <script type="text/javascript">
     (function ($) {
         $(function () {
@@ -9,7 +14,7 @@
                 $('.sub-options-' + exportVariations).css('display', 'block');
             }
 
-            $('.export_variations').change(function () {
+            $('.export_variations').on('change', function () {
 
                 var inputName = $(this).attr('name');
                 $('.sub-options').slideUp('fast');
@@ -23,7 +28,7 @@
                 }
             });
             
-            $('.export_variations_title').change(function(event){
+            $('.export_variations_title').on('change', function(event){
 
                 var inputName = $(this).attr('name');
                 var value = $('input[name='+inputName +']:checked').val();
@@ -38,5 +43,5 @@
     })(jQuery);
 </script>
 
-<input type="hidden" id="export_variations" name="export_variations" value="<?php echo XmlExportEngine::getProductVariationMode();?>" />
-<input type="hidden" id="export_variations_title" name="export_variations_title" value="<?php echo XmlExportEngine::getProductVariationTitleMode();?>" />
+<input type="hidden" id="export_variations" name="export_variations" value="<?php echo esc_attr(XmlExportEngine::getProductVariationMode());?>" />
+<input type="hidden" id="export_variations_title" name="export_variations_title" value="<?php echo esc_attr(XmlExportEngine::getProductVariationTitleMode());?>" />

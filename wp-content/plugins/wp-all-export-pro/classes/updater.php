@@ -52,7 +52,20 @@ if (!class_exists('PMXE_Updater')) {
 
             add_action('after_plugin_row_' . $this->name, array($this, 'show_update_notification'), 11, 2);
             add_filter('plugin_row_meta', array($this, 'plugin_row_meta'), 10, 2);
+
+	        add_action( 'in_plugin_update_message-'.$this->name, [$this, 'custom_update_note'], 10, 2);
         }
+
+	    public function custom_update_note( $data, $response ){
+
+		    // Only show a custom note if one was included in the update data.
+		    if ( is_object($response) && !empty($response->custom_update_note) && !empty($response->update_note_version)){
+			    // Ensure that this version is the same or older than the note's target version.
+			    if( version_compare($this->version, $response->update_note_version, '<=')) {
+				    echo wp_kses( $response->custom_update_note, 'post' );
+			    }
+		    }
+	    }
 
         /**
          * Show row meta on the plugin screen.
@@ -65,7 +78,7 @@ if (!class_exists('PMXE_Updater')) {
         {
             if ($file == $this->name) {
                 $row_meta = array(
-                    'changelog' => '<a href="' . admin_url('plugin-install.php?tab=plugin-information&plugin=wp-all-export-pro&section=changelog&TB_iframe=true&width=600&height=800') . '" class="thickbox open-plugin-details-modal" title="' . esc_attr(__('View WP All Export Pro Changelog', 'wp_all_export_plugin')) . '">' . __('Changelog', 'wp_all_export_plugin') . '</a>',
+                    'changelog' => '<a href="' . admin_url('plugin-install.php?tab=plugin-information&plugin='.$this->slug.'&section=changelog&TB_iframe=true&width=600&height=800') . '" class="thickbox open-plugin-details-modal" title="' . esc_attr('View '. urldecode($this->api_data['item_name']) .' Changelog') . '">' . __('Changelog', 'wp_all_export_plugin') . '</a>',
                 );
 
                 return array_merge($links, $row_meta);
@@ -126,7 +139,7 @@ if (!class_exists('PMXE_Updater')) {
 
                     if (false === $version_info) {
                         $version_info = $this->api_request('check_update', array('slug' => $this->slug));
-                        $transient_result = set_transient($cache_key, $version_info, 3600);
+                        $transient_result = set_transient($cache_key, $version_info, 3600 * 24);
 
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_' . $cache_key));
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_timeout_' . $cache_key));
@@ -179,6 +192,11 @@ if (!class_exists('PMXE_Updater')) {
                 return;
             }
 
+            // Only show this enhanced notification for WP All Export Pro itself.
+            if($this->slug != 'wp-all-export-pro'){
+                return;
+            }
+
             // Remove our filter on the site transient
             remove_filter('pre_set_site_transient_update_plugins', array($this, 'check_update'), 21);
 
@@ -187,6 +205,10 @@ if (!class_exists('PMXE_Updater')) {
             if (!is_object($update_cache) || empty($update_cache->response) || empty($update_cache->response[$this->name])) {
 
                 global $wpdb;
+
+                if(!is_object($update_cache)) {
+                    $update_cache = new stdClass();
+                }
 
                 $cache_key = md5('edd_plugin_' . sanitize_key($this->name) . '_version_info');
 
@@ -212,7 +234,7 @@ if (!class_exists('PMXE_Updater')) {
 
                         $version_info = $this->api_request('plugin_latest_version', array('slug' => $this->slug));
 
-                        $transient_result = set_transient($cache_key, $version_info, 3600);
+                        $transient_result = set_transient($cache_key, $version_info, 3600 * 24);
 
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_' . $cache_key));
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_timeout_' . $cache_key));
@@ -261,11 +283,11 @@ if (!class_exists('PMXE_Updater')) {
                 if (empty($version_info->download_link)) {
                     if ($shiny_updates) $update_msg_classes .= ' post-shiny-updates';
                     $new_version = "<span class=\"wp-all-export-pro-new-version-notice\">" . sprintf(
-                            __('A new version of WP All Export Pro available. <strong>A valid license is required to enable updates - enter your license key on the <a href="%1$s">Licenses</a> page.</strong>', 'wp_all_export_plugin'),
+                            __('A new version of WP All Export Pro is available. <strong>A valid license is required to enable updates - enter your license key on the <a href="%1$s">Settings</a> page.</strong>', 'wp_all_export_plugin'),
                             esc_url(admin_url('admin.php?page=pmxe-admin-settings'))
                         ) . "</span>";
                     $new_version .= "<span class=\"wp-all-export-pro-licence-error-notice\">" . sprintf(
-                            __('If you don\'t have a licence key, please see <a href="%1$s" target="_blank">details & pricing</a>. If you do have a licence key, you can access it at the <a href="%2$s" target="_blank">customer portal</a>.', 'wp_all_export_plugin'),
+                            __('If you don\'t have a license key, please see the <a href="%1$s" target="_blank">details & pricing</a> page. If you do have a license key, you can access it at the <a href="%2$s" target="_blank">customer portal</a>.', 'wp_all_export_plugin'),
                             esc_url('http://www.wpallimport.com/order-now/'),
                             esc_url('http://www.wpallimport.com/portal/')
                         ) . "</span>";
@@ -285,40 +307,43 @@ if (!class_exists('PMXE_Updater')) {
             }
             ?>
             <tr class="plugin-update-tr <?php echo $active; ?> wp-all-export-pro-custom">
-                <td colspan="3" class="plugin-update">
+                <td colspan="4" class="plugin-update colspanchange">
                     <div class="update-message <?php echo $update_msg_classes; ?>">
                         <p>
                             <?php echo $new_version; ?>
+                            <?php do_action('in_plugin_update_message-'.$this->name, [], $version_info);?>
                         </p>
                     </div>
                 </td>
             </tr>
             <?php if ($new_version) { // removes the built-in plugin update message ?>
-                <script type="text/javascript">
-                    (function ($) {
-                        var wp_all_export_row = jQuery('[data-slug=<?php echo $plugin_slug; ?>]:first');
+            <script type="text/javascript">
+                (function ($) {
+                    var wp_all_export_row = jQuery('[data-slug=<?php echo $plugin_slug; ?>]:first');
 
-                        // Fallback for earlier versions of WordPress.
-                        if (!wp_all_export_row.length) {
-                            wp_all_export_row = jQuery('#<?php echo $plugin_slug; ?>');
-                        }
+                    // Fallback for earlier versions of WordPress.
+                    if (!wp_all_export_row.length) {
+                        wp_all_export_row = jQuery('#<?php echo $plugin_slug; ?>');
+                    }
 
-                        var next_row = wp_all_export_row.next();
+                    wp_all_export_row.addClass('update');
 
-                        // If there's a plugin update row - need to keep the original update row available so we can switch it out
-                        // if the user has a successful response from the 'check my license again' link
-                        if (next_row.hasClass('plugin-update-tr') && !next_row.hasClass('wp-all-export-pro-custom')) {
-                            var original = next_row.clone();
-                            // original.add;
-                            next_row.html(next_row.next().html()).addClass('wp-all-export-pro-custom-visible');
-                            next_row.next().remove();
-                            next_row.after(original);
-                            original.addClass('wp-all-export-original-update-row');
-                        }
-                    })(jQuery);
-                </script>
-                <?php
-            }            
+                    var next_row = wp_all_export_row.next();
+
+                    // If there's a plugin update row - need to keep the original update row available so we can switch it out
+                    // if the user has a successful response from the 'check my license again' link
+                    if (next_row.hasClass('plugin-update-tr') && !next_row.hasClass('wp-all-export-pro-custom')) {
+                        var original = next_row.clone();
+                        // original.add;
+                        next_row.html(next_row.next().html()).addClass('wp-all-export-pro-custom-visible');
+                        next_row.next().remove();
+                        next_row.after(original);
+                        original.addClass('wp-all-export-original-update-row');
+                    }
+                })(jQuery);
+            </script>
+            <?php
+        }
         }
 
         /**
@@ -381,7 +406,7 @@ if (!class_exists('PMXE_Updater')) {
 
                     if (false !== $_data) {
 
-                        $transient_result = set_transient($cache_key, $_data, 3600);
+                        $transient_result = set_transient($cache_key, $_data, 3600 * 24);
 
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_' . $cache_key));
                         $wpdb->query($wpdb->prepare("DELETE FROM $wpdb->options WHERE option_name = %s", $this->slug . '_timeout_' . $cache_key));
@@ -402,7 +427,8 @@ if (!class_exists('PMXE_Updater')) {
          *
          * @param array $args
          * @param string $url
-         * @return object $array
+         *
+         * @return array|object
          */
         function http_request_args($args, $url)
         {
@@ -411,7 +437,7 @@ if (!class_exists('PMXE_Updater')) {
 
             // If it is an https request and we are performing a package download, disable ssl verification
             if (strpos($url, 'https://') !== false && strpos($url, 'edd_action=package_download')) {
-                $args['sslverify'] = false;
+                $args['sslverify'] = true;
             }
             return $args;
         }
@@ -435,7 +461,7 @@ if (!class_exists('PMXE_Updater')) {
             $data = array_merge($this->api_data, $_data);
 
             if ($data['slug'] != $this->slug)
-                return;
+                return false;
 
             /*if ( empty( $data['license'] ) )
                 return;*/
@@ -463,10 +489,14 @@ if (!class_exists('PMXE_Updater')) {
             //     file_put_contents($uploads['basedir'] . "/log.txt", date("d-m-Y H:i:s") . ' - ' .json_encode($api_params) . "\n", FILE_APPEND);
             // }
 
-            $request = wp_remote_post($this->api_url, array('timeout' => 15, 'sslverify' => false, 'body' => $api_params));
+            $request = wp_remote_get( esc_url_raw(add_query_arg($api_params, $this->api_url.'check_version/?')), array( 'timeout' => 15, 'sslverify' => true ) );
 
             if (!is_wp_error($request)) {
                 $request = json_decode(wp_remote_retrieve_body($request));
+            }
+
+            if ( $request && isset( $request->contributors ) ) {
+                $request->contributors = maybe_unserialize( $request->contributors );
             }
 
             if ($request && isset($request->banners)) {
@@ -499,7 +529,7 @@ if (!class_exists('PMXE_Updater')) {
             }
 
             if (!current_user_can('update_plugins')) {
-                wp_die(__('You do not have permission to install plugin updates', 'edd'), __('Error', 'edd'), array('response' => 403));
+                wp_die(esc_html__('You do not have permission to install plugin updates', 'edd'), __('Error', 'edd'), array('response' => 403));
             }
 
             $response = $this->api_request('show_changelog', array('slug' => $_REQUEST['slug']));

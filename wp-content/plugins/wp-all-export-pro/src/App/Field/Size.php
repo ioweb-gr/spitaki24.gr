@@ -18,10 +18,10 @@ class Size extends Field
             } else {
                 $sizeAttribute = '';
             }
-            return $this->replaceSnippetsInValue($sizeAttribute, $snippetData);
+            return $sizeAttribute;
 
         } else if($detailedInformationData['size'] == self::CUSTOM_VALUE_TEXT) {
-            return $this->replaceSnippetsInValue($detailedInformationData['sizeCV'], $snippetData);
+            return $detailedInformationData['sizeCV'];
         } else {
             throw new \Exception('Unknown value '.$detailedInformationData['size'].' for field size');
         }

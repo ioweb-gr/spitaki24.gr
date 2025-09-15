@@ -21,6 +21,7 @@ class GoogleMerchantsDataProcessor
         'availability',
         'availability_date',
         'sale_price_effective_date',
+        'cost_of_goods_sold',
         'price',
         'sale_price',
         'product_type',
@@ -125,6 +126,10 @@ class GoogleMerchantsDataProcessor
 
         if(empty($shipping['weight'])) {
             $this->removeField('shipping_weight');
+        }
+
+        if(!isset($shipping['includeAttributes']) || $shipping['includeAttributes'] !== 'include') {
+            $this->removeField('shipping');
         }
 
         if(empty($advancedAttributes['unitPricingBaseMeasure'])) {

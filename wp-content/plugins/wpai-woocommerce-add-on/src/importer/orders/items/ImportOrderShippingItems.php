@@ -110,7 +110,7 @@ class ImportOrderShippingItems extends ImportOrderItemsBase {
                         'unique_key' => 'shipping-item-' . $shippingIndex
                     ] );
 
-                    $total_shipping += $shipping['amount'];
+                    $total_shipping += (float)$shipping['amount'];
 
                     if ( $shipping_item->isEmpty() ) {
 
@@ -156,7 +156,7 @@ class ImportOrderShippingItems extends ImportOrderItemsBase {
                         }
 
                         if ( ! $item_id ) {
-                            $this->getLogger() && call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order shipping line.', \PMWI_Plugin::TEXT_DOMAIN));
+                            $this->getLogger() && call_user_func($this->getLogger(), __('- <b>WARNING</b> Unable to create order shipping line.', 'wpai_woocommerce_addon_plugin'));
                         } else {
                             $shipping_item->set( [
                                 'import_id'   => $this->getImport()->id,

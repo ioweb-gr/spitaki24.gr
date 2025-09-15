@@ -15,7 +15,7 @@ class ExpirationDate extends Field
             return '';
         }
         
-        return $this->replaceSnippetsInValue($advancedAttributes['expirationDate'], $snippetData);
+        return $advancedAttributes['expirationDate'];
     }
 
     public function getFieldName()
