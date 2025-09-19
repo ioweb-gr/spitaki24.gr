@@ -107,7 +107,7 @@ body.rtl {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: 50%;
-  transform: translate(calc(-50% * var(--direction-multiplier)), -50%);
+  transform: translate(-50%, -50%);
 }
 .elementor .elementor-background-video-hosted {
   object-fit: cover;
@@ -1576,7 +1576,7 @@ body.rtl .e-con {
   padding-inline-end: 0;
   height: 100%;
 }
-:is(.elementor-section-wrap, [data-elementor-id]):where:not([data-elementor-type=elementor_component]) > .e-con {
+:is(.elementor-section-wrap, [data-elementor-id]) > .e-con {
   --margin-left: auto;
   --margin-right: auto;
   max-width: min(100%, var(--width));

@@ -3,7 +3,7 @@
   Plugin Name: WP Reset
   Plugin URI: https://wpreset.com/
   Description: Reset the entire site or just selected parts while reserving the option to undo by using snapshots.
-  Version: 2.05
+  Version: 2.06
   Requires at least: 4.0
   Requires PHP: 5.2
   Tested up to: 6.8
@@ -96,7 +96,7 @@ class WP_Reset
             'plugin_file' => __FILE__,
             'plugin_page' => 'tools_page_wp-reset',
             'skip_hooks' => false,
-            'debug' => true,
+            'debug' => false,
             'js_folder' => plugin_dir_url(__FILE__) . '/js/'
         ));
 

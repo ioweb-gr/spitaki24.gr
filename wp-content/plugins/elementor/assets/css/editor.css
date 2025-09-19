@@ -1,4 +1,4 @@
-/*! elementor - v3.32.0 - 15-09-2025 */
+/*! elementor - v3.32.0 - 18-09-2025 */
 .elementor-control-unit-1 {
   width: 27px;
 }
@@ -7013,7 +7013,7 @@ iframe + #elementor-navigator__header__title, #elementor-navigator__ai-titles + 
   z-index: 91;
 }
 .elementor-navigator__element__indicators:not(:hover) {
-  transform: translateX(calc(100% * var(--direction-multiplier) - var(--e-editor-navigator-indicator-width)));
+  transform: translateX(calc(100% * var(--direction-multiplier) - var(--e-editor-navigator-indicator-width) * var(--direction-multiplier)));
 }
 .elementor-navigator__element__indicator {
   height: 100%;

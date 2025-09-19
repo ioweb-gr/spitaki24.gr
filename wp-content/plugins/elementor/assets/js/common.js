@@ -1,4 +1,4 @@
-/*! elementor - v3.32.0 - 15-09-2025 */
+/*! elementor - v3.32.0 - 18-09-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -1919,12 +1919,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = void 0;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/defineProperty.js"));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
 var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
 var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/defineProperty.js"));
 var _eventsConfig = _interopRequireDefault(__webpack_require__(/*! ./events-config */ "../core/common/modules/events-manager/assets/js/events-config.js"));
 var _mixpanelBrowser = _interopRequireDefault(__webpack_require__(/*! mixpanel-browser */ "../node_modules/mixpanel-browser/dist/mixpanel.module.js"));
 var _tiers = __webpack_require__(/*! elementor-utils/tiers */ "../assets/dev/js/utils/tiers.js");
@@ -1934,34 +1934,47 @@ function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, 
 function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
 var _default = exports["default"] = /*#__PURE__*/function (_elementorModules$Mod) {
   function _default() {
+    var _this;
     (0, _classCallCheck2.default)(this, _default);
-    return _callSuper(this, _default, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    _this = _callSuper(this, _default, [].concat(args));
+    (0, _defineProperty2.default)(_this, "trackingEnabled", false);
+    return _this;
   }
   (0, _inherits2.default)(_default, _elementorModules$Mod);
   return (0, _createClass2.default)(_default, [{
     key: "onInit",
     value: function onInit() {
-      var _elementorCommon$conf;
+      var _elementorCommon$conf, _elementorCommon$conf2;
       this.config = _eventsConfig.default;
-      if ((_elementorCommon$conf = elementorCommon.config.editor_events) !== null && _elementorCommon$conf !== void 0 && _elementorCommon$conf.can_send_events) {
-        var _elementorCommon$conf2, _elementorCommon$conf3;
-        _mixpanelBrowser.default.init((_elementorCommon$conf2 = elementorCommon.config.editor_events) === null || _elementorCommon$conf2 === void 0 ? void 0 : _elementorCommon$conf2.token, {
-          persistence: 'localStorage'
-        });
-        var userId = (_elementorCommon$conf3 = elementorCommon.config.library_connect) === null || _elementorCommon$conf3 === void 0 ? void 0 : _elementorCommon$conf3.user_id;
-        if (userId) {
-          var _elementorCommon$conf4;
-          _mixpanelBrowser.default.identify(userId);
-          _mixpanelBrowser.default.register({
-            appType: 'Editor'
-          });
-          _mixpanelBrowser.default.people.set_once({
-            $user_id: userId,
-            $last_login: new Date().toISOString(),
-            $plan_type: ((_elementorCommon$conf4 = elementorCommon.config.library_connect) === null || _elementorCommon$conf4 === void 0 ? void 0 : _elementorCommon$conf4.plan_type) || _tiers.TIERS.free
-          });
-        }
+      _mixpanelBrowser.default.init((_elementorCommon$conf = elementorCommon.config.editor_events) === null || _elementorCommon$conf === void 0 ? void 0 : _elementorCommon$conf.token, {
+        persistence: 'localStorage',
+        autocapture: false
+      });
+      if ((_elementorCommon$conf2 = elementorCommon.config.editor_events) !== null && _elementorCommon$conf2 !== void 0 && _elementorCommon$conf2.can_send_events) {
+        this.enableTracking();
       }
+    }
+  }, {
+    key: "enableTracking",
+    value: function enableTracking() {
+      var _elementorCommon$conf3;
+      var userId = (_elementorCommon$conf3 = elementorCommon.config.library_connect) === null || _elementorCommon$conf3 === void 0 ? void 0 : _elementorCommon$conf3.user_id;
+      if (userId) {
+        var _elementorCommon$conf4;
+        _mixpanelBrowser.default.identify(userId);
+        _mixpanelBrowser.default.register({
+          appType: 'Editor'
+        });
+        _mixpanelBrowser.default.people.set_once({
+          $user_id: userId,
+          $last_login: new Date().toISOString(),
+          $plan_type: ((_elementorCommon$conf4 = elementorCommon.config.library_connect) === null || _elementorCommon$conf4 === void 0 ? void 0 : _elementorCommon$conf4.plan_type) || _tiers.TIERS.free
+        });
+      }
+      this.trackingEnabled = true;
     }
   }, {
     key: "dispatchEvent",
@@ -1969,6 +1982,9 @@ var _default = exports["default"] = /*#__PURE__*/function (_elementorModules$Mod
       var _elementorCommon$conf5, _elementorCommon$conf6, _elementorCommon$conf7, _elementorCommon$conf8, _elementorCommon$conf9, _elementorCommon$conf0, _elementorCommon$conf1, _elementorCommon$conf10, _elementorCommon$conf11;
       if (!((_elementorCommon$conf5 = elementorCommon.config.editor_events) !== null && _elementorCommon$conf5 !== void 0 && _elementorCommon$conf5.can_send_events)) {
         return;
+      }
+      if (!this.trackingEnabled) {
+        this.enableTracking();
       }
       var eventData = _objectSpread({
         user_id: ((_elementorCommon$conf6 = elementorCommon.config.library_connect) === null || _elementorCommon$conf6 === void 0 ? void 0 : _elementorCommon$conf6.user_id) || null,
